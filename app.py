@@ -963,7 +963,7 @@ elif page == "🔵 Grupos de Simetria":
 
     Assim como nas obras de **M. C. Escher**, onde padrões complexos e hipnóticos emergem de transformações simples, a natureza utiliza rotações e translações para construir sistemas moleculares altamente eficientes e estáveis.
     """)
-    with st.expander("🎨 6. Simetria na Arte de M. C. Escher", expanded=False):
+    with st.expander("🎨 1.5 Simetria na Arte de M. C. Escher", expanded=True):
         st.markdown("""
         ### Simetria na Arte de M. C. Escher
 
@@ -975,20 +975,22 @@ elif page == "🔵 Grupos de Simetria":
         - **Reflexões**
         - **Translações**
         - **Reflexões Deslizantes (glide reflections)**
-
-        O artista organizava figuras de forma a pavimentar o plano **sem deixar espaços vazios**, criando padrões hipnóticos e infinitos. Muitas das suas obras encaixam-se perfeitamente nos **17 Grupos Cristalográficos** do plano.
         """)
 
         st.markdown("""
         #### Exemplo: Regular Division of the Plane nº 31
 
-        Nesta obra icónica, observam-se claramente rotações de 180°, eixos de reflexão e translações regulares que repetem a figura base do peixe, demonstrando de forma brilhante como a arte pode materializar conceitos matemáticos avançados.
+        Nesta obra icónica, observam-se claramente rotações de 180°, eixos de reflexão e translações regulares que repetem a figura base do peixe.
         """)
 
-        # Imagem após o exemplo
-        st.image("/home/workdir/attachments/Regular-division-31.jpg", 
-                caption="M. C. Escher - Regular Division of the Plane nº 31 (1950)",
-                use_container_width=True)
+        # Imagem depois do texto
+        try:
+            st.image("/home/workdir/attachments/Regular-division-31.jpg", 
+                    caption="M. C. Escher - Regular Division of the Plane nº 31 (1950)",
+                    use_container_width=True)
+        except:
+            st.error("Não foi possível carregar a imagem. Verifique o caminho do ficheiro.")
+            
     with st.expander("🔭 7. O Caleidoscópio e a Força Unificadora da Simetria", expanded=False):
         st.markdown("""
     ### O Caleidoscópio: Simetria em Ação
