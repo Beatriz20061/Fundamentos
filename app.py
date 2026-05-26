@@ -774,7 +774,7 @@ if page == "🏠 Página Inicial":
     <div class="hero-section">
         <h1 class="hero-title">🚀 MathXplore</h1>
         <p class="hero-subtitle">
-            Plataforma interativa de demonstração e investigação em Fundamentos de Matemática.
+            Plataforma interativa com conhecimentos nas mais vastas areas da matemática.
             Explore conceitos através de visualizações dinâmicas, simuladores e quizzes.
         </p>
     </div>
@@ -801,7 +801,7 @@ if page == "🏠 Página Inicial":
     with col1:
         st.markdown(render_feature_card(
             "📐",
-            "Teoria Exaustiva",
+            "Teoria",
             "Conteúdos teóricos completos baseados nos relatórios académicos originais."
         ), unsafe_allow_html=True)
     
@@ -824,11 +824,11 @@ if page == "🏠 Página Inicial":
     # About Section
     render_glass_card("""
         <h3 style="margin-top: 0;">💡 Sobre a Plataforma</h3>
-        <p>Este ecossistema digital foi desenvolvido para integrar a totalidade dos conteúdos teóricos, 
-        formulações e dados científicos presentes nos cinco projetos académicos desenvolvidos nos relatórios originais.</p>
+        <p>Esta plataforma digital foi desenvolvida para integrar a totalidade dos conteúdos teóricos
+        presentes nos cinco projetos académicos desenvolvidos nos relatórios originais.</p>
         <p>A nossa abordagem converte a teoria exaustiva dos relatórios em componentes de aprendizagem dinâmicos, 
-        estruturados rigorosamente sob a metodologia de <strong>Explicação Teórica Exaustiva</strong>, 
-        <strong>Aplicação Prática no Quotidiano</strong> e <strong>Questionários Gerais com Pontuação</strong> automática.</p>
+        estruturados rigorosamente sob a metodologia de <strong>Explicação Teórica</strong>, 
+        <strong>Aplicação Prática</strong> e <strong>Questionários Gerais com Pontuação</strong> automática.</p>
     """)
     
     # Quick Access
@@ -859,56 +859,162 @@ if page == "🏠 Página Inicial":
 elif page == "🔵 Grupos de Simetria":
     render_module_header("🔵", "MÓDULO 1: GRUPOS DE SIMETRIA")
     
-    tab1, tab2 = st.tabs(["📖 Matéria Completa & Isometrias", "🧠 Quiz Geral do Módulo"])
+    tab1, tab2 = st.tabs(["📖 Matéria Completa", "🧠 Quiz Geral do Módulo"])
     
     with tab1:
-        with st.expander("📘 1.1 Isometrias e Estrutura Abstrata da Teoria de Grupos", expanded=False):
+        with st.expander("📘 1. Introdução à Simetria e Teoria de Grupos", expanded=True):
             st.markdown("""
-            ### Explicação Teórica
-            
-            A simetria é um conceito central em múltiplas áreas da Matemática, desde a Geometria à Álgebra e até à Física. 
-            De forma intuitiva, dizemos que um objeto apresenta simetria quando permanece inalterado após uma transformação 
-            como uma rotação, reflexão ou translação.
-            
-            Estas transformações, designadas no seu conjunto por **isometrias**, podem ser estudadas de forma estruturada 
-            através da **Teoria de Grupos**, uma área utilizada para descrever padrões geométricos, moléculas, cristais e 
-            estruturas biológicas.
-            
-            ---
-            
-            ### As Quatro Isometrias Fundamentais do Plano
-            
-            | Isometria | Descrição |
-            |-----------|-----------|
-            | **Translações** | Deslocamento da figura numa direção constante |
-            | **Rotações** | Giro da figura em torno de um ponto fixo por um determinado ângulo |
-            | **Reflexões** | "Espelhamento" da figura em relação a uma reta |
-            | **Reflexões Deslizantes** | Combinação de uma reflexão com uma translação paralela ao eixo |
-            """)
-            
-        with st.expander("🦠 1.2 Eficiência Viral e Simetrias na Natureza e na Arte", expanded=False):
+
+    A **simetria** é um conceito central em múltiplas áreas da Matemática, desde a Geometria à Álgebra e até à Física. 
+
+    De forma intuitiva, dizemos que um objeto apresenta simetria quando permanece **inalterado** após uma transformação — como uma rotação, reflexão ou translação. 
+
+    Estas transformações, designadas no seu conjunto por **isometrias**, podem ser estudadas de forma estruturada através da **Teoria de Grupos**, uma área formalizada no século XIX e hoje amplamente utilizada para descrever padrões geométricos, 
+    moléculas, cristais e estruturas biológicas (Durbin, *Modern Algebra*).
+
+    ---
+
+    O estudo das simetrias permite **unificar fenómenos naturais e construções humanas**: desde os padrões em azulejos portugueses, aos capsídeos virais, passando pelas fascinantes tesselações artísticas. 
+
+    Neste trabalho, exploramos as simetrias presentes em:
+    - Polígonos regulares
+    - Sólidos platónicos  
+    - Estruturas virais
+    - Obras de arte, com especial destaque para o génio **M. C. Escher**
+    """)
+        with st.expander("📐 2. Geometria dos Polígonos e Sólidos Platónicos", expanded=False):
             st.markdown("""
-            ### Explicação Teórica Exaustiva
+    ### Geometria dos Polígonos e Sólidos Platónicos
+
+    O estudo das simetrias inicia-se pelas **isometrias** — transformações que preservam distâncias e ângulos.
+
+    #### Polígonos Regulares (Geometria Bidimensional)
+    Os polígonos regulares são figuras bidimensionais que apresentam **simetrias rotacionais** e **eixos de reflexão** bem definidos. 
+
+    Por exemplo, um **quadrado** possui:
+    - Simetria rotacional de **ordem 4** (rotações de 90°, 180°, 270° e 360°)
+    - Quatro eixos de reflexão
+
+    #### Sólidos Platónicos (Geometria Tridimensional)
+    No espaço tridimensional, destacam-se os **Sólidos Platónicos**. As suas simetrias são fundamentais não apenas em geometria, mas também em fenómenos biológicos.
+
+    O **icosaedro**, em particular, surge frequentemente na modelação de vírus graças à sua **elevada eficiência rotacional**, permitindo uma estrutura estável com o mínimo de informação genética (Flint et al., *Principles of Virology*).
+
+    ---
+
+    ### As Quatro Isometrias Fundamentais do Plano
+
+    - **Translações**: Deslocamento da figura numa direção constante.
+    - **Rotações**: Giro da figura em torno de um ponto fixo por um determinado ângulo.
+    - **Reflexões**: “Espelhamento” da figura em relação a uma reta.
+    - **Reflexões Deslizantes (glide reflections)**: Combinação de uma reflexão com uma translação paralela ao eixo de reflexão.
+
+    Estas transformações podem combinar-se entre si e continuam a ser isometrias (Durbin, *Modern Algebra*). 
+
+    **Exemplo**: A composição de duas reflexões em retas que se cruzam gera uma rotação.
+    """)
             
-            Muitos vírus ditos "esféricos" apresentam, na verdade, uma estrutura baseada no **icosaedro**, 
-            um dos sólidos platónicos mais simétricos. A geometria icosaédrica oferece eixos de rotação 
-            múltiplos de ordem 2, 3 e 5.
-            
-            Isto permite que subunidades proteicas idênticas (capsómeros) se encaixem perfeitamente para 
-            formar uma cápsula (capsídeo) fechada e estável. Esta organização repetitiva confere uma enorme 
-            **eficiência genética**, permitindo que o vírus utilize um único gene para codificar uma pequena 
-            proteína que se organiza através de rotações para formar uma estrutura grande e complexa.
-            
-            ---
-            
-            ### Simetria na Arte
-            
-            Na arte, **M. C. Escher** explorou intensamente estas isometrias para pavimentar o plano de forma 
-            regular sem deixar espaços vazios.
-            
-            No **caleidoscópio**, o efeito visual resulta de múltiplas reflexões entre espelhos dispostos em 
-            triângulo, gerando simetrias rotacionais de ângulo $$\\frac{360}{n}$$ e repetições cíclicas infinitas.
-            """)
+        with st.expander("🔢 3. Teoria de Grupos: Estrutura Abstrata", expanded=False):
+            st.markdown("""
+    ### Teoria de Grupos: Estrutura Abstrata
+
+    A **Teoria de Grupos** surge quando deixamos de estudar apenas a figura geométrica e passamos a analisar o **conjunto de todas as simetrias** associado a essa figura.
+
+    Formalmente, um **grupo** $(G, ∗)$ é um conjunto munido de uma operação que satisfaz **quatro propriedades essenciais**:
+
+    - **Fecho**: Para quaisquer $a, b \in G$, o elemento $a ∗ b$ também pertence a $G$.
+    - **Associatividade**: Para quaisquer $a, b, c \in G$, $(a ∗ b) ∗ c = a ∗ (b ∗ c)$.
+    - **Elemento Neutro**: Existe um elemento $e \in G$ tal que $e ∗ a = a ∗ e = a$, para todo $a \in G$.
+    - **Elemento Inverso**: Para cada $a \in G$, existe $a^{-1} \in G$ tal que $a ∗ a^{-1} = a^{-1} ∗ a = e$.
+
+    Um exemplo clássico é o **grupo das rotações do triângulo equilátero**, que forma o **grupo cíclico $C_3$**.
+
+    Esta perspetiva abstrata permite aplicar a mesma linguagem formal na análise de fenómenos tão distintos como tesselações islâmicas, padrões em cristais ou interações moleculares (Lehninger, *Principles of Biochemistry*).
+    """)
+        with st.expander("🦠 4. Estruturas Virais Icosaédricas", expanded=False):
+            st.markdown("""
+    ### Estruturas Virais Icosaédricas
+
+    Muitos vírus ditos “esféricos” apresentam, na verdade, uma estrutura altamente organizada baseada no **icosaedro**, um dos sólidos platónicos mais simétricos.
+
+    A geometria icosaédrica oferece vantagens excecionais:
+
+    - **Simetria Rotacional Avançada**: A maioria dos vírus esféricos possui uma estrutura baseada no icosaedro, com múltiplos eixos de simetria rotacional de ordem **2, 3 e 5**.
+    - **Eficiência Estrutural**: Permite que subunidades proteicas idênticas (chamadas **capsómeros**) se encaixem perfeitamente, formando uma cápsula (capsídeo) fechada, estável e de grande resistência.
+    - **Eficiência Genética**: Esta organização repetitiva permite que o vírus utilize um **único gene** para codificar uma pequena proteína, que através de rotações se multiplica para formar uma estrutura grande e complexa.
+
+    Exemplos clássicos incluem o **adenovírus**, o **poliovírus** e o **vírus Zika**. Esta arquitetura viral é elegantemente descrita pelo modelo de **Caspar–Klug** (Flint et al., *Principles of Virology*).
+    """)
+        with st.expander("🧬 5. Estruturas Helicoidais e Simetria Quaternária", expanded=True):
+            st.markdown("""
+    ### Estruturas Helicoidais e Simetria Quaternária
+
+    A simetria não se limita às estruturas virais. Ela desempenha um papel **fundamental na Biologia Molecular**, especialmente nas estruturas tridimensionais de proteínas e do ADN.
+
+    #### Principais Manifestações de Simetria:
+
+    - **Simetria Helicoidal**: Proteínas em hélice-alfa e a molécula de ADN utilizam uma elegante combinação de **rotação e translação** ao longo de um eixo. Matematicamente, este movimento é equivalente às **reflexões deslizantes** ou simetrias de translação aplicadas a um eixo central.
+      
+    - **Repetição e Estabilidade**: As subunidades rodam em torno de um eixo enquanto avançam verticalmente, gerando um padrão repetitivo, infinito e extremamente estável.
+
+    - **Simetria Quaternária Cíclica**: Várias cadeias polipeptídicas organizam-se em torno de um eixo comum, formando estruturas altamente estáveis e funcionais.
+
+    ---
+
+    Assim como nas obras de **M. C. Escher**, onde padrões complexos e hipnóticos emergem de transformações simples, a natureza utiliza rotações e translações para construir sistemas moleculares altamente eficientes e estáveis.
+    """)
+        with st.expander("🎨 6. Simetria na Arte de M. C. Escher", expanded=True):
+            st.markdown("""
+    ### Simetria na Arte de M. C. Escher
+
+    M. C. Escher é um dos artistas que melhor explorou as simetrias do plano, apesar de não possuir formação matemática formal. A sua obra é um fascinante exemplo da ligação profunda entre **arte e matemática**.
+
+    Escher construiu tesselações complexas utilizando as quatro isometrias fundamentais:
+
+    - **Rotações**
+    - **Reflexões**
+    - **Translações**
+    - **Reflexões Deslizantes (glide reflections)**
+
+    O artista organizava figuras de forma a pavimentar o plano **sem deixar espaços vazios**, criando padrões hipnóticos e infinitos. Muitas das suas obras encaixam-se perfeitamente nos **17 Grupos Cristalográficos** do plano, que classificam todas as tesselações periódicas possíveis.
+
+    ---
+
+    #### Exemplo: Regular Division of the Plane nº 31
+
+    Nesta obra icónica, observam-se claramente:
+    - Rotações de 180°
+    - Eixos de reflexão
+    - Translações regulares
+
+    que repetem a figura base do peixe, demonstrando de forma brilhante como a arte pode materializar conceitos matemáticos avançados.
+    """)
+        with st.expander("🔭 7. O Caleidoscópio e a Força Unificadora da Simetria", expanded=True):
+            st.markdown("""
+    ### O Caleidoscópio: Simetria em Ação
+
+    O **caleidoscópio** é uma das demonstrações mais belas e intuitivas de como simetrias simples podem gerar padrões complexos e hipnóticos.
+
+    O efeito visual resulta de **múltiplas reflexões** entre espelhos dispostos em triângulo, produzindo:
+
+    - **Simetrias Rotacionais** de ângulo $\frac{360^\circ}{n}$
+    - **Simetrias de Reflexão** múltiplas
+    - **Padrões Regulares** infinitamente repetidos
+
+    Cada reflexão corresponde a uma transformação geométrica precisa, criando repetições cíclicas infinitas que encantam o observador.
+
+    ---
+
+    ### A Força Unificadora da Simetria
+
+    O estudo das simetrias revela a extraordinária capacidade da Matemática em **unificar fenómenos** aparentemente distintos:
+
+    - Padrões presentes na **natureza** (estruturas virais e proteínas)
+    - Manifestações **artísticas** (tesselações de Escher)
+    - Construções **humanas** (azulejos, arquitetura e design)
+
+    Através das **isometrias** e da **Teoria de Grupos**, conseguimos compreender e apreciar a profunda ordem matemática subjacente ao mundo que nos rodeia — desde o microscópico até ao artístico.
+    """)
 
     with tab2:
         st.markdown("### 🧠 Questionário de Avaliação — Módulo 1")
