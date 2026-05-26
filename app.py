@@ -8,10 +8,10 @@ try:
 except ImportError:
     GRAFICOS_ATIVOS = False
 
-# Configuração da plataforma web
+# Configuração da plataforma web para alto impacto visual e responsividade
 st.set_page_config(page_title="MathXplore - ISCTE Sintra", layout="wide", page_icon="🔢")
 
-# Estilização visual avançada para alto impacto e responsividade móvel
+# Injeção de CSS personalizado para design premium, cartões de capa e animações
 st.markdown("""
     <style>
     .main { background-color: #f8fafc; }
@@ -23,22 +23,31 @@ st.markdown("""
         padding: 12px 28px;
         font-weight: bold;
         transition: all 0.3s ease;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
     }
     .stButton>button:hover {
         transform: translateY(-2px);
         box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
     }
-    .academic-header {
-        background-color: #1e1b4b;
-        color: white;
-        padding: 20px;
-        border-radius: 12px;
-        margin-bottom: 25px;
+    .module-card {
+        background-color: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        transition: transform 0.3s ease;
     }
+    .module-card:hover {
+        transform: scale(1.005);
+    }
+    .card-content { padding: 30px; }
+    .card-title { color: #1e1b4b; margin-top: 0; font-weight: 800; }
+    .card-metadata { color: #64748b; font-size: 0.9em; margin-bottom: 0; }
     </style>
 """, unsafe_allow_html=True)
 
-# ---- MENU LATERAL DE ACESSO ----
+# ---- MENU LATERAL DE ACESSO COM A ORDEM CRONOLÓGICA SOLICITADA ----
 st.sidebar.title("MathXplore")
 st.sidebar.markdown("**Fundamentos de Matemática**\n*Licenciatura em MATD*")
 st.sidebar.markdown("---")
@@ -84,11 +93,21 @@ if page == "🏠 Página Inicial":
     st.image("https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80", caption="A harmonia abstrata das estruturas discretas e geométricas.")
 
 # ==============================================================================
-# MÓDULO 1: GRUPOS DE SIMETRIA (FM_1ºprojeto .pdf)
+# MÓDULO 1: GRUPOS DE SIMETRIA
 # ==============================================================================
 elif page == "🔵 Módulo 1: Grupos de Simetria":
-    st.markdown('<div class="academic-header"><h1>🔵 Módulo 1: Grupos de Simetria</h1><p>Relatório Original: <b>FM_1ºprojeto .pdf</b> | Autoras: Catarina Pereira, Beatriz Correia | Março 2026</p></div>', unsafe_allow_html=True)
-    
+    with st.container():
+        st.markdown('<div class="module-card">', unsafe_allow_html=True)
+        col_img, col_txt = st.columns([2, 5])
+        with col_img:
+            st.image("https://images.unsplash.com/photo-1596495573882-62828b185012?w=300&q=80", width=180)
+        with col_txt:
+            st.markdown('<div class="card-content">', unsafe_allow_html=True)
+            st.markdown('<h2 class="card-title">🔵 Módulo 1: Grupos de Simetria</h2>', unsafe_allow_html=True)
+            st.markdown('<p class="card-metadata"><b>Autoras:</b> Catarina Pereira, Beatriz Correia<br><b>Data:</b> Março 2026</p>', unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+        
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Isometrias", "🧠 Quiz Geral do Módulo"])
     
     with tab1:
@@ -103,13 +122,13 @@ elif page == "🔵 Módulo 1: Grupos de Simetria":
             * **Reflexões:** "Espelhamento" da figura em relação a uma reta.
             * **Reflexões Deslizantes (*glide reflections*):** Combinação de uma reflexão com uma translação paralela ao eixo de reflexão.
             
-            Formalmente, um grupo $(G, *)$ satisfaz quatro propriedades essenciais: **Fecho** ($a*b \\in G$), **Associatividade** ($(a*b)*c = a*(b*c)$), **Elemento Neutro** ($e*a=a*e=a$) e **Elemento Inverso** ($a*a^{-1}=a^{-1} * a=e$). Um exemplo clássico é o grupo das rotações do triângulo equilátero, que forma o grupo cíclico $C_3$.
+            Formalmente, um grupo $(G, *)$ satisfaz quatro propriedades essenciais: **Fecho** ($a*b \in G$), **Associatividade** ($(a*b)*c = a*(b*c)$), **Elemento Neutro** ($e*a=a*e=a$) e **Elemento Inverso** ($a*a^{-1}=a^{-1} * a=e$). Um exemplo clássico é o grupo das rotações do triângulo equilátero, que forma o grupo cíclico $C_3$.
             """)
             
         with st.expander("1.2 Eficiência Viral e Simetrias na Natureza e na Arte", expanded=True):
             st.markdown("""
             **Explicação Teórica Exaustiva:**
-            Muitos vírus disso "esféricos" apresentam, na verdade, uma estrutura baseada no **icosaedro**, um dos sólidos platónicos mais simétricos. A geometria icosaédrica oferece eixos de rotação múltiplos de ordem 2, 3 e 5. Isto permite que subunidades proteicas idênticas (capsómeros) se encaixem perfeitamente para formar uma cápsula (capsídeo) fechada e estável. Esta organização repetitiva confere uma enorme **eficiência genética**, permitindo que o vírus utilize um único gene para codificar uma pequena proteína que se organiza através de rotações para formar uma estrutura grande e complexa. O adenovírus, o poliovírus ou o vírus Zika seguem o modelo estrutural de Caspar-Klug.
+            Muitos vírus ditos "esféricos" apresentam, na verdade, uma estrutura baseada no **icosaedro**, um dos sólidos platónicos mais simétricos. A geometria icosaédrica oferece eixos de rotação múltiplos de ordem 2, 3 e 5. Isto permite que subunidades proteicas idênticas (capsómeros) se encaixem perfeitamente para formar uma cápsula (capsídeo) fechada e estável. Esta organização repetitiva confere uma enorme **eficiência genética**, permitindo que o vírus utilize um único gene para codificar uma pequena proteína que se organiza através de rotações para formar uma estrutura grande e complexa. O adenovírus, o poliovírus ou o vírus Zika seguem o modelo estrutural de Caspar-Klug.
             
             Na estrutura tridimensional de proteínas e do ADN observamos também a simetria helicoidal, que utiliza uma combinação de rotação e translação, assemelhando-se às reflexões deslizantes aplicadas a um eixo central. Na arte, M. C. Escher explorou intensamente estas isometrias para pavimentar o plano de forma regular sem deixar espaços vazios. No caleidoscópio, o efeito visual resulta de múltiplas reflexões entre espelhos dispostos em triângulo, gerando simetrias rotacionais de ângulo $360/n$ e repetições cíclicas infinitas.
             """)
@@ -132,10 +151,20 @@ elif page == "🔵 Módulo 1: Grupos de Simetria":
             st.metric("A tua Nota Final:", f"{round(score1, 1)}/10")
 
 # ==============================================================================
-# MÓDULO 2: 17 GRUPOS CRISTALOGRÁFICOS (FM_2ºProjeto.pdf)
+# MÓDULO 2: 17 GRUPOS CRISTALOGRÁFICOS
 # ==============================================================================
 elif page == "🟤 Módulo 2: 17 Grupos Cristalográficos":
-    st.markdown('<div class="academic-header"><h1>🟤 Módulo 2: Os 17 Grupos Cristalográficos do Plano</h1><p>Relatório Original: <b>FM_2ºProjeto.pdf</b> | Autoras: Catarina Pereira, Beatriz Correia | Março 2026</p></div>', unsafe_allow_html=True)
+    with st.container():
+        st.markdown('<div class="module-card">', unsafe_allow_html=True)
+        col_img, col_txt = st.columns([2, 5])
+        with col_img:
+            st.image("https://images.unsplash.com/photo-1518770660439-4636190af475?w=300&q=80", width=180)
+        with col_txt:
+            st.markdown('<div class="card-content">', unsafe_allow_html=True)
+            st.markdown('<h2 class="card-title">🟤 Módulo 2: Os 17 Grupos Cristalográficos do Plano</h2>', unsafe_allow_html=True)
+            st.markdown('<p class="card-metadata"><b>Autoras:</b> Catarina Pereira, Beatriz Correia<br><b>Data:</b> Março 2026</p>', unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Classificação", "🧠 Quiz Geral do Módulo"])
     
@@ -197,10 +226,20 @@ elif page == "🟤 Módulo 2: 17 Grupos Cristalográficos":
             st.metric("A tua Nota Final:", f"{round(score2, 1)}/10")
 
 # ==============================================================================
-# MÓDULO 3: LÓGICA DO NUMBER MATCH (FM_3ºProjeto__Copy_.pdf)
+# MÓDULO 3: LÓGICA DO NUMBER MATCH
 # ==============================================================================
 elif page == "🟢 Módulo 3: Lógica do Number Match":
-    st.markdown('<div class="academic-header"><h1>🟢 Módulo 3: A Lógica Matemática por Trás do Jogo Number Match</h1><p>Relatório Original: <b>FM_3ºProjeto__Copy_.pdf</b> | Autoras: Catarina Pereira, Beatriz Correia | Abril 2026</p></div>', unsafe_allow_html=True)
+    with st.container():
+        st.markdown('<div class="module-card">', unsafe_allow_html=True)
+        col_img, col_txt = st.columns([2, 5])
+        with col_img:
+            st.image("https://images.unsplash.com/photo-1509228468518-180dd4864904?w=300&q=80", width=180)
+        with col_txt:
+            st.markdown('<div class="card-content">', unsafe_allow_html=True)
+            st.markdown('<h2 class="card-title">🟢 Módulo 3: A Lógica Matemática por Trás do Jogo Number Match</h2>', unsafe_allow_html=True)
+            st.markdown('<p class="card-metadata"><b>Autoras:</b> Catarina Pereira, Beatriz Correia<br><b>Data:</b> Abril 2026</p>', unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
     
     tab1, tab2 = st.tabs(["💡 Lição do Sistema & Simulador", "🧠 Quiz Geral do Módulo"])
     
@@ -240,7 +279,7 @@ elif page == "🟢 Módulo 3: Lógica do Number Match":
             O tabuleiro do jogo pode ser representado como um grafo dinâmico, no qual os números correspondem a vértices e as relações de jogada válida a arestas. Nesta perspetiva, o jogo pode ser entendido como um processo iterativo de remoção de vértices e arestas, cuja estrutura se altera ao longo do tempo. À medida que o jogador elimina pares, o grafo sofre transformações sucessivas. Neste contexto, o grau de um vértice — isto é, o número de arestas incidentes — assume um papel importante. Vértices de grau elevado correspondem a números com várias jogadas possíveis, enquanto vértices de grau zero representam números isolados que não podem ser eliminados. Estes vértices isolados contribuem diretamente para estados de bloqueio do tabuleiro.
             
             **Análise Combinatória e o Impacto do Número 5:**
-            Técnicas combinatórias baseiam-se em princípios de contagem, análise de frequências e argumentos de paridade. Cada número entre 1 e 9 possui exatamente um único parceiro que permite obter a soma 10 ($1\\leftrightarrow9, 2\\leftrightarrow8, 3\\leftrightarrow7, 4\\leftrightarrow6$). O número 5 constitui um caso particular, pois **apenas pode formar par consigo mesmo** ($5\\leftrightarrow5$). Isto implica que a sua frequência no tabuleiro deve ser impreterivelmente **par** para permitir a eliminação completa e evitar a criação de números isolados. Se aparecer um número ímpar de vezes, pelo menos um 5 ficará inevitavelmente isolado, por um argumento direto de paridade. Por este motivo, a presença de 5 representa um fator crítico para a estabilidade do jogo.
+            Técnicas combinatórias baseiam-se em princípios de contagem, análise de frequências e argumentos de paridade. Cada número entre 1 e 9 possui exatamente um único parceiro que permite obter a soma 10 ($1\\leftrightarrow9, 2\\leftrightarrow8, 3\\leftrightarrow7, 4\\leftrightarrow6$). O número 5 constitui um caso particular, pois **apenas pode formar par consigo mesmo** ($5\\leftrightarrow5$). Isto implica que a sua frequência no tabuleiro deve ser impreterivelmente **par** para permitir a eliminação completa e evitar a criação de números isolados. Se aparecer um número ímpar de vezes, pelo menos um 5 ficará inevitavelmente isolado, por um argumento direto de paridade.
             """)
 
     with tab2:
@@ -251,7 +290,7 @@ elif page == "🟢 Módulo 3: Lógica do Number Match":
         r3_2 = st.radio("2. Qual a correspondência biunívoca correta para somas complementares de valor 10?", 
                         [r"$2 \leftrightarrow 8$", r"$3 \leftrightarrow 7$", r"$4 \leftrightarrow 4$"], key="r3_2")
         r3_3 = st.radio("3. Por que razão a contagem combinatória do número 5 exige uma frequência obrigatoriamente par?", 
-                        ["Keep unalterado", "Porque apenas pode emparelhar consigo próprio para atingir a soma 10.", "Porque é o vértice central de Euler."], key="r3_3")
+                        ["Porque é um número ímpar.", "Porque apenas pode emparelhar consigo próprio para atingir a soma 10.", "Porque é o vértice central de Euler."], key="r3_3")
         
         if r3_1 == "Fica isolado e bloqueia o progresso do jogo.": score3 += 3.33
         if r3_2 == r"$3 \leftrightarrow 7$": score3 += 3.33
@@ -261,10 +300,20 @@ elif page == "🟢 Módulo 3: Lógica do Number Match":
             st.metric("A tua Nota Final:", f"{round(score3, 1)}/10")
 
 # ==============================================================================
-# MÓDULO 4: PADRÕES DOS PRIMOS (FM_4ºprojeto.pdf)
+# MÓDULO 4: PADRÕES DOS PRIMOS
 # ==============================================================================
 elif page == "🟣 Módulo 4: Padrões dos Primos":
-    st.markdown('<div class="academic-header"><h1>🟣 Módulo 4: Padrões dos Primos – Da Espiral à Totiente</h1><p>Relatório Original: <b>FM_4ºprojeto.pdf</b> | Autoras: Catarina Pereira, Beatriz Correia | Março 2026</p></div>', unsafe_allow_html=True)
+    with st.container():
+        st.markdown('<div class="module-card">', unsafe_allow_html=True)
+        col_img, col_txt = st.columns([2, 5])
+        with col_img:
+            st.image("https://images.unsplash.com/photo-1509228468518-180dd4864904?w=300&q=80", width=180)
+        with col_txt:
+            st.markdown('<div class="card-content">', unsafe_allow_html=True)
+            st.markdown('<h2 class="card-title">🟣 Módulo 4: Padrões dos Primos – Da Espiral à Totiente</h2>', unsafe_allow_html=True)
+            st.markdown('<p class="card-metadata"><b>Autoras:</b> Catarina Pereira, Beatriz Correia<br><b>Data:</b> Março 2026</p>', unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Aplicações", "✍️ Quiz Geral do Módulo"])
     
@@ -276,20 +325,20 @@ elif page == "🟣 Módulo 4: Padrões dos Primos":
             
             Os números primos são fundamentais na aritmética. O Teorema Fundamental da Aritmética estabelece que qualquer número inteiro positivo pode ser decomposto de forma única num produto de primos. Esta unicidade confere aos primos um papel central na estrutura dos números inteiros. Apesar da sua importância, a distribuição dos primos é notoriamente irregular. Du Sautoy (2003) descreve-os como \"notas musicais\" que parecem seguir um ritmo aparentemente aleatório, mas que escondem uma harmonia profunda. 
             
-            A irregularidade aparente levou matemáticos como Gauss e Riemann a procurar padrões estatísticos que explicassem esta oscilação entre ordem e caos. Foi neste contexto que Riemann, em 1859, introduziu a função zeta complexa e formulou a célebre Hipótese de Riemann, segundo a qual todas as raíces não triviais dessa função têm parte real igual a 1/2. Esta afirmação estabelece uma ligação direta entre o comportamento analítico da função zeta e a distribuição dos números primos. A hipótese permanece em aberto e é considerada um dos problemas centrais da matemática contemporânea.
+            A irregularidade aparente levou matemáticos como Gauss e Riemann a procurar padrões estatísticos que explicassem esta oscilação entre ordem e caos. Foi neste contexto que Riemann, em 1859, introduziu a função zeta complexa e formulou a célebre Hipótese de Riemann, segundo a qual todas as raízes não triviais dessa função têm parte real igual a 1/2. Esta afirmação estabelece uma ligação direta entre o comportamento analítico da função zeta e a distribuição dos números primos. A hipótese permanece em aberto e é considerada um dos problemas centrais da matemática contemporânea.
             """)
             
         with st.expander("4.2 Representações Visuais e Padrões Inesperados na Espiral de Ulam", expanded=True):
             st.markdown("""
             **Explicação Teórica Exaustiva:**
-            A visualização é uma ferramenta poderosa para revelar padrões. Stewart (2006) argumenta que muitas descobertas matemáticas surgem quando se representa um problema de forma inesperada. Foi precisamente isso que aconteceu com Stanislaw Ulam em 1963. Durante uma conferência, Ulam começou a desenhar os números naturais numa espiral quadrada, marcando os números primos. O que parecia um exercício casual revelou algo extraordinário: os números primos alinhavam-se em diagonais longas e bem definidas.
+            A visualização é uma ferramenta poderosa para revelar padrões. Stewart (2006) argumenta que muitas descobertas matemáticas surgem quando se representa um problema de forma inesperada. Foi precisamente isso que aconteceu com Stanislaw Ulam em 1963. Durante uma conferência, Ulam começou a desenhar os números naturais numa espiral quadrada, marcando os números primos. O que parecia um exercício casual revealed algo extraordinário: os números primos alinhavam-se em diagonais longas e bem definidas.
             
             **Processo de Construção:**
             * Coloca-se o número 1 no centro.
             * Os números seguintes são escritos em espiral, no sentido horário (sentido negativo).
             * Os números primos são destacados.
             
-            As diagonais da espiral correspondem a expressões quadráticas do tipo $an^2+bn+c$. Euler estudou estas expressões e descobriu que algumas geram muitos primos consecutivos. O exemplo mais famoso é o polinómio de Euler, $n^2+n+41$, que produz primos para $n=0,1,2,\dots,39$. Quando estes polinómios geram muitos primos, a diagonal correspondente torna-se visualmente densa. Assim, a espiral não cria primos, apenas torna visível a aritmética escondida nos polinómios.
+            O resultado é uma matriz visual onde padrões diagonais emergem de forma clara. As diagonais da espiral correspondem a expressões quadráticas do tipo $an^2+bn+c$. Euler estudou estas expressões e descobriu que algumas geram muitos primos consecutivos. O exemplo mais famoso é o polinómio de Euler, $n^2+n+41$, que produz primos para $n=0,1,2,\dots,39$. Quando estes polinómios geram muitos primos, a diagonal correspondente torna-se visualmente densa. Assim, a espiral não cria primos, apenas torna visível a aritmética escondida nos polinómios.
             """)
             
             st.markdown("#### 🎛️ Laboratório Dinâmico: Gerador de Primos de Euler")
@@ -348,10 +397,20 @@ elif page == "🟣 Módulo 4: Padrões dos Primos":
             st.metric("A tua Nota Final:", f"{round(score4, 1)}/10")
 
 # ==============================================================================
-# MÓDULO 5: PADRÕES NUMÉRICOS (trabalho_5_novo.pdf)
+# MÓDULO 5: PADRÕES NUMÉRICOS
 # ==============================================================================
 elif page == "🟡 Módulo 5: Padrões Numéricos":
-    st.markdown('<div class="academic-header"><h1>🟡 Módulo 5: Padrões Numéricos e Estruturas Aritméticas</h1><p>Relatório Original: <b>trabalho_5_novo.pdf</b> | Autoras: Catarina Pereira, Beatriz Correia | Maio 2026</p></div>', unsafe_allow_html=True)
+    with st.container():
+        st.markdown('<div class="module-card">', unsafe_allow_html=True)
+        col_img, col_txt = st.columns([2, 5])
+        with col_img:
+            st.image("https://images.unsplash.com/photo-1596495573882-62828b185012?w=300&q=80", width=180)
+        with col_txt:
+            st.markdown('<div class="card-content">', unsafe_allow_html=True)
+            st.markdown('<h2 class="card-title">🟡 Módulo 5: Padrões Numéricos e Estruturas Aritméticas</h2>', unsafe_allow_html=True)
+            st.markdown('<p class="card-metadata"><b>Autoras:</b> Catarina Pereira, Beatriz Correia<br><b>Data:</b> Maio 2026</p>', unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Gráficos", "✍️ Quiz Geral do Módulo"])
     
@@ -359,14 +418,14 @@ elif page == "🟡 Módulo 5: Padrões Numéricos":
         with st.expander("5.1 Números Triangulares e a Abordagem Geométrica de Contagem", expanded=True):
             st.markdown("""
             **Explicação Teórica:**
-            Os números triangulares pertencem ao grupo dos chamados números figurados, que se caracterizam por serem números que podem ser representados através de arranjos geométricos de pontos regulares. Esta abordagem visual transforma problemas de contagem abstrata numa perceção geométrica muito intuitiva. Eles representam a quantidade de pontos necessária para construir um triângulo equilátero com um determinado número de linhas. Como cada nova linha adiciona sempre mais um ponto do que a linha anterior, um número triangular corresponde diretamente à soma dos primeiros números naturais.
+            Os números triangulares pertencem ao grupo dos chamados números figurados, que se caracterizam por serem números que podem ser representados através de arranjos geométricos de pontos regulares. Esta abordagem visual transforma problemas de contagem abstrata numa perceção geométrica de tal forma intuitiva que minimiza o peso algébrico inicial. Eles representam a quantidade de pontos necessária para construir um triângulo equilátero com um determinado número de linhas. Como cada nova linha adiciona sempre mais um ponto do que a linha anterior, um número triangular corresponde diretamente à soma dos primeiros números naturais.
             """)
             st.latex(r"T_{n}=1+2+3+\cdot\cdot\cdot+n=\frac{n(n+1)}{2}")
             st.markdown("""
             Esta fórmula matemática pode ser explicada através de um raciocínio geométrico muito simples que é atribuído historicamente a Gauss. Se escrevermos a sequência da soma na sua ordem direta e na sua ordem inversa, conseguimos agrupar os termos verticalmente aos pares. Ao somarmos as duas equações, cada par de termos resulta invariavelmente no valor de $n+1$. Dado que existem exatamente $n$ termos nesta sequência, a soma total das duas linhas passa a ser escrita como $2T_{n}=n(n+1)$. Logo, basta dividir o resultado por dois para isolar o termo inicial.
             
             **Aplicação Concreta no Quotidiano:**
-            Os números triangulares possuem diversas aplicações práticas em problemas reais de contagem. Um exemplo clássico é a modelação de contagem de ligações em redes ou interações sociais. Se tivermos uma sala com 6 pessoas e quisermos saber quantos apertos de mão únicos ocorrem se todas se cumprimentarem uma única vez, o cálculo resolve-se através do número triangular $T_{5}$:
+            Os números triangulares possuem diversas aplicações práticas em problemas reais de contagem e modelação de diagramas. Um exemplo clássico é a determinação de interações sociais ou ligações de redes. Se tivermos uma sala com 6 pessoas e quisermos saber quantos apertos de mão únicos ocorrem se todas se cumprimentarem uma única vez, o cálculo resolve-se através do número triangular $T_{5}$:
             """)
             st.latex(r"T_5 = \frac{5 \times (5+1)}{2} = 15 \text{ apertos de mão}")
             st.markdown("Este mesmo raciocínio aplica-se ao determinar o número de canais diretos necessários para interligar computadores numa rede sem que haja repetições de caminhos.")
@@ -380,19 +439,19 @@ elif page == "🟡 Módulo 5: Padrões Numéricos":
             * **Número 6:** Os seus divisores próprios são {1, 2, 3}. Ao somarmos estes fatores, obtemos: $1+2+3=6$.
             * **Número 28:** Os seus divisores próprios são {1, 2, 4, 7, 14}. A sua soma resulta em: $1+2+4+7+14=28$.
             
-            A análise profunda dos números perfeitos pares revela uma ligação direta com os Primos de Mersenne, que assumem a forma de $2^{p}-1$, onde o expoente $p$ é primo. Euclides demonstrou formalmente que, sempre que $2^{p}-1$ for um número primo, gera-se um número perfeito através da fórmula:
+            A análise profunda dos números perfeitos pares revela uma ligação direta com os Primos de Mersenne, que assumem a forma de $2^{p}-1$, onde o expoente $p$ é primo. Euclides demonstrou formalmente que, sempre que $2^{p}-1$ for um número primo, gera-se um número perfeito par através da fórmula:
             """)
             st.latex(r"n=2^{p-1}(2^{p}-1)")
             st.markdown("""
-            Seguindo outra linguagem formal recorrendo à função soma dos divisores $\\sigma(n)$, um número é perfeito sempre que satisfizer a identidade $\\sigma(n)=2n$. No caso do número 6, $\\sigma(6)=12$, que equivale precisamente ao dobro do número original.
+            Seguindo outra linguagem formal recorrendo à função soma dos divisores $\\sigma(n)$, um número é perfeito sempre que satisfizer a identidade $\\sigma(n)=2n$. No caso do número 6, $\\sigma(6)=12$, que equivale precisamente ao dobro do número original. Permanentem em aberto mistérios para termos perfeitos ímpares.
             """)
             
         with st.expander("5.3 Exploração do Número 9 na Base Decimal", expanded=True):
             st.markdown("""
             **Explicação Teórica:**
-            O número 9 ocupa um lugar de destaque na base 10 pelo facto de ser uma unidade inferior à base do sistema ($10-1$). Isso cria simetrias repetitivas e regras de divisibilidade facilitadas nos seus algarismos.
+            O número 9 ocupa um lugar de destaque devido à organização do nosso sistema de numeração posicional em base 10. Pelo facto de o número 9 ser uma unidade inferior à base do sistema ($10-1$), cria-se um conjunto único de simetrias repetitivas, regras de divisibilidade facilitadas e padrões visuais claros nos seus algarismos.
             
-            Qualquer número inteiro positivo é sempre congruente com a soma dos seus próprios algarismos em módulo 9: $n \equiv \\text{soma dos dígitos de } n \\pmod 9$. Esta propriedade justifica o critério de divisibilidade por 9. Adicionalmente, os resultados da tabuada do 9 funcionam como um verdadeiro espelho numérico: $9\times2=18$ e $9\times9=81$ invertem-se simetricamente em pares.
+            Qualquer número inteiro positivo é sempre congruente com a soma dos seus próprios algarismos em módulo 9: $n \equiv \\text{soma dos dígitos de } n \\pmod 9$. Esta propriedade justifica o critério de divisibilidade por 9. Adicionalmente, as dezenas e as unidades da tabuada do 9 funcionam como um verdadeiro espelho numérico: $9\times2=18$ e $9\times9=81$ invertem-se simetricamente em pares.
             
             Analisando a redução digital das potências do número 9, a soma das suas componentes numéricas gera ciclos regulares invariáveis ($9^1=9$, $9^2=81 \\rightarrow 9$, $9^3=729 \\rightarrow 18 \\rightarrow 9$).
             """)
