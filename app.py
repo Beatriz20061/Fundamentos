@@ -1537,109 +1537,287 @@ elif page == "🟣 Padrões dos Primos":
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Aplicações", "🧠 Quiz Geral do Módulo"])
     
     with tab1:
-        with st.expander("📘 4.1 A Natureza e Distribuição Irregular dos Números Primos", expanded=False):
-            st.markdown("""
-            ### Explicação Teórica Exaustiva
-            
-            A Teoria dos Números revela estruturas profundas e padrões inesperados. A matemática pura 
-            possui uma beleza intrínseca precisamente porque revela **ordem onde antes se supunha irregularidade**.
-            
-            Os números primos são fundamentais na aritmética: o **Teorema Fundamental da Aritmética** 
-            estabelece que qualquer número inteiro positivo pode ser decomposto de forma única num 
-            produto de primos.
-            
-            A distribuição dos primos é notoriamente irregular. Essa oscilação entre ordem e caos levou 
-            à introdução da **função zeta complexa** e à formulação da célebre **Hipótese de Riemann**, 
-            segundo a qual todas as raízes não triviais dessa função têm parte real igual a $$\\frac{1}{2}$$.
-            """)
-            
-        with st.expander("🌀 4.2 A Espiral de Ulam e Padrões Inesperados", expanded=False):
-            st.markdown("""
-            ### Explicação Teórica Exaustiva
-            
-            A visualização na **Espiral de Ulam** revelou que os números primos se alinham em 
-            **diagonais longas e bem definidas**.
-            
-            As diagonais da espiral correspondem a expressões quadráticas do tipo $$an^2 + bn + c$$. 
-            O exemplo mais famoso é o **polinómio de Euler**:
-            """)
-            
-            st.latex(r"P(n) = n^2 + n + 41")
-            
-            st.markdown("Este polinómio produz números primos para todos os inteiros de $$n = 0$$ a $$n = 39$$.")
-            
-            st.markdown("---")
-            
-            st.markdown("#### 🎛️ Laboratório: Gerador de Primos de Euler")
-            
-            n_slider = st.slider("Altere o valor de n para validar o polinómio:", 0, 39, 0, key="euler_slider")
-            res_euler = (n_slider**2) + n_slider + 41
-            
-            def is_prime(n):
-                if n < 2:
+        import streamlit as st
+
+    with st.expander("🔢 1. Introdução", expanded=True):
+
+        st.markdown("""
+        #### Distribuição dos Números e Probabilidade de Jogadas Válidas
+
+        A probabilidade de existirem jogadas válidas depende fortemente da **distribuição dos números**. 
+
+        Distribuições desiguais (em que certos números aparecem com frequência muito superior a outros) reduzem o número de emparelhamentos possíveis. Números raros tendem a ficar isolados mais facilmente, aumentando o risco de bloqueio do tabuleiro.
+
+        Assim, argumentos combinatórios baseados em contagem, paridade e distribuição explicam matematicamente as dificuldades enfrentadas pelo jogador em determinadas configurações do jogo.
+        """)
+
+        st.markdown("---")
+
+        st.markdown("""
+        ### 📘 Contexto Teórico: Teoria dos Números
+
+        A **Teoria dos Números** é um dos ramos mais antigos e fascinantes da matemática. Apesar de lidar com objetos aparentemente simples, os números inteiros, revela estruturas profundas e padrões inesperados.
+
+        Esta ideia é destacada por **G. H. Hardy** na sua obra *A Mathematician’s Apology* (1940), onde defende que a matemática pura possui uma beleza intrínseca, comparável à arte, precisamente porque revela ordem onde antes se supunha irregularidade.
+
+        Hardy, um dos maiores teóricos dos números do século XX, via nesta área um exemplo perfeito de como estruturas elegantes podem emergir de objetos aparentemente elementares.
+
+        A distribuição dos números primos, irregular à primeira vista mas repleta de padrões subtis, é um dos casos mais emblemáticos dessa visão.
+        """)
+
+        st.markdown("""
+        #### 🔍 Objetivos deste estudo
+
+        Este trabalho explora dois eixos fundamentais onde esses padrões se tornam visíveis:
+
+        - A **distribuição dos números primos**, analisada através da **Espiral de Ulam**, uma representação visual que revela alinhamentos surpreendentes.  
+        - A **função totiente de Euler**, que descreve a estrutura multiplicativa modular dos inteiros e evidencia regularidades aritméticas.
+
+        O objetivo é mostrar que, mesmo em contextos onde a aleatoriedade parece dominar, surgem padrões que revelam a profundidade estrutural dos números.
+        """)
+
+    with st.expander("🌀 2 A Espiral de Ulam e Padrões Inesperados", expanded=False):
+
+        st.markdown("""
+        ### 1. Números Primos e a sua Natureza
+
+        Os **números primos** são fundamentais na aritmética. O Teorema Fundamental da Aritmética estabelece que qualquer número inteiro positivo pode ser decomposto de forma **única** num produto de primos.
+
+        Apesar desta importância estrutural, a sua distribuição é **aparentemente irregular**. 
+
+        👉 Este comportamento cria um contraste fascinante:
+        - **Aleatoriedade aparente** na distribuição dos primos  
+        - **Determinismo** em certas expressões algébricas que os geram  
+
+        Este contraste está no centro da investigação matemática há séculos.
+        """)
+
+        st.markdown("""
+        ### 2. A Espiral de Ulam
+
+        Em 1963, **Stanislaw Ulam** representou os números naturais numa espiral quadrada:
+
+        - 1 no centro  
+        - Crescimento em espiral (sentido horário)  
+        - Primos destacados  
+
+        🔍 Resultado surpreendente:
+
+        👉 Os números primos alinham-se em **diagonais longas e bem definidas**.
+        """)
+
+        st.markdown("---")
+
+        st.markdown("""
+        ### 3. Interpretação Matemática
+
+        As diagonais da espiral estão associadas a **polinómios quadráticos** do tipo:
+        """)
+
+        st.latex(r"an^2 + bn + c")
+
+        st.markdown("""
+        Algumas destas expressões geram muitos números primos consecutivos.
+
+        O exemplo mais famoso é o polinómio de Euler:
+        """)
+
+        st.latex(r"P(n) = n^2 + n + 41")
+
+        st.markdown("""
+        Este polinómio produz números primos para todos os inteiros de:
+
+        **n = 0 até n = 39**
+        """)
+
+        st.markdown("""
+        #### 🔍 Interpretação
+
+        - Cada diagonal corresponde a uma expressão matemática  
+        - Algumas geram muitos primos → **diagonais densas**  
+        - Outras geram poucos → **diagonais vazias**
+
+        👉 A espiral não cria primos — apenas revela padrões escondidos.
+        """)
+
+        st.markdown("---")
+
+        st.markdown("### 🎛️ Laboratório Interativo: Gerador de Primos de Euler")
+
+        n_slider = st.slider(
+            "Altere o valor de n para testar o polinómio:",
+            0, 50, 0,  # aumentei para veres quando deixa de ser primo
+            key="euler_slider"
+        )
+
+        res_euler = (n_slider**2) + n_slider + 41
+
+        def is_prime(n):
+            if n < 2:
+                return False
+            for i in range(2, int(n**0.5) + 1):
+                if n % i == 0:
                     return False
-                for i in range(2, int(n**0.5) + 1):
-                    if n % i == 0:
-                        return False
-                return True
+            return True
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.metric(f"P({n_slider})", int(res_euler))
+
+        with col2:
+            if is_prime(res_euler):
+                st.success("✅ É primo!")
+            else:
+                st.error("❌ Não é primo")
+
+        st.info("""
+        💡 Observação: O polinómio gera primos até n = 39. 
+        A partir daí, começam a surgir números compostos — mostrando os limites destas expressões.
+        """)
             
-            col1, col2 = st.columns(2)
-            with col1:
-                st.metric(f"P({n_slider})", int(res_euler))
-            with col2:
-                if is_prime(res_euler):
-                    st.success("✅ É primo!")
-                else:
-                    st.error("❌ Não é primo")
-            
-        with st.expander("φ 4.3 A Função Totiente de Euler", expanded=False):
-            st.markdown("""
-            ### Explicação Teórica
-            
-            A função totiente $$\\varphi(n)$$, introduzida por Euler, conta quantos naturais até $$n$$ 
-            são **coprimos** com $$n$$ (ou seja, cujo máximo divisor comum com $$n$$ é 1).
-            
-            ### Fórmula Multiplicativa Geral
-            
-            Se $$n = p_1^{a_1} p_2^{a_2} \\dots p_k^{a_k}$$ em que $$p_1, p_2, \\dots, p_k$$ são os 
-            fatores primos distintos de $$n$$, então:
-            """)
-            
-            st.latex(r"\varphi(n) = n \prod_{i=1}^{k} \left(1 - \frac{1}{p_i}\right)")
-            
-            st.markdown("""
-            ### Propriedades Fundamentais
-            
-            | Propriedade | Fórmula |
-            |-------------|---------|
-            | Totiente de um número primo $$p$$ | $$\\varphi(p) = p - 1$$ |
-            | Totiente de uma potência de primo | $$\\varphi(p^k) = p^k - p^{k-1}$$ |
-            
-            Esta função é central na **criptografia moderna**, nomeadamente no algoritmo **RSA**.
-            """)
-            
-            st.markdown("---")
-            
-            st.markdown("#### 🔢 Calculadora do Totiente")
-            
-            num_input = st.number_input("Introduz um valor para calcular φ(n):", min_value=2, max_value=500, value=12, key="tot_input")
-            
-            def phi_alg(n):
-                result = n
-                p = 2
-                temp_n = n
-                while p * p <= temp_n:
-                    if temp_n % p == 0:
-                        while temp_n % p == 0:
-                            temp_n //= p
-                        result -= result // p
-                    p += 1
-                if temp_n > 1:
-                    result -= result // temp_n
-                return result
-            
-            phi_result = phi_alg(num_input)
-            st.metric(f"φ({num_input})", phi_result)
+
+    with st.expander("φ 3. A Função Totiente de Euler", expanded=False):
+
+        st.markdown("""
+        ### 📘 1. Definição e Significado
+
+        A função totiente $$\\varphi(n)$$, introduzida por Euler, conta quantos números naturais até $$n$$ 
+        são **coprimos** com $$n$$, ou seja:
+        """)
+
+        st.latex(r"gcd(a,n) = 1")
+
+        st.markdown("""
+        👉 Esta função revela a **estrutura multiplicativa dos inteiros** e depende diretamente dos 
+        fatores primos de $$n$$.
+
+        #### ✅ Exemplo
+
+        Para $$n = 12$$, os coprimos são: 1, 5, 7, 11
+        """)
+
+        st.latex(r"\varphi(12) = 4")
+
+        st.markdown("---")
+
+        st.markdown("""
+        ### 🧮 2. Propriedades Fundamentais
+
+        | Propriedade | Fórmula |
+        |-------------|---------|
+        | Primo $$p$$ | $$\\varphi(p) = p - 1$$ |
+        | Potência de primo | $$\\varphi(p^k) = p^k - p^{k-1}$$ |
+        | Multiplicatividade | $$\\varphi(ab) = \\varphi(a)\\varphi(b), \\; gcd(a,b)=1$$ |
+        """)
+
+        st.markdown("""
+        #### 🔍 Interpretação
+
+        - Números primos → valor máximo  
+        - Muitos fatores primos → valor baixo  
+        - Potências de primos → valores relativamente altos  
+        """)
+
+        st.markdown("---")
+
+        st.markdown("""
+        ### 🧾 3. Fórmula Multiplicativa Geral
+
+        Se:
+        """)
+
+        st.latex(r"n = p_1^{a_1} p_2^{a_2} \dots p_k^{a_k}")
+
+        st.markdown("então:")
+
+        st.latex(r"\varphi(n) = n \prod_{i=1}^{k} \left(1 - \frac{1}{p_i}\right)")
+
+        st.markdown("""
+        👉 O valor de $$\\varphi(n)$$ depende apenas dos **fatores primos** de $$n$$.
+        """)
+
+        st.markdown("---")
+
+        st.markdown("### 📊 4. Visualização da Função Totiente")
+
+        n_max = st.slider("Escolhe o intervalo:", 10, 200, 100)
+
+        def phi(n):
+            count = 0
+            for k in range(1, n + 1):
+                if math.gcd(n, k) == 1:
+                    count += 1
+            return count
+
+        x = list(range(1, n_max + 1))
+        y = [phi(i) for i in x]
+
+        fig, ax = plt.subplots()
+        ax.scatter(x, y, s=10)
+        ax.set_title("Função Totiente φ(n)")
+        ax.set_xlabel("n")
+        ax.set_ylabel("φ(n)")
+
+        st.pyplot(fig)
+
+        st.markdown("""
+        #### 🔍 Observações
+
+        - Primos formam a "linha superior"  
+        - Estrutura irregular → depende da fatorização  
+        - Sem periodicidade  
+        """)
+
+        st.markdown("---")
+
+        st.markdown("### 🔢 5. Calculadora do Totiente")
+
+        num_input = st.number_input(
+            "Introduz um valor:",
+            min_value=2,
+            max_value=500,
+            value=12
+        )
+
+        def phi_fast(n):
+            result = n
+            p = 2
+            temp_n = n
+
+            while p * p <= temp_n:
+                if temp_n % p == 0:
+                    while temp_n % p == 0:
+                        temp_n //= p
+                    result -= result // p
+                p += 1
+
+            if temp_n > 1:
+                result -= result // temp_n
+
+            return result
+
+        phi_result = phi_fast(num_input)
+        st.metric(f"φ({num_input})", phi_result)
+
+        st.markdown("---")
+
+        st.markdown("""
+        ### 🔐 6. Aplicação: Criptografia RSA
+
+        A função totiente é essencial no algoritmo **RSA**.
+
+        #### Ideia base:
+
+        - Escolhem-se primos grandes $$p$$ e $$q$$  
+        - Calcula-se $$n = pq$$  
+        - $$\\varphi(n) = (p-1)(q-1)$$  
+
+        👉 A segurança depende da dificuldade de fatorizar $$n$$.
+
+        Sem conhecer os fatores primos, calcular $$\\varphi(n)$$ é extremamente difícil.
+        """)
+        
 
     with tab2:
         st.markdown("### 🧠 Questionário de Avaliação — Módulo 4")
