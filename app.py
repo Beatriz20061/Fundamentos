@@ -986,8 +986,8 @@ elif page == "🔵 Grupos de Simetria":
 
         Nesta obra icónica, observam-se claramente rotações de 180°, eixos de reflexão e translações regulares que repetem a figura base do peixe, demonstrando de forma brilhante como a arte pode materializar conceitos matemáticos avançados.
         """)
-        with st.expander("🔭 7. O Caleidoscópio e a Força Unificadora da Simetria", expanded=False):
-            st.markdown("""
+    with st.expander("🔭 7. O Caleidoscópio e a Força Unificadora da Simetria", expanded=False):
+        st.markdown("""
     ### O Caleidoscópio: Simetria em Ação
 
     O **caleidoscópio** é uma das demonstrações mais belas e intuitivas de como simetrias simples podem gerar padrões complexos e hipnóticos.
