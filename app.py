@@ -999,7 +999,7 @@ elif page == "🔵 Grupos de Simetria":
 
     O efeito visual resulta de **múltiplas reflexões** entre espelhos dispostos em triângulo, produzindo:
 
-    - **Simetrias Rotacionais** de ângulo $\frac{360^\circ}{n}$
+    - **Simetrias Rotacionais** de ângulo 360°/n
     - **Simetrias de Reflexão** múltiplas
     - **Padrões Regulares** infinitamente repetidos
 
