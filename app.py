@@ -127,9 +127,9 @@ if page == "🏠 Página Inicial":
     
     st.markdown("""
     Este ecossistema digital foi desenvolvido para integrar a totalidade dos conteúdos teóricos, formulações e dados 
-    científicos presentes nos cinco projetos académicos desenvolvidos nos relatórios originais.
+    científicos presentes nos cinco projetos académicos desenvolvidos nos relatórios originais[cite: 29, 32].
     
-    A nossa abordagem converte a teoria exaustiva dos relatórios em componentes de aprendizagem dinâmicos, estruturados rigorosamente sob a metodologia de **Explicação Teórica Exaustiva**, **Aplicação Prática no Quotidiano** e **Questionários Gerais com Pontuação** automática.
+    A nossa abordagem converte a teoria exaustiva dos relatórios em componentes de aprendizagem dinâmicos, estruturados rigorosamente sob a metodologia de **Explicação Teórica Exaustiva**, **Aplicação Prática no Quotidiano** e **Questionários Gerais com Pontuação** automática[cite: 29, 30].
     """)
 
 # ==============================================================================
@@ -141,7 +141,7 @@ elif page == "🔵 Módulo 1: Grupos de Simetria":
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Isometrias", "🧠 Quiz Geral do Módulo"])
     
     with tab1:
-        with st.expander("1.1 Isometrias e Estrutura Abstrata da Teoria de Grupos", expanded=True):
+        with st.expander("1.1 Isometrias e Estrutura Abstrata da Teoria de Grupos", expanded=False):
             st.markdown("""
             **Explicação Teórica:**
             A simetria é um conceito central em múltiplas áreas da Matemática, desde a Geometria à Álgebra e até à Física. De forma intuitiva, dizemos que um objeto apresenta simetria quando permanece inalterado após uma transformação como uma rotação, reflexão ou translação. Estas transformações, designadas no seu conjunto por isometrias, podem ser estudadas de forma estruturada através da Teoria de Grupos, uma área formalizada no século XIX e hoje utilizada para descrever padrões geométricos, moléculas, cristais e estruturas biológicas.
@@ -153,9 +153,9 @@ elif page == "🔵 Módulo 1: Grupos de Simetria":
             * **Reflexões Deslizantes (*glide reflections*):** Combinação de uma reflexão com uma translação paralela ao eixo de reflexão.
             """)
             
-        with st.expander("1.2 Eficiência Viral e Simetrias na Natureza e na Arte", expanded=True):
+        with st.expander("1.2 Eficiência Viral e Simetrias na Natureza e na Arte", expanded=False):
             st.markdown("""
-            **Explicação Teórica Exaustiva:**
+            **Explicação Teórica:**
             Muitos vírus ditos "esféricos" apresentam, na verdade, uma estrutura baseada no **icosaedro**, um dos sólidos platónicos mais simétricos. A geometria icosaédrica oferece eixos de rotação múltiplos de ordem 2, 3 e 5. Isto permite que subunidades proteicas idênticas (capsómeros) se encaixem perfeitamente para formar uma cápsula (capsídeo) fechada e estável. Esta organização repetitiva confere uma enorme **eficiência genética**, permitindo que o vírus utilize um único gene para codificar uma pequena proteína que se organiza através de rotações para formar uma estrutura grande e complexa.
             
             Na arte, M. C. Escher explorou intensamente estas isometrias para pavimentar o plano de forma regular sem deixar espaços vazios. No caleidoscópio, o efeito visual resulta de múltiplas reflexões entre espelhos dispostos em triângulo, gerando simetrias rotacionais de ângulo $360/n$ e repetições cíclicas infinitas.
@@ -184,9 +184,9 @@ elif page == "🟤 Módulo 2: 17 Grupos Cristalográficos":
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Classificação", "🧠 Quiz Geral do Módulo"])
     
     with tab1:
-        with st.expander("2.1 Grupos de Simetria e as Restrições das Tesselações Periódicas", expanded=True):
+        with st.expander("2.1 Grupos de Simetria e as Restrições das Tesselações Periódicas", expanded=False):
             st.markdown("""
-            **Explicação Teórica Exaustiva:**
+            **Explicação Teórica:**
             As tesselações periódicas são padrões que cobrem o plano de forma contínua, repetindo-se indefinidamente através de translações. Cada tesselação possui um grupo de simetria, isto é, o conjunto de todas as isometrias que deixam o padrão inalterado.
             
             Apesar da grande variedade de padrões que observamos em azulejos, cristais ou nas obras de M. C. Escher, a Matemática demonstra que **apenas 17 tipos distintos de simetria podem pavimentar o plano de forma regular**. Esta limitação resulta das combinações possíveis entre as isometrias estudadas anteriormente e das restrições geométricas que garantem repetição periódica estável no plano.
@@ -207,12 +207,12 @@ elif page == "🟤 Módulo 2: 17 Grupos Cristalográficos":
                 ]
             }, use_container_width=True)
             
-        with st.expander("2.2 Análise Comparativa Profunda dos Subgrupos p4, p6 e pm", expanded=True):
+        with st.expander("2.2 Análise Comparativa Profunda dos Subgrupos p4, p6 e pm", expanded=False):
             st.markdown("""
             **Explicação Teórica dos Subgrupos:**
             * **Grupo p4 (Simetria Quadrada):** Caracteriza-se pela presença de rotações de ordem 4 (simetrias de 90°, 180° e 270°), mas **não possui eixos de reflexão nem reflexões deslizantes**.
             * **Grupo p6 (Simetria Hexagonal):** É um dos mais simétricos e apresenta rotações de ordem 6 (ângulos de 60°, 120°, 180°, 240° e 300°), ordem 3 e ordem 2. **Não possui reflexões**.
-            * **Grupo pm (Simetria Axial):** Caracteriza-se pela presença de **eixos de reflexão paralelos**, combinados com translações perpendiculares a esses eixos. Não possui rotações.
+            * **Grupo pm (Simetria Axial):** Caracteriza-se pela presença de **eixos de reflexão paralelos**, combinados with translações perpendiculares a esses eixos. Não possui rotações.
             """)
             
             s_grupo = st.selectbox("Selecione uma lei estrutural para inspecionar:", ["p4 (Quadrada)", "p6 (Hexagonal)", "pm (Retangular)"], key="s_grupo")
@@ -246,7 +246,7 @@ elif page == "🟢 Módulo 3: Lógica do Number Match":
     tab1, tab2 = st.tabs(["💡 Lição do Sistema & Simulador", "🧠 Quiz Geral do Módulo"])
     
     with tab1:
-        with st.expander("3.1 Formalização Lógica e Regras Proposicionais do Tabuleiro", expanded=True):
+        with st.expander("3.1 Formalização Lógica e Regras Proposicionais do Tabuleiro", expanded=False):
             st.markdown("""
             **Explicação Teórica :**
             O *Number Match* é um jogo de lógica e aritmética cujas decisões do jogador dependem simultaneamente de condições lógicas e de propriedades aritméticas elementares, como igualdade, soma e paridade.
@@ -268,9 +268,9 @@ elif page == "🟢 Módulo 3: Lógica do Number Match":
             else:
                 st.error("🟥 Proposição FALSA! Operação impedida pelas restrições booleanas do sistema.")
                 
-        with st.expander("3.2 Modelação em Teoria de Grafos e Estratégia Combinatória de Paridade", expanded=True):
+        with st.expander("3.2 Modelação em Teoria de Grafos e Estratégia Combinatória de Paridade", expanded=False):
             st.markdown("""
-            **Explicação Teórica Exaustiva:**
+            **Explicação Teórica:**
             O tabuleiro do jogo pode ser representado como um grafo dinâmico, no qual os números correspondem a vértices e as relações de jogada válida a arestas. À medida que o jogador elimina pares, o grafo sofre transformações sucessivas. Vértices de grau zero representam números isolados que não podem ser eliminados e bloqueiam o tabuleiro.
             
             **Análise Combinatória e o Impacto do Número 5:**
@@ -300,17 +300,17 @@ elif page == "🟣 Módulo 4: Padrões dos Primos":
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Aplicações", "✍️ Quiz Geral do Módulo"])
     
     with tab1:
-        with st.expander("4.1 A Natureza e Distribuição Irregular dos Números Primos", expanded=True):
+        with st.expander("4.1 A Natureza e Distribuição Irregular dos Números Primos", expanded=False):
             st.markdown("""
-            **Explicação Teórica Exaustiva:**
+            **Explicação Teórica:**
             A Teoria dos Números revela estruturas profundas e padrões inesperados. G. H. Hardy na sua obra *A Mathematician's Apology* (1940) defende que a matemática pura possui uma beleza intrínseca precisamente porque revela ordem onde antes se supunha irregularidade. Os números primos são fundamentais na aritmética: o Teorema Fundamental da Aritmética estabelece que qualquer número inteiro positivo pode ser decomposto de forma única num produto de primos.
             
-            A distribuição dos primos é notoriamente irregular (Du Sautoy, 2003). Essa oscilação entre ordem e caos levou Bernhard Riemann, em 1859, a introduzir a função zeta complexa e a formular a célebre Hipótese de Riemann, segundo a qual todas as raízes não triviais dessa função têm parte real igual a 1/2.
+            A distribuição dos primos é notoriamente irregular. Essa oscilação entre ordem e caos levou Bernhard Riemann, em 1859, a introduzir a função zeta complexa e a formular a célebre Hipótese de Riemann, segundo a qual todas as raízes não triviais dessa função têm parte real igual a 1/2.
             """)
             
-        with st.expander("4.2 Representações Visuais e Padrões Inesperados na Espiral de Ulam", expanded=True):
+        with st.expander("4.2 Representações Visuais e Padrões Inesperados na Espiral de Ulam", expanded=False):
             st.markdown("""
-            **Explicação Teórica Exaustiva:**
+            **Explicação Teórica:**
             A visualização na Espiral de Ulam (1963) revelou que os números primos se alinham em diagonais longas e bem definidas. As diagonais da espiral correspondem a expressões quadráticas do tipo $an^2+bn+c$. O exemplo mais famoso é o polinómio de Euler, $n^2+n+41$, que produz números primos para todos os inteiros de $n=0$ a $39$.
             """)
             
@@ -319,7 +319,7 @@ elif page == "🟣 Módulo 4: Padrões dos Primos":
             res_euler = (n_slider**2) + n_slider + 41
             st.metric(label=f"Resultado para n={n_slider}", value=int(res_euler), delta="É um número primo!")
             
-        with st.expander("4.3 A Função Totiente de Euler e Estrutura Multiplicativa Modular", expanded=True):
+        with st.expander("4.3 A Função Totiente de Euler e Estrutura Multiplicativa Modular", expanded=False):
             st.markdown("""
             **Explicação Teórica:**
             A função totiente $\\varphi(n)$, introduzida por Euler, conta quantos naturais até $n$ são coprimos com $n$.
@@ -372,109 +372,158 @@ elif page == "🟡 Módulo 5: Padrões Numéricos":
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Gráficos", "✍️ Quiz Geral do Módulo"])
     
     with tab1:
-        with st.expander("5.1 Números Triangulares e a Abordagem Geométrica de Contagem", expanded=True):
+        with st.expander("5.1 Números Triangulares e a Abordagem Geométrica de Contagem", expanded=False):
             st.markdown("""
             **Explicação Teórica:**
-            Os números triangulares pertencem ao grupo dos números figurados, representando a quantidade de pontos necessária para construir um triângulo equilátero. Eles correspondem diretamente à soma dos primeiros números naturais.
+            Os números triangulares pertencem ao grupo dos chamados números figurados, que se caracterizam por serem números que podem ser representados através de arranjos geométricos de pontos regulares[cite: 36]. Esta abordagem visual é de extrema importância na aprendizagem matemática, pois transforma problemas de contagem abstrata numa perceção geométrica muito intuitiva[cite: 37]. Eles representam a quantidade de pontos necessária para construir um triângulo equilátero com um determinado número de linhas[cite: 38]. Como cada nova linha adiciona sempre mais um ponto do que a linha anterior, um número triangular corresponde diretamente à soma dos primeiros números naturais[cite: 39].
             """)
             st.latex(r"T_{n}=1+2+3+\cdot\cdot\cdot+n=\frac{n(n+1)}{2}")
             st.markdown("""
+            Esta fórmula matemática pode ser explicada através de um raciocínio geométrico muito simples que é atribuído historicamente a Gauss[cite: 42]. Se escrevermos a sequência da soma na sua ordem direta e na sua ordem inversa, conseguimos agrupar os termos verticalmente aos pares[cite: 43]. Ao somarmos as duas equações, cada par de termos resulta invariavelmente no valor de $n+1$[cite: 44]. Dado que existem exatamente $n$ termos nesta sequência, a soma total das duas linhas passa a ser escrita como $2T_{n}=n(n+1)$[cite: 45]. Logo, basta dividir o resultado por dois para isolar o termo inicial[cite: 46].
+            
             **Aplicação Concreta no Quotidiano:**
-            Se tivermos uma sala com 6 pessoas, o número de apertos de mão únicos resolve-se através do número triangular $T_{5}$:
+            Os números triangulares possuem diversas aplicações práticas em problemas reais de contagem e organização[cite: 61]. Um exemplo clássico é a contagem de apertos de mão únicos se todas as pessoas numa sala se cumprimentarem uma única vez[cite: 63]. Se tivermos uma sala com 6 pessoas, o cálculo resolve-se através do número triangular $T_{5}$[cite: 63]:
             """)
             st.latex(r"T_5 = \frac{5 \times (5+1)}{2} = 15 \text{ apertos de mão}")
+            st.markdown("Este mesmo raciocínio aplica-se ao determinar o número de canais diretos necessários para interligar computadores numa rede sem que haja repetições de caminhos[cite: 67].")
             
-            # --- CÓDIGO DO TRIÂNGULO PITAGÓRICO INCORPORADO ---
+            # --- CÓDIGO DO TRIÂNGULO PITAGÓRICO SUPER COMPACTADO ---
             if GRAFICOS_ATIVOS:
-                st.markdown("#### 📐 Representação Geométrica do Triângulo Pitagórico (3, 4, 5)")
-                fig_tri, ax_tri = plt.subplots(figsize=(3.5, 3.5))
+                st.markdown("<div style='text-align: center; font-weight: bold;'>📐 Representação Geométrica do Triângulo Pitagórico (3, 4, 5)</div>", unsafe_allow_html=True)
+                fig_tri, ax_tri = plt.subplots(figsize=(1.8, 1.8))  # Reduzido significativamente de 3.5 para 1.8
                 x_tri = [0, 4, 0, 0]
                 y_tri = [0, 0, 3, 0]
-                ax_tri.plot(x_tri, y_tri, 'k-', linewidth=2)
+                ax_tri.plot(x_tri, y_tri, 'k-', linewidth=1.5)
                 ax_tri.fill([0, 4, 0], [0, 0, 3], color='lightblue', alpha=0.4)
                 
-                ax_tri.text(2, -0.4, "4", fontsize=12, ha='center')
-                ax_tri.text(-0.4, 1.5, "3", fontsize=12, va='center', rotation=90)
-                ax_tri.text(2, 1.7, "5", fontsize=12, ha='center')
+                ax_tri.text(2, -0.5, "4", fontsize=10, ha='center')
+                ax_tri.text(-0.5, 1.5, "3", fontsize=10, va='center', rotation=90)
+                ax_tri.text(2, 1.7, "5", fontsize=10, ha='center')
                 
-                ax_tri.plot([0, 0.4, 0.4, 0], [0, 0, 0.4, 0], 'k-', linewidth=2)
+                ax_tri.plot([0, 0.3, 0.3, 0], [0, 0, 0.3, 0], 'k-', linewidth=1.2)
                 ax_tri.axis('equal')
                 ax_tri.axis('off')
                 st.pyplot(fig_tri)
             
-        with st.expander("5.2 Números Perfeitos e Harmonia de Divisores", expanded=True):
+        with st.expander("5.2 Números Perfeitos e Harmonia de Divisores", expanded=False):
             st.markdown("""
-            **Explicação Teórica Exaustiva:**
-            Um número perfeito é exatamente igual à soma de todos os seus divisores próprios (estritamente menores do que o próprio número). 
-            * **Número 6:** Divisores próprios {1, 2, 3} $\\rightarrow 1+2+3=6$.
-            * **Número 28:** Divisores próprios {1, 2, 4, 7, 14} $\\rightarrow 1+2+4+7+14=28$.
+            **Explicação Teórica :**
+            Um número perfeito define-se como um número inteiro positivo que é exatamente igual à soma de todos os seus divisores próprios, considerando-se divisores próprios todos os fatores que são estritamente menores do que o próprio número[cite: 69]. Esta definição clássica remonta aos *Elementos de Euclides*, refletindo o interesse por propriedades estéticas de equilíbrio e harmonia aritmética[cite: 70].
             
-            A fórmula de Euclides-Euler estabelece que qualquer número perfeito par está associado a um Primo de Mersenne ($2^p-1$):
+            **Exemplos Clássicos:**
+            * **Número 6:** Os seus divisores próprios são {1, 2, 3}[cite: 72]. Ao somarmos estes fatores, obtemos: $1+2+3=6$[cite: 74].
+            * **Número 28:** Os seus divisores próprios são {1, 2, 4, 7, 14}[cite: 75]. A sua soma resulta em: $1+2+4+7+14=28$[cite: 76].
+            
+            A análise profunda dos números perfeitos pares revela uma ligação direta com os Primos de Mersenne, que assumem a forma de $2^{p}-1$, onde o expoente $p$ é primo[cite: 78]. Euclides demonstrou formalmente que, sempre que $2^{p}-1$ for um número primo, gera-se um número perfeito através da fórmula[cite: 79, 80]:
             """)
             st.latex(r"n=2^{p-1}(2^{p}-1)")
             
-        with st.expander("5.3 Exploração do Número 9 na Base Decimal", expanded=True):
+        with st.expander("5.3 Exploração do Número 9 na Base Decimal (Matéria Completa)", expanded=False):
             st.markdown("""
-            **Explicação Teórica:**
-            Pelo facto de o número 9 ser uma unidade inferior à base do sistema decimal ($10-1$), cria-se um conjunto único de propriedades. Qualquer número inteiro positivo é sempre congruente com a soma dos seus próprios algarismos em módulo 9. Adicionalmente, as dezenas e as unidades da tabuada do 9 funcionam como um espelho numérico ($18 \\leftrightarrow 81$).
+            **Explicação Teórica do Relatório:**
+            O número 9 ocupa um lugar de destaque no âmbito da aritmética elementar devido à organização do nosso sistema de numeração posicional em base 10[cite: 92]. Pelo facto de o número 9 ser exatamente uma unidade inferior à base do sistema ($(10-1)$), cria-se um conjunto único de simetrias repetitivas, regras de divisibilidade facilitadas e padrões visuais muito claros nos seus algarismos[cite: 94].
+            
+            Iniciando com as propriedades modulares, a teoria matemática demonstra que qualquer número inteiro positivo é sempre congruente com a soma dos seus próprios algarismos em módulo 9[cite: 95]:
+            """)
+            st.latex(r"n \equiv \text{soma dos dígitos de } n \pmod 9")
+            st.markdown("""
+            Esta propriedade fundamental justifica cientificamente o famoso critério de divisibilidade por 9[cite: 97]. Adicionalmente, os resultados da tabuada elementar do 9 funcionam como um verdadeiro **espelho numérico** que ilustra com precisão a complementaridade entre as dezenas e as unidades[cite: 103]. 
+            
+            Se analisarmos a progressão dos produtos desde o início, observamos uma simetria visual inversa evidente onde os resultados se invertem simetricamente em pares: por exemplo, os resultados de $9 \times 2 = 18$ e $9 \times 9 = 81$ são o espelho exato um do outro[cite: 104, 106]. O mesmo fenómeno ocorre com os pares $9 \times 3 = 27$ e $9 \times 8 = 72$, ou com $9 \times 4 = 36$ e $9 \times 7 = 63$[cite: 107]. Em todos estes produtos, a soma dos dígitos mantém-se fixa no valor estável de 9[cite: 107].
+            
+            Esta estabilidade estende-se também às potências do número 9, cuja explicação algébrica assenta na relação matemática $(10-1)^n$[cite: 108]. Ao expandirmos esta expressão através do Binómio de Newton, todos os termos desenvolvidos são múltiplos diretos de 10, exceto o último termo[cite: 109, 111]. Por esta razão, a redução digital consecutiva de qualquer potência de 9 colapsa invariavelmente de volta ao próprio dígito 9 ($9^1=9$; $9^2=81 \rightarrow 9$; $9^3=729 \rightarrow 18 \rightarrow 9$), operando ciclos regulares invariáveis[cite: 101, 112].
             """)
             
-        with st.expander("5.4 O Último Teorema de Fermat e a Limitação de Padrões", expanded=True):
+            # --- NOVA DINÂMICA INTERATIVA: RODA DE REDUÇÃO DIGITAL MODULAR ---
+            st.markdown("#### 🔄 Laboratório de Redução Digital Dinâmica (Módulo 9)")
+            st.markdown("Insira qualquer número inteiro positivo para ver a propriedade teórica do colapso digital e o seu resto na congruência modular[cite: 95, 101]:")
+            
+            num_9_input = st.text_input("Introduza um número inteiro grande:", value="432", key="num_9_input")
+            
+            if num_9_input.isdigit() and int(num_9_input) > 0:
+                n_atual = int(num_9_input)
+                passos = [str(n_atual)]
+                
+                # Algoritmo de redução digital sucessiva
+                while n_atual > 9:
+                    soma_digitos = sum(int(d) for d in str(n_atual))
+                    passos.append(str(soma_digitos))
+                    n_atual = soma_digitos
+                
+                # Exibição do caminho dinâmico de colapso
+                caminho_setas = " ➔ ".join(passos)
+                st.info(f"**Cadeia de Colapso Digital:** {caminho_setas}")
+                
+                col_9_1, col_9_2 = st.columns(2)
+                with col_9_1:
+                    st.metric("Raiz Digital Final (Dígito Único):", f"{n_atual}")
+                with col_9_2:
+                    resto_mod = int(num_9_input) % 9
+                    st.metric("Resto da Divisão por 9 (Módulo 9):", f"{resto_mod}")
+                
+                if n_atual == 9:
+                    st.success(f"🟩 Como a raiz digital colapsou em 9, o número {num_9_input} é um múltiplo exato de 9! ")
+                else:
+                    st.warning(f"🟨 O número colapsou em {n_atual}, logo não é múltiplo exato de 9. O seu resto modular é exatamente {resto_mod}[cite: 95, 96].")
+            else:
+                st.error("Por favor, introduza apenas números inteiros estritamente positivos.")
+            
+        with st.expander("5.4 O Último Teorema de Fermat e a Limitação de Padrões", expanded=False):
             st.markdown("""
             **Explicação Teórica:**
-            No caso do expoente $n=2$, a equação $a^2+b^2=c^2$ admite uma infinidade de triplas pitagóricas inteiras (como o caso 3-4-5). Contudo, Pierre de Fermat afirmou que a equação geral:
+            O Último Teorema de Fermat ilustra como pequenas alterações numa expressão matemática podem fazer com que um padrão de soluções infinitas desapareça por completo[cite: 114]. No caso do expoente $n=2$, a equação transforma-se na clássica expressão de Pitágoras: $a^2+b^2=c^2$[cite: 115]. Esta estrutura admite uma infinidade de triplas pitagóricas inteiras positivas, como o caso 3-4-5 ($3^2+4^2=5^2$)[cite: 117, 118].
+            
+            Contudo, Fermat afirmou na margem do seu livro que a equação geral:
             """)
             st.latex(r"a^{n}+b^{n}=c^{n}")
             st.markdown("""
-            **não admite qualquer tipo de solução inteira não trivial** sempre que o expoente $n$ for um número estritamente maior do que 2 ($n>2$).
+            **não admite qualquer tipo de solução inteira não trivial** sempre que o expoente $n$ for um número estritamente maior do que 2 ($n>2$)[cite: 128]. Ao alterarmos apenas o valor do expoente, passamos de soluções infinitas para um vazio total[cite: 138]. A prova definitiva foi alcançada em 1994 por Andrew Wiles, utilizando curvas elípticas[cite: 143].
             """)
             
-            # --- CÓDIGO CONCEITUAL DAS CURVAS DE FERMAT INCORPORADO E ADAPTADO ---
+            # --- CÓDIGO CONCEITUAL DAS CURVAS DE FERMAT SUPER COMPACTADO ---
             if GRAFICOS_ATIVOS:
-                st.markdown("#### 📊 Simulação Dinâmica e Comparação Conceitual das Curvas de Fermat")
+                st.markdown("<div style='text-align: center; font-weight: bold;'>📊 Simulação Dinâmica e Comparação Conceitual das Curvas de Fermat</div>", unsafe_allow_html=True)
                 
-                # Substituição da barra longa (slider) por uma caixa de input numérico direta
-                n_input_txt = st.text_input("Introduza um valor para o expoente n (> 2) para testar a curva ($a^n + b^n = 5^n$):", value="3.0")
+                n_input_txt = st.text_input("Introduza o expoente n (> 2) para testar graficamente ($a^n + b^n = 5^n$):", value="3.0")
                 
                 try:
                     n_fermat = float(n_input_txt)
                     if n_fermat <= 2:
-                        st.warning("Para ver a limitação conceitual descrita pelo Teorema, introduza um valor estritamente superior a 2.")
+                        st.warning("Introduza um valor estritamente superior a 2 para analisar o comportamento geométrico das curvas limites[cite: 128, 136].")
                         n_fermat = 2.1
                 except ValueError:
-                    st.error("Por favor, introduza um número válido (ex: 3, 4.5, 5).")
+                    st.error("Introduza um valor numérico válido (ex: 3, 4.2).")
                     n_fermat = 3.0
 
                 a_grid = np.linspace(0, 5, 400)
                 b_grid = np.linspace(0, 5, 400)
                 A, B = np.meshgrid(a_grid, b_grid)
                 
-                fig_fer, ax_fer = plt.subplots(figsize=(4.5, 4.5))
+                fig_fer, ax_fer = plt.subplots(figsize=(2.0, 2.0))  # Reduzido significativamente de 4.5 para 2.0
                 
                 # Curva de controle estável de Pitágoras (n=2)
                 C2 = A**2 + B**2
-                ax_fer.contour(A, B, C2, levels=[25], colors='blue', linewidths=2)
+                ax_fer.contour(A, B, C2, levels=[25], colors='blue', linewidths=1.5)
                 
                 # Curva dinâmica ajustada pelo utilizador
                 Cn = A**n_fermat + B**n_fermat
-                ax_fer.contour(A, B, Cn, levels=[25], colors='red', linestyles='--', linewidths=2)
+                ax_fer.contour(A, B, Cn, levels=[25], colors='red', linestyles='--', linewidths=1.5)
                 
                 # Ponto de interseção Pitagórico (3,4)
-                ax_fer.scatter([3], [4], color='blue', s=60, zorder=5)
-                ax_fer.text(3.1, 4.1, "(3,4)", fontsize=11)
+                ax_fer.scatter([3], [4], color='blue', s=30, zorder=5)
                 
-                ax_fer.set_title("Comparação conceitual: $a^n + b^n = c^n$", fontsize=12)
-                ax_fer.set_xlabel("a")
-                ax_fer.set_ylabel("b")
-                ax_fer.grid(alpha=0.3)
+                ax_fer.set_title("Curva Limite: $a^n + b^n = c^n$", fontsize=9)
+                ax_fer.set_xlabel("a", fontsize=8)
+                ax_fer.set_ylabel("b", fontsize=8)
+                ax_fer.grid(alpha=0.2)
                 
                 from matplotlib.lines import Line2D
                 handles = [
-                    Line2D([0], [0], color='blue', lw=2, linestyle='-'),
-                    Line2D([0], [0], color='red', lw=2, linestyle='--')
+                    Line2D([0], [0], color='blue', lw=1.5, linestyle='-'),
+                    Line2D([0], [0], color='red', lw=1.5, linestyle='--')
                 ]
-                labels = ["n = 2 (Pitágoras)", f"n = {n_fermat:.1f} (Fermat)"]
-                ax_fer.legend(handles, labels, loc="upper right", fontsize=9)
+                labels = ["n = 2", f"n = {n_fermat:.1f}"]
+                ax_fer.legend(handles, labels, loc="upper right", fontsize=7)
                 
                 st.pyplot(fig_fer)
 
