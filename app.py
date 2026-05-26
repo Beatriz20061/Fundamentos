@@ -1315,38 +1315,79 @@ elif page == "🟢 Lógica do Number Match":
     tab1, tab2 = st.tabs(["💡 Lição do Sistema & Simulador", "🧠 Quiz Geral do Módulo"])
     
     with tab1:
-        with st.expander("📘 3.1 Formalização Lógica e Regras Proposicionais do Tabuleiro", expanded=False):
+        with st.expander("📖 1. Introdução ao Number Match", expanded=True):
             st.markdown("""
-            ### Explicação Teórica
-            
-            O *Number Match* é um jogo de lógica e aritmética cujas decisões do jogador dependem 
-            simultaneamente de **condições lógicas** e de **propriedades aritméticas elementares**, 
-            como igualdade, soma e paridade.
-            
-            A formalização das condições de jogada pode ser feita recorrendo à **lógica proposicional**. 
-            Uma jogada válida ocorre quando dois números $$a$$ e $$b$$ satisfazem simultaneamente uma 
-            condição numérica e uma condição estrutural de acessibilidade:
+            ### Introdução ao Number Match
+
+            O **Number Match** é um jogo de lógica e aritmética que ganhou grande popularidade em plataformas digitais, graças às suas regras simples e à dinâmica envolvente do tabuleiro.
+
+            Apesar de aparentar baixa complexidade, o jogo pode ser analisado de forma rigorosa através de conceitos fundamentais da **Matemática Discreta**. As decisões do jogador dependem simultaneamente de:
+
+            - **Condições lógicas**
+            - **Propriedades aritméticas elementares** (igualdade, soma e paridade)
+
+            que influenciam diretamente a evolução do jogo (Rosen, 2012).
+
+            ---
+
+            Estes conceitos não se manifestam apenas nas regras, mas sobretudo nas **dinâmicas do sistema**, à medida que o tabuleiro se transforma após cada jogada.
+
+            A formalização das condições de jogada pode ser feita recorrendo à **lógica proposicional**, permitindo descrever de forma precisa quando uma jogada é válida. Esta abordagem baseia-se em ferramentas da lógica formal, adequadas à modelação de um sistema discreto finito (Boolos, Burgess & Jeffrey, 2007).
+
+            Adicionalmente, o tabuleiro pode ser representado como um **grafo dinâmico**, no qual os números correspondem a vértices e as relações de jogada válida a arestas. Nesta perspetiva, o jogo torna-se um processo iterativo de remoção de vértices e arestas, cuja estrutura evolui ao longo do tempo — uma ideia amplamente explorada na Teoria de Grafos (West, 2001).
+
+            ---
+
+            **Objetivo deste módulo:** Analisar matematicamente o Number Match através de três pilares fundamentais:
+
+            - **Lógica Proposicional**
+            - **Teoria de Grafos**
+            - **Combinatória**
+
+            Esta abordagem demonstra como jogos do quotidiano podem constituir contextos ricos para a compreensão de conceitos matemáticos essenciais, utilizando modelos baseados em relações, grafos e argumentos de contagem.
             """)
-            
-            st.latex(r"\text{JogadaVálida}(a, b) \leftrightarrow (a = b \lor a + b = 10) \land \text{Conectados}(a, b)")
-            
-            st.markdown("---")
-            
+        with st.expander("📘 2. Formalização Lógica do Jogo", expanded=False):
+            st.markdown("""
+            ### Formalização Lógica do Jogo
+
+            A **lógica proposicional** constitui uma ferramenta poderosa para descrever formalmente sistemas baseados em regras bem definidas, como é o caso do Number Match.
+
+            No Number Match, uma jogada válida ocorre quando dois números \(a\) e \(b\) satisfazem simultaneamente uma **condição numérica** e uma **condição estrutural de acessibilidade**.
+            """)
+
+            st.latex(r"""
+            \text{JogadaVálida}(a, b) \iff (a = b \lor a + b = 10) \land \text{Conectados}(a, b)
+            """)
+
+            st.markdown("""
+            Esta expressão representa uma **fórmula booleana composta**, na qual as condições aritméticas e estruturais são combinadas através dos conectivos lógicos usuais.
+
+            **Condições Numéricas:**
+            - \(a = b\) (os dois números são iguais)
+            - \(a + b = 10\) (relação aritmética complementar)
+
+            Estas condições podem ser interpretadas como predicados lógicos simples. Além disso, a jogada só é permitida se os dois números estiverem **conectados** no tabuleiro segundo as regras do jogo.
+
+            ---
+
+            #### Exemplo Prático
+            Se existirem dois números adjacentes com valores **3 e 7**, a condição \(a + b = 10\) é satisfeita. Caso estejam conectados, a jogada é válida. No entanto, se duas ocorrências do número **5** não estiverem conectadas, a jogada é inválida apesar da condição aritmética ser cumprida.
+            """)
+
+            # === SIMULADOR INTERATIVO (mantido e melhorado) ===
             st.markdown("#### 🕹️ Simulador de Validação Lógica")
-            
+
             col1, col2, col3 = st.columns(3)
             with col1:
-                s_a = st.number_input("Valor da Carta A", 1, 9, 5, key="s_a")
+                s_a = st.number_input("Valor da Carta A", 1, 9, 5, key="s_a_logic")
             with col2:
-                s_b = st.number_input("Valor da Carta B", 1, 9, 5, key="s_b")
+                s_b = st.number_input("Valor da Carta B", 1, 9, 5, key="s_b_logic")
             with col3:
-                s_con = st.checkbox("Conectados/Contíguos?", value=True, key="s_con")
-            
+                s_con = st.checkbox("Conectados / Contíguos?", value=True, key="s_con_logic")
+
             c_num = (s_a == s_b) or (s_a + s_b == 10)
             c_valida = c_num and s_con
-            
-            st.markdown("<br>", unsafe_allow_html=True)
-            
+
             if c_valida:
                 st.success(f"🟩 **JOGADA VÁLIDA!** O par ({s_a}, {s_b}) cumpre todas as condições e pode ser eliminado.")
             else:
@@ -1357,36 +1398,93 @@ elif page == "🟢 Lógica do Number Match":
                     reasons.append("As cartas não estão conectadas")
                 st.error(f"🟥 **JOGADA INVÁLIDA!** Razões: {'; '.join(reasons)}")
                 
-        with st.expander("📈 3.2 Modelação em Teoria de Grafos e Estratégia de Paridade", expanded=False):
+        with st.expander("📊 3. Modelação em Teoria de Grafos", expanded=False):
             st.markdown("""
-            ### Explicação Teórica Exaustiva
-            
-            O tabuleiro do jogo pode ser representado como um **grafo dinâmico**, no qual os números 
-            correspondem a vértices e as relações de jogada válida a arestas. À medida que o jogador 
-            elimina pares, o grafo sofre transformações sucessivas.
-            
-            **Vértices de grau zero** representam números isolados que não podem ser eliminados e 
-            bloqueiam o tabuleiro.
-            
-            ---
-            
-            ### Análise Combinatória e o Impacto do Número 5
-            
-            Cada número entre 1 e 9 possui exatamente um único parceiro que permite obter a soma 10:
-            
-            | Par | Soma |
-            |-----|------|
-            | 1 ↔ 9 | 10 |
-            | 2 ↔ 8 | 10 |
-            | 3 ↔ 7 | 10 |
-            | 4 ↔ 6 | 10 |
-            | **5 ↔ 5** | 10 |
-            
-            O número **5** constitui um caso particular, pois **apenas pode formar par consigo mesmo**. 
-            Isto implica que a sua frequência no tabuleiro deve ser impreterivelmente **par** para 
-            permitir a eliminação completa e evitar a criação de números isolados.
+            ### Modelação em Teoria de Grafos
+
+            O tabuleiro do Number Match pode ser representado como um **grafo dinâmico não dirigido**:
+
+            - **Vértices** → Cada número no tabuleiro
+            - **Arestas** → Cada par de números que pode ser eliminado (jogada válida)
+
+            Esta modelação permite analisar como o tabuleiro evolui ao longo do tempo através da remoção sucessiva de vértices e arestas.
             """)
 
+            st.markdown("**Elemento Crítico:**")
+            st.info("**Vértices de grau zero** (números isolados) bloqueiam o progresso do jogo.")
+            
+            st.markdown("""
+            A Teoria de Grafos revela-se assim uma ferramenta extremamente eficaz para compreender as dinâmicas do jogo, prever bloqueios e desenvolver estratégias mais eficazes.
+            """)
+        with st.expander("🔢 4. Análise Combinatória", expanded=False):
+            st.markdown("""
+            ### Análise Combinatória
+
+            A **combinatória** desempenha um papel central na análise do Number Match, permitindo estudar a existência e a quantidade de pares elimináveis, bem como prever situações de bloqueio no tabuleiro.
+
+            As técnicas combinatórias baseiam-se em princípios de contagem, análise de frequências e argumentos de paridade, sendo particularmente adequadas ao estudo de sistemas discretos finitos como este jogo (Grimaldi, 2004).
+            """)
+
+            st.markdown("""
+            #### 1. Pares por Igualdade
+
+            Se um número aparece exatamente **2k** vezes no tabuleiro, é possível formar **k pares** válidos por igualdade. 
+
+            Por outro lado, se um número aparece um **número ímpar** de vezes, pelo menos um exemplar ficará necessariamente isolado. Este é um resultado direto do princípio da paridade e constitui uma das principais causas de bloqueio no jogo (Stanley, 2011).
+            """)
+
+            st.markdown("""
+            #### 2. Pares por Soma 10
+
+            Cada número entre 1 e 9 possui exatamente um parceiro que permite obter a soma 10:
+
+            - 1 ↔ 9
+            - 2 ↔ 8
+            - 3 ↔ 7
+            - 4 ↔ 6
+            - **5 ↔ 5** (caso especial)
+
+            O número **5** é particularmente crítico: a sua frequência no tabuleiro deve ser **par** para permitir a eliminação completa. Caso contrário, sobrará pelo menos um 5 isolado.
+            """)
+
+            st.markdown("""
+            #### 3. Distribuição dos Números e Probabilidade de Jogadas Válidas
+
+            A probabilidade de existirem jogadas válidas depende fortemente da **distribuição dos números**. 
+
+            Distribuições desiguais (em que certos números aparecem com frequência muito superior a outros) reduzem o número de emparelhamentos possíveis. Números raros tendem a ficar isolados mais facilmente, aumentando o risco de bloqueio do tabuleiro.
+
+            Assim, argumentos combinatórios baseados em contagem, paridade e distribuição explicam matematicamente as dificuldades enfrentadas pelo jogador em determinadas configurações do jogo.
+            """)
+
+            # Imagem (se tiveres)
+            # st.image("caminho/para/figura2.jpg", caption="Figura 2: Distribuições desiguais que impossibilitam combinações", use_container_width=True)
+        with st.expander("🎯 5. Estratégia Matemática", expanded=False):
+            st.markdown("""
+            ### Estratégia Matemática
+
+            A análise matemática permite não apenas compreender o jogo, mas desenvolver **estratégias racionais** que aumentam significativamente a probabilidade de sucesso.
+            """)
+
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                st.markdown("""
+                **1. Minimizar números isolados**  
+                Evitar criar vértices de grau zero no grafo.
+
+                **2. Eliminar números raros**  
+                Priorizar números com baixa frequência.
+                """)
+            
+            with col2:
+                st.markdown("""
+                **3. Controlar a expansão**  
+                Gerir com cuidado o crescimento do tabuleiro.
+
+                **4. Tratar o 5 com cuidado**  
+                Manter a quantidade de 5s sempre par.
+                """)
     with tab2:
         st.markdown("### 🧠 Questionário de Avaliação — Módulo 3")
         
