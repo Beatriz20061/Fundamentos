@@ -963,34 +963,28 @@ elif page == "🔵 Grupos de Simetria":
 
     Assim como nas obras de **M. C. Escher**, onde padrões complexos e hipnóticos emergem de transformações simples, a natureza utiliza rotações e translações para construir sistemas moleculares altamente eficientes e estáveis.
     """)
-    with st.expander("🎨 1.5 Simetria na Arte de M. C. Escher", expanded=False):
+    with st.expander("🎨 6. Simetria na Arte de M. C. Escher", expanded=False):
         st.markdown("""
         ### Simetria na Arte de M. C. Escher
 
-        M. C. Escher é um dos artistas que melhor explorou as simetrias do plano. A sua obra representa uma das mais belas pontes entre **arte e matemática**.
+        M. C. Escher é um dos artistas que melhor explorou as simetrias do plano, apesar de não possuir formação matemática formal. A sua obra é um fascinante exemplo da ligação profunda entre **arte e matemática**.
         """)
 
-        col1, col2 = st.columns([3, 2])
-        
-        with col1:
-            st.markdown("""
-            Escher utilizou as quatro isometrias fundamentais:
-            - **Rotações**
-            - **Reflexões**
-            - **Translações**
-            - **Reflexões Deslizantes**
-
-            Muitas das suas tesselações pertencem aos **17 Grupos Cristalográficos**.
-            """)
-        
-        with col2:
+        # === IMAGEM COM TRATAMENTO DE ERRO ===
+        try:
+            st.image("Regular-division-31.jpg", 
+                    caption="M. C. Escher - Regular Division of the Plane nº 31 (1950)",
+                    use_container_width=True)
+        except:
+            # Fallback caso o caminho falhe
             st.image("/home/workdir/attachments/Regular-division-31.jpg", 
-                    caption="Regular Division of the Plane nº 31",
+                    caption="M. C. Escher - Regular Division of the Plane nº 31 (1950)",
                     use_container_width=True)
 
         st.markdown("""
-        #### Destaque na Obra Acima
-        Nesta tesselação observam-se rotações de 180°, eixos de reflexão e translações que repetem a figura do peixe de forma perfeita.
+        #### Exemplo: Regular Division of the Plane nº 31
+
+        Nesta obra icónica, observam-se claramente rotações de 180°, eixos de reflexão e translações regulares que repetem a figura base do peixe, demonstrando de forma brilhante como a arte pode materializar conceitos matemáticos avançados.
         """)
         with st.expander("🔭 7. O Caleidoscópio e a Força Unificadora da Simetria", expanded=False):
             st.markdown("""
