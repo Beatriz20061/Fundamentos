@@ -1067,28 +1067,73 @@ elif page == "🔵 Grupos de Simetria":
 elif page == "🟤 17 Grupos Cristalográficos":
     render_module_header("🟤", "MÓDULO 2: 17 GRUPOS CRISTALOGRÁFICOS")
     
-    tab1, tab2 = st.tabs(["📖 Matéria Completa & Classificação", "🧠 Quiz Geral do Módulo"])
+    tab1, tab2 = st.tabs(["📖 Matéria Completa", "🧠 Quiz Geral do Módulo"])
     
     with tab1:
-        with st.expander("📘 2.1 Grupos de Simetria e as Restrições das Tesselações Periódicas", expanded=False):
+        with st.expander("📖 1. Introdução aos 17 Grupos Cristalográficos", expanded=True):
             st.markdown("""
-            ### Explicação Teórica Exaustiva
-            
-            As tesselações periódicas são padrões que cobrem o plano de forma contínua, repetindo-se 
-            indefinidamente através de translações. Cada tesselação possui um **grupo de simetria**, 
-            isto é, o conjunto de todas as isometrias que deixam o padrão inalterado.
-            
-            Apesar da grande variedade de padrões que observamos em azulejos, cristais ou nas obras de 
-            M. C. Escher, a Matemática demonstra que **apenas 17 tipos distintos de simetria podem 
-            pavimentar o plano de forma regular**.
-            
-            Esta limitação resulta das combinações possíveis entre as isometrias estudadas anteriormente 
-            e das restrições geométricas que garantem repetição periódica estável no plano.
+            ### Introdução aos 17 Grupos Cristalográficos
+
+            No trabalho anterior explorámos os conceitos fundamentais de simetria e as isometrias do plano — **translações, rotações, reflexões e reflexões deslizantes** —, tal como descritas classicamente por Grünbaum e Shephard em *Tilings and Patterns* (1987), uma das obras de referência no estudo das tesselações.
+
+            Esta base teórica permite agora avançar para uma classificação mais completa e estruturada: **os 17 Grupos Cristalográficos do Plano** (também conhecidos como *Wallpaper Groups*). A apresentação moderna destes grupos segue, entre outros, o trabalho de Conway, Burgiel e Goodman-Strauss em *The Symmetries of Things* (2008).
+
+            ---
+
+            Apesar da enorme variedade de padrões que observamos em azulejos, cristais, tecidos ou nas obras de **M. C. Escher** (amplamente analisadas por Schattschneider em *Visions of Symmetry*, 2004), a Matemática demonstra que **apenas 17 tipos distintos de simetria** podem pavimentar o plano de forma regular e periódica.
+
+            Esta limitação geométrica resulta das combinações possíveis entre as isometrias estudadas anteriormente e das restrições impostas pela repetição periódica no plano, conforme discutido por Holden em *Shapes, Space and Symmetry* (1991).
+
+            ---
+
+            Neste módulo apresentamos uma visão geral dos **17 grupos cristalográficos** e, de seguida, analisamos com maior detalhe três grupos específicos, destacando as suas propriedades geométricas e exemplos representativos.
+
+            O objetivo é aprofundar a compreensão das simetrias do plano e consolidar a ligação entre a teoria abstrata e as suas múltiplas aplicações visuais e estruturais.
+            """)
+        with st.expander("📘 2. Grupos de Simetria e Tesselações Periódicas", expanded=False):
+            st.markdown("""
+            ### Grupos de Simetria e Tesselações Periódicas
+
+            As **tesselações periódicas** são padrões que cobrem o plano de forma contínua e repetem-se indefinidamente através de translações. A definição formal e a análise estrutural destas tesselações estão detalhadamente exploradas na obra clássica *Tilings and Patterns* de Grünbaum e Shephard.
+
+            Cada tesselação possui um **grupo de simetria**, isto é, o conjunto de todas as isometrias que deixam o padrão inalterado. Esta abordagem, que combina Geometria com Teoria de Grupos, é apresentada de forma acessível e visual por Conway, Burgiel e Goodman-Strauss em *The Symmetries of Things*.
+
+            ---
+
+            ### O que distingue os diferentes grupos?
+
+            A presença ou ausência de:
+            - Eixos de reflexão
+            - Centros de rotação de diferentes ordens (2, 3, 4 ou 6)
+            - Reflexões deslizantes
+
+            permite distinguir padrões que, à primeira vista, podem parecer semelhantes. Esta distinção é frequentemente ilustrada nas análises das obras de **M. C. Escher** feitas por Schattschneider (2004).
+
+            A Teoria de Grupos fornece a linguagem formal necessária para descrever estas simetrias e compreender como diferentes combinações de isometrias originam estruturas geométricas distintas.
+
+            ---
+
+            ### Um dos Resultados Mais Importantes
+
+            Um dos resultados mais notáveis deste estudo é que existem **exatamente 17 grupos cristalográficos do plano**. Este resultado aparece tanto em obras de geometria recreativa (como a de Holden), como em textos mais formais de cristalografia, tais como *The Basics of Crystallography and Diffraction* de Hammond (2015).
+            """)
+        with st.expander("📋 3. Visão Geral dos 17 Grupos Cristalográficos", expanded=False):
+            st.markdown("""
+            ### Visão Geral dos 17 Grupos Cristalográficos do Plano
+
+            Os **grupos cristalográficos do plano** (também chamados *Wallpaper Groups*) constituem a classificação completa de todas as tesselações periódicas possíveis. Esta classificação segue a abordagem moderna apresentada por Conway, Burgiel e Goodman-Strauss em *The Symmetries of Things* (2008).
+
+            Apesar da enorme variedade de padrões que observamos na arte, arquitetura e natureza, a Matemática demonstra que **existem apenas 17 tipos distintos de simetria** capazes de pavimentar o plano de forma periódica e regular. Esta limitação geométrica foi rigorosamente demonstrada por Grünbaum e Shephard em *Tilings and Patterns* (1987) e explorada por Holden em *Shapes, Space and Symmetry* (1991).
+
+            ---
+
+            ### Tabela dos 17 Grupos Cristalográficos
+
+            A tabela seguinte apresenta os 17 grupos, organizados segundo as simetrias que os caracterizam:
             """)
             
-            st.markdown("#### 📋 Matriz Oficial de Classificação dos 17 Wallpaper Groups")
-            
-            df_data = {
+            # Tabela em DataFrame (mais bonita no Streamlit)
+            data = {
                 "Grupo": ["p1", "p2", "pm", "pg", "cm", "pmm", "pmg", "pgg", "cmm", "p4", "p4m", "p4g", "p3", "p3m1", "p31m", "p6", "p6m"],
                 "Simetrias Principais": [
                     "Apenas translações",
@@ -1110,17 +1155,101 @@ elif page == "🟤 17 Grupos Cristalográficos":
                     "Rotações de ordem 6 e reflexões"
                 ]
             }
-            st.dataframe(df_data, use_container_width=True, hide_index=True)
-            
-        with st.expander("🔍 2.2 Análise Comparativa dos Subgrupos p4, p6 e pm", expanded=False):
+            st.dataframe(data, use_container_width=True, hide_index=True)
+
             st.markdown("""
-            ### Explicação Teórica dos Subgrupos
+            **Tabela 1:** Classificação dos 17 grupos cristalográficos do plano.
+
+            ---
+
+            Cada um destes grupos descreve um tipo único de organização periódica. Por exemplo, padrões com rotações de ordem 4 pertencem aos grupos **p4**, **p4m** ou **p4g**, enquanto padrões com simetria hexagonal surgem nos grupos **p6** e **p6m** — uma simetria frequentemente observada em estruturas naturais (Hammond, 2015).
+
+            Na secção seguinte, analisamos em maior detalhe três destes grupos, destacando as suas características geométricas, exemplos e aplicações.
+            """)
             
-            | Grupo | Características |
-            |-------|-----------------|
-            | **p4** (Simetria Quadrada) | Rotações de ordem 4 (90°, 180°, 270°). **Não possui** eixos de reflexão nem reflexões deslizantes. |
-            | **p6** (Simetria Hexagonal) | Rotações de ordem 6 (60°, 120°, 180°, 240°, 300°), ordem 3 e ordem 2. **Não possui** reflexões. |
-            | **pm** (Simetria Axial) | Eixos de reflexão paralelos combinados com translações perpendiculares. **Não possui** rotações. |
+        with st.expander("🔍 4. Análise Detalhada dos 3 Grupos Cristalográficos", expanded=False):
+            st.markdown("""
+            ### 4. Análise Detalhada dos 3 Grupos Cristalográficos
+
+            Nesta secção analisamos em detalhe três grupos cristalográficos representativos: **p4**, **p6** e **pm**. 
+            Estes grupos foram selecionados por apresentarem diferentes combinações de simetrias (rotações, reflexões e translações), 
+            permitindo ilustrar a rica diversidade estrutural das tesselações periódicas do plano.
+            """)
+
+            # ====================== GRUPO p4 ======================
+            st.markdown("#### 4.1 Grupo p4 (Simetria Quadrada)")
+            st.markdown("""
+            O grupo **p4** caracteriza-se pela presença de rotações de ordem 4, mas pela **ausência total de eixos de reflexão**. 
+            Esta combinação torna-o único entre os grupos com simetria quadrada.
+            """)
+            
+            col1, col2 = st.columns([2, 1])
+            with col1:
+                st.markdown("""
+                **Principais simetrias:**
+                - Rotações de ordem 4 (90°, 180°, 270°)
+                - Rotações de ordem 2
+                - Translações ortogonais (rede quadrada)
+                - **Não possui** reflexões nem reflexões deslizantes
+                """)
+            with col2:
+                st.info("**Rede:** Quadrada  \n**Reflexões:** Ausentes")
+
+            # ====================== GRUPO p6 ======================
+            st.markdown("#### 4.2 Grupo p6 (Simetria Hexagonal)")
+            st.markdown("""
+            O grupo **p6** apresenta a mais elevada ordem de rotação entre todos os grupos cristalográficos. 
+            Está fortemente associado a padrões naturais, como os favos de mel.
+            """)
+            
+            col3, col4 = st.columns([2, 1])
+            with col3:
+                st.markdown("""
+                **Principais simetrias:**
+                - Rotações de ordem 6 (60°, 120°, 180°, 240°, 300°)
+                - Rotações de ordem 3 e 2
+                - Translações em rede hexagonal
+                - **Não possui** reflexões
+                """)
+            with col4:
+                st.success("**Rede:** Hexagonal  \n**Reflexões:** Ausentes")
+
+            # ====================== GRUPO pm ======================
+            st.markdown("#### 4.3 Grupo pm (Simetria Axial)")
+            st.markdown("""
+            O grupo **pm** é um dos exemplos mais simples de simetria com reflexões. 
+            Caracteriza-se pela presença de eixos de reflexão paralelos.
+            """)
+            
+            col5, col6 = st.columns([2, 1])
+            with col5:
+                st.markdown("""
+                **Principais simetrias:**
+                - Reflexões (eixos paralelos)
+                - Translações perpendiculares aos eixos
+                - **Não possui** rotações nem reflexões deslizantes
+                """)
+            with col6:
+                st.warning("**Rede:** Retangular  \n**Reflexões:** Paralelas")
+
+            # ====================== COMPARAÇÃO ======================
+            st.markdown("#### 4.4 Comparação entre os 3 Grupos")
+            
+            comparison_data = {
+                "Grupo": ["p4", "p6", "pm"],
+                "Rotações": ["Ordem 4 e 2", "Ordem 6, 3 e 2", "Não"],
+                "Reflexões": ["Não", "Não", "Sim (paralelas)"],
+                "Rede de Translação": ["Quadrada", "Hexagonal", "Retangular"],
+                "Simetria Dominante": ["Rotacional", "Rotacional forte", "Reflexão"]
+            }
+            
+            st.dataframe(comparison_data, use_container_width=True, hide_index=True)
+            
+            st.markdown("""
+            **Tabela 2:** Comparação entre os grupos cristalográficos p4, p6 e pm.
+
+            Esta comparação evidencia como diferentes combinações de isometrias originam padrões geométricos visualmente distintos, 
+            mesmo quando obedecem às mesmas restrições de repetição periódica.
             """)
             
             st.markdown("#### 🎛️ Explorador Interativo de Grupos")
