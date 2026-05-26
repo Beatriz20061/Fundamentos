@@ -251,7 +251,7 @@ elif page == "🟢 Módulo 3: Lógica do Number Match":
             **Explicação Teórica :**
             O *Number Match* é um jogo de lógica e aritmética cujas decisões do jogador dependem simultaneamente de condições lógicas e de propriedades aritméticas elementares, como igualdade, soma e paridade.
             
-            A formalização das condições de jogada pode ser feita recorrendo à lógica proposicional. Uma jogada válida ocorre quando dois números $a$ e $b$ satisfazem simultaneamente uma condition numérica e uma condição estrutural de acessibilidade:
+            A formalização das condições de jogada pode ser feita recorrendo à lógica proposicional. Uma jogada válida ocorre quando dois números $a$ e $b$ satisfazem simultaneamente uma condição numérica e uma condição estrutural de acessibilidade:
             """)
             st.latex(r"\text{JogadaVálida}(a, b) \leftrightarrow (a = b \lor a + b = 10) \land \text{Conectados}(a, b)")
             
@@ -274,7 +274,7 @@ elif page == "🟢 Módulo 3: Lógica do Number Match":
             O tabuleiro do jogo pode ser representado como um grafo dinâmico, no qual os números correspondem a vértices e as relações de jogada válida a arestas. À medida que o jogador elimina pares, o grafo sofre transformações sucessivas. Vértices de grau zero representam números isolados que não podem ser eliminados e bloqueiam o tabuleiro.
             
             **Análise Combinatória e o Impacto do Número 5:**
-            Cada número entre 1 e 9 possui exatamente um único parceiro que permite obter a soma 10 ($1\leftrightarrow9, 2\leftrightarrow8, 3\leftrightarrow7, 4\leftrightarrow6$). O número 5 constitui um caso particular, pois **apenas pode formar par consigo mesmo** ($5\leftrightarrow5$). Isto implica que a sua frequência no tabuleiro deve ser impreterivelmente **par** para permitir a eliminação completa e evitar a criação de números isolados.
+            Cada número entre 1 e 9 possui exatamente um único parceiro que permite obter a soma 10 ($1\\leftrightarrow9, 2\\leftrightarrow8, 3\\leftrightarrow7, 4\\leftrightarrow6$). O número 5 constitui um caso particular, pois **apenas pode formar par consigo mesmo** ($5\\leftrightarrow5$). Isto implica que a sua frequência no tabuleiro deve ser impreterivelmente **par** para permitir a eliminação completa e evitar a criação de números isolados.
             """)
 
     with tab2:
@@ -282,7 +282,7 @@ elif page == "🟢 Módulo 3: Lógica do Number Match":
         score3 = 0
         r3_1 = st.radio("1. Qual o estado de um número que se transforma num vértice de grau zero no grafo?", ["Fica isolado e bloqueia o progresso do jogo.", "Garante uma jogada imediata por igualdade.", "Duplica o número de arestas incidentes."], key="r3_1")
         r3_2 = st.radio("2. Qual a correspondência biunívoca correta para somas complementares de valor 10?", [r"$2 \leftrightarrow 8$", r"$3 \leftrightarrow 7$", r"$4 \leftrightarrow 4$"], key="r3_2")
-        r3_3 = st.radio("3. Por que razão a contagem combinatória do número 5 exige uma frequência obrigatoriamente par?", ["Because é um número ímpar.", "Porque apenas pode emparelhar consigo próprio para atingir a soma 10.", "Porque é o vértice central de Euler."], key="r3_3")
+        r3_3 = st.radio("3. Por que razão a contagem combinatória do número 5 exige uma frequência obrigatoriamente par?", ["Porque é um número ímpar.", "Porque apenas pode emparelhar consigo próprio para atingir a soma 10.", "Porque é o vértice central de Euler."], key="r3_3")
         
         if r3_1 == "Fica isolado e bloqueia o progresso do jogo.": score3 += 3.33
         if r3_2 == r"$3 \leftrightarrow 7$": score3 += 3.33
@@ -331,7 +331,7 @@ elif page == "🟣 Módulo 4: Padrões dos Primos":
             
             st.markdown("""
             **Propriedades Fundamentais:**
-            1. **Totiente de um Número Primo:** Se $p$ é primo, então $\\varphi(p)=p-1$.
+            1. **Totiente de um Número Primo:** Se $p$ é primo, then $\\varphi(p)=p-1$.
             2. **Totiente de uma Potência de Primo:** $\\varphi(p^k)=p^k-p^{k-1}=p^k(1-\\frac{1}{p})$.
             Esta função é central na criptografia moderna, nomeadamente no algoritmo RSA.
             """)
@@ -377,14 +377,14 @@ elif page == "🟡 Módulo 5: Padrões Numéricos":
             **Explicação Teórica:**
             Os números triangulares pertencem ao grupo dos chamados números figurados, que se caracterizam por serem números que podem ser representados através de arranjos geométricos de pontos regulares. Esta abordagem visual é de extrema importância na aprendizagem matemática, pois transforma problemas de contagem abstrata numa perceção geométrica muito intuitiva. Eles representam a quantidade de pontos necessária para construir um triângulo equilátero com um determinado número de linhas. Como cada nova linha adiciona sempre mais um ponto do que a linha anterior, um número triangular corresponde diretamente à soma dos primeiros números naturais.
             """)
-            st.latex(r"T_{n}=1+2+3+\dots+n=\frac{n(n+1)}{2}")
+            st.latex(r"T_{n} = 1 + 2 + 3 + \dots + n = \frac{n(n+1)}{2}")
             st.markdown("""
-            Esta fórmula matemática pode ser explicada através de um raciocínio geométrico muito simples que é atribuído historicamente a Gauss. Se escrevermos a sequência da soma na sua ordem direta e na sua ordem inversa, conseguimos agrupar os termos verticalmente aos pares. Ao somarmos as duas equações, cada par de termos resulta invariavelmente no valor de $n+1$. Dado que existem exatamente $n$ termos nesta sequência, a soma total das duas linhas passa a ser escrita como $2T_{n}=n(n+1)$. Logo, basta dividir o resultado por dois para isolar o termo inicial.
+            Esta fórmula matemática pode ser explicada através de um raciocínio geométrico muito simples que é atribuído historicamente a Gauss. Se escrevermos a sequência da soma na sua ordem direta e na sua ordem inversa, conseguimos agrupar os termos verticalmente aos pares. Ao somarmos as duas equações, cada par de termos resulta invariavelmente no valor de $n+1$. Dado que existem exatamente $n$ termos nesta sequência, a soma total das duas linhas passa a ser escrita como $2T_{n} = n(n+1)$. Logo, basta dividir o resultado por dois para isolar o termo inicial.
             
             **Aplicação Concreta no Quotidiano:**
             Os números triangulares possuem diversas aplicações práticas em problemas reais de contagem e organização. Um exemplo clássico é a modelação e contagem de ligações em redes de comunicação. Se tivermos uma sala com 6 pessoas e quisermos saber quantos apertos de mão únicos ocorrem se todas se cumprimentarem uma única vez, o cálculo resolve-se através do número triangular $T_{5}$:
             """)
-            st.latex(r"T_5 = \frac{5 \times (5+1)}{2} = 15 \text{ apertos de mão}")
+            st.latex(r"T_{5} = \frac{5 \times (5+1)}{2} = 15 \text{ apertos de mão}")
             st.markdown("Este mesmo raciocínio aplica-se ao determinar o número de canais diretos necessários para interligar computadores ou servidores numa rede sem que haja repetições de caminhos.")
             
             if GRAFICOS_ATIVOS:
@@ -410,25 +410,25 @@ elif page == "🟡 Módulo 5: Padrões Numéricos":
             Um número perfeito define-se como um número inteiro positivo que é exatamente igual à soma de todos os seus divisores próprios, considerando-se divisores próprios todos os fatores que são estritamente menores do que o próprio número. Esta definição clássica remonta aos *Elementos de Euclides*, refletindo o interesse por propriedades estéticas de equilíbrio e harmonia aritmética.
             
             **Exemplos Clássicos:**
-            * **Número 6:** Os seus divisores próprios são {1, 2, 3}. Ao somarmos estes fatores, obtemos: $1+2+3=6$.
-            * **Número 28:** Os seus divisores próprios são {1, 2, 4, 7, 14}. A sua soma resulta em: $1+2+4+7+14=28$.
+            * **Número 6:** Os seus divisores próprios são $\{1, 2, 3\}$. Ao somarmos estes fatores, obtemos: $1+2+3=6$.
+            * **Número 28:** Os seus divisores próprios são $\{1, 2, 4, 7, 14\}$. A sua soma resulta em: $1+2+4+7+14=28$.
             
             A análise profunda dos números perfeitos pares revela uma ligação direta com os Primos de Mersenne, que assumem a forma de $2^{p}-1$, onde o expoente $p$ é primo. Euclides demonstrou formalmente que, sempre que $2^{p}-1$ for um número primo, gera-se um número perfeito par através da fórmula:
             """)
-            st.latex(r"n=2^{p-1}(2^{p}-1)")
+            st.latex(r"n = 2^{p-1}(2^{p}-1)")
             
         with st.expander("5.3 Exploração do Número 9 na Base Decimal", expanded=False):
             st.markdown("""
             **Explicação Teórica Exaustiva:**
-            O número 9 ocupa um lugar de destaque no âmbito da aritmética elementar devido à organização do nosso sistema de numeração posicional em base 10. Pelo facto de o número 9 ser exatamente uma unidade inferior à base do sistema $(10-1)$, cria-se um conjunto único de simetrias repetitivas, regras de divisibilidade facilitadas e padrões visuais muito claros nos seus algarismos.
+            O número 9 ocupa um lugar de destaque no âmbito da aritmética elementar devido à organização do nosso sistema de numeração posicional em base 10. Pelo facto de o número 9 ser exatamente uma unidade inferior à base do sistema ($10-1$), cria-se um conjunto único de simetrias repetitivas, regras de divisibilidade facilitadas e padrões visuais muito claros nos seus algarismos.
             
             Iniciando com as propriedades modulares, verifica-se que qualquer número inteiro positivo é sempre congruente com a soma dos seus próprios algarismos em módulo 9:
             """)
-            st.latex(r"n \equiv \text{soma dos dígitos de } n \pmod 9")
+            st.latex(r"n \equiv \text{soma dos dígitos de } n \pmod{9}")
             st.markdown("""
             Esta propriedade fundamental serve para justificar o critério de divisibilidade por 9. Adicionalmente, os resultados da tabuada elementar do 9 funcionam como um verdadeiro **espelho numérico** que ilustra com precisão a complementaridade entre as dezenas e as unidades. 
             
-            Se analisarmos a progressão dos produtos desde o início, observamos uma simetria visual inversa evidente onde os resultados se invertem simetricamente em pares: por exemplo, os resultados de $9 \times 2 = 18$ e $9 \times 9 = 81$ são o espelho exato um do outro. O mesmo fenómeno ocorre com o par $9 \times 3 = 27$ e $9 \times 8 = 72$, ou com $9 \times 4 = 36$ e $9 \times 7 = 63$. Em todos estes produtos da tabuada, a soma dos dígitos mantém-se fixa no valor de 9.
+            Se analisarmos a progressão dos produtos desde o início, observamos uma simetria visual inversa evidente onde os resultados se invertem simetricamente em pares: por exemplo, os resultados de $9 \times 2 = 18$ e $9 \times 9 = 81$ são o espelho exato um do outro. O mesmo fenómeno ocorre com o par $9 \times 3 = 27$ e $9 \times 8 = 72$, ou com $9 \times 4 = 36$ e $9 \times 7 = 63$. Em todos estes produtos da tabuada, a soma dos dígitos mantém-se fixa no valor 9.
             
             Esta estabilidade nos padrões numéricos estende-se também ao comportamento das potências do número 9, cuja explicação algébrica assenta na relação matemática onde $9^{n}=(10-1)^{n}$. Analisando a redução digital destas potências, as somas dos algarismos geram ciclos regulares invariáveis ($9^1=9$; $9^2=81 \rightarrow 9$; $9^3=729 \rightarrow 18 \rightarrow 9$).
             """)
@@ -471,7 +471,7 @@ elif page == "🟡 Módulo 5: Padrões Numéricos":
             
             Contudo, Fermat afirmou na margem do seu livro que a equação geral:
             """)
-            st.latex(r"a^{n}+b^{n}=c^{n}")
+            st.latex(r"a^{n} + b^{n} = c^{n}")
             st.markdown("""
             **não admite qualquer tipo de solução inteira não trivial** sempre que o expoente $n$ for um número estritamente maior do que 2 ($n>2$). Ao alterarmos apenas o valor do expoente, passamos de soluções infinitas para um vazio total. A prova definitiva foi alcançada utilizando conceitos contemporâneos sofisticados como curvas elípticas.
             """)
