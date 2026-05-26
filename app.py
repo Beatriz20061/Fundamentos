@@ -985,12 +985,12 @@ elif page == "🔵 Grupos de Simetria":
 
         # Imagem depois do texto
         try:
-            st.image("/home/workdir/attachments/Regular-division-31.jpg", 
+            st.image("Regular-division-31.jpg", 
                     caption="M. C. Escher - Regular Division of the Plane nº 31 (1950)",
                     use_container_width=True)
         except:
             st.error("Não foi possível carregar a imagem. Verifique o caminho do ficheiro.")
-            
+
     with st.expander("🔭 7. O Caleidoscópio e a Força Unificadora da Simetria", expanded=False):
         st.markdown("""
     ### O Caleidoscópio: Simetria em Ação
