@@ -1680,7 +1680,7 @@ elif page == "🟣 Padrões dos Primos":
     with st.expander("φ 3. A Função Totiente de Euler", expanded=False):
 
         st.markdown("""
-        ### 📘 1. Definição e Significado
+        ### 1. Definição e Significado
 
         A função totiente $$\\varphi(n)$$, introduzida por Euler, conta quantos números naturais até $$n$$ 
         são **coprimos** com $$n$$, ou seja:
@@ -1689,10 +1689,10 @@ elif page == "🟣 Padrões dos Primos":
         st.latex(r"gcd(a,n) = 1")
 
         st.markdown("""
-        👉 Esta função revela a **estrutura multiplicativa dos inteiros** e depende diretamente dos 
+        Esta função revela a **estrutura multiplicativa dos inteiros** e depende diretamente dos 
         fatores primos de $$n$$.
 
-        #### ✅ Exemplo
+        #### Exemplo
 
         Para $$n = 12$$, os coprimos são: 1, 5, 7, 11
         """)
@@ -1702,7 +1702,7 @@ elif page == "🟣 Padrões dos Primos":
         st.markdown("---")
 
         st.markdown("""
-        ### 🧮 2. Propriedades Fundamentais
+        ### 2. Propriedades Fundamentais
 
         | Propriedade | Fórmula |
         |-------------|---------|
@@ -1712,7 +1712,7 @@ elif page == "🟣 Padrões dos Primos":
         """)
 
         st.markdown("""
-        #### 🔍 Interpretação
+        #### Interpretação
 
         - Números primos → valor máximo  
         - Muitos fatores primos → valor baixo  
@@ -1722,7 +1722,7 @@ elif page == "🟣 Padrões dos Primos":
         st.markdown("---")
 
         st.markdown("""
-        ### 🧾 3. Fórmula Multiplicativa Geral
+        ### 3. Fórmula Multiplicativa Geral
 
         Se:
         """)
@@ -1734,12 +1734,12 @@ elif page == "🟣 Padrões dos Primos":
         st.latex(r"\varphi(n) = n \prod_{i=1}^{k} \left(1 - \frac{1}{p_i}\right)")
 
         st.markdown("""
-        👉 O valor de $$\\varphi(n)$$ depende apenas dos **fatores primos** de $$n$$.
+        O valor de $$\\varphi(n)$$ depende apenas dos **fatores primos** de $$n$$.
         """)
 
         st.markdown("---")
 
-        st.markdown("### 📊 4. Visualização da Função Totiente")
+        st.markdown("### 4. Visualização da Função Totiente")
 
         n_max = st.slider("Escolhe o intervalo:", 10, 200, 100)
 
@@ -1762,7 +1762,7 @@ elif page == "🟣 Padrões dos Primos":
         st.pyplot(fig)
 
         st.markdown("""
-        #### 🔍 Observações
+        #### Observações
 
         - Primos formam a "linha superior"  
         - Estrutura irregular → depende da fatorização  
@@ -1771,7 +1771,7 @@ elif page == "🟣 Padrões dos Primos":
 
         st.markdown("---")
 
-        st.markdown("### 🔢 5. Calculadora do Totiente")
+        st.markdown("### 5. Calculadora do Totiente")
 
         num_input = st.number_input(
             "Introduz um valor:",
@@ -1803,7 +1803,7 @@ elif page == "🟣 Padrões dos Primos":
         st.markdown("---")
 
         st.markdown("""
-        ### 🔐 6. Aplicação: Criptografia RSA
+        ### 6. Aplicação: Criptografia RSA
 
         A função totiente é essencial no algoritmo **RSA**.
 
@@ -1813,7 +1813,7 @@ elif page == "🟣 Padrões dos Primos":
         - Calcula-se $$n = pq$$  
         - $$\\varphi(n) = (p-1)(q-1)$$  
 
-        👉 A segurança depende da dificuldade de fatorizar $$n$$.
+        A segurança depende da dificuldade de fatorizar $$n$$.
 
         Sem conhecer os fatores primos, calcular $$\\varphi(n)$$ é extremamente difícil.
         """)
