@@ -11,10 +11,26 @@ except ImportError:
 # Configuração da plataforma web para alto impacto visual e responsividade
 st.set_page_config(page_title="MathXplore - ISCTE Sintra", layout="wide", page_icon="🔢")
 
-# Injeção de CSS personalizado para design premium, cartões de capa e animações
+# ---- CONFIGURAÇÃO DOS FICHEIROS DE IMAGEM LOCAIS ----
+# Certifica-te de que estes ficheiros estão na mesma pasta que este ficheiro app.py
+IMG_MODULO_1 = "Designer.png"
+IMG_MODULO_2 = "3656235 (1).jpg"
+IMG_MODULO_3 = "one_to_nine_numbers_hand_drawn (1).jpg"
+IMG_MODULO_4 = "v979-007a.jpg"
+IMG_MODULO_5 = "8375253.jpg"
+
+# Injeção de CSS personalizado para emular o fundo do site e os retângulos com títulos
 st.markdown("""
     <style>
-    .main { background-color: #f8fafc; }
+    /* Adiciona a imagem de fundo abstrata matemática por trás de todo o site */
+    .stApp {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.90)), 
+                          url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    
     .stButton>button {
         border-radius: 12px;
         background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
@@ -29,21 +45,35 @@ st.markdown("""
         transform: translateY(-2px);
         box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
     }
-    .module-card {
+    
+    /* Retângulo do Módulo com Título por Cima */
+    .modulo-retangulo {
         background-color: white;
-        border-radius: 16px;
-        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
-        margin-bottom: 30px;
-        overflow: hidden;
+        border-radius: 14px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
         border: 1px solid #e2e8f0;
-        transition: transform 0.3s ease;
+        margin-bottom: 25px;
+        overflow: hidden;
+        width: 100%;
     }
-    .module-card:hover {
-        transform: scale(1.005);
+    .modulo-topo-titulo {
+        background-color: #f8fafc;
+        padding: 14px 24px;
+        border-bottom: 1px solid #edf2f7;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #1e293b;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
-    .card-content { padding: 30px; }
-    .card-title { color: #1e1b4b; margin-top: 0; font-weight: 800; }
-    .card-metadata { color: #64748b; font-size: 0.9em; margin-bottom: 0; }
+    .modulo-corpo-imagem {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -90,23 +120,23 @@ if page == "🏠 Página Inicial":
     * **Módulo 4 :** Investigação da distribuição de primos na reta, Espiral de Ulam e Função Totiente de Euler.
     * **Módulo 5 :** Números Triangulares, Números Perfeitos, as propriedades cíclicas do Número 9 e o Último Teorema de Fermat.
     """)
-    st.image("https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80", caption="A harmonia abstrata das estruturas discretas e geométricas.")
 
 # ==============================================================================
 # MÓDULO 1: GRUPOS DE SIMETRIA
 # ==============================================================================
 elif page == "🔵 Módulo 1: Grupos de Simetria":
-    with st.container():
-        st.markdown('<div class="module-card">', unsafe_allow_html=True)
-        col_img, col_txt = st.columns([2, 5])
-        with col_img:
-            st.image("https://images.unsplash.com/photo-1596495573882-62828b185012?w=300&q=80", width=180)
-        with col_txt:
-            st.markdown('<div class="card-content">', unsafe_allow_html=True)
-            st.markdown('<h2 class="card-title">🔵 Módulo 1: Grupos de Simetria</h2>', unsafe_allow_html=True)
-            st.markdown('<p class="card-metadata"><b>Autoras:</b> Catarina Pereira, Beatriz Correia<br><b>Data:</b> Março 2026</p>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+    # Contentor em formato de retângulo com título no topo e imagem dentro
+    st.markdown('''
+        <div class="modulo-retangulo">
+            <div class="modulo-topo-titulo">🔵 MÓDULO 1: GRUPOS DE SIMETRIA</div>
+        </div>
+    ''', unsafe_allow_html=True)
+    
+    # Exibição controlada da imagem do projeto logo abaixo do título estruturado
+    try:
+        st.image(IMG_MODULO_1, use_container_width=True)
+    except:
+        st.info("Adicione o ficheiro 'Designer.png' na pasta do script para renderizar a imagem do Módulo 1.")
         
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Isometrias", "🧠 Quiz Geral do Módulo"])
     
@@ -154,17 +184,16 @@ elif page == "🔵 Módulo 1: Grupos de Simetria":
 # MÓDULO 2: 17 GRUPOS CRISTALOGRÁFICOS
 # ==============================================================================
 elif page == "🟤 Módulo 2: 17 Grupos Cristalográficos":
-    with st.container():
-        st.markdown('<div class="module-card">', unsafe_allow_html=True)
-        col_img, col_txt = st.columns([2, 5])
-        with col_img:
-            st.image("https://images.unsplash.com/photo-1518770660439-4636190af475?w=300&q=80", width=180)
-        with col_txt:
-            st.markdown('<div class="card-content">', unsafe_allow_html=True)
-            st.markdown('<h2 class="card-title">🟤 Módulo 2: Os 17 Grupos Cristalográficos do Plano</h2>', unsafe_allow_html=True)
-            st.markdown('<p class="card-metadata"><b>Autoras:</b> Catarina Pereira, Beatriz Correia<br><b>Data:</b> Março 2026</p>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('''
+        <div class="modulo-retangulo">
+            <div class="modulo-topo-titulo">🟤 MÓDULO 2: 17 GRUPOS CRISTALOGRÁFICOS</div>
+        </div>
+    ''', unsafe_allow_html=True)
+    
+    try:
+        st.image(IMG_MODULO_2, use_container_width=True)
+    except:
+        st.info("Adicione o ficheiro '3656235 (1).jpg' na pasta do script para renderizar a imagem do Módulo 2.")
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Classificação", "🧠 Quiz Geral do Módulo"])
     
@@ -229,17 +258,16 @@ elif page == "🟤 Módulo 2: 17 Grupos Cristalográficos":
 # MÓDULO 3: LÓGICA DO NUMBER MATCH
 # ==============================================================================
 elif page == "🟢 Módulo 3: Lógica do Number Match":
-    with st.container():
-        st.markdown('<div class="module-card">', unsafe_allow_html=True)
-        col_img, col_txt = st.columns([2, 5])
-        with col_img:
-            st.image("https://images.unsplash.com/photo-1509228468518-180dd4864904?w=300&q=80", width=180)
-        with col_txt:
-            st.markdown('<div class="card-content">', unsafe_allow_html=True)
-            st.markdown('<h2 class="card-title">🟢 Módulo 3: A Lógica Matemática por Trás do Jogo Number Match</h2>', unsafe_allow_html=True)
-            st.markdown('<p class="card-metadata"><b>Autoras:</b> Catarina Pereira, Beatriz Correia<br><b>Data:</b> Abril 2026</p>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('''
+        <div class="modulo-retangulo">
+            <div class="modulo-topo-titulo">🟢 MÓDULO 3: LÓGICA DO NUMBER MATCH</div>
+        </div>
+    ''', unsafe_allow_html=True)
+    
+    try:
+        st.image(IMG_MODULO_3, use_container_width=True)
+    except:
+        st.info("Adicione o ficheiro 'one_to_nine_numbers_hand_drawn (1).jpg' na pasta do script para renderizar a imagem do Módulo 3.")
     
     tab1, tab2 = st.tabs(["💡 Lição do Sistema & Simulador", "🧠 Quiz Geral do Módulo"])
     
@@ -249,7 +277,7 @@ elif page == "🟢 Módulo 3: Lógica do Number Match":
             **Explicação Teórica :**
             O *Number Match* é um jogo de lógica e aritmética popular em plataformas digitais devido às suas regras simples e à dinâmica progressiva do tabuleiro. As decisões do jogador dependem simultaneamente de condições lógicas e de propriedades aritméticas elementares, como igualdade, soma e paridade, que influenciam diretamente a evolução do jogo (Rosen, 2012). 
             
-            A formalização das condições de jogada pode ser feita recorrendo à lógica proposicional, permitindo descrever de forma precisa quando uma jogada é válida. Uma jogada válida ocorre quando dois números $a$ e $b$ satisfazem simultaneamente uma condição numérica e uma condição estrutural de acessibilidade. A condição numérica é satisfeita quando se verifica pelo menos uma das seguintes situações:
+            A formalização das condições de jogada pode ser feita recorrendo à lógica proposicional, permitindo描述 de forma precisa quando uma jogada é válida. Uma jogada válida ocorre quando dois números $a$ e $b$ satisfazem simultaneamente uma condição numérica e uma condição estrutural de acessibilidade. A condição numérica é satisfeita quando se verifica pelo menos uma das seguintes situações:
             1. $a=b$, isto é, os dois números são iguais;
             2. $a+b=10$, correspondendo a uma relação aritmética complementar.
             
@@ -303,17 +331,16 @@ elif page == "🟢 Módulo 3: Lógica do Number Match":
 # MÓDULO 4: PADRÕES DOS PRIMOS
 # ==============================================================================
 elif page == "🟣 Módulo 4: Padrões dos Primos":
-    with st.container():
-        st.markdown('<div class="module-card">', unsafe_allow_html=True)
-        col_img, col_txt = st.columns([2, 5])
-        with col_img:
-            st.image("https://images.unsplash.com/photo-1509228468518-180dd4864904?w=300&q=80", width=180)
-        with col_txt:
-            st.markdown('<div class="card-content">', unsafe_allow_html=True)
-            st.markdown('<h2 class="card-title">🟣 Módulo 4: Padrões dos Primos – Da Espiral à Totiente</h2>', unsafe_allow_html=True)
-            st.markdown('<p class="card-metadata"><b>Autoras:</b> Catarina Pereira, Beatriz Correia<br><b>Data:</b> Março 2026</p>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('''
+        <div class="modulo-retangulo">
+            <div class="modulo-topo-titulo">🟣 MÓDULO 4: PADRÕES DOS PRIMOS</div>
+        </div>
+    ''', unsafe_allow_html=True)
+    
+    try:
+        st.image(IMG_MODULO_4, use_container_width=True)
+    except:
+        st.info("Adicione o ficheiro 'v979-007a.jpg' na pasta do script para renderizar a imagem do Módulo 4.")
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Aplicações", "✍️ Quiz Geral do Módulo"])
     
@@ -400,17 +427,16 @@ elif page == "🟣 Módulo 4: Padrões dos Primos":
 # MÓDULO 5: PADRÕES NUMÉRICOS
 # ==============================================================================
 elif page == "🟡 Módulo 5: Padrões Numéricos":
-    with st.container():
-        st.markdown('<div class="module-card">', unsafe_allow_html=True)
-        col_img, col_txt = st.columns([2, 5])
-        with col_img:
-            st.image("https://images.unsplash.com/photo-1596495573882-62828b185012?w=300&q=80", width=180)
-        with col_txt:
-            st.markdown('<div class="card-content">', unsafe_allow_html=True)
-            st.markdown('<h2 class="card-title">🟡 Módulo 5: Padrões Numéricos e Estruturas Aritméticas</h2>', unsafe_allow_html=True)
-            st.markdown('<p class="card-metadata"><b>Autoras:</b> Catarina Pereira, Beatriz Correia<br><b>Data:</b> Maio 2026</p>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('''
+        <div class="modulo-retangulo">
+            <div class="modulo-topo-titulo">🟡 MÓDULO 5: PADRÕES NUMÉRICOS</div>
+        </div>
+    ''', unsafe_allow_html=True)
+    
+    try:
+        st.image(IMG_MODULO_5, use_container_width=True)
+    except:
+        st.info("Adicione o ficheiro '8375253.jpg' na pasta do script para renderizar a imagem do Módulo 5.")
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Gráficos", "✍️ Quiz Geral do Módulo"])
     
