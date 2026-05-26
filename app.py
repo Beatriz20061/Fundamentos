@@ -1383,7 +1383,7 @@ elif page == "🟢 Lógica do Number Match":
             with col2:
                 s_b = st.number_input("Valor da Carta B", 1, 9, 5, key="s_b_logic")
             with col3:
-                s_con = st.checkbox("Conectados / Contíguos?", value=True, key="s_con_logic")
+                s_con = st.checkbox("Conectados / Adjacentes?", value=True, key="s_con_logic")
 
             c_num = (s_a == s_b) or (s_a + s_b == 10)
             c_valida = c_num and s_con
