@@ -968,24 +968,27 @@ elif page == "🔵 Grupos de Simetria":
         ### Simetria na Arte de M. C. Escher
 
         M. C. Escher é um dos artistas que melhor explorou as simetrias do plano, apesar de não possuir formação matemática formal. A sua obra é um fascinante exemplo da ligação profunda entre **arte e matemática**.
-        """)
 
-        # === IMAGEM COM TRATAMENTO DE ERRO ===
-        try:
-            st.image("Regular-division-31.jpg", 
-                    caption="M. C. Escher - Regular Division of the Plane nº 31 (1950)",
-                    use_container_width=True)
-        except:
-            # Fallback caso o caminho falhe
-            st.image("/home/workdir/attachments/Regular-division-31.jpg", 
-                    caption="M. C. Escher - Regular Division of the Plane nº 31 (1950)",
-                    use_container_width=True)
+        Escher construiu tesselações complexas utilizando as quatro isometrias fundamentais:
+
+        - **Rotações**
+        - **Reflexões**
+        - **Translações**
+        - **Reflexões Deslizantes (glide reflections)**
+
+        O artista organizava figuras de forma a pavimentar o plano **sem deixar espaços vazios**, criando padrões hipnóticos e infinitos. Muitas das suas obras encaixam-se perfeitamente nos **17 Grupos Cristalográficos** do plano.
+        """)
 
         st.markdown("""
         #### Exemplo: Regular Division of the Plane nº 31
 
         Nesta obra icónica, observam-se claramente rotações de 180°, eixos de reflexão e translações regulares que repetem a figura base do peixe, demonstrando de forma brilhante como a arte pode materializar conceitos matemáticos avançados.
         """)
+
+        # Imagem após o exemplo
+        st.image("/home/workdir/attachments/Regular-division-31.jpg", 
+                caption="M. C. Escher - Regular Division of the Plane nº 31 (1950)",
+                use_container_width=True)
     with st.expander("🔭 7. O Caleidoscópio e a Força Unificadora da Simetria", expanded=False):
         st.markdown("""
     ### O Caleidoscópio: Simetria em Ação
