@@ -945,7 +945,7 @@ elif page == "🔵 Grupos de Simetria":
 
     Exemplos clássicos incluem o **adenovírus**, o **poliovírus** e o **vírus Zika**. Esta arquitetura viral é elegantemente descrita pelo modelo de **Caspar–Klug** (Flint et al., *Principles of Virology*).
     """)
-        with st.expander("🧬 5. Estruturas Helicoidais e Simetria Quaternária", expanded=True):
+        with st.expander("🧬 5. Estruturas Helicoidais e Simetria Quaternária", expanded=False):
             st.markdown("""
     ### Estruturas Helicoidais e Simetria Quaternária
 
@@ -963,7 +963,7 @@ elif page == "🔵 Grupos de Simetria":
 
     Assim como nas obras de **M. C. Escher**, onde padrões complexos e hipnóticos emergem de transformações simples, a natureza utiliza rotações e translações para construir sistemas moleculares altamente eficientes e estáveis.
     """)
-    with st.expander("🎨 1.5 Simetria na Arte de M. C. Escher", expanded=True):
+    with st.expander("🎨 1.5 Simetria na Arte de M. C. Escher", expanded=False):
         st.markdown("""
         ### Simetria na Arte de M. C. Escher
 
@@ -992,7 +992,7 @@ elif page == "🔵 Grupos de Simetria":
         #### Destaque na Obra Acima
         Nesta tesselação observam-se rotações de 180°, eixos de reflexão e translações que repetem a figura do peixe de forma perfeita.
         """)
-        with st.expander("🔭 7. O Caleidoscópio e a Força Unificadora da Simetria", expanded=True):
+        with st.expander("🔭 7. O Caleidoscópio e a Força Unificadora da Simetria", expanded=False):
             st.markdown("""
     ### O Caleidoscópio: Simetria em Ação
 
