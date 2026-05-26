@@ -1532,9 +1532,9 @@ elif page == "🟢 Lógica do Number Match":
 # MÓDULO 4: PADRÕES DOS PRIMOS
 # ==============================================================================
 elif page == "🟣 Padrões dos Primos":
-    render_module_header("🟣", "MÓDULO 4: PADRÕES DOS PRIMOS")
+    render_module_header("🟣", "MÓDULO 4: PADRÕES DOS PRIMOS: DA ESPIRAL Á TOTIENTE")
     
-    tab1, tab2 = st.tabs(["📖 Matéria Completa & Aplicações", "🧠 Quiz Geral do Módulo"])
+    tab1, tab2 = st.tabs(["📖 Matéria Completa", "🧠 Quiz Geral do Módulo"])
     
     with tab1:
         import streamlit as st
@@ -1585,7 +1585,7 @@ elif page == "🟣 Padrões dos Primos":
 
         Apesar desta importância estrutural, a sua distribuição é **aparentemente irregular**. 
 
-        👉 Este comportamento cria um contraste fascinante:
+        Este comportamento cria um contraste fascinante:
         - **Aleatoriedade aparente** na distribuição dos primos  
         - **Determinismo** em certas expressões algébricas que os geram  
 
@@ -1601,9 +1601,9 @@ elif page == "🟣 Padrões dos Primos":
         - Crescimento em espiral (sentido horário)  
         - Primos destacados  
 
-        🔍 Resultado surpreendente:
+        Resultado surpreendente:
 
-        👉 Os números primos alinham-se em **diagonais longas e bem definidas**.
+        Os números primos alinham-se em **diagonais longas e bem definidas**.
         """)
 
         st.markdown("---")
@@ -1631,13 +1631,13 @@ elif page == "🟣 Padrões dos Primos":
         """)
 
         st.markdown("""
-        #### 🔍 Interpretação
+        #### Interpretação
 
         - Cada diagonal corresponde a uma expressão matemática  
         - Algumas geram muitos primos → **diagonais densas**  
         - Outras geram poucos → **diagonais vazias**
 
-        👉 A espiral não cria primos — apenas revela padrões escondidos.
+        A espiral não cria primos — apenas revela padrões escondidos.
         """)
 
         st.markdown("---")
@@ -1862,11 +1862,50 @@ elif page == "🟣 Padrões dos Primos":
 # MÓDULO 5: PADRÕES NUMÉRICOS
 # ==============================================================================
 elif page == "🟡 Padrões Numéricos":
-    render_module_header("🟡", "MÓDULO 5: PADRÕES NUMÉRICOS")
+    render_module_header("🟡", "MÓDULO 5: PADRÕES NUMÉRICOS E ESTRUTURAS ARITMÉTICAS: DOS TRIÂNGULARES A FERMAT")
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Gráficos", "🧠 Quiz Geral do Módulo"])
     
     with tab1:
+        with st.expander("📖 Introdução à Teoria dos Números", expanded=True):
+
+            st.markdown("""
+            ### Introdução
+
+            A **Teoria dos Números** é uma das áreas mais antigas da Matemática, tendo como principal objetivo o estudo dos números inteiros e a identificação das suas propriedades e regularidades.
+
+            Desde a Antiguidade, o ser humano procura encontrar **ordem no comportamento dos números**, estabelecendo ligações entre a aritmética abstrata e representações mais visuais, como a geometria.
+
+            ---
+
+            ### Objetivo do Trabalho
+
+            Neste trabalho, exploram-se diferentes **padrões numéricos** e estruturas fundamentais:
+
+            #### Números Figurados
+            Começamos pelos **números triangulares**, onde a geometria permite visualizar somas aritméticas através de pontos organizados.
+
+            #### Números Perfeitos
+            De seguida, analisam-se os **números perfeitos**, que representam uma forma de equilíbrio matemático, sendo iguais à soma dos seus divisores próprios.
+
+            #### O Número 9 na Base Decimal
+            Explora-se também o comportamento do número **9**, evidenciando simetrias e padrões que resultam do sistema de numeração decimal.
+
+            #### ∞ Último Teorema de Fermat
+            Por fim, estuda-se o **Último Teorema de Fermat**, destacando o contraste entre:
+
+            - O caso do expoente 2 → com infinitas soluções (triplas pitagóricas)  
+            - O caso de expoentes superiores a 2 → sem soluções inteiras  
+
+            ---
+
+            ### Ideia Central
+
+            O objetivo global é mostrar que, mesmo quando os números parecem comportar-se de forma irregular, existem **padrões profundos e estruturas matemáticas** que revelam ordem e beleza.
+
+            A Teoria dos Números permite assim transformar o aparente caos em **compreensão estruturada**.
+            """)
+
         with st.expander("📐 5.1 Números Triangulares e Contagem Geométrica", expanded=False):
             st.markdown("""
             ### Explicação Teórica
