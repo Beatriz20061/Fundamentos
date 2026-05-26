@@ -11,78 +11,117 @@ except ImportError:
 # Configuração da plataforma web para alto impacto visual e responsividade
 st.set_page_config(page_title="MathXplore - ISCTE Sintra", layout="wide", page_icon="🔢")
 
-# ---- NOMES EXATOS DOS TEUS FICHEIROS DE IMAGEM ----
-IMG_MODULO_1 = "Designer.png"
-IMG_MODULO_2 = "3656235 (1).jpg"
-IMG_MODULO_3 = "one_to_nine_numbers_hand_drawn (1).jpg"
-IMG_MODULO_4 = "v979-007a.jpg"
-IMG_MODULO_5 = "8375253.jpg"
-
-# Injeção de CSS para colocar a foto com fórmulas por trás e criar a moldura retangular
+# Injeção de CSS Avançado para Animações e Transições Fluídas
 st.markdown("""
     <style>
-    /* Aplica a foto de fórmulas matemáticas por trás de todo o site */
+    /* Importar fonte moderna */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    
+    html, body, [class*="css"] {
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* Cor de fundo sólida e moderna */
     .stApp {
-        background-image: linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.85)), 
-                          url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1920&q=80');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
+        background-color: #f8fafc;
     }
     
-    /* Configuração dos botões interativos */
+    /* --- ANIMAÇÃO DE ENTRADA SUAVE (FADE-IN) --- */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Aplica a animação ao bloco principal de conteúdo */
+    .block-container {
+        animation: fadeInUp 0.6s ease-out;
+    }
+    
+    /* --- BOTÕES INTERATIVOS ULTRA-FLUIDOS --- */
     .stButton>button {
         border-radius: 12px;
         background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
         color: white;
         border: none;
-        padding: 12px 28px;
-        font-weight: bold;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        padding: 14px 32px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
     }
     .stButton>button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 20px rgba(79, 70, 229, 0.5);
+        background: linear-gradient(135deg, #4338ca 0%, #2e288a 100%);
+    }
+    .stButton>button:active {
+        transform: translateY(-1px);
     }
     
-    /* Retângulo do Módulo com Borda Arredondada e Sombra Superior/Inferior */
+    /* --- RETÂNGULO DO MÓDULO COM DESIGN PREMIUM --- */
     .modulo-caixa-moldura {
         background-color: white;
-        border-radius: 14px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         border: 1px solid #e2e8f0;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
         overflow: hidden;
-        width: 100%;
+        transition: all 0.3s ease;
     }
-    /* Barra superior cinza para o título */
     .modulo-barra-titulo {
-        background-color: #f8fafc;
-        padding: 18px 24px;
-        border-bottom: 1px solid #edf2f7;
-        font-size: 1.25rem;
+        background: linear-gradient(90deg, #f1f5f9 0%, #ffffff 100%);
+        padding: 20px 26px;
+        border-bottom: 1px solid #e2e8f0;
+        font-size: 1.3rem;
         font-weight: 700;
         color: #1e293b;
         letter-spacing: 0.5px;
     }
-    /* Área interna branca onde a imagem vai ficar emoldurada */
-    .modulo-conteudo-imagem {
-        padding: 24px;
-        background-color: #ffffff;
-        display: flex;
-        justify-content: center;
+    
+    /* --- ESTILIZAÇÃO DINÂMICA DOS EXPANDERS (MATÉRIA) --- */
+    div[data-testid="stExpander"] {
+        background-color: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02) !important;
+        margin-bottom: 15px !important;
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    }
+    div[data-testid="stExpander"]:hover {
+        border-color: #a5b4fc !important;
+        box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.1) !important;
+        transform: translateY(-2px);
+    }
+    
+    /* --- ANIMAÇÃO NAS ABAS (TABS) --- */
+    button[data-baseweb="tab"] {
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+    }
+    button[data-baseweb="tab"]:hover {
+        color: #4f46e5 !important;
+    }
+    
+    /* --- CUSTOMIZAÇÃO DOS INPUTS --- */
+    div[data-testid="stMarkdownContainer"] h3 {
+        color: #1e293b;
     }
     </style>
 """, unsafe_allow_html=True)
 
 # ---- MENU LATERAL DE ACESSO ----
-st.sidebar.title("MathXplore")
+st.sidebar.title("🔢 MathXplore")
 st.sidebar.markdown("**Fundamentos de Matemática**\n*Licenciatura em MATD*")
 st.sidebar.markdown("---")
 
 page = st.sidebar.radio(
-    "Menu :",
+    "Menu de Navegação :",
     [
         "🏠 Página Inicial",
         "🔵 Módulo 1: Grupos de Simetria",
@@ -95,9 +134,9 @@ page = st.sidebar.radio(
 
 st.sidebar.markdown("---")
 st.sidebar.caption("Trabalhos desenvolvidos por:")
-st.sidebar.caption("Catarina Pereira & Beatriz Correia")
-st.sidebar.caption("Docente: Prof. Rosário Laureano")
-st.sidebar.caption("ISCTE Sintra")
+st.sidebar.caption("💡 Catarina Pereira & Beatriz Correia")
+st.sidebar.caption("👨‍🏫 Docente: Prof. Rosário Laureano")
+st.sidebar.caption("🏫 ISCTE Sintra")
 
 # ==============================================================================
 # 🏠 PÁGINA INICIAL
@@ -124,15 +163,7 @@ if page == "🏠 Página Inicial":
 # MÓDULO 1: GRUPOS DE SIMETRIA
 # ==============================================================================
 elif page == "🔵 Módulo 1: Grupos de Simetria":
-    # Abre o retângulo e injeta a barra cinza de título
-    st.markdown('<div class="modulo-caixa-moldura"><div class="modulo-barra-titulo">🔵 MÓDULO 1: GRUPOS DE SIMETRIA</div><div class="modulo-conteudo-imagem">', unsafe_allow_html=True)
-    # Roda a imagem local dentro do corpo do retângulo
-    try:
-        st.image(IMG_MODULO_1, use_container_width=True)
-    except:
-        st.error(f"Erro: Ficheiro '{IMG_MODULO_1}' não encontrado no repositório.")
-    # Fecha as tags HTML do retângulo com segurança antes de iniciar a matéria
-    st.markdown('</div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="modulo-caixa-moldura"><div class="modulo-barra-titulo">🔵 MÓDULO 1: GRUPOS DE SIMETRIA</div></div>', unsafe_allow_html=True)
         
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Isometrias", "🧠 Quiz Geral do Módulo"])
     
@@ -177,12 +208,7 @@ elif page == "🔵 Módulo 1: Grupos de Simetria":
 # MÓDULO 2: 17 GRUPOS CRISTALOGRÁFICOS
 # ==============================================================================
 elif page == "🟤 Módulo 2: 17 Grupos Cristalográficos":
-    st.markdown('<div class="modulo-caixa-moldura"><div class="modulo-barra-titulo">🟤 MÓDULO 2: 17 GRUPOS CRISTALOGRÁFICOS</div><div class="modulo-conteudo-imagem">', unsafe_allow_html=True)
-    try:
-        st.image(IMG_MODULO_2, use_container_width=True)
-    except:
-        st.error(f"Erro: Ficheiro '{IMG_MODULO_2}' não encontrado no repositório.")
-    st.markdown('</div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="modulo-caixa-moldura"><div class="modulo-barra-titulo">🟤 MÓDULO 2: 17 GRUPOS CRISTALOGRÁFICOS</div></div>', unsafe_allow_html=True)
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Classificação", "🧠 Quiz Geral do Módulo"])
     
@@ -244,12 +270,7 @@ elif page == "🟤 Módulo 2: 17 Grupos Cristalográficos":
 # MÓDULO 3: LÓGICA DO NUMBER MATCH
 # ==============================================================================
 elif page == "🟢 Módulo 3: Lógica do Number Match":
-    st.markdown('<div class="modulo-caixa-moldura"><div class="modulo-barra-titulo">🟢 MÓDULO 3: LÓGICA DO NUMBER MATCH</div><div class="modulo-conteudo-imagem">', unsafe_allow_html=True)
-    try:
-        st.image(IMG_MODULO_3, use_container_width=True)
-    except:
-        st.error(f"Erro: Ficheiro '{IMG_MODULO_3}' não encontrado no repositório.")
-    st.markdown('</div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="modulo-caixa-moldura"><div class="modulo-barra-titulo">🟢 MÓDULO 3: LÓGICA DO NUMBER MATCH</div></div>', unsafe_allow_html=True)
     
     tab1, tab2 = st.tabs(["💡 Lição do Sistema & Simulador", "🧠 Quiz Geral do Módulo"])
     
@@ -310,12 +331,7 @@ elif page == "🟢 Módulo 3: Lógica do Number Match":
 # MÓDULO 4: PADRÕES DOS PRIMOS
 # ==============================================================================
 elif page == "🟣 Módulo 4: Padrões dos Primos":
-    st.markdown('<div class="modulo-caixa-moldura"><div class="modulo-barra-titulo">🟣 MÓDULO 4: PADRÕES DOS PRIMOS</div><div class="modulo-conteudo-imagem">', unsafe_allow_html=True)
-    try:
-        st.image(IMG_MODULO_4, use_container_width=True)
-    except:
-        st.error(f"Erro: Ficheiro '{IMG_MODULO_4}' não encontrado no repositório.")
-    st.markdown('</div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="modulo-caixa-moldura"><div class="modulo-barra-titulo">🟣 MÓDULO 4: PADRÕES DOS PRIMOS</div></div>', unsafe_allow_html=True)
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Aplicações", "✍️ Quiz Geral do Módulo"])
     
@@ -327,13 +343,13 @@ elif page == "🟣 Módulo 4: Padrões dos Primos":
             
             Os números primos são fundamentais na aritmética. O Teorema Fundamental da Aritmética estabelece que qualquer número inteiro positivo pode ser decomposto de forma única num produto de primos. Esta unicidade confere aos primos um papel central na estrutura dos números inteiros. Apesar da sua importância, a distribuição dos primos é notoriamente irregular. Du Sautoy (2003) descreve-os como "notas musicais" que parecem seguir um ritmo aparentemente aleatório, mas que escondem uma harmonia profunda. 
             
-            A irregularidade aparente levou matemáticos como Gauss e Riemann a procurar padrões estatísticos que explicassem esta oscilação entre ordem e caos. Foi neste contexto que Riemann, em 1859, introduziu a função zeta complexa e formulou a célebre Hipótese de Riemann, segundo a qual todas as raízes não triviais dessa função têm parte real igual a 1/2. Esta afirmação estabelece uma ligação direta entre o comportamento analítico da função zeta e a distribuição dos números primos. A hipótese permanece em aberto e é considerada um dos problemas centrais da matemática contemporânea.
+            A irregularidade aparente levou matemáticos como Gauss e Riemann a procurar padrões estatísticos que explicassem esta oscilação entre ordem e caos. Foi neste contexto que Riemann, em 1859, introduziu a função zeta complexa e formulou a célebre Hipótese de Riemann, segundo a qual todas as raíces não triviais dessa função têm parte real igual a 1/2. Esta afirmação estabelece uma ligação direta entre o comportamento analítico da função zeta e a distribuição dos números primos. A hipótese permanece em aberto e é considerada um dos problemas centrais da matemática contemporânea.
             """)
             
         with st.expander("4.2 Representações Visuais e Padrões Inesperados na Espiral de Ulam", expanded=True):
             st.markdown("""
             **Explicação Teórica Exaustiva:**
-            A visualização é uma ferramenta poderosa para revelar padrões. Stewart (2006) argumenta que muitas descobertas matemáticas surgem quando se representa um problema de forma inesperada. Foi precisamente isso que aconteceu com Stanislaw Ulam em 1963. Durante uma conferência, Ulam começou a desenhar os números naturais numa espiral quadrada, marcando os números primos. O que parecia um exercício casual revealed algo extraordinário: os números primos alinhavam-se em diagonais longas e bem definidas.
+            A visualização é uma ferramenta poderosa para revelar padrões. Stewart (2006) argumenta que muitas descobertas matemáticas surgem quando se representa um problema de forma inesperada. Foi precisamente isso que aconteceu com Stanislaw Ulam em 1963. Durante uma conferência, Ulam começou a desenhar os números naturais numa espiral quadrada, marcando os números primos. O que parecia um exercício casual revelou algo extraordinário: os números primos alinhavam-se em diagonais longas e bem definidas.
             
             **Processo de Construção:**
             * Coloca-se o número 1 no centro.
@@ -358,7 +374,7 @@ elif page == "🟣 Módulo 4: Padrões dos Primos":
             """)
             st.latex(r"\varphi(n)=n\prod_{i=1}^{k}\left(1-\frac{1}{p_i}\right)")
             st.markdown("""
-            Além disso, a função totiente cumpre a propriedade multiplicativa quando os fatores são coprimos entre si: $\\varphi(ab)=\\varphi(ab)$ se $gcd(a,b)=1$.
+            Além disso, a função totiente cumpre a propriedade multiplicativa quando os fatores são coprimos entre si: $\\varphi(ab)=\\varphi(a)\\varphi(b)$ se $gcd(a,b)=1$.
             
             **Propriedades Fundamentais:**
             1. **Totiente de um Número Primo:** Se $p$ é primo, então $\\varphi(p)=p-1$, porque todos os inteiros menores que um primo são coprimos com ele.
@@ -397,12 +413,7 @@ elif page == "🟣 Módulo 4: Padrões dos Primos":
 # MÓDULO 5: PADRÕES NUMÉRICOS
 # ==============================================================================
 elif page == "🟡 Módulo 5: Padrões Numéricos":
-    st.markdown('<div class="modulo-caixa-moldura"><div class="modulo-barra-titulo">🟡 MÓDULO 5: PADRÕES NUMÉRICOS</div><div class="modulo-conteudo-imagem">', unsafe_allow_html=True)
-    try:
-        st.image(IMG_MODULO_5, use_container_width=True)
-    except:
-        st.error(f"Erro: Ficheiro '{IMG_MODULO_5}' não encontrado no repositório.")
-    st.markdown('</div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="modulo-caixa-moldura"><div class="modulo-barra-titulo">🟡 MÓDULO 5: PADRÕES NUMÉRICOS</div></div>', unsafe_allow_html=True)
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Gráficos", "✍️ Quiz Geral do Módulo"])
     
@@ -410,7 +421,7 @@ elif page == "🟡 Módulo 5: Padrões Numéricos":
         with st.expander("5.1 Números Triangulares e a Abordagem Geométrica de Contagem", expanded=True):
             st.markdown("""
             **Explicação Teórica:**
-            Os números triangulares pertencem ao grupo dos chamados números figurados, que se caracterizam por serem números que podem ser representados através de arranjos geométricos de pontos regulares. Esta abordagem visual transforma problemas de contagem abstrata numa perceção geométrica de tal forma intuitiva que minimiza o peso algébrico inicial. Eles representam a quantidade de pontos necessária para construir um triângulo equilátero com um determinado número de linhas. Como cada nova linha adiciona sempre mais um ponto do que a linha anterior, um número triangular corresponds diretamente à soma dos primeiros números naturais.
+            Os números triangulares pertencem ao grupo dos chamados números figurados, que se caracterizam por serem números que podem ser representados através de arranjos geométricos de pontos regulares. Esta abordagem visual transforma problemas de contagem abstrata numa perceção geométrica de tal forma intuitiva que minimiza o peso algébrico inicial. Eles representam a quantidade de pontos necessária para construir um triângulo equilátero com um determinado número de linhas. Como cada nova linha adiciona sempre mais um ponto do que a linha anterior, um número triangular corresponde diretamente à soma dos primeiros números naturais.
             """)
             st.latex(r"T_{n}=1+2+3+\cdot\cdot\cdot+n=\frac{n(n+1)}{2}")
             st.markdown("""
@@ -421,6 +432,26 @@ elif page == "🟡 Módulo 5: Padrões Numéricos":
             """)
             st.latex(r"T_5 = \frac{5 \times (5+1)}{2} = 15 \text{ apertos de mão}")
             st.markdown("Este mesmo raciocínio aplica-se ao determinar o número de canais diretos necessários para interligar computadores numa rede sem que haja repetições de caminhos.")
+            
+            # --- IMPLEMENTAÇÃO DO GRÁFICO DO TRIÂNGULO PITAGÓRICO ---
+            if GRAFICOS_ATIVOS:
+                st.markdown("#### 📐 Representação Geométrica do Triângulo Pitagórico (3, 4, 5)")
+                
+                # Tag de imagem instrucional acionada para explicar geometricamente a relação de lados
+                # 
+                
+                fig_tri, ax_tri = plt.subplots(figsize=(4, 4))
+                x_tri = [0, 4, 0, 0]
+                y_tri = [0, 0, 3, 0]
+                ax_tri.plot(x_tri, y_tri, 'k-', linewidth=2)
+                ax_tri.fill([0, 4, 0], [0, 0, 3], color='lightblue', alpha=0.4)
+                ax_tri.text(2, -0.3, "4", fontsize=12, ha='center')
+                ax_tri.text(-0.3, 1.5, "3", fontsize=12, va='center', rotation=90)
+                ax_tri.text(2, 1.7, "5", fontsize=12, ha='center')
+                ax_tri.plot([0, 0.4, 0.4, 0], [0, 0, 0.4, 0], 'k-', linewidth=2)
+                ax_tri.axis('equal')
+                ax_tri.axis('off')
+                st.pyplot(fig_tri)
             
         with st.expander("5.2 Números Perfeitos e Harmonia de Divisores", expanded=True):
             st.markdown("""
@@ -435,7 +466,7 @@ elif page == "🟡 Módulo 5: Padrões Numéricos":
             """)
             st.latex(r"n=2^{p-1}(2^{p}-1)")
             st.markdown("""
-            Seguindo outra linguagem formal recorrendo à função soma dos divisores $\\sigma(n)$, um número é perfeito sempre que satisfizer a identidade $\\sigma(n)=2n$. No caso do número 6, $\\sigma(6)=12$, que equivale precisamente ao dobro do número original. Permanentem em aberto mistérios para termos perfeitos ímpares.
+            Seguindo outra linguagem formal recorrendo à função soma dos divisores $\\sigma(n)$, um número é perfeito sempre que satisfizer a identidade $\\sigma(n)=2n$. No caso do número 6, $\\sigma(6)=12$, que equivale precisamente ao dobro do número original. Permanecem em aberto mistérios para termos perfeitos ímpares.
             """)
             
         with st.expander("5.3 Exploração do Número 9 na Base Decimal", expanded=True):
@@ -460,21 +491,48 @@ elif page == "🟡 Módulo 5: Padrões Numéricos":
             **não admite qualquer tipo de solução inteira não trivial** sempre que o expoente $n$ for um número estritamente maior do que 2 ($n>2$). Ao alterarmos apenas o valor do expoente, passamos de soluções infinitas para um vazio total. A prova definitiva foi alcançada em 1994 por Andrew Wiles, utilizando curvas elípticas.
             """)
             
+            # --- IMPLEMENTAÇÃO DO GRÁFICO CONCEITUAL DAS CURVAS DE FERMAT ---
             if GRAFICOS_ATIVOS:
                 st.markdown("#### 📊 Laboratório Gráfico de Fermat (Simulação em Tempo Real)")
-                n_fermat = st.slider("Ajuste o expoente n:", 2.0, 15.0, 2.0, step=0.5, key="fermat_slider")
-                x_val = np.linspace(0, 5, 200)
-                fig, ax = plt.subplots(figsize=(5, 3.5))
-                with np.errstate(invalid='ignore'):
-                    y_val = (5**n_fermat - x_val**n_fermat)**(1/n_fermat)
-                ax.plot(x_val, y_val, label=f"n = {n_fermat}", color="#4f46e5", linewidth=3)
-                if n_fermat == 2.0:
-                    ax.plot(3, 4, 'go', markersize=10, label="Solução Inteira (3,4)")
-                ax.set_xlim(0, 5.2)
-                ax.set_ylim(0, 5.2)
-                ax.grid(True, linestyle=":", alpha=0.5)
-                ax.legend()
-                st.pyplot(fig)
+                n_fermat = st.slider("Ajuste o expoente n para a comparação conceitual ($a^n + b^n = 5^n$):", 2.0, 5.0, 2.0, step=0.1, key="fermat_slider")
+                
+                a_grid = np.linspace(0, 5, 400)
+                b_grid = np.linspace(0, 5, 400)
+                A, B = np.meshgrid(a_grid, b_grid)
+                
+                # Tag de imagem adicionada para ilustrar a mudança do contorno à medida que o expoente varia
+                # 
+                
+                fig_fer, ax_fer = plt.subplots(figsize=(6, 6))
+                
+                # Curva fixa de Pitágoras (n=2)
+                C2 = A**2 + B**2
+                ax_fer.contour(A, B, C2, levels=[25], colors='blue', linewidths=2)
+                
+                # Curva dinâmica baseada no slider
+                if n_fermat != 2.0:
+                    Cn = A**n_fermat + B**n_fermat
+                    ax_fer.contour(A, B, Cn, levels=[25], colors='red', linestyles='--', linewidths=2)
+                
+                # Ponto pitagórico fixo (3,4)
+                ax_fer.scatter([3], [4], color='blue', s=80, zorder=5)
+                ax_fer.text(3.1, 4.1, "(3,4)", fontsize=12)
+                
+                ax_fer.set_title("Comparação conceitual: $a^n + b^n = c^n$", fontsize=14)
+                ax_fer.set_xlabel("a")
+                ax_fer.set_ylabel("b")
+                ax_fer.grid(alpha=0.3)
+                
+                # Linhas para a legenda proxy
+                from matplotlib.lines import Line2D
+                handles = [Line2D([0], [0], color='blue', lw=2, linestyle='-')]
+                labels = ["n = 2"]
+                if n_fermat != 2.0:
+                    handles.append(Line2D([0], [0], color='red', lw=2, linestyle='--'))
+                    labels.append(f"n = {n_fermat:.1f}")
+                
+                ax_fer.legend(handles, labels, loc="upper right")
+                st.pyplot(fig_fer)
 
     with tab2:
         st.subheader("🧠 Questionário Geral de Avaliação — Módulo 5")
