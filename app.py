@@ -11,26 +11,26 @@ except ImportError:
 # Configuração da plataforma web para alto impacto visual e responsividade
 st.set_page_config(page_title="MathXplore - ISCTE Sintra", layout="wide", page_icon="🔢")
 
-# ---- CONFIGURAÇÃO DOS FICHEIROS DE IMAGEM LOCAIS ----
-# Certifica-te de que estes ficheiros estão na mesma pasta que este ficheiro app.py
+# ---- NOMES EXATOS DOS TEUS FICHEIROS DE IMAGEM ----
 IMG_MODULO_1 = "Designer.png"
 IMG_MODULO_2 = "3656235 (1).jpg"
 IMG_MODULO_3 = "one_to_nine_numbers_hand_drawn (1).jpg"
 IMG_MODULO_4 = "v979-007a.jpg"
 IMG_MODULO_5 = "8375253.jpg"
 
-# Injeção de CSS personalizado para emular o fundo do site e os retângulos com títulos
+# Injeção de CSS para colocar a foto com fórmulas por trás e criar os retângulos perfeitos
 st.markdown("""
     <style>
-    /* Adiciona a imagem de fundo abstrata matemática por trás de todo o site */
+    /* Aplica a foto de fórmulas matemáticas por trás de todo o site */
     .stApp {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.90)), 
+        background-image: linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.85)), 
                           url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1920&q=80');
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
     }
     
+    /* Configuração dos botões interativos */
     .stButton>button {
         border-radius: 12px;
         background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
@@ -46,38 +46,34 @@ st.markdown("""
         box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
     }
     
-    /* Retângulo do Módulo com Título por Cima */
-    .modulo-retangulo {
+    /* Retângulo Branco Estilizado com sombra idêntico ao print */
+    .modulo-retangulo-moldura {
         background-color: white;
         border-radius: 14px;
-        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
         border: 1px solid #e2e8f0;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
         overflow: hidden;
         width: 100%;
     }
-    .modulo-topo-titulo {
+    /* Topo cinza com o título por cima */
+    .modulo-topo-cinza {
         background-color: #f8fafc;
-        padding: 14px 24px;
+        padding: 16px 24px;
         border-bottom: 1px solid #edf2f7;
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         font-weight: 700;
         color: #1e293b;
-        display: flex;
-        align-items: center;
-        gap: 10px;
+        letter-spacing: 0.5px;
     }
-    .modulo-corpo-imagem {
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .modulo-corpo-branco {
+        padding: 24px;
         background-color: #ffffff;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# ---- MENU LATERAL DE ACESSO COM A ORDEM CRONOLÓGICA SOLICITADA ----
+# ---- MENU LATERAL DE ACESSO ----
 st.sidebar.title("MathXplore")
 st.sidebar.markdown("**Fundamentos de Matemática**\n*Licenciatura em MATD*")
 st.sidebar.markdown("---")
@@ -125,18 +121,14 @@ if page == "🏠 Página Inicial":
 # MÓDULO 1: GRUPOS DE SIMETRIA
 # ==============================================================================
 elif page == "🔵 Módulo 1: Grupos de Simetria":
-    # Contentor em formato de retângulo com título no topo e imagem dentro
-    st.markdown('''
-        <div class="modulo-retangulo">
-            <div class="modulo-topo-titulo">🔵 MÓDULO 1: GRUPOS DE SIMETRIA</div>
-        </div>
-    ''', unsafe_allow_html=True)
+    # Estrutura do Retângulo com Título por Cima
+    st.markdown('<div class="modulo-retangulo-moldura"><div class="modulo-topo-cinza">🔵 MÓDULO 1: GRUPOS DE SIMETRIA</div></div>', unsafe_allow_html=True)
     
-    # Exibição controlada da imagem do projeto logo abaixo do título estruturado
+    # Imagem centrada e ajustada
     try:
         st.image(IMG_MODULO_1, use_container_width=True)
     except:
-        st.info("Adicione o ficheiro 'Designer.png' na pasta do script para renderizar a imagem do Módulo 1.")
+        st.error(f"Erro: Certifica-te de que o ficheiro '{IMG_MODULO_1}' está guardado no teu GitHub junto ao app.py")
         
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Isometrias", "🧠 Quiz Geral do Módulo"])
     
@@ -144,34 +136,31 @@ elif page == "🔵 Módulo 1: Grupos de Simetria":
         with st.expander("1.1 Isometrias e Estrutura Abstrata da Teoria de Grupos", expanded=True):
             st.markdown("""
             **Explicação Teórica:**
-            A simetria é um conceito central em múltiplas áreas da Matemática, desde a Geometria à Álgebra e até à Física. De forma intuitiva, dizemos que um objeto apresenta simetria quando permanece inalterado após uma transformação como uma rotação, reflexão ou translação. Estas transformações, designadas no seu conjunto por isometrias, podem ser estudadas de forma estruturada através da Teoria de Grupos, uma área formalizada no século XIX e hoje utilizada para descrever padrões geométricos, moléculas, cristais e estruturas biológicas (Durbin, Modern Algebra).
+            A simetria é um conceito central em múltiplas áreas da Matemática, desde a Geometria à Álgebra e até à Física[cite: 604]. De forma intuitiva, dizemos que um objeto apresenta simetria quando permanece inalterado após uma transformação como uma rotação, reflexão ou translação[cite: 605]. Estas transformações, designadas no seu conjunto por isometrias, podem ser estudadas de forma estruturada através da Teoria de Grupos, uma área formalizada no século XIX e hoje utilizada para descrição de padrões geométricos, moléculas, cristais e estruturas biológicas (Durbin, Modern Algebra)[cite: 606].
             
-            As quatro isometrias fundamentais do plano incluem:
-            * **Translações:** Deslocamento da figura numa direção constante.
-            * **Rotações:** Giro da figura em torno de um ponto fixo por um determinado ângulo.
-            * **Reflexões:** "Espelhamento" da figura em relação a uma reta.
-            * **Reflexões Deslizantes (*glide reflections*):** Combinação de uma reflexão com uma translação paralela ao eixo de reflexão.
+            As quatro isometrias fundamentais do plano incluem[cite: 615]:
+            * **Translações:** Deslocamento da figura numa direção constante[cite: 616, 617].
+            * **Rotações:** Giro da figura em torno de um ponto fixo por um determinado ângulo[cite: 618].
+            * **Reflexões:** "Espelhamento" da figura em relação a uma reta[cite: 619].
+            * **Reflexões Deslizantes (*glide reflections*):** Combinação de uma reflexão com uma translação paralela ao eixo de reflexão[cite: 620].
             
-            Formalmente, um grupo $(G, *)$ satisfaz quatro propriedades essenciais: **Fecho** ($a*b \in G$), **Associatividade** ($(a*b)*c = a*(b*c)$), **Elemento Neutro** ($e*a=a*e=a$) e **Elemento Inverso** ($a*a^{-1}=a^{-1} * a=e$). Um exemplo clássico é o grupo das rotações do triângulo equilátero, que forma o grupo cíclico $C_3$.
+            Formalmente, um grupo $(G, *)$ satisfaz quatro propriedades essenciais [cite: 625]: **Fecho** ($a*b \in G$) [cite: 626], **Associatividade** ($(a*b)*c = a*(b*c)$) [cite: 627], **Elemento Neutro** ($e*a=a*e=a$) [cite: 628] e **Elemento Inverso** ($a*a^{-1}=a^{-1} * a=e$)[cite: 629, 630]. Um exemplo clássico é o grupo das rotações do triângulo equilátero, que forma o grupo cíclico $C_3$[cite: 631].
             """)
             
         with st.expander("1.2 Eficiência Viral e Simetrias na Natureza e na Arte", expanded=True):
             st.markdown("""
             **Explicação Teórica Exaustiva:**
-            Muitos vírus ditos "esféricos" apresentam, na verdade, uma estrutura baseada no **icosaedro**, um dos sólidos platónicos mais simétricos. A geometria icosaédrica oferece eixos de rotação múltiplos de ordem 2, 3 e 5. Isto permite que subunidades proteicas idênticas (capsómeros) se encaixem perfeitamente para formar uma cápsula (capsídeo) fechada e estável. Esta organização repetitiva confere uma enorme **eficiência genética**, permitindo que o vírus utilize um único gene para codificar uma pequena proteína que se organiza através de rotações para formar uma estrutura grande e complexa. O adenovírus, o poliovírus ou o vírus Zika seguem o modelo estrutural de Caspar-Klug.
+            Muitos vírus ditos "esféricos" apresentam, na verdade, uma estrutura baseada no **icosaedro**, um dos sólidos platónicos mais simétricos[cite: 635]. A geometria icosaédrica oferece eixos de rotação múltiplos de ordem 2, 3 e 5[cite: 639]. Isto permite que subunidades proteicas idênticas (capsómeros) se encaixem perfeitamente para formar uma cápsula (capsídeo) fechada e estável[cite: 639]. Esta organização repetitiva confere uma enorme **eficiência genética**, permitindo que o vírus utilize um único gene para codificar uma pequena proteína que se organiza através de rotações para formar uma estrutura grande e complexa[cite: 640]. O adenovírus, o poliovírus ou o vírus Zika seguem o modelo estrutural de Caspar-Klug[cite: 642, 643].
             
-            Na estrutura tridimensional de proteínas e do ADN observamos também a simetria helicoidal, que utiliza uma combinação de rotação e translação, assemelhando-se às reflexões deslizantes aplicadas a um eixo central. Na arte, M. C. Escher explorou intensamente estas isometrias para pavimentar o plano de forma regular sem deixar espaços vazios. No caleidoscópio, o efeito visual resulta de múltiplas reflexões entre espelhos dispostos em triângulo, gerando simetrias rotacionais de ângulo $360/n$ e repetições cíclicas infinitas.
+            Na estrutura tridimensional de proteínas e do ADN observamos também a simetria helicoidal, que utiliza uma combinação de rotação e translação, assemelhando-se às reflexões deslizantes aplicadas a um eixo central[cite: 645, 647, 648]. Na arte, M. C. Escher explorou intensamente estas isometrias para pavimentar o plano de forma regular sem deixar espaços vazios[cite: 655, 661]. No caleidoscópio, o efeito visual resulta de múltiplas reflexões entre espelhos dispostos em triângulo, gerando simetrias rotacionais de ângulo $360/n$ e repetições cíclicas infinitas[cite: 664, 665, 666, 670].
             """)
 
     with tab2:
         st.subheader("🧠 Questionário Geral de Avaliação — Módulo 1")
         score1 = 0
-        r1_1 = st.radio("1. Quantas propriedades estruturais rígidas definem formalmente um grupo matemático?", 
-                        ["Duas", "Quatro", "Dez"], key="r1_1")
-        r1_2 = st.radio("2. O que caracteriza o movimento de uma reflexão deslizante (glide reflection)?", 
-                        ["Apenas um giro de 90 graus.", "A combinação paralela e síncrona de uma reflexão axial e uma translação.", "Um deslocamento ortogonal isolado."], key="r1_2")
-        r1_3 = st.radio("3. Qual a principal vantagem biológica da simetria rotacional icosaédrica nas cápsides dos vírus?", 
-                        ["Aumentar a velocidade do vírus.", "Permitir a construção de um invólucro volumoso e estável poupando informação genética por repetição proteica.", "Inibir a replicação celular."], key="r1_3")
+        r1_1 = st.radio("1. Quantas propriedades estruturais rígidas definem formalmente um grupo matemático?", ["Duas", "Quatro", "Dez"], key="r1_1")
+        r1_2 = st.radio("2. O que caracteriza o movimento de uma reflexão deslizante (glide reflection)?", ["Apenas um giro de 90 graus.", "A combinação paralela e síncrona de uma reflexão axial e uma translação.", "Um deslocamento ortogonal isolado."], key="r1_2")
+        r1_3 = st.radio("3. Qual a principal vantagem biológica da simetria rotacional icosaédrica nas cápsides dos vírus?", ["Aumentar a velocidade do vírus.", "Permitir a construção de um invólucro volumoso e estável poupando informação genética por repetição proteica.", "Inibir a replicação celular."], key="r1_3")
         
         if r1_1 == "Quatro": score1 += 3.33
         if r1_2 == "A combinação paralela e síncrona de uma reflexão axial e uma translação.": score1 += 3.33
@@ -184,16 +173,12 @@ elif page == "🔵 Módulo 1: Grupos de Simetria":
 # MÓDULO 2: 17 GRUPOS CRISTALOGRÁFICOS
 # ==============================================================================
 elif page == "🟤 Módulo 2: 17 Grupos Cristalográficos":
-    st.markdown('''
-        <div class="modulo-retangulo">
-            <div class="modulo-topo-titulo">🟤 MÓDULO 2: 17 GRUPOS CRISTALOGRÁFICOS</div>
-        </div>
-    ''', unsafe_allow_html=True)
+    st.markdown('<div class="modulo-retangulo-moldura"><div class="modulo-topo-cinza">🟤 MÓDULO 2: 17 GRUPOS CRISTALOGRÁFICOS</div></div>', unsafe_allow_html=True)
     
     try:
         st.image(IMG_MODULO_2, use_container_width=True)
     except:
-        st.info("Adicione o ficheiro '3656235 (1).jpg' na pasta do script para renderizar a imagem do Módulo 2.")
+        st.error(f"Erro: Certifica-te de que o ficheiro '{IMG_MODULO_2}' está guardado no teu GitHub junto ao app.py")
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Classificação", "🧠 Quiz Geral do Módulo"])
     
@@ -201,9 +186,9 @@ elif page == "🟤 Módulo 2: 17 Grupos Cristalográficos":
         with st.expander("2.1 Grupos de Simetria e as Restrições das Tesselações Periódicas", expanded=True):
             st.markdown("""
             **Explicação Teórica Exaustiva:**
-            As tesselações periódicas são padrões que cobrem o plano de forma contínua, repetindo-se indefinidamente através de translações. Cada tesselação possui um grupo de simetria, isto é, o conjunto de todas as isometrias que deixam o padrão inalterado. A base teórica assenta na apresentação moderna desenvolvida por Conway, Burgiel e Goodman-Strauss em *The Symmetries of Things* (2008).
+            As tesselações periódicas são padrões que cobrem o plano de forma contínua, repetindo-se indefinidamente através de translações[cite: 701]. Cada tesselação possui um grupo de simetria, isto é, o conjunto de todas as isometrias que deixam o padrão inalterado[cite: 703]. A base teórica assenta na apresentação moderna desenvolvida por Conway, Burgiel e Goodman-Strauss em *The Symmetries of Things* (2008)[cite: 695].
             
-            Apesar da grande variedade de padrões que observamos em azulejos, cristais ou nas obras de M. C. Escher, a Matemática demonstra que **apenas 17 tipos distintos de simetria podem pavimentar o plano de forma regular**. Esta limitação resulta das combinações possíveis entre as isometrias estudadas anteriormente e das restrições geométricas que garantem repetição periódica estável no plano.
+            Apesar da grande variedade de padrões que observamos em azulejos, cristais ou nas obras de M. C. Escher, a Matemática demonstra que **apenas 17 tipos distintos de simetria podem pavimentar o plano de forma regular**[cite: 696]. Esta limitação resulta das combinações possíveis entre as isometrias estudadas anteriormente e das restrições geométricas que garantem repetição periódica estável no plano[cite: 697].
             """)
             
             st.markdown("#### 📋 Matriz Oficial de Classificação dos 17 Wallpaper Groups")
@@ -224,9 +209,9 @@ elif page == "🟤 Módulo 2: 17 Grupos Cristalográficos":
         with st.expander("2.2 Análise Comparativa Profunda dos Subgrupos p4, p6 e pm", expanded=True):
             st.markdown("""
             **Explicação Teórica dos Subgrupos:**
-            * **Grupo p4 (Simetria Quadrada):** Caracteriza-se pela presença de rotações de ordem 4 (simetrias de 90°, 180° e 270°), mas **não possui eixos de reflexão nem reflexões deslizantes**. As suas translações ocorrem em duas direções perpendiculares, formando uma rede quadrada. A ausência de eixos de reflexão é o elemento distintivo face aos grupos *p4m* e *p4g*.
-            * **Grupo p6 (Simetria Hexagonal):** É um dos mais simétricos e apresenta rotações de ordem 6 (ângulos de 60°, 120°, 180°, 240° e 300°), ordem 3 e ordem 2. As suas translações organizam-se numa rede hexagonal, muito comum em estruturas naturais como favos de mel pela sua eficiência geométrica. **Não possui reflexões**, o que o distingue de *p6m*.
-            * **Grupo pm (Simetria Axial):** É um dos exemplos mais simples entre os grupos com reflexão. Caracteriza-se pela presença de **eixos de reflexão paralelos**, combinados com translações perpendiculares a esses eixos, gerando bandas simétricas especulares em rede retangular. Não possui rotações.
+            * **Grupo p4 (Simetria Quadrada):** Caracteriza-se pela presença de rotações de ordem 4 (simetrias de 90°, 180° e 270°), mas **não possui eixos de reflexão nem reflexões deslizantes**[cite: 729, 735]. As suas translações ocorrem em duas direções perpendiculares, formando uma rede quadrada[cite: 730]. A ausência de eixos de reflexão é o elemento distintivo face aos grupos *p4m* e *p4g*[cite: 728].
+            * **Grupo p6 (Simetria Hexagonal):** É um dos mais simétricos e apresenta rotações de ordem 6 (ângulos de 60°, 120°, 180°, 240° e 300°), ordem 3 e ordem 2[cite: 746, 747, 751, 752]. As suas translações organizam-se numa rede hexagonal, muito comum em estruturas naturais como favos de mel pela sua eficiência geométrica[cite: 745, 748, 756]. **Não possui reflexões**, o que o distingue de *p6m*[cite: 754, 757].
+            * **Grupo pm (Simetria Axial):** É um dos exemplos mais simples entre os grupos com reflexão[cite: 762]. Caracteriza-se pela presença de **eixos de reflexão paralelos**, combinados com translações perpendiculares a esses eixos, gerando bandas simétricas especulares em rede retangular[cite: 763, 771, 778]. Não possui rotações[cite: 768].
             """)
             
             s_grupo = st.selectbox("Selecione uma lei estrutural para inspecionar:", ["p4 (Quadrada)", "p6 (Hexagonal)", "pm (Retangular)"], key="s_grupo")
@@ -240,12 +225,9 @@ elif page == "🟤 Módulo 2: 17 Grupos Cristalográficos":
     with tab2:
         st.subheader("🧠 Questionário Geral de Avaliação — Módulo 2")
         score2 = 0
-        r2_1 = st.radio("1. Qual o número máximo de grupos cristalográficos abstratos que a restrição geométrica permite existir para pavimentar o plano bidimensional?", 
-                        ["Infinitos", "Apenas 12", "Exatamente 17"], key="r2_1")
-        r2_2 = st.radio("2. O que diferencia fundamentalmente o grupo cristalográfico 'p6' do grupo 'p6m'?", 
-                        ["O grupo p6 possui eixos axiais de reflexão.", "Ambos possuem rotações de ordem 6, mas o grupo p6 carece inteiramente de eixos de reflexão.", "O grupo p6 não possui translações hexagonais."], key="r2_2")
-        r2_3 = st.radio("3. Que tipo de simetria e rede de translação definem o comportamento do subgrupo 'pm'?", 
-                        ["Simetria puramente rotacional em malha quadrada.", "Simetria axial dominante baseada em eixos de reflexão paralelos numa rede retangular.", "Reflexões deslizantes exclusivas em rede oblíqua."], key="r2_3")
+        r2_1 = st.radio("1. Qual o número máximo de grupos cristalográficos abstratos que a restrição geométrica permite existir para pavimentar o plano bidimensional?", ["Infinitos", "Apenas 12", "Exatamente 17"], key="r2_1")
+        r2_2 = st.radio("2. O que diferencia fundamentalmente o grupo cristalográfico 'p6' do grupo 'p6m'?", ["O grupo p6 possui eixos axiais de reflexão.", "Ambos possuem rotações de ordem 6, mas o grupo p6 carece inteiramente de eixos de reflexão.", "O grupo p6 não possui translações hexagonais."], key="r2_2")
+        r2_3 = st.radio("3. Que tipo de simetria e rede de translação definem o comportamento do subgrupo 'pm'?", ["Simetria puramente rotacional em malha quadrada.", "Simetria axial dominante baseada em eixos de reflexão paralelos numa rede retangular.", "Reflexões deslizantes exclusivas em rede oblíqua."], key="r2_3")
         
         if r2_1 == "Exatamente 17": score2 += 3.33
         if r2_2 == "Ambos possuem rotações de ordem 6, mas o grupo p6 carece inteiramente de eixos de reflexão.": score2 += 3.33
@@ -258,16 +240,12 @@ elif page == "🟤 Módulo 2: 17 Grupos Cristalográficos":
 # MÓDULO 3: LÓGICA DO NUMBER MATCH
 # ==============================================================================
 elif page == "🟢 Módulo 3: Lógica do Number Match":
-    st.markdown('''
-        <div class="modulo-retangulo">
-            <div class="modulo-topo-titulo">🟢 MÓDULO 3: LÓGICA DO NUMBER MATCH</div>
-        </div>
-    ''', unsafe_allow_html=True)
+    st.markdown('<div class="modulo-retangulo-moldura"><div class="modulo-topo-cinza">🟢 MÓDULO 3: LÓGICA DO NUMBER MATCH</div></div>', unsafe_allow_html=True)
     
     try:
         st.image(IMG_MODULO_3, use_container_width=True)
     except:
-        st.info("Adicione o ficheiro 'one_to_nine_numbers_hand_drawn (1).jpg' na pasta do script para renderizar a imagem do Módulo 3.")
+        st.error(f"Erro: Certifica-te de que o ficheiro '{IMG_MODULO_3}' está guardado no teu GitHub junto ao app.py")
     
     tab1, tab2 = st.tabs(["💡 Lição do Sistema & Simulador", "🧠 Quiz Geral do Módulo"])
     
@@ -275,17 +253,17 @@ elif page == "🟢 Módulo 3: Lógica do Number Match":
         with st.expander("3.1 Formalização Lógica e Regras Proposicionais do Tabuleiro", expanded=True):
             st.markdown("""
             **Explicação Teórica :**
-            O *Number Match* é um jogo de lógica e aritmética popular em plataformas digitais devido às suas regras simples e à dinâmica progressiva do tabuleiro. As decisões do jogador dependem simultaneamente de condições lógicas e de propriedades aritméticas elementares, como igualdade, soma e paridade, que influenciam diretamente a evolução do jogo (Rosen, 2012). 
+            O *Number Match* é um jogo de lógica e aritmética popular em plataformas digitais devido às suas regras simples e à dinâmica progressiva do tabuleiro[cite: 461]. As decisões do jogador dependem simultaneamente de condições lógicas e de propriedades aritméticas elementares, como igualdade, soma e paridade, que influenciam diretamente a evolução do jogo (Rosen, 2012)[cite: 463]. 
             
-            A formalização das condições de jogada pode ser feita recorrendo à lógica proposicional, permitindo描述 de forma precisa quando uma jogada é válida. Uma jogada válida ocorre quando dois números $a$ e $b$ satisfazem simultaneamente uma condição numérica e uma condição estrutural de acessibilidade. A condição numérica é satisfeita quando se verifica pelo menos uma das seguintes situações:
-            1. $a=b$, isto é, os dois números são iguais;
-            2. $a+b=10$, correspondendo a uma relação aritmética complementar.
+            A formalização das condições de jogada pode ser feita recorrendo à lógica proposicional, permitindo descrever de forma precisa quando uma jogada é válida[cite: 465]. Uma jogada válida ocorre quando dois números $a$ e $b$ satisfazem simultaneamente uma condição numérica e uma condição estrutural de acessibilidade[cite: 474]. A condição numérica é satisfeita quando se verifica pelo menos uma das seguintes situações[cite: 475]:
+            1. $a=b$, isto é, os dois números são iguais[cite: 476];
+            2. $a+b=10$, correspondendo a uma relação aritmética complementar[cite: 477].
             
-            Deste modo, a proposição \"Jogada Válida ($a, b$)\" pode ser formalizada da seguinte forma:
+            Deste modo, a proposição \"Jogada Válida ($a, b$)\" pode ser formalizada da seguinte forma[cite: 483]:
             """)
             st.latex(r"\text{JogadaVálida}(a, b) \leftrightarrow (a = b \lor a + b = 10) \land \text{Conectados}(a, b)")
             st.markdown("""
-            Esta expressão representa uma fórmula booleana composta, na qual as condições aritméticas e estruturais são combinadas através dos conectivos lógicos usuais. Assim, uma jogada é válida apenas quando simultaneamente se verifica uma relação lógica entre os valores dos números e uma relação estrutural no tabuleiro.
+            Esta expressão representa uma fórmula booleana composta, na qual as condições aritméticas e estruturais são combinadas através dos conectivos lógicos usuais[cite: 485]. Assim, uma jogada é válida apenas quando simultaneamente se verifica uma relação lógica entre os valores dos números e uma relação estrutural no tabuleiro[cite: 486].
             """)
             
             st.markdown("#### 🕹️ Simulador de Validação Lógica Discreta")
@@ -304,21 +282,18 @@ elif page == "🟢 Módulo 3: Lógica do Number Match":
         with st.expander("3.2 Modelação em Teoria de Grafos e Estratégia Combinatória de Paridade", expanded=True):
             st.markdown("""
             **Explicação Teórica Exaustiva:**
-            O tabuleiro do jogo pode ser representado como um grafo dinâmico, no qual os números correspondem a vértices e as relações de jogada válida a arestas. Nesta perspetiva, o jogo pode ser entendido como um processo iterativo de remoção de vértices e arestas, cuja estrutura se altera ao longo do tempo. À medida que o jogador elimina pares, o grafo sofre transformações sucessivas. Neste contexto, o grau de um vértice — isto é, o número de arestas incidentes — assume um papel importante. Vértices de grau elevado correspondem a números com várias jogadas possíveis, enquanto vértices de grau zero representam números isolados que não podem ser eliminados. Estes vértices isolados contribuem diretamente para estados de bloqueio do tabuleiro.
+            O tabuleiro do jogo pode ser representado como um grafo dinâmico, no qual os números correspondem a vértices e as relações de jogada válida a arestas[cite: 467, 506]. Nesta perspetiva, o jogo pode ser entendido como um processo iterativo de remoção de vértices e arestas, cuja estrutura se altera ao longo do tempo[cite: 468, 510]. À medida que o jogador elimina pares, o grafo sofre transformações sucessivas[cite: 510]. Neste contexto, o grau de um vértice — isto é, o número de arestas incidentes — assume um papel importante[cite: 512]. Vértices de grau elevado correspondem a números com várias jogadas possíveis, enquanto vértices de grau zero representam números isolados que não podem ser eliminados, gerando estados de bloqueio[cite: 513, 514].
             
             **Análise Combinatória e o Impacto do Número 5:**
-            Técnicas combinatórias baseiam-se em princípios de contagem, análise de frequências e argumentos de paridade. Cada número entre 1 e 9 possui exatamente um único parceiro que permite obter a soma 10 ($1\\leftrightarrow9, 2\\leftrightarrow8, 3\\leftrightarrow7, 4\\leftrightarrow6$). O número 5 constitui um caso particular, pois **apenas pode formar par consigo mesmo** ($5\\leftrightarrow5$). Isto implica que a sua frequência no tabuleiro deve ser impreterivelmente **par** para permitir a eliminação completa e evitar a criação de números isolados. Se aparecer um número ímpar de vezes, pelo menos um 5 ficará inevitavelmente isolado, por um argumento direto de paridade.
+            Técnicas combinatórias baseiam-se em princípios de contagem, análise de frequências e argumentos de paridade[cite: 519]. Cada número entre 1 e 9 possui exatamente um único parceiro que permite obter a soma 10 ($1\\leftrightarrow9, 2\\leftrightarrow8, 3\\leftrightarrow7, 4\\leftrightarrow6$)[cite: 530]. O número 5 constitui um caso particular, pois **apenas pode formar par consigo mesmo** ($5\\leftrightarrow5$)[cite: 537]. Isto implica que a sua frequência no tabuleiro deve ser impreterivelmente **par** para permitir a eliminação completa e evitar a criação de números isolados[cite: 537]. Se aparecer um número ímpar de vezes, pelo menos um 5 ficará inevitavelmente isolado, por um argumento direto de paridade[cite: 577].
             """)
 
     with tab2:
         st.subheader("🧠 Questionário Geral de Avaliação — Módulo 3")
         score3 = 0
-        r3_1 = st.radio("1. Qual o estado de um número que se transforma num vértice de grau zero no grafo?", 
-                        ["Fica isolado e bloqueia o progresso do jogo.", "Garante uma jogada imediata por igualdade.", "Duplica o número de arestas incidentes."], key="r3_1")
-        r3_2 = st.radio("2. Qual a correspondência biunívoca correta para somas complementares de valor 10?", 
-                        [r"$2 \leftrightarrow 8$", r"$3 \leftrightarrow 7$", r"$4 \leftrightarrow 4$"], key="r3_2")
-        r3_3 = st.radio("3. Por que razão a contagem combinatória do número 5 exige uma frequência obrigatoriamente par?", 
-                        ["Porque é um número ímpar.", "Porque apenas pode emparelhar consigo próprio para atingir a soma 10.", "Porque é o vértice central de Euler."], key="r3_3")
+        r3_1 = st.radio("1. Qual o estado de um número que se transforma num vértice de grau zero no grafo?", ["Fica isolado e bloqueia o progresso do jogo.", "Garante uma jogada imediata por igualdade.", "Duplica o número de arestas incidentes."], key="r3_1")
+        r3_2 = st.radio("2. Qual a correspondência biunívoca correta para somas complementares de valor 10?", [r"$2 \leftrightarrow 8$", r"$3 \leftrightarrow 7$", r"$4 \leftrightarrow 4$"], key="r3_2")
+        r3_3 = st.radio("3. Por que razão a contagem combinatória do número 5 exige uma frequência obrigatoriamente par?", ["Porque é um número ímpar.", "Porque apenas pode emparelhar consigo próprio para atingir a soma 10.", "Porque é o vértice central de Euler."], key="r3_3")
         
         if r3_1 == "Fica isolado e bloqueia o progresso do jogo.": score3 += 3.33
         if r3_2 == r"$3 \leftrightarrow 7$": score3 += 3.33
@@ -331,16 +306,12 @@ elif page == "🟢 Módulo 3: Lógica do Number Match":
 # MÓDULO 4: PADRÕES DOS PRIMOS
 # ==============================================================================
 elif page == "🟣 Módulo 4: Padrões dos Primos":
-    st.markdown('''
-        <div class="modulo-retangulo">
-            <div class="modulo-topo-titulo">🟣 MÓDULO 4: PADRÕES DOS PRIMOS</div>
-        </div>
-    ''', unsafe_allow_html=True)
+    st.markdown('<div class="modulo-retangulo-moldura"><div class="modulo-topo-cinza">🟣 MÓDULO 4: PADRÕES DOS PRIMOS</div></div>', unsafe_allow_html=True)
     
     try:
         st.image(IMG_MODULO_4, use_container_width=True)
     except:
-        st.info("Adicione o ficheiro 'v979-007a.jpg' na pasta do script para renderizar a imagem do Módulo 4.")
+        st.error(f"Erro: Certifica-te de que o ficheiro '{IMG_MODULO_4}' está guardado no teu GitHub junto ao app.py")
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Aplicações", "✍️ Quiz Geral do Módulo"])
     
@@ -348,24 +319,24 @@ elif page == "🟣 Módulo 4: Padrões dos Primos":
         with st.expander("4.1 A Natureza e Distribuição Irregular dos Números Primos", expanded=True):
             st.markdown("""
             **Explicação Teórica Exaustiva:**
-            A Teoria dos Números é um dos ramos mais antigos e fascinantes da matemática. Apesar de lidar com objetos aparentemente simples, os números inteiros, revela estruturas profundas e padrões inesperados. Esta ideia é destacada por G. H. Hardy na sua obra *A Mathematician's Apology* (1940), onde defende que a matemática pura possui uma beleza intrínseca, comparável à arte, precisamente porque revela ordem onde antes se supunha irregularidade. Hardy via nesta área um exemplo perfeito de como estruturas elegantes podem emergir de objetos aparentemente elementares. A distribuição dos números primos, irregular à primeira vista mas repleta de padrões subtis, é um dos casos mais emblemáticos dessa visão.
+            A Teoria dos Números é um dos ramos mais antigos e fascinantes da matemática[cite: 45]. Apesar de lidar com objetos aparentemente simples, os números inteiros, revela estruturas profundas e padrões inesperados[cite: 46]. Esta ideia é destacada por G. H. Hardy na sua obra *A Mathematician's Apology* (1940), onde defende que a matemática pura possui uma beleza intrínseca, comparável à arte, precisamente porque revela ordem onde antes se supunha irregularidade[cite: 47]. Hardy via nesta área um exemplo perfeito de como estruturas elegantes podem emergir de objetos aparentemente elementares[cite: 48]. A distribuição dos números primos, irregular à primeira vista mas repleta de padrões subtis, é um dos casos mais emblemáticos dessa visão[cite: 49].
             
-            Os números primos são fundamentais na aritmética. O Teorema Fundamental da Aritmética estabelece que qualquer número inteiro positivo pode ser decomposto de forma única num produto de primos. Esta unicidade confere aos primos um papel central na estrutura dos números inteiros. Apesar da sua importância, a distribuição dos primos é notoriamente irregular. Du Sautoy (2003) descreve-os como \"notas musicais\" que parecem seguir um ritmo aparentemente aleatório, mas que escondem uma harmonia profunda. 
+            Os números primos são fundamentais na aritmética[cite: 56]. O Teorema Fundamental da Aritmética estabelece que qualquer número inteiro positivo pode ser decomposto de forma única num produto de primos[cite: 56]. Esta unicidade confere aos primos um papel central na estrutura dos números inteiros[cite: 57]. Apesar da sua importância, a distribuição dos primos é notoriamente irregular[cite: 58]. Du Sautoy (2003) descreve-os como \"notas musicais\" que parecem seguir um ritmo aparentemente aleatório, mas que escondem uma harmonia profunda[cite: 59]. 
             
-            A irregularidade aparente levou matemáticos como Gauss e Riemann a procurar padrões estatísticos que explicassem esta oscilação entre ordem e caos. Foi neste contexto que Riemann, em 1859, introduziu a função zeta complexa e formulou a célebre Hipótese de Riemann, segundo a qual todas as raízes não triviais dessa função têm parte real igual a 1/2. Esta afirmação estabelece uma ligação direta entre o comportamento analítico da função zeta e a distribuição dos números primos. A hipótese permanece em aberto e é considerada um dos problemas centrais da matemática contemporânea.
+            A irregularidade aparente levou matemáticos como Gauss e Riemann a procurar padrões estatísticos que explicassem esta oscilação entre ordem e caos[cite: 60]. Foi neste contexto que Riemann, em 1859, introduziu a função zeta complexa e formulou a célebre Hipótese de Riemann, segundo a qual todas as raízes não triviais dessa função têm parte real igual a 1/2[cite: 61]. Esta afirmação estabelece uma ligação direta entre o comportamento analítico da função zeta e a distribuição dos números primos[cite: 62]. A hipótese permanece em aberto e é considerada um dos problemas centrais da matemática contemporânea[cite: 63].
             """)
             
         with st.expander("4.2 Representações Visuais e Padrões Inesperados na Espiral de Ulam", expanded=True):
             st.markdown("""
             **Explicação Teórica Exaustiva:**
-            A visualização é uma ferramenta poderosa para revelar padrões. Stewart (2006) argumenta que muitas descobertas matemáticas surgem quando se representa um problema de forma inesperada. Foi precisamente isso que aconteceu com Stanislaw Ulam em 1963. Durante uma conferência, Ulam começou a desenhar os números naturais numa espiral quadrada, marcando os números primos. O que parecia um exercício casual revealed algo extraordinário: os números primos alinhavam-se em diagonais longas e bem definidas.
+            A visualização é uma ferramenta poderosa para revelar padrões[cite: 64]. Stewart (2006) argumenta que muitas descobertas matemáticas surgem quando se representa um problema de forma inesperada[cite: 65]. Foi precisamente isso que aconteceu com Stanislaw Ulam em 1963[cite: 66]. Durante uma conferência, Ulam começou a desenhar os números naturais numa espiral quadrada, marcando os números primos[cite: 67]. O que parecia um exercício casual revelou algo extraordinário: os números primos alinhavam-se em diagonais longas e bem definidas[cite: 68].
             
             **Processo de Construção:**
-            * Coloca-se o número 1 no centro.
-            * Os números seguintes são escritos em espiral, no sentido horário (sentido negativo).
-            * Os números primos são destacados.
+            * Coloca-se o número 1 no centro[cite: 72].
+            * Os números seguintes são escritos em espiral, no sentido horário (sentido negativo)[cite: 73].
+            * Os números primos são destacados[cite: 74].
             
-            O resultado é uma matriz visual onde padrões diagonais emergem de forma clara. As diagonais da espiral correspondem a expressões quadráticas do tipo $an^2+bn+c$. Euler estudou estas expressões e descobriu que algumas geram muitos primos consecutivos. O exemplo mais famoso é o polinómio de Euler, $n^2+n+41$, que produz primos para $n=0,1,2,\dots,39$. Quando estes polinómios geram muitos primos, a diagonal correspondente torna-se visualmente densa. Assim, a espiral não cria primos, apenas torna visível a aritmética escondida nos polinómios.
+            As diagonais da espiral correspondem a expressões quadráticas do tipo $an^2+bn+c$[cite: 184]. Euler estudou estas expressões e descobriu que algumas geram muitos primos consecutivos[cite: 186]. O exemplo mais famoso é o polinómio de Euler, $n^2+n+41$, que produz primos para $n=0,1,2,\dots,39$[cite: 187, 188]. Quando estes polinómios geram muitos primos, a diagonal correspondente torna-se visualmente densa[cite: 191]. Assim, a espiral não cria primos, apenas torna visível a aritmética escondida nos polinómios[cite: 192].
             """)
             
             st.markdown("#### 🎛️ Laboratório Dinâmico: Gerador de Primos de Euler")
@@ -376,19 +347,19 @@ elif page == "🟣 Módulo 4: Padrões dos Primos":
         with st.expander("4.3 A Função Totiente de Euler e Estrutura Multiplicativa Modular", expanded=True):
             st.markdown("""
             **Explicação Teórica:**
-            A função totiente $\\varphi(n)$, introduzida por Euler, conta quantos naturais até $n$ são coprimos com $n$. Segundo Rosen (2010), esta função é central na aritmética modular, pois conta a quantidade de inteiros que mantêm uma relação \"simples\" com $n$ quando considerados módulo $n$. Assim, $\\varphi(n)$ evidencia a estrutura multiplicativa dos inteiros e revela padrões que dependem diretamente dos fatores primos de cada número.
+            A função totiente $\\varphi(n)$, introduzida por Euler, conta quantos naturais até $n$ são coprimos com $n$[cite: 204]. Segundo Rosen (2010), esta função é central na aritmética modular, pois conta a quantidade de inteiros que mantêm uma relação \"simples\" com $n$ quando considerados módulo $n$[cite: 205]. Assim, $\\varphi(n)$ evidencia a estrutura multiplicativa dos inteiros e revela padrões que dependem diretamente dos fatores primos de cada número[cite: 206].
             
             **Fórmula Multiplicativa Geral:**
-            Se $n=p_1^{a_1}p_2^{a_2}\dots p_k^{a_k}$ em que $p_1,p_2,\dots,p_k$ são os fatores primos distintos de $n$, então:
+            Se $n=p_1^{a_1}p_2^{a_2}\dots p_k^{a_k}$ em que $p_1,p_2,\dots,p_k$ são os fatores primos distintos de $n$[cite: 213, 214], então:
             """)
             st.latex(r"\varphi(n)=n\prod_{i=1}^{k}\left(1-\frac{1}{p_i}\right)")
             st.markdown("""
-            Além disso, a função totiente cumpre a propriedade multiplicativa quando os fatores são coprimos entre si: $\\varphi(ab)=\\varphi(a)\\varphi(b)$ se $mdc(a,b)=1$.
+            Além disso, a função totiente cumpre a propriedade multiplicativa quando os fatores são coprimos entre si: $\\varphi(ab)=\\varphi(ab)$ se $gcd(a,b)=1$[cite: 219].
             
             **Propriedades Fundamentais:**
-            1. **Totiente de um Número Primo:** Se $p$ é primo, então $\\varphi(p)=p-1$, porque todos os inteiros menores que um primo são coprimos com ele.
-            2. **Totiente de uma Potência de Primo:** Para qualquer primo $p$ e inteiro $k \ge 1$: $\\varphi(p^k)=p^k-p^{k-1}=p^k(1-\\frac{1}{p})$, pois num número da forma $p^k$, apenas os múltiplos de $p$ não são coprimos, e existem $p^{k-1}$ desses múltiplos.
-            3. **Influência dos Fatores:** Se $n$ tem muitos fatores primos distintos, então $\\varphi(n)$ é significativamente menor do que $n$. A função totiente tem ainda um papel central na criptografia moderna, em particular no algoritmo RSA, onde a segurança do sistema depende da dificuldade de determinar $\\varphi(n)$ sem conhecer a fatorização de $n$.
+            1. **Totiente de um Número Primo:** Se $p$ é primo, então $\\varphi(p)=p-1$, porque todos os inteiros menores que um primo são coprimos com ele[cite: 226, 227, 228].
+            2. **Totiente de uma Potência de Primo:** Para qualquer primo $p$ e inteiro $k \ge 1$: $\\varphi(p^k)=p^k-p^{k-1}=p^k(1-\\frac{1}{p})$ [cite: 230, 231], pois num número da forma $p^k$, apenas os múltiplos de $p$ não são coprimos[cite: 233].
+            3. **Influência dos Fatores:** Se $n$ tem muitos fatores primos distintos, então $\\varphi(n)$ é significativamente menor do que $n$[cite: 240]. A função totiente tem ainda um papel central na criptografia moderna, em particular no algoritmo RSA, onde a segurança do sistema depende da dificuldade de determinar $\\varphi(n)$ sem conhecer a fatorização de $n$[cite: 271].
             """)
             
             num_input = st.number_input("Introduza um valor (n) para calcular o totiente:", min_value=2, max_value=500, value=12, key="tot_input")
@@ -407,14 +378,9 @@ elif page == "🟣 Módulo 4: Padrões dos Primos":
     with tab2:
         st.subheader("🧠 Questionário Geral de Avaliação — Módulo 4")
         score4 = 0
-        r4_1 = st.radio("1. O que postula a célebre Hipótese de Riemann formulada em 1859?", 
-                        ["Que todas as diagonais quadráticas geram primos.", 
-                         "Que todas as raízes não triviais da função zeta complexa têm parte real igual a 1/2.", 
-                         "Que a função totiente é constante."], key="r4_1")
-        r4_2 = st.radio("2. Quanto vale a função totiente de Euler para n=12?", 
-                        ["12", "6", "4", "2"], key="r4_2")
-        r4_3 = st.radio("3. Qual a propriedade fundamental de um número primo p em relação ao seu totiente?",
-                        [r"$\varphi(p) = p$", r"$\varphi(p) = p - 1$", r"$\varphi(p) = 1$"], key="r4_3")
+        r4_1 = st.radio("1. O que postula a célebre Hipótese de Riemann formulada em 1859?", ["Que todas as diagonais quadráticas geram primos.", "Que todas as raízes não triviais da função zeta complexa têm parte real igual a 1/2.", "Que a função totiente é constante."], key="r4_1")
+        r4_2 = st.radio("2. Quanto vale a função totiente de Euler para n=12?", ["12", "6", "4", "2"], key="r4_2")
+        r4_3 = st.radio("3. Qual a propriedade fundamental de um número primo p em relação ao seu totiente?", [r"$\varphi(p) = p$", r"$\varphi(p) = p - 1$", r"$\varphi(p) = 1$"], key="r4_3")
         
         if r4_1 == "Que todas as raízes não triviais da função zeta complexa têm parte real igual a 1/2.": score4 += 3.33
         if r4_2 == "4": score4 += 3.33
@@ -427,71 +393,67 @@ elif page == "🟣 Módulo 4: Padrões dos Primos":
 # MÓDULO 5: PADRÕES NUMÉRICOS
 # ==============================================================================
 elif page == "🟡 Módulo 5: Padrões Numéricos":
-    st.markdown('''
-        <div class="modulo-retangulo">
-            <div class="modulo-topo-titulo">🟡 MÓDULO 5: PADRÕES NUMÉRICOS</div>
-        </div>
-    ''', unsafe_allow_html=True)
+    st.markdown('<div class="modulo-retangulo-moldura"><div class="modulo-topo-cinza">🟡 MÓDULO 5: PADRÕES NUMÉRICOS</div></div>', unsafe_allow_html=True)
     
     try:
         st.image(IMG_MODULO_5, use_container_width=True)
     except:
-        st.info("Adicione o ficheiro '8375253.jpg' na pasta do script para renderizar a imagem do Módulo 5.")
+        st.error(f"Erro: Certifica-te de que o ficheiro '{IMG_MODULO_5}' está guardado no teu GitHub junto ao app.py")
     
-    tab1, tab2 = st.tabs(["📖 Matéria Completa & Gráficos", "✍️ Quiz Geral do Módulo"])
+    tab1, tab2 = st.tabs(["# Matéria Completa & Gráficos", "✍️ Quiz Geral do Módulo"])
     
     with tab1:
         with st.expander("5.1 Números Triangulares e a Abordagem Geométrica de Contagem", expanded=True):
             st.markdown("""
             **Explicação Teórica:**
-            Os números triangulares pertencem ao grupo dos chamados números figurados, que se caracterizam por serem números que podem ser representados através de arranjos geométricos de pontos regulares. Esta abordagem visual transforma problemas de contagem abstrata numa perceção geométrica de tal forma intuitiva que minimiza o peso algébrico inicial. Eles representam a quantidade de pontos necessária para construir um triângulo equilátero com um determinado número de linhas. Como cada nova linha adiciona sempre mais um ponto do que a linha anterior, um número triangular corresponde diretamente à soma dos primeiros números naturais.
+            Os números triangulares pertencem ao grupo dos chamados números figurados, que se caracterizam por serem números que podem ser representados através de arranjos geométricos de pontos regulares[cite: 324]. Esta abordagem visual transforma problemas de contagem abstrata numa perceção geométrica muito intuitiva[cite: 325]. Eles representam a quantidade de pontos necessária para construir um triângulo equilátero com um determinado número de linhas[cite: 326]. Como cada nova linha adiciona sempre mais um ponto do que a linha anterior, um número triangular corresponde diretamente à soma dos primeiros números naturais[cite: 327].
             """)
             st.latex(r"T_{n}=1+2+3+\cdot\cdot\cdot+n=\frac{n(n+1)}{2}")
             st.markdown("""
-            Esta fórmula matemática pode ser explicada através de um raciocínio geométrico muito simples que é atribuído historicamente a Gauss. Se escrevermos a sequência da soma na sua ordem direta e na sua ordem inversa, conseguimos agrupar os termos verticalmente aos pares. Ao somarmos as duas equações, cada par de termos resulta invariavelmente no valor de $n+1$. Dado que existem exatamente $n$ termos nesta sequência, a soma total das duas linhas passa a ser escrita como $2T_{n}=n(n+1)$. Logo, basta dividir o resultado por dois para isolar o termo inicial.
+            Esta fórmula matemática pode ser explicada através de um raciocínio geométrico muito simples que é atribuído historicamente a Gauss[cite: 330]. Se escrevermos a sequência da soma na sua ordem direta e na sua ordem inversa, conseguimos agrupar os termos verticalmente aos pares[cite: 331]. Ao somarmos as duas equações, cada par de termos resulta invariavelmente no valor de $n+1$[cite: 332]. Dado que existem exatamente $n$ termos nesta sequência, a soma total das duas linhas passa a ser escrita como $2T_{n}=n(n+1)$[cite: 333]. Logo, basta dividir o resultado por dois para isolar o termo inicial[cite: 334].
             
             **Aplicação Concreta no Quotidiano:**
-            Os números triangulares possuem diversas aplicações práticas em problemas reais de contagem e modelação de diagramas. Um exemplo clássico é a determinação de interações sociais ou ligações de redes. Se tivermos uma sala com 6 pessoas e quisermos saber quantos apertos de mão únicos ocorrem se todas se cumprimentarem uma única vez, o cálculo resolve-se através do número triangular $T_{5}$:
+            Os números triangulares possuem diversas aplicações práticas em problemas reais de contagem[cite: 349]. Um exemplo clássico é a modelação de contagem de ligações em redes ou interações sociais[cite: 350]. Se tivermos uma sala com 6 pessoas e quisermos saber quantos apertos de mão únicos ocorrem se todas se cumprimentarem uma única vez, o cálculo resolve-se através do número triangular $T_{5}$[cite: 351]:
             """)
             st.latex(r"T_5 = \frac{5 \times (5+1)}{2} = 15 \text{ apertos de mão}")
-            st.markdown("Este mesmo raciocínio aplica-se ao determinar o número de canais diretos necessários para interligar computadores numa rede sem que haja repetições de caminhos.")
+            st.markdown("Este mesmo raciocínio aplica-se ao determinar o número de canais diretos necessários para interligar computadores numa rede sem que haja repetições de caminhos[cite: 355].")
             
         with st.expander("5.2 Números Perfeitos e Harmonia de Divisores", expanded=True):
             st.markdown("""
             **Explicação Teórica Exaustiva:**
-            Um número perfeito define-se como um número inteiro positivo que é exatamente igual à soma de todos os seus divisores próprios, considerando-se divisores próprios todos os fatores que são estritamente menores do que o próprio número. Esta definição clássica remonta aos *Elementos de Euclides*, refletindo o interesse por propriedades estéticas de equilíbrio e harmonia aritmética.
+            Um número perfeito define-se como um número inteiro positivo que é exatamente igual à soma de todos os seus divisores próprios, considerando-se divisores próprios todos os fatores que são estritamente menores do que o próprio número[cite: 357]. Esta definição clássica remonta aos *Elementos de Euclides*, refletindo o interesse por propriedades estéticas de equilíbrio e harmonia aritmética[cite: 358].
             
             **Exemplos Clássicos:**
-            * **Número 6:** Os seus divisores próprios são {1, 2, 3}. Ao somarmos estes fatores, obtemos: $1+2+3=6$.
-            * **Número 28:** Os seus divisores próprios são {1, 2, 4, 7, 14}. A sua soma resulta em: $1+2+4+7+14=28$.
+            * **Número 6:** Os seus divisores próprios são {1, 2, 3}[cite: 360]. Ao somarmos estes fatores, obtemos: $1+2+3=6$[cite: 361, 362].
+            * **Número 28:** Os seus divisores próprios são {1, 2, 4, 7, 14}[cite: 363]. A sua soma resulta em: $1+2+4+7+14=28$[cite: 363, 364].
             
-            A análise profunda dos números perfeitos pares revela uma ligação direta com os Primos de Mersenne, que assumem a forma de $2^{p}-1$, onde o expoente $p$ é primo. Euclides demonstrou formalmente que, sempre que $2^{p}-1$ for um número primo, gera-se um número perfeito par através da fórmula:
+            A análise profunda dos números perfeitos pares revela uma ligação direta com os Primos de Mersenne, que assumem a forma de $2^{p}-1$, onde o expoente $p$ é primo[cite: 366]. Euclides demonstrou formalmente que, sempre que $2^{p}-1$ for um número primo, gera-se um número perfeito par através da fórmula[cite: 367]:
             """)
             st.latex(r"n=2^{p-1}(2^{p}-1)")
             st.markdown("""
-            Seguindo outra linguagem formal recorrendo à função soma dos divisores $\\sigma(n)$, um número é perfeito sempre que satisfizer a identidade $\\sigma(n)=2n$. No caso do número 6, $\\sigma(6)=12$, que equivale precisamente ao dobro do número original. Permanentem em aberto mistérios para termos perfeitos ímpares.
+            Seguindo outra linguagem formal recorrendo à função soma dos divisores $\\sigma(n)$, um número é perfeito sempre que satisfizer a identidade $\\sigma(n)=2n$[cite: 373, 374]. No caso do número 6, $\\sigma(6)=12$, que equivale precisamente ao dobro do número original[cite: 374]. Permanentem em aberto mistérios para termos perfeitos ímpares[cite: 377].
             """)
             
         with st.expander("5.3 Exploração do Número 9 na Base Decimal", expanded=True):
             st.markdown("""
             **Explicação Teórica:**
-            O número 9 ocupa um lugar de destaque devido à organização do nosso sistema de numeração posicional em base 10. Pelo facto de o número 9 ser uma unidade inferior à base do sistema ($10-1$), cria-se um conjunto único de simetrias repetitivas, regras de divisibilidade facilitadas e padrões visuais claros nos seus algarismos.
+            O número 9 ocupa um lugar de destaque devido à organização do nosso sistema de numeração posicional em base 10[cite: 380]. Pelo facto de o número 9 ser uma unidade inferior à base do sistema ($10-1$), cria-se um conjunto único de simetrias repetitivas, regras de divisibilidade facilitadas e padrões visuais claros nos seus algarismos[cite: 382].
             
-            Qualquer número inteiro positivo é sempre congruente com a soma dos seus próprios algarismos em módulo 9: $n \equiv \\text{soma dos dígitos de } n \\pmod 9$. Esta propriedade justifica o critério de divisibilidade por 9. Adicionalmente, as dezenas e as unidades da tabuada do 9 funcionam como um verdadeiro espelho numérico: $9\times2=18$ e $9\times9=81$ invertem-se simetricamente em pares.
+            Qualquer número inteiro positivo é sempre congruente com a soma dos seus próprios algarismos em módulo 9: $n \equiv \\text{soma dos dígitos de } n \\pmod 9$[cite: 383, 384]. Esta propriedade justifica o critério de divisibilidade por 9[cite: 385]. Adicionalmente, as dezenas e as unidades da tabuada do 9 funcionam como um verdadeiro espelho numérico: $9\\times2=18$ e $9\\times9=81$ invertem-se simetricamente em pares[cite: 391, 394].
             
-            Analisando a redução digital das potências do número 9, a soma das suas componentes numéricas gera ciclos regulares invariáveis ($9^1=9$, $9^2=81 \\rightarrow 9$, $9^3=729 \\rightarrow 18 \\rightarrow 9$).
+            Analisando a redução digital das potências do número 9, a soma das suas componentes numéricas gera ciclos regulares invariáveis ($9^1=9$, $9^2=81 \\rightarrow 9$, $9^3=729 \\rightarrow 18 \\rightarrow 9$)[cite: 400].
             """)
             
         with st.expander("5.4 O Último Teorema de Fermat e a Limitação de Padrões", expanded=True):
             st.markdown("""
             **Explicação Teórica:**
-            O Último Teorema de Fermat ilustra como pequenas alterações numa expressão matemática podem fazer com que um padrão de soluções infinitas desapareça por completo. No caso do expoente $n=2$, a equação transforma-se na clássica expressão de Pitágoras: $a^2+b^2=c^2$. Esta estrutura admite uma infinidade de triplas pitagóricas inteiras positivas, como o caso 3-4-5 ($3^2+4^2=5^2$).
+            O Último Teorema de Fermat ilustra como pequenas alterações numa expressão matemática podem fazer com que um padrão de soluções infinitas desapareça por completo[cite: 402]. No caso do expoente $n=2$, a equação transforma-se na clássica expressão de Pitágoras: $a^2+b^2=c^2$[cite: 403, 404]. Esta estrutura admite uma infinidade de triplas pitagóricas inteiras positivas, como o caso 3-4-5 ($3^2+4^2=5^2$)[cite: 405, 406, 407].
             
-            Contudo, Fermat afirmou na margem do seu livro que a equação geral:
+            Contudo, Fermat afirmou na margem do seu livro que a equação geral[cite: 413]:
             """)
             st.latex(r"a^{n}+b^{n}=c^{n}")
             st.markdown("""
-            **não admite qualquer tipo de solução inteira não trivial** sempre que o expoente $n$ for um número estritamente maior do que 2 ($n>2$). Ao alterarmos apenas o valor do expoente, passamos de soluções infinitas para um vazio total. A prova definitiva foi alcançada em 1994 por Andrew Wiles, utilizando curvas elípticas.
+            **não admite qualquer tipo de solução inteira não trivial** sempre que o expoente $n$ for um número estritamente maior do que 2 ($n>2$)[cite: 416]. Ao alterarmos apenas o valor do expoente, passamos de soluções infinitas para um vazio total[cite: 426]. A prova definitiva foi alcançada em 1994 por Andrew Wiles, utilizando curvas elípticas[cite: 431].
             """)
             
             if GRAFICOS_ATIVOS:
@@ -513,12 +475,9 @@ elif page == "🟡 Módulo 5: Padrões Numéricos":
     with tab2:
         st.subheader("🧠 Questionário Geral de Avaliação — Módulo 5")
         score5 = 0
-        r5_1 = st.radio("1. Qual a expressão utilizada para calcular o n-ésimo número triangular?", 
-                        [r"$T_n = \frac{n(n+1)}{2}$", r"$T_n = 2^n - 1$", r"$T_n = n^2 + n + 41$"], key="r5_1")
-        r5_2 = st.radio("2. Qual a relação matemática que define se um número é perfeito?", 
-                        [r"$\sigma(n) = n$", r"$\sigma(n) = 2n$", r"$\sigma(n) = n - 1$"], key="r5_2")
-        r5_3 = st.radio("3. A partir de que expoente n deixa de existir qualquer solução inteira não trivial segundo Fermat?", 
-                        [r"$n > 1$", r"$n > 2$", r"$n > 5$"], key="r5_3")
+        r5_1 = st.radio("1. Qual a expressão utilizada para calcular o n-ésimo número triangular?", [r"$T_n = \frac{n(n+1)}{2}$", r"$T_n = 2^n - 1$", r"$T_n = n^2 + n + 41$"], key="r5_1")
+        r5_2 = st.radio("2. Qual a relação matemática que define se um número é perfeito?", [r"$\sigma(n) = n$", r"$\sigma(n) = 2n$", r"$\sigma(n) = n - 1$"], key="r5_2")
+        r5_3 = st.radio("3. A partir de que expoente n deixa de existir qualquer solução inteira não trivial segundo Fermat?", [r"$n > 1$", r"$n > 2$", r"$n > 5$"], key="r5_3")
         
         if r5_1 == r"$T_n = \frac{n(n+1)}{2}$": score5 += 3.33
         if r5_2 == r"$\sigma(n) = 2n$": score5 += 3.33
