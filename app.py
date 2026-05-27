@@ -915,141 +915,135 @@ div[data-testid="stAlert"][data-baseweb="notification"][kind="error"] {
 .katex {
     color: var(--text-primary) !important;
 }
-            /* =========================================================
-   FIX FINAL — INPUTS + EXPANDERS STREAMLIT
-   Colocar mesmo no fim do CSS, antes de </style>
+/* =========================================================
+   CORREÇÃO FORTE DE LEGIBILIDADE — INPUTS E EXPANDERS
+   Colar no fim do CSS, imediatamente antes de </style>
 ========================================================= */
 
-/* ---------- INPUTS: text_input, number_input, password, etc. ---------- */
+
+/* ---------- INPUTS: text_input e number_input ---------- */
+
+/* força texto escuro dentro de qualquer input */
+input,
+textarea,
+.stTextInput input,
+.stNumberInput input,
+div[data-baseweb="input"] input {
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+    caret-color: #111827 !important;
+    background: #f8fafc !important;
+    font-weight: 700 !important;
+}
+
+/* placeholder dos inputs */
+input::placeholder,
+textarea::placeholder,
+.stTextInput input::placeholder,
+.stNumberInput input::placeholder,
+div[data-baseweb="input"] input::placeholder {
+    color: #6b7280 !important;
+    -webkit-text-fill-color: #6b7280 !important;
+}
 
 /* caixa exterior do input */
 .stTextInput div[data-baseweb="input"],
 .stNumberInput div[data-baseweb="input"],
 div[data-baseweb="input"] {
-    background-color: rgba(15, 15, 35, 0.95) !important;
-    border: 1px solid rgba(179, 136, 255, 0.55) !important;
+    background: #f8fafc !important;
+    border: 2px solid #8b5cf6 !important;
     border-radius: 14px !important;
-    box-shadow: none !important;
 }
 
-/* input real onde o utilizador escreve */
-.stTextInput input,
-.stNumberInput input,
-div[data-baseweb="input"] input,
-input[type="text"],
-input[type="number"] {
-    background-color: rgba(15, 15, 35, 0.95) !important;
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
-    caret-color: #ffffff !important;
-
-    font-size: 1.1rem !important;
-    font-weight: 700 !important;
-
-    border: none !important;
-    outline: none !important;
-}
-
-/* placeholder */
-.stTextInput input::placeholder,
-.stNumberInput input::placeholder,
-div[data-baseweb="input"] input::placeholder {
-    color: rgba(255, 255, 255, 0.55) !important;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0.55) !important;
-}
-
-/* quando o input está em foco */
-.stTextInput div[data-baseweb="input"]:focus-within,
-.stNumberInput div[data-baseweb="input"]:focus-within,
-div[data-baseweb="input"]:focus-within {
-    background-color: rgba(30, 30, 60, 0.98) !important;
-    border: 1px solid #b388ff !important;
-    box-shadow: 0 0 16px rgba(179, 136, 255, 0.45) !important;
+/* todos os filhos internos do input */
+.stTextInput div[data-baseweb="input"] *,
+.stNumberInput div[data-baseweb="input"] *,
+div[data-baseweb="input"] * {
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
 }
 
 /* botões + e - do number_input */
 button[data-testid="stNumberInputStepUp"],
 button[data-testid="stNumberInputStepDown"] {
-    background-color: rgba(30, 30, 60, 0.95) !important;
-    color: #ffffff !important;
-    border-left: 1px solid rgba(255,255,255,0.12) !important;
+    background: #e5e7eb !important;
+    color: #111827 !important;
 }
 
 button[data-testid="stNumberInputStepUp"] svg,
 button[data-testid="stNumberInputStepDown"] svg {
-    fill: #ffffff !important;
-    color: #ffffff !important;
+    color: #111827 !important;
+    fill: #111827 !important;
 }
 
 
 /* ---------- EXPANDERS ---------- */
 
-/* container geral do expander */
-div[data-testid="stExpander"] {
-    background: rgba(255, 255, 255, 0.045) !important;
-    border: 1px solid rgba(179, 136, 255, 0.22) !important;
-    border-radius: 18px !important;
-    overflow: hidden !important;
-}
-
-/* elemento details interno */
+/* fundo geral do expander */
+div[data-testid="stExpander"],
 div[data-testid="stExpander"] details {
-    background: rgba(255, 255, 255, 0.045) !important;
-    border: none !important;
-    border-radius: 18px !important;
+    background: rgba(15, 15, 35, 0.92) !important;
+    border: 1px solid rgba(139, 92, 246, 0.55) !important;
+    border-radius: 16px !important;
 }
 
-/* header/cabeçalho do expander */
+/* header do expander */
 div[data-testid="stExpander"] summary {
-    background: linear-gradient(
-        135deg,
-        rgba(102, 126, 234, 0.28),
-        rgba(118, 75, 162, 0.28)
-    ) !important;
-
+    background: #1f1b3d !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
-
-    font-weight: 700 !important;
-    border-radius: 16px !important;
-    padding: 1rem 1.25rem !important;
+    border-radius: 14px !important;
 }
 
-/* todos os textos dentro do header */
+/* texto dentro do header do expander */
 div[data-testid="stExpander"] summary *,
 div[data-testid="stExpander"] summary p,
-div[data-testid="stExpander"] summary span {
+div[data-testid="stExpander"] summary span,
+div[data-testid="stExpander"] summary div {
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
+    opacity: 1 !important;
 }
 
-/* ícone/seta do expander */
+/* seta/ícone do expander */
 div[data-testid="stExpander"] summary svg {
     color: #ffffff !important;
     fill: #ffffff !important;
 }
 
-/* conteúdo aberto do expander */
+/* conteúdo do expander */
 div[data-testid="stExpander"] details > div {
-    background: rgba(15, 15, 35, 0.35) !important;
-    color: rgba(255, 255, 255, 0.92) !important;
+    background: rgba(15, 15, 35, 0.85) !important;
+    color: #ffffff !important;
 }
 
-/* texto dentro do conteúdo */
+/* texto do conteúdo do expander */
 div[data-testid="stExpander"] details > div *,
 div[data-testid="stExpander"] details > div p,
 div[data-testid="stExpander"] details > div span,
 div[data-testid="stExpander"] details > div li,
 div[data-testid="stExpander"] details > div label {
-    color: rgba(255, 255, 255, 0.92) !important;
-    -webkit-text-fill-color: currentColor !important;
+    color: rgba(255, 255, 255, 0.94) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.94) !important;
 }
 
-/* exceção importante: inputs dentro de expanders continuam legíveis */
-div[data-testid="stExpander"] input {
-    background-color: rgba(15, 15, 35, 0.95) !important;
+
+/* ---------- CASO ESPECIAL:
+   se algum expander/header continuar branco, pelo menos texto fica escuro
+---------- */
+
+details summary,
+details summary *,
+summary,
+summary * {
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* se algum summary estiver mesmo branco, esta linha torna o fundo escuro */
+details > summary {
+    background: #1f1b3d !important;
 }
 </style>
 """, unsafe_allow_html=True)
