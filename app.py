@@ -18,8 +18,244 @@ st.set_page_config(page_title="MathXplore - ISCTE Sintra", layout="wide", page_i
 st.markdown("""
 <style>
 
-/* ===== IMPORTS E VARIÁVEIS ORIGINAIS ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+/* =========================================
+   APP
+========================================= */
+
+.stApp {
+    background: #0f0f23;
+}
+
+/* =========================================
+   TEXTO GLOBAL
+========================================= */
+
+html, body, [class*="css"] {
+    color: rgba(255,255,255,0.92);
+}
+
+p, label, div {
+    color: rgba(255,255,255,0.88);
+}
+
+h1, h2, h3 {
+    color: #b388ff;
+    font-weight: 700;
+}
+
+/* =========================================
+   INPUTS GERAIS
+========================================= */
+
+div[data-baseweb="input"] {
+    background: rgba(255,255,255,0.06) !important;
+    border-radius: 14px !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    overflow: hidden;
+}
+
+/* caixa interior */
+div[data-baseweb="input"] input {
+    background: rgba(255,255,255,0.06) !important;
+    color: white !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+}
+
+/* placeholder */
+div[data-baseweb="input"] input::placeholder {
+    color: rgba(255,255,255,0.5) !important;
+}
+
+/* focus */
+div[data-baseweb="input"]:focus-within {
+    border: 1px solid #8b5cf6 !important;
+    box-shadow: 0 0 12px rgba(139,92,246,0.35);
+}
+
+/* =========================================
+   NUMBER INPUT BOTÕES + -
+========================================= */
+
+button[data-testid="stNumberInputStepUp"],
+button[data-testid="stNumberInputStepDown"] {
+    background: rgba(255,255,255,0.08) !important;
+    color: white !important;
+    border: none !important;
+}
+
+button[data-testid="stNumberInputStepUp"]:hover,
+button[data-testid="stNumberInputStepDown"]:hover {
+    background: #8b5cf6 !important;
+}
+
+/* =========================================
+   SELECTBOX
+========================================= */
+
+div[data-baseweb="select"] > div {
+    background: rgba(255,255,255,0.06) !important;
+    border-radius: 14px !important;
+    color: white !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+}
+
+/* texto */
+div[data-baseweb="select"] span {
+    color: white !important;
+}
+
+/* dropdown */
+ul[role="listbox"] {
+    background: #1b1b35 !important;
+}
+
+/* opções */
+li[role="option"] {
+    color: white !important;
+}
+
+/* hover */
+li[role="option"]:hover {
+    background: rgba(139,92,246,0.3) !important;
+}
+
+/* =========================================
+   SLIDER
+========================================= */
+
+.stSlider {
+    color: white !important;
+}
+
+/* =========================================
+   EXPANDERS
+========================================= */
+
+details {
+    background: rgba(255,255,255,0.04) !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    padding: 0.5rem;
+}
+
+/* header */
+summary {
+    color: white !important;
+    font-weight: 600;
+}
+
+/* conteúdo */
+details div {
+    color: rgba(255,255,255,0.9) !important;
+}
+
+/* =========================================
+   TABS
+========================================= */
+
+button[data-baseweb="tab"] {
+    color: white !important;
+    background: transparent !important;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* ativa */
+button[aria-selected="true"] {
+    background: rgba(139,92,246,0.18) !important;
+}
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+.stButton button {
+    background: linear-gradient(135deg,#7c3aed,#8b5cf6);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.stButton button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 14px rgba(139,92,246,0.4);
+}
+
+/* =========================================
+   MÉTRICAS / CARDS
+========================================= */
+
+[data-testid="stMetric"] {
+    background: rgba(255,255,255,0.04);
+    padding: 1rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+
+
+/* =========================================
+   CONTAINERS / BLOCOS INTERNOS
+========================================= */
+
+/* blocos principais */
+[data-testid="stVerticalBlock"] {
+    background: transparent !important;
+}
+
+/* containers */
+[data-testid="stContainer"] {
+    background: rgba(255,255,255,0.04) !important;
+    border-radius: 18px !important;
+    color: white !important;
+}
+
+/* expanders internos */
+details {
+    background: rgba(255,255,255,0.05) !important;
+}
+
+/* conteúdo do expander */
+details > div {
+    background: transparent !important;
+    color: white !important;
+}
+
+/* markdown dentro */
+[data-testid="stMarkdownContainer"] {
+    color: white !important;
+}
+
+/* remover fundos brancos escondidos */
+div.block-container {
+    background: transparent !important;
+}
+
+/* alguns elementos streamlit */
+div[data-testid="element-container"] {
+    background: transparent !important;
+    color: white !important;
+}
+
+/* corrigir headers */
+summary, summary * {
+    color: white !important;
+}
+
+/* FORÇA todos os textos dentro dos expanders */
+details *,
+details span,
+details p,
+details label,
+details div {
+    color: rgba(255,255,255,0.92) !important;
+}
+
+
+
+/* ===== IMPORTS E VARIÁVEIS ===== */
+@import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap)');
 
 :root {
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -34,11 +270,12 @@ st.markdown("""
     --card-bg: rgba(255, 255, 255, 0.05);
 }
 
+/* ===== RESET E BASE ===== */
 html, body, [class*="css"] {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
-/* ===== FUNDO ANIMADO COM GRADIENTE (RESTAURADO) ===== */
+/* ===== FUNDO ANIMADO COM GRADIENTE ===== */
 .stApp {
     background: linear-gradient(-45deg, #0f0f23, #1a1a3e, #2d1b4e, #1e3a5f, #0f2027);
     background-size: 400% 400%;
@@ -52,7 +289,7 @@ html, body, [class*="css"] {
     100% { background-position: 0% 50%; }
 }
 
-/* ===== PARTÍCULAS FLUTUANTES (RESTAURADO) ===== */
+/* ===== PARTÍCULAS FLUTUANTES (PSEUDO-ELEMENTOS) ===== */
 .stApp::before {
     content: '';
     position: fixed;
@@ -79,82 +316,249 @@ html, body, [class*="css"] {
     100% { transform: translateY(-200px) translateX(50px); }
 }
 
-/* ===== ANIMAÇÕES DE ENTRADA (RESTAURADO) ===== */
+/* ===== ANIMAÇÕES DE ENTRADA ===== */
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-@keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.6), 0 0 60px rgba(118, 75, 162, 0.3); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes borderGlow {
+    0%, 100% { border-color: rgba(102, 126, 234, 0.5); }
+    50% { border-color: rgba(240, 147, 251, 0.8); }
+}
+
+/* ===== BLOCO PRINCIPAL ===== */
 .block-container {
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     padding-top: 2rem !important;
     position: relative;
     z-index: 1;
-    background: transparent !important;
 }
 
-/* ===== CORREÇÃO DAS CAIXAS DE INPUT E COMPARAÇÃO GRÁFICA ===== */
-/* Aplica-se tanto a inputs de texto como a inputs numéricos (caixa escura, texto branco legível) */
-.stTextInput input, .stNumberInput input {
-    background-color: rgba(255, 255, 255, 0.07) !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    border-radius: 14px !important;
+/* ===== SIDEBAR PREMIUM ===== */
+section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, rgba(15, 15, 35, 0.95) 0%, rgba(30, 30, 60, 0.95) 100%) !important;
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+section[data-testid="stSidebar"] .stMarkdown {
+    color: var(--text-primary) !important;
+}
+
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3 {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===== RADIO BUTTONS ESTILIZADOS ===== */
+section[data-testid="stSidebar"] .stRadio > div {
+    gap: 8px !important;
+}
+
+section[data-testid="stSidebar"] .stRadio > div > label {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
     padding: 12px 16px !important;
+    margin: 4px 0 !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    cursor: pointer !important;
+}
+
+section[data-testid="stSidebar"] .stRadio > div > label:hover {
+    background: rgba(102, 126, 234, 0.2) !important;
+    border-color: rgba(102, 126, 234, 0.5) !important;
+    transform: translateX(5px) !important;
+}
+
+section[data-testid="stSidebar"] .stRadio > div > label[data-checked="true"] {
+    background: var(--primary-gradient) !important;
+    border-color: transparent !important;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+}
+
+/* ===== TÍTULOS COM GRADIENTE ===== */
+h1, h2, h3 {
+    background: linear-gradient(135deg, #667eea 0%, #f093fb 50%, #4facfe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: 3rem !important;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* ===== TEXTO GERAL ===== */
+p, span, li, .stMarkdown {
+    color: var(--text-secondary) !important;
+}
+
+strong, b {
+    color: var(--text-primary) !important;
     font-weight: 600 !important;
-    font-size: 1.2rem !important;
 }
 
-.stTextInput input:focus, .stNumberInput input:focus {
-    border-color: #8b5cf6 !important;
-    box-shadow: 0 0 12px rgba(139, 92, 246, 0.35) !important;
-    background-color: rgba(139, 92, 246, 0.1) !important;
+/* ===== CARDS GLASSMORPHISM ===== */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
 }
 
-button[data-testid="stNumberInputStepUp"], 
-button[data-testid="stNumberInputStepDown"] {
-    background-color: rgba(255, 255, 255, 0.08) !important;
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.glass-card:hover::before {
+    left: 100%;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(102, 126, 234, 0.2);
+}
+
+/* ===== MÓDULO HEADER PREMIUM ===== */
+.modulo-header {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    animation: scaleIn 0.5s ease-out;
+}
+
+.modulo-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+    transform: translate(30%, -30%);
+}
+
+.modulo-header h2 {
+    margin: 0 !important;
+    font-size: 1.8rem !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== BOTÕES ULTRA-MODERNOS ===== */
+.stButton > button {
+    background: var(--primary-gradient) !important;
     color: white !important;
     border: none !important;
-}
-button[data-testid="stNumberInputStepUp"]:hover, 
-button[data-testid="stNumberInputStepDown"]:hover {
-    background-color: #8b5cf6 !important;
-}
-
-/* ===== CORREÇÃO DO SELECTBOX (ELIMINA O BLOCO BRANCO DO DROPDOWN) ===== */
-div[data-baseweb="select"] > div {
-    background-color: rgba(255, 255, 255, 0.07) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
     border-radius: 14px !important;
+    padding: 14px 32px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+    position: relative !important;
+    overflow: hidden !important;
 }
 
-div[data-baseweb="select"] span {
-    color: #ffffff !important;
+.stButton > button::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent) !important;
+    transition: left 0.5s ease !important;
 }
 
-/* Alvo certeiro na caixa de opções flutuante para remover o fundo branco indesejado */
-div[role="listbox"], ul[role="listbox"] {
-    background-color: #111126 !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    background: #111126 !important;
-}
-li[role="option"] {
-    color: white !important;
-    background-color: transparent !important;
-}
-li[role="option"]:hover {
-    background-color: rgba(139, 92, 246, 0.3) !important;
+.stButton > button:hover::before {
+    left: 100% !important;
 }
 
-/* ===== CORREÇÃO COMPLETA DOS EXPANDERS (ELIMINA A BARRA BRANCA DO TOPO) ===== */
+.stButton > button:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: 
+        0 8px 25px rgba(102, 126, 234, 0.5),
+        0 0 40px rgba(102, 126, 234, 0.3) !important;
+}
+
+.stButton > button:active {
+    transform: translateY(-1px) scale(0.98) !important;
+}
+
+/* ===== EXPANDERS PREMIUM ===== */
 div[data-testid="stExpander"] {
-    background: rgba(255, 255, 255, 0.04) !important;
-    backdrop-filter: blur(15px) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(10px) !important;
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-radius: 16px !important;
     margin-bottom: 12px !important;
@@ -165,42 +569,17 @@ div[data-testid="stExpander"] {
 div[data-testid="stExpander"]:hover {
     border-color: rgba(102, 126, 234, 0.4) !important;
     background: rgba(102, 126, 234, 0.08) !important;
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15) !important;
     transform: translateX(5px) !important;
 }
 
-/* Isto remove a barra branca nativa que o Streamlit injeta no cabeçalho dos expanders */
 div[data-testid="stExpander"] summary {
-    background-color: transparent !important;
-    color: #ffffff !important;
-    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
     padding: 1rem 1.25rem !important;
 }
 
-/* Força todo o conteúdo do expander a ignorar estilos claros herdados */
-div[data-testid="stExpander"] div {
-    background-color: transparent !important;
-}
-div[data-testid="stExpander"] p, 
-div[data-testid="stExpander"] span, 
-div[data-testid="stExpander"] li {
-    color: rgba(255, 255, 255, 0.9) !important;
-}
-
-/* ===== TÍTULOS COM GRADIENTE GALAXY ===== */
-h1, h2, h3 {
-    background: linear-gradient(135deg, #667eea 0%, #f093fb 50%, #4facfe 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 700 !important;
-    letter-spacing: -0.02em;
-}
-
-h1 { font-size: 3rem !important; }
-p, span, li, .stMarkdown { color: var(--text-secondary) !important; }
-strong, b { color: var(--text-primary) !important; }
-
-/* ===== TABS ===== */
+/* ===== TABS ESTILIZADAS ===== */
 .stTabs [data-baseweb="tab-list"] {
     background: rgba(255, 255, 255, 0.05) !important;
     border-radius: 16px !important;
@@ -208,78 +587,334 @@ strong, b { color: var(--text-primary) !important; }
     gap: 8px !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
+
 .stTabs [data-baseweb="tab"] {
     background: transparent !important;
     color: var(--text-secondary) !important;
     border-radius: 12px !important;
     padding: 12px 24px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
 }
+
+.stTabs [data-baseweb="tab"]:hover {
+    background: rgba(102, 126, 234, 0.2) !important;
+    color: var(--text-primary) !important;
+}
+
 .stTabs [aria-selected="true"] {
     background: var(--primary-gradient) !important;
     color: white !important;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
 }
-.stTabs [data-baseweb="tab-highlight"], .stTabs [data-baseweb="tab-border"] {
+
+.stTabs [data-baseweb="tab-highlight"] {
     display: none !important;
 }
 
-/* ===== SIDEBAR PREMIUM ===== */
-section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg, rgba(15, 15, 35, 0.95) 0%, rgba(30, 30, 60, 0.95) 100%) !important;
-    backdrop-filter: blur(20px);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-section[data-testid="stSidebar"] .stRadio > div > label {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 12px !important;
-    padding: 12px 16px !important;
-    margin: 4px 0 !important;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-section[data-testid="stSidebar"] .stRadio > div > label:hover {
-    background: rgba(102, 126, 234, 0.2) !important;
-    border-color: rgba(102, 126, 234, 0.5) !important;
-    transform: translateX(5px) !important;
+.stTabs [data-baseweb="tab-border"] {
+    display: none !important;
 }
 
-/* ===== CARDS, HEADER E MÉTRICAS ===== */
-.glass-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 2rem;
-    margin: 1.5rem 0;
+/* ===== INPUTS MODERNOS ===== */
+.stTextInput > div > div > input,
+.stNumberInput > div > div > input,
+.stSelectbox > div > div > div {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 12px !important;
+    color: var(--text-primary) !important;
+    padding: 12px 16px !important;
+    transition: all 0.3s ease !important;
 }
-.modulo-header {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
-    padding: 1.5rem 2rem;
-    margin-bottom: 2rem;
+
+.stTextInput > div > div > input:focus,
+.stNumberInput > div > div > input:focus {
+    border-color: rgba(102, 126, 234, 0.6) !important;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.2) !important;
+    background: rgba(102, 126, 234, 0.1) !important;
 }
-.stButton > button {
+
+/* ===== SLIDER MODERNO ===== */
+.stSlider > div > div > div > div {
     background: var(--primary-gradient) !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 14px !important;
-    padding: 14px 32px !important;
-    font-weight: 600 !important;
 }
+
+.stSlider > div > div > div > div > div {
+    background: white !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ===== MÉTRICAS COM GLOW ===== */
 div[data-testid="stMetric"] {
     background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 16px !important;
     padding: 1.5rem !important;
+    animation: glowPulse 3s ease-in-out infinite !important;
 }
+
+div[data-testid="stMetric"] label {
+    color: var(--text-secondary) !important;
+}
+
+div[data-testid="stMetric"] > div {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+}
+
+/* ===== ALERTS ESTILIZADOS ===== */
+.stAlert {
+    border-radius: 16px !important;
+    border: none !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+div[data-testid="stAlert"][data-baseweb="notification"][kind="info"] {
+    background: rgba(79, 172, 254, 0.15) !important;
+    border-left: 4px solid #4facfe !important;
+}
+
+div[data-testid="stAlert"][data-baseweb="notification"][kind="success"] {
+    background: rgba(0, 242, 254, 0.15) !important;
+    border-left: 4px solid #00f2fe !important;
+}
+
+div[data-testid="stAlert"][data-baseweb="notification"][kind="warning"] {
+    background: rgba(240, 147, 251, 0.15) !important;
+    border-left: 4px solid #f093fb !important;
+}
+
+div[data-testid="stAlert"][data-baseweb="notification"][kind="error"] {
+    background: rgba(245, 87, 108, 0.15) !important;
+    border-left: 4px solid #f5576c !important;
+}
+
+/* ===== DATAFRAMES ===== */
+.stDataFrame {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.stDataFrame > div {
+    background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* ===== CHECKBOXES E RADIOS ===== */
+.stCheckbox > label,
+.stRadio > div > label {
+    color: var(--text-secondary) !important;
+    transition: color 0.3s ease !important;
+}
+
+.stCheckbox > label:hover,
+.stRadio > div > label:hover {
+    color: var(--text-primary) !important;
+}
+
+/* ===== FEATURE CARDS ===== */
+.feature-card {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(102, 126, 234, 0.2);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.feature-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.feature-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ===== HERO SECTION ===== */
+.hero-section {
+    text-align: center;
+    padding: 3rem 0;
+    position: relative;
+}
+
+.hero-title {
+    font-size: 4rem !important;
+    font-weight: 800 !important;
+    background: linear-gradient(135deg, #667eea 0%, #f093fb 30%, #4facfe 60%, #00f2fe 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ===== STAT BOXES ===== */
+.stat-box {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: scale(1.05);
+    border-color: rgba(102, 126, 234, 0.5);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* ===== QUIZ OPTION CARDS ===== */
+.quiz-option {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    margin: 0.5rem 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.quiz-option:hover {
+    background: rgba(102, 126, 234, 0.15);
+    border-color: rgba(102, 126, 234, 0.5);
+    transform: translateX(10px);
+}
+
+/* ===== SCROLLBAR CUSTOM ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-gradient);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+    }
+}
+
+/* ===== ANIMAÇÃO DE NÚMERO ===== */
+.number-animate {
+    display: inline-block;
+    animation: countUp 1s ease-out forwards;
+}
+
+@keyframes countUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== BADGE PREMIUM ===== */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-primary {
+    background: var(--primary-gradient);
+    color: white;
+}
+
+.badge-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ===== DIVIDER CUSTOM ===== */
 .custom-divider {
     height: 2px;
     background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.5), transparent);
     margin: 2rem 0;
     border: none;
 }
-.katex { color: var(--text-primary) !important; }
+
+/* ===== CÓDIGO EM LATEX ===== */
+.katex {
+    color: var(--text-primary) !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -837,21 +1472,7 @@ elif page == "17 Grupos Cristalográficos":
             mesmo quando obedecem às mesmas restrições de repetição periódica.
             """)
             
-            st.markdown("#### Explorador Interativo de Grupos")
-            
-            s_grupo = st.selectbox(
-                "Seleciona um grupo para inspecionar:",
-                ["p4 (Quadrada)", "p6 (Hexagonal)", "pm (Retangular)"],
-                key="s_grupo"
-            )
-            
-            if "p4" in s_grupo:
-                st.info("🔄 **Propriedades p4:** Rotações de ordem 4 e 2. Rede ortogonal rígida. Total ausência de eixos axiais de espelhamento.")
-            elif "p6" in s_grupo:
-                st.success("🐝 **Propriedades p6:** Rotações de ordens 6, 3 e 2. Estrutura geométrica idêntica à estabilidade mecânica dos favos naturais.")
-            elif "pm" in s_grupo:
-                st.warning("🪞 **Propriedades pm:** Eixos axiais paralelos puros. Domínio exclusivo de reflexões especulares lineares.")
-
+           
     with tab2:
         st.markdown("### 🧠 Questionário de Avaliação — Módulo 2")
         
