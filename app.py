@@ -128,6 +128,31 @@ body, p, span, label, div {
 h1, h2, h3, h4, h5 {
     color: white !important;
 }
+/* =========================
+   DROPDOWN (LISTA DO SELECTBOX)
+========================= */
+
+/* fundo da lista */
+div[role="listbox"] {
+    background: rgba(15, 15, 40, 0.95) !important;
+    color: white !important;
+}
+
+/* cada opção */
+div[role="option"] {
+    background: transparent !important;
+    color: white !important;
+}
+
+/* hover nas opções */
+div[role="option"]:hover {
+    background: rgba(102,126,234,0.3) !important;
+}
+
+/* opção selecionada */
+div[aria-selected="true"] {
+    background: rgba(102,126,234,0.5) !important;
+}
 <style>
 /* ===== IMPORTS E VARIÁVEIS ===== */
 @import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap)');
