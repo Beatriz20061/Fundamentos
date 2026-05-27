@@ -1617,7 +1617,7 @@ elif page == "🟣 Padrões dos Primos":
         import matplotlib.pyplot as plt
         import numpy as np
 
-        # -------- Função primo --------
+        # -------- Primo --------
         def is_prime(n):
             if n < 2:
                 return False
@@ -1626,8 +1626,10 @@ elif page == "🟣 Padrões dos Primos":
                     return False
             return True
 
-        # -------- Criar espiral --------
-        def ulam_spiral_grid(n):
+        # -------- Espiral fixa --------
+        MAX_GLOBAL = 1000  # tamanho máximo da espiral
+
+        def ulam_spiral_full(n):
             size = int(np.ceil(np.sqrt(n)))
             if size % 2 == 0:
                 size += 1
@@ -1652,26 +1654,28 @@ elif page == "🟣 Padrões dos Primos":
 
             return grid
 
-        # -------- Interface --------
-        st.markdown("### 🌀 Espiral de Ulam Interativa")
-
-        n_max = st.slider("Escolhe até quantos números:", 10, 500, 200)
-
-        grid = ulam_spiral_grid(n_max)
+        # -------- Construir uma vez --------
+        grid = ulam_spiral_full(MAX_GLOBAL)
         size = grid.shape[0]
 
+        # -------- UI --------
+        st.markdown("### 🌀 Espiral de Ulam")
+
+        n_max = st.slider("Até quantos números mostrar:", 10, MAX_GLOBAL, 200)
+
+        # -------- Plot --------
         fig, ax = plt.subplots(figsize=(7, 7))
         fig.patch.set_facecolor('#0f0f23')
         ax.set_facecolor('#0f0f23')
 
-        # fundo tipo quadrícula suave
-        ax.imshow(grid != 0, cmap='gray', alpha=0.3)
+        # fundo fixo (mesma espiral SEMPRE)
+        ax.imshow(grid != 0, cmap='gray', alpha=0.15)
 
-        # escrever os primos
+        # escrever apenas primos <= slider
         for i in range(size):
             for j in range(size):
                 num = grid[i, j]
-                if num != 0 and is_prime(num):
+                if num <= n_max and is_prime(num):
                     ax.text(
                         j, i, str(num),
                         color='#ff4b4b',
@@ -1684,6 +1688,7 @@ elif page == "🟣 Padrões dos Primos":
         ax.axis('off')
 
         st.pyplot(fig)
+
 
 
         st.markdown("---")
