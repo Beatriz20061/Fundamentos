@@ -18,111 +18,181 @@ st.set_page_config(page_title="MathXplore - ISCTE Sintra", layout="wide", page_i
 st.markdown("""
 <style>
 
-/* =========================
-   APP BACKGROUND
-========================= */
+/* =========================================
+   APP
+========================================= */
 
 .stApp {
-    background-color: #0f0f23;
+    background: #0f0f23;
 }
 
-/* =========================
-   TEXTO GERAL
-========================= */
+/* =========================================
+   TEXTO GLOBAL
+========================================= */
 
-p, li, div {
+html, body, [class*="css"] {
+    color: rgba(255,255,255,0.92);
+}
+
+p, label, div {
     color: rgba(255,255,255,0.88);
 }
 
-/* NÃO forçar spans e labels globalmente */
-/* Isso quebra widgets internos do Streamlit */
-
-/* =========================
-   TÍTULOS
-========================= */
-
 h1, h2, h3 {
-    color: white;
+    color: #b388ff;
+    font-weight: 700;
 }
 
-/* =========================
-   TEXT INPUT
-========================= */
+/* =========================================
+   INPUTS GERAIS
+========================================= */
 
-.stTextInput input {
-    background-color: rgba(0,0,0,0.6) !important;
-    color: white !important;
-    border-radius: 8px;
+div[data-baseweb="input"] {
+    background: rgba(255,255,255,0.06) !important;
+    border-radius: 14px !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    overflow: hidden;
 }
 
-/* =========================
-   NUMBER INPUT
-========================= */
-
+/* caixa interior */
 div[data-baseweb="input"] input {
-    background-color: rgba(0,0,0,0.6) !important;
+    background: rgba(255,255,255,0.06) !important;
     color: white !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
 }
 
-/* =========================
+/* placeholder */
+div[data-baseweb="input"] input::placeholder {
+    color: rgba(255,255,255,0.5) !important;
+}
+
+/* focus */
+div[data-baseweb="input"]:focus-within {
+    border: 1px solid #8b5cf6 !important;
+    box-shadow: 0 0 12px rgba(139,92,246,0.35);
+}
+
+/* =========================================
+   NUMBER INPUT BOTÕES + -
+========================================= */
+
+button[data-testid="stNumberInputStepUp"],
+button[data-testid="stNumberInputStepDown"] {
+    background: rgba(255,255,255,0.08) !important;
+    color: white !important;
+    border: none !important;
+}
+
+button[data-testid="stNumberInputStepUp"]:hover,
+button[data-testid="stNumberInputStepDown"]:hover {
+    background: #8b5cf6 !important;
+}
+
+/* =========================================
    SELECTBOX
-========================= */
+========================================= */
 
 div[data-baseweb="select"] > div {
-    background-color: rgba(0,0,0,0.6) !important;
+    background: rgba(255,255,255,0.06) !important;
+    border-radius: 14px !important;
     color: white !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
 }
 
-/* texto dentro do selectbox */
+/* texto */
 div[data-baseweb="select"] span {
     color: white !important;
 }
 
-/* =========================
+/* dropdown */
+ul[role="listbox"] {
+    background: #1b1b35 !important;
+}
+
+/* opções */
+li[role="option"] {
+    color: white !important;
+}
+
+/* hover */
+li[role="option"]:hover {
+    background: rgba(139,92,246,0.3) !important;
+}
+
+/* =========================================
    SLIDER
-========================= */
+========================================= */
 
 .stSlider {
-    color: white;
+    color: white !important;
 }
 
-/* =========================
+/* =========================================
    EXPANDERS
-========================= */
+========================================= */
 
-/* Header */
-.streamlit-expanderHeader {
-    background-color: rgba(255,255,255,0.06) !important;
-    color: white !important;
-    border-radius: 8px;
+details {
+    background: rgba(255,255,255,0.04) !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    padding: 0.5rem;
 }
 
-/* Conteúdo */
-.streamlit-expanderContent {
-    background-color: rgba(255,255,255,0.02) !important;
+/* header */
+summary {
     color: white !important;
+    font-weight: 600;
 }
 
-/* Texto dentro do expander */
-.streamlit-expanderContent p,
-.streamlit-expanderContent span,
-.streamlit-expanderContent label,
-.streamlit-expanderContent div {
+/* conteúdo */
+details div {
     color: rgba(255,255,255,0.9) !important;
 }
 
-/* =========================
+/* =========================================
    TABS
-========================= */
+========================================= */
 
 button[data-baseweb="tab"] {
     color: white !important;
+    background: transparent !important;
+    border-radius: 12px 12px 0 0 !important;
 }
 
-/* tab ativa */
+/* ativa */
 button[aria-selected="true"] {
-    background-color: rgba(255,255,255,0.08) !important;
+    background: rgba(139,92,246,0.18) !important;
 }
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+.stButton button {
+    background: linear-gradient(135deg,#7c3aed,#8b5cf6);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.stButton button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 14px rgba(139,92,246,0.4);
+}
+
+/* =========================================
+   MÉTRICAS / CARDS
+========================================= */
+
+[data-testid="stMetric"] {
+    background: rgba(255,255,255,0.04);
+    padding: 1rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
 
 
 /* ===== IMPORTS E VARIÁVEIS ===== */
