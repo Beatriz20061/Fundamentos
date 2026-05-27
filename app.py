@@ -770,6 +770,8 @@ with st.sidebar:
 # ==============================================================================
 if page == "🏠 Página Inicial":
     # Hero Section
+
+    render_divider()
     st.markdown("**MathXplore** — Plataforma interativa com conhecimentos nas mais vastas áreas da matemática. Explore conceitos através de visualizações dinâmicas, simuladores e quizzes.")
 
     
