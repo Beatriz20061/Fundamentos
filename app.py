@@ -1503,6 +1503,7 @@ elif page == "🟢 Lógica do Number Match":
 
             grid = st.session_state.grid
 
+            # -------- lógica --------
             def select_number(idx):
                 if idx in st.session_state.selected:
                     return
@@ -1513,13 +1514,23 @@ elif page == "🟢 Lógica do Number Match":
                     i, j = st.session_state.selected
                     a, b = grid[i], grid[j]
 
-                    if (a == b) or (a + b == 10):
-                        grid[i] = None
-                        grid[j] = None
+                    if a is not None and b is not None:
+                        if (a == b) or (a + b == 10):
+                            grid[i] = None
+                            grid[j] = None
 
                     st.session_state.selected = []
 
-            # -------- GRELHA VISUAL --------
+            # -------- TABULEIRO COM BORDA --------
+            st.markdown("""
+            <div style="
+                border: 3px solid #667eea;
+                border-radius: 12px;
+                padding: 15px;
+                background-color: #0f0f23;
+            ">
+            """, unsafe_allow_html=True)
+
             cols = 5
             rows = (len(grid) + cols - 1) // cols
 
@@ -1533,18 +1544,18 @@ elif page == "🟢 Lógica do Number Match":
                         val = grid[idx]
 
                         with cols_container[c]:
-                            # caixa com borda
-                            st.markdown('<div style="border: 2px solid white; padding: 10px; text-align: center;">', unsafe_allow_html=True)
-
                             if val is None:
-                                st.markdown("&nbsp;", unsafe_allow_html=True)
+                                st.write(" ")
                             else:
                                 if st.button(str(val), key=f"btn_{idx}"):
                                     select_number(idx)
 
-                            st.markdown("</div>", unsafe_allow_html=True)
+            # fechar a caixa
+            st.markdown("</div>", unsafe_allow_html=True)
 
             # -------- reset --------
+            st.markdown("")
+
             if st.button("🔄 Reiniciar jogo"):
                 st.session_state.grid = [random.randint(1, 9) for _ in range(20)]
                 st.session_state.selected = []
