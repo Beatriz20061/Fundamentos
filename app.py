@@ -1011,6 +1011,81 @@ div[data-testid="stAlert"][data-baseweb="notification"][kind="error"] {
     color: #b388ff !important;
     -webkit-text-fill-color: unset !important;
 }
+/* =========================================================
+   RESTAURAR ESTILO ESPECIAL DOS TÍTULOS
+========================================================= */
+
+/* títulos principais em markdown */
+[data-testid="stMarkdownContainer"] h1,
+[data-testid="stMarkdownContainer"] h2,
+[data-testid="stMarkdownContainer"] h3 {
+    background: linear-gradient(
+        135deg,
+        #667eea 0%,
+        #b388ff 35%,
+        #f093fb 65%,
+        #4facfe 100%
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+
+    font-weight: 800 !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* h4 também, mas um pouco mais discreto */
+[data-testid="stMarkdownContainer"] h4 {
+    color: #c4b5fd !important;
+    -webkit-text-fill-color: #c4b5fd !important;
+    font-weight: 750 !important;
+}
+
+/* tamanho e espaçamento dos títulos */
+[data-testid="stMarkdownContainer"] h1 {
+    font-size: 3rem !important;
+    margin-top: 1.2rem !important;
+    margin-bottom: 1rem !important;
+}
+
+[data-testid="stMarkdownContainer"] h2 {
+    font-size: 2.35rem !important;
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+}
+
+[data-testid="stMarkdownContainer"] h3 {
+    font-size: 1.85rem !important;
+    margin-top: 1.6rem !important;
+    margin-bottom: 0.8rem !important;
+}
+
+[data-testid="stMarkdownContainer"] h4 {
+    font-size: 1.35rem !important;
+    margin-top: 1.3rem !important;
+    margin-bottom: 0.7rem !important;
+}
+/* =========================================================
+   PROTEGER CABEÇALHOS DOS EXPANDERS
+   Para não ficarem transparentes/invisíveis
+========================================================= */
+
+[data-testid="stExpander"] summary,
+[data-testid="stExpander"] summary *,
+[data-testid="stExpander"] summary p,
+[data-testid="stExpander"] summary span,
+[data-testid="stExpander"] summary div {
+    background: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* mantém o fundo roxo/escuro do header */
+[data-testid="stExpander"] summary {
+    background-color: #1f1b3d !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
