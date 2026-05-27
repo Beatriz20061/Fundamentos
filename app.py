@@ -118,6 +118,7 @@ input, textarea, select {
     background: rgba(0,0,0,0.6) !important;
     color: white !important;
 }
+<style>
 /* ===== IMPORTS E VARIÁVEIS ===== */
 @import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap)');
 
