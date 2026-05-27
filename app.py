@@ -1613,6 +1613,10 @@ elif page == "🟣 Padrões dos Primos":
         Move o slider para ver como os **números primos se organizam em padrões diagonais**.
         """)
         # Função primo
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        # Função primalidade
         def is_prime(n):
             if n < 2:
                 return False
@@ -1621,49 +1625,64 @@ elif page == "🟣 Padrões dos Primos":
                     return False
             return True
 
-        # Espiral
-        def ulam_spiral(n):
-            x, y = 0, 0
+        # Gerar matriz da espiral
+        def ulam_matrix(n):
+            size = int(np.ceil(np.sqrt(n)))
+            if size % 2 == 0:
+                size += 1  # garantir centro
+
+            grid = np.zeros((size, size), dtype=int)
+
+            x, y = size // 2, size // 2
             dx, dy = 1, 0
-            positions = []
+            steps = 1
+            num = 1
 
-            for i in range(1, n + 1):
-                positions.append((x, y, i))
-
-                if (x == y) or (x < 0 and x == -y) or (x > 0 and x == 1 - y):
+            while num <= n:
+                for _ in range(2):
+                    for _ in range(steps):
+                        if num <= n:
+                            grid[y][x] = num
+                            num += 1
+                        x += dx
+                        y += dy
                     dx, dy = -dy, dx
+                steps += 1
 
-                x += dx
-                y += dy
+            return grid
 
-            return positions
+        # Interface
+        st.markdown("### 🌀 Espiral de Ulam com números primos")
 
-        # slider
-        n_max = st.slider("Quantidade de números:", 10, 2000, 500, key="ulam_slider")
+        n_max = st.slider("Quantidade de números:", 50, 400, 200)
 
-        coords = ulam_spiral(n_max)
+        grid = ulam_matrix(n_max)
 
-        x_vals = []
-        y_vals = []
-
-        for (x, y, num) in coords:
-            if is_prime(num):
-                x_vals.append(x)
-                y_vals.append(y)
-
-        # gráfico
-        import matplotlib.pyplot as plt
+        size = grid.shape[0]
 
         fig, ax = plt.subplots(figsize=(6, 6))
-        fig.patch.set_facecolor('#0f0f23')
-        ax.set_facecolor('#0f0f23')
+        fig.patch.set_facecolor('black')
+        ax.set_facecolor('black')
 
-        ax.scatter(x_vals, y_vals, s=5, color='#00f2fe')
+        # desenhar grelha
+        ax.imshow(grid, cmap='gray_r')
+
+        # escrever primos
+        for i in range(size):
+            for j in range(size):
+                num = grid[i, j]
+                if num != 0 and is_prime(num):
+                    ax.text(j, i, str(num),
+                            color='red',
+                            fontsize=5,
+                            ha='center', va='center')
 
         ax.set_title("Espiral de Ulam (números primos)", color='white')
+
         ax.axis('off')
 
         st.pyplot(fig)
+
 
         st.markdown("---")
 
