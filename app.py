@@ -1591,6 +1591,9 @@ elif page == "🟢 Lógica do Number Match":
 
                 for c in range(COLS):
                     idx = r * COLS + c
+                    if idx >= len(grid):
+                        continue
+
                     val = grid[idx]
 
                     with cols[c]:
