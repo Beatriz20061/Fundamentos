@@ -52,7 +52,7 @@ h1, h2, h3 {
     color: white;
 }
 
-</style>
+
 
 
 /* ===== IMPORTS E VARIÁVEIS ===== */
