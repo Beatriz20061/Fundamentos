@@ -1185,7 +1185,7 @@ elif page == "17 Grupos Cristalográficos":
             """)
 
             # ====================== GRUPO p4 ======================
-            st.markdown("#### 4.1 Grupo p4 (Simetria Quadrada)")
+            st.markdown("#### 3.1 Grupo p4 (Simetria Quadrada)")
             st.markdown("""
             O grupo **p4** caracteriza-se pela presença de rotações de ordem 4, mas pela **ausência total de eixos de reflexão**. 
             Esta combinação torna-o único entre os grupos com simetria quadrada.
@@ -1204,7 +1204,7 @@ elif page == "17 Grupos Cristalográficos":
                 st.info("**Rede:** Quadrada  \n**Reflexões:** Ausentes")
 
             # ====================== GRUPO p6 ======================
-            st.markdown("#### 4.2 Grupo p6 (Simetria Hexagonal)")
+            st.markdown("#### 3.2 Grupo p6 (Simetria Hexagonal)")
             st.markdown("""
             O grupo **p6** apresenta a mais elevada ordem de rotação entre todos os grupos cristalográficos. 
             Está fortemente associado a padrões naturais, como os favos de mel.
@@ -1223,7 +1223,7 @@ elif page == "17 Grupos Cristalográficos":
                 st.success("**Rede:** Hexagonal  \n**Reflexões:** Ausentes")
 
             # ====================== GRUPO pm ======================
-            st.markdown("#### 4.3 Grupo pm (Simetria Axial)")
+            st.markdown("#### 3.3 Grupo pm (Simetria Axial)")
             st.markdown("""
             O grupo **pm** é um dos exemplos mais simples de simetria com reflexões. 
             Caracteriza-se pela presença de eixos de reflexão paralelos.
@@ -1241,7 +1241,7 @@ elif page == "17 Grupos Cristalográficos":
                 st.warning("**Rede:** Retangular  \n**Reflexões:** Paralelas")
 
             # ====================== COMPARAÇÃO ======================
-            st.markdown("#### 4.4 Comparação entre os 3 Grupos")
+            st.markdown("#### 3.4 Comparação entre os 3 Grupos")
             
             comparison_data = {
                 "Grupo": ["p4", "p6", "pm"],
@@ -1260,7 +1260,7 @@ elif page == "17 Grupos Cristalográficos":
             mesmo quando obedecem às mesmas restrições de repetição periódica.
             """)
             
-            st.markdown("#### 🎛️ Explorador Interativo de Grupos")
+            st.markdown("#### Explorador Interativo de Grupos")
             
             s_grupo = st.selectbox(
                 "Seleciona um grupo para inspecionar:",
@@ -1737,7 +1737,7 @@ elif page == "Padrões dos Primos":
         st.markdown("---")
 
         st.markdown("""
-        ### 📘 Contexto Teórico: Teoria dos Números
+        ### Contexto Teórico: Teoria dos Números
 
         A **Teoria dos Números** é um dos ramos mais antigos e fascinantes da matemática. Apesar de lidar com objetos aparentemente simples, os números inteiros, revela estruturas profundas e padrões inesperados.
 
@@ -1749,7 +1749,7 @@ elif page == "Padrões dos Primos":
         """)
 
         st.markdown("""
-        #### 🔍 Objetivos deste estudo
+        #### Objetivos deste estudo
 
         Este trabalho explora dois eixos fundamentais onde esses padrões se tornam visíveis:
 
@@ -1790,7 +1790,7 @@ elif page == "Padrões dos Primos":
         """)
         st.markdown("---")
 
-        st.markdown("### 🎛️ Visualização Interativa: Espiral de Ulam")
+        st.markdown("### Visualização Interativa: Espiral de Ulam")
 
         st.markdown("""
         Move o slider para ver como os **números primos se organizam em padrões diagonais**.
@@ -1842,7 +1842,7 @@ elif page == "Padrões dos Primos":
         size = grid.shape[0]
 
         # -------- UI --------
-        st.markdown("### 🌀 Espiral de Ulam")
+        st.markdown("### Espiral de Ulam")
 
         n_max = st.slider("Quantidade de números:", 10, MAX_GLOBAL, 200)
 
@@ -1948,7 +1948,7 @@ elif page == "Padrões dos Primos":
                 st.error("❌ Não é primo")
 
         st.info("""
-        💡 Observação: O polinómio gera primos até n = 39. 
+        Observação: O polinómio gera primos até n = 39. 
         A partir daí, começam a surgir números compostos — mostrando os limites destas expressões.
         """)
             
