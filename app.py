@@ -822,7 +822,7 @@ if page == "🏠 Página Inicial":
     render_divider()
     
     # About Section
-    set.markdow (render_glass_card("""
+    set.markdown (render_glass_card("""
         <h3 style="margin-top: 0;">💡 Sobre a Plataforma</h3>
         <p>Esta plataforma digital foi desenvolvida para integrar a totalidade dos conteúdos teóricos
         presentes nos cinco projetos académicos desenvolvidos nos relatórios originais.</p>
