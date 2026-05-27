@@ -862,7 +862,7 @@ elif page == "🔵 Grupos de Simetria":
     tab1, tab2 = st.tabs(["📖 Matéria Completa", "🧠 Quiz Geral do Módulo"])
     
     with tab1:
-        with st.expander("📘 1. Introdução à Simetria e Teoria de Grupos", expanded=True):
+        with st.expander("📘 Introdução à Simetria e Teoria de Grupos", expanded=True):
             st.markdown("""
 
     A **simetria** é um conceito central em múltiplas áreas da Matemática, desde a Geometria à Álgebra e até à Física. 
@@ -882,7 +882,7 @@ elif page == "🔵 Grupos de Simetria":
     - Estruturas virais
     - Obras de arte, com especial destaque para o génio **M. C. Escher**
     """)
-        with st.expander("📐 2. Geometria dos Polígonos e Sólidos Platónicos", expanded=False):
+        with st.expander("📐 1. Geometria dos Polígonos e Sólidos Platónicos", expanded=False):
             st.markdown("""
     ### Geometria dos Polígonos e Sólidos Platónicos
 
@@ -914,7 +914,7 @@ elif page == "🔵 Grupos de Simetria":
     **Exemplo**: A composição de duas reflexões em retas que se cruzam gera uma rotação.
     """)
             
-        with st.expander("🔢 3. Teoria de Grupos: Estrutura Abstrata", expanded=False):
+        with st.expander("🔢 2. Teoria de Grupos: Estrutura Abstrata", expanded=False):
             st.markdown("""
     ### Teoria de Grupos: Estrutura Abstrata
 
@@ -931,7 +931,7 @@ elif page == "🔵 Grupos de Simetria":
 
     Esta perspetiva abstrata permite aplicar a mesma linguagem formal na análise de fenómenos tão distintos como tesselações islâmicas, padrões em cristais ou interações moleculares (Lehninger, *Principles of Biochemistry*).
     """)
-        with st.expander("🦠 4. Estruturas Virais Icosaédricas", expanded=False):
+        with st.expander("🦠 3. Estruturas Virais Icosaédricas", expanded=False):
             st.markdown("""
     ### Estruturas Virais Icosaédricas
 
@@ -945,7 +945,7 @@ elif page == "🔵 Grupos de Simetria":
 
     Exemplos clássicos incluem o **adenovírus**, o **poliovírus** e o **vírus Zika**. Esta arquitetura viral é elegantemente descrita pelo modelo de **Caspar–Klug** (Flint et al., *Principles of Virology*).
     """)
-        with st.expander("🧬 5. Estruturas Helicoidais e Simetria Quaternária", expanded=False):
+        with st.expander("🧬 4. Estruturas Helicoidais e Simetria Quaternária", expanded=False):
             st.markdown("""
     ### Estruturas Helicoidais e Simetria Quaternária
 
@@ -963,7 +963,7 @@ elif page == "🔵 Grupos de Simetria":
 
     Assim como nas obras de **M. C. Escher**, onde padrões complexos e hipnóticos emergem de transformações simples, a natureza utiliza rotações e translações para construir sistemas moleculares altamente eficientes e estáveis.
     """)
-    with st.expander("🎨 1.5 Simetria na Arte de M. C. Escher", expanded=True):
+    with st.expander("🎨 5. Simetria na Arte de M. C. Escher", expanded=False):
         st.markdown("""
         ### Simetria na Arte de M. C. Escher
 
@@ -991,7 +991,7 @@ elif page == "🔵 Grupos de Simetria":
         except:
             st.error("Não foi possível carregar a imagem. Verifique o caminho do ficheiro.")
 
-    with st.expander("🔭 7. O Caleidoscópio e a Força Unificadora da Simetria", expanded=False):
+    with st.expander("🔭 6. O Caleidoscópio e a Força Unificadora da Simetria", expanded=False):
         st.markdown("""
     ### O Caleidoscópio: Simetria em Ação
 
@@ -1070,7 +1070,7 @@ elif page == "🟤 17 Grupos Cristalográficos":
     tab1, tab2 = st.tabs(["📖 Matéria Completa", "🧠 Quiz Geral do Módulo"])
     
     with tab1:
-        with st.expander("📖 1. Introdução aos 17 Grupos Cristalográficos", expanded=True):
+        with st.expander("📖 Introdução aos 17 Grupos Cristalográficos", expanded=True):
             st.markdown("""
             ### Introdução aos 17 Grupos Cristalográficos
 
@@ -1090,7 +1090,7 @@ elif page == "🟤 17 Grupos Cristalográficos":
 
             O objetivo é aprofundar a compreensão das simetrias do plano e consolidar a ligação entre a teoria abstrata e as suas múltiplas aplicações visuais e estruturais.
             """)
-        with st.expander("📘 2. Grupos de Simetria e Tesselações Periódicas", expanded=False):
+        with st.expander("📘 1. Grupos de Simetria e Tesselações Periódicas", expanded=False):
             st.markdown("""
             ### Grupos de Simetria e Tesselações Periódicas
 
@@ -1117,7 +1117,7 @@ elif page == "🟤 17 Grupos Cristalográficos":
 
             Um dos resultados mais notáveis deste estudo é que existem **exatamente 17 grupos cristalográficos do plano**. Este resultado aparece tanto em obras de geometria recreativa (como a de Holden), como em textos mais formais de cristalografia, tais como *The Basics of Crystallography and Diffraction* de Hammond (2015).
             """)
-        with st.expander("📋 3. Visão Geral dos 17 Grupos Cristalográficos", expanded=False):
+        with st.expander("📋 2. Visão Geral dos 17 Grupos Cristalográficos", expanded=False):
             st.markdown("""
             ### Visão Geral dos 17 Grupos Cristalográficos do Plano
 
@@ -1167,7 +1167,7 @@ elif page == "🟤 17 Grupos Cristalográficos":
             Na secção seguinte, analisamos em maior detalhe três destes grupos, destacando as suas características geométricas, exemplos e aplicações.
             """)
             
-        with st.expander("🔍 4. Análise Detalhada dos 3 Grupos Cristalográficos", expanded=False):
+        with st.expander("🔍 3. Análise Detalhada dos 3 Grupos Cristalográficos", expanded=False):
             st.markdown("""
             ### 4. Análise Detalhada dos 3 Grupos Cristalográficos
 
@@ -1315,7 +1315,7 @@ elif page == "🟢 Lógica do Number Match":
     tab1, tab2 = st.tabs(["💡 Lição do Sistema & Simulador", "🧠 Quiz Geral do Módulo"])
     
     with tab1:
-        with st.expander("📖 1. Introdução ao Number Match", expanded=True):
+        with st.expander("📖 Introdução ao Number Match", expanded=True):
             st.markdown("""
             ### Introdução ao Number Match
 
@@ -1346,7 +1346,7 @@ elif page == "🟢 Lógica do Number Match":
 
             Esta abordagem demonstra como jogos do quotidiano podem constituir contextos ricos para a compreensão de conceitos matemáticos essenciais, utilizando modelos baseados em relações, grafos e argumentos de contagem.
             """)
-        with st.expander("📘 2. Formalização Lógica do Jogo", expanded=False):
+        with st.expander("📘 1. Formalização Lógica do Jogo", expanded=False):
             st.markdown("""
             ### Formalização Lógica do Jogo
 
@@ -1398,7 +1398,7 @@ elif page == "🟢 Lógica do Number Match":
                     reasons.append("As cartas não estão conectadas")
                 st.error(f"🟥 **JOGADA INVÁLIDA!** Razões: {'; '.join(reasons)}")
                 
-        with st.expander("📊 3. Modelação em Teoria de Grafos", expanded=False):
+        with st.expander("📊 2. Modelação em Teoria de Grafos", expanded=False):
             st.markdown("""
             ### Modelação em Teoria de Grafos
 
@@ -1416,7 +1416,7 @@ elif page == "🟢 Lógica do Number Match":
             st.markdown("""
             A Teoria de Grafos revela-se assim uma ferramenta extremamente eficaz para compreender as dinâmicas do jogo, prever bloqueios e desenvolver estratégias mais eficazes.
             """)
-        with st.expander("🔢 4. Análise Combinatória", expanded=False):
+        with st.expander("🔢 3. Análise Combinatória", expanded=False):
             st.markdown("""
             ### Análise Combinatória
 
@@ -1459,7 +1459,7 @@ elif page == "🟢 Lógica do Number Match":
 
             # Imagem (se tiveres)
             # st.image("caminho/para/figura2.jpg", caption="Figura 2: Distribuições desiguais que impossibilitam combinações", use_container_width=True)
-        with st.expander("🎯 5. Estratégia Matemática", expanded=False):
+        with st.expander("🎯 4. Estratégia Matemática", expanded=False):
             st.markdown("""
             ### Estratégia Matemática
 
@@ -1539,7 +1539,7 @@ elif page == "🟣 Padrões dos Primos":
     with tab1:
         import streamlit as st
 
-    with st.expander("🔢 1. Introdução", expanded=True):
+    with st.expander("🔢 Introdução", expanded=True):
 
         st.markdown("""
         #### Distribuição dos Números e Probabilidade de Jogadas Válidas
@@ -1576,7 +1576,7 @@ elif page == "🟣 Padrões dos Primos":
         O objetivo é mostrar que, mesmo em contextos onde a aleatoriedade parece dominar, surgem padrões que revelam a profundidade estrutural dos números.
         """)
 
-    with st.expander("🌀 2 A Espiral de Ulam e Padrões Inesperados", expanded=False):
+    with st.expander("🌀 1. A Espiral de Ulam e Padrões Inesperados", expanded=False):
 
         st.markdown("""
         ### 1. Números Primos e a sua Natureza
@@ -1677,7 +1677,7 @@ elif page == "🟣 Padrões dos Primos":
         """)
             
 
-    with st.expander("φ 3. A Função Totiente de Euler", expanded=False):
+    with st.expander("φ 2. A Função Totiente de Euler", expanded=False):
 
         st.markdown("""
         ### 1. Definição e Significado
@@ -1891,7 +1891,7 @@ elif page == "🟡 Padrões Numéricos":
             #### O Número 9 na Base Decimal
             Explora-se também o comportamento do número **9**, evidenciando simetrias e padrões que resultam do sistema de numeração decimal.
 
-            #### ∞ Último Teorema de Fermat
+            #### Último Teorema de Fermat
             Por fim, estuda-se o **Último Teorema de Fermat**, destacando o contraste entre:
 
             - O caso do expoente 2 → com infinitas soluções (triplas pitagóricas)  
@@ -1906,7 +1906,7 @@ elif page == "🟡 Padrões Numéricos":
             A Teoria dos Números permite assim transformar o aparente caos em **compreensão estruturada**.
             """)
 
-        with st.expander("📐 5.1 Números Triangulares e Contagem Geométrica", expanded=False):
+        with st.expander("📐 1. Números Triangulares e Contagem Geométrica", expanded=False):
             st.markdown("""
             ### Explicação Teórica
             
@@ -1958,7 +1958,7 @@ elif page == "🟡 Padrões Numéricos":
                 ax_tri.axis('off')
                 st.pyplot(fig_tri)
             
-        with st.expander("✨ 5.2 Números Perfeitos e Harmonia de Divisores", expanded=False):
+        with st.expander("✨ 2. Números Perfeitos e Harmonia de Divisores", expanded=False):
             st.markdown("""
             ### Explicação Teórica Exaustiva
             
@@ -1987,7 +1987,7 @@ elif page == "🟡 Padrões Numéricos":
             
             st.latex(r"n = 2^{p-1}(2^p - 1)")
             
-        with st.expander("9️⃣ 5.3 Exploração do Número 9 na Base Decimal", expanded=False):
+        with st.expander("9️⃣ 3. Exploração do Número 9 na Base Decimal", expanded=False):
             st.markdown("""
             ### Explicação Teórica Exaustiva
             
@@ -2048,7 +2048,7 @@ elif page == "🟡 Padrões Numéricos":
             else:
                 st.error("Introduz apenas números inteiros positivos.")
             
-        with st.expander("∞ 5.4 O Último Teorema de Fermat", expanded=False):
+        with st.expander("∞ 4. O Último Teorema de Fermat", expanded=False):
             st.markdown("""
             ### Explicação Teórica
             
@@ -2074,7 +2074,7 @@ elif page == "🟡 Padrões Numéricos":
             """)
             
             if GRAFICOS_ATIVOS:
-                st.markdown("#### 📊 Comparação das Curvas de Fermat")
+                st.markdown("#### Comparação das Curvas de Fermat")
                 
                 n_input_txt = st.text_input("Expoente n (> 2) para comparar com n=2:", value="3.0", key="fermat_n")
                 
