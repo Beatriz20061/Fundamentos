@@ -1549,6 +1549,7 @@ elif page == "🟢 Lógica do Number Match":
 
                     neighbors = []
 
+# ortogonais
                     if r > 0:
                         neighbors.append((r-1)*cols + c)
                     if r < rows - 1:
@@ -1557,6 +1558,16 @@ elif page == "🟢 Lógica do Number Match":
                         neighbors.append(r*cols + (c-1))
                     if c < cols - 1:
                         neighbors.append(r*cols + (c+1))
+
+                    # diagonais
+                    if r > 0 and c > 0:
+                        neighbors.append((r-1)*cols + (c-1))
+                    if r > 0 and c < cols - 1:
+                        neighbors.append((r-1)*cols + (c+1))
+                    if r < rows - 1 and c > 0:
+                        neighbors.append((r+1)*cols + (c-1))
+                    if r < rows - 1 and c < cols - 1:
+                        neighbors.append((r+1)*cols + (c+1))
 
                     for n in neighbors:
                         if n in visited:
