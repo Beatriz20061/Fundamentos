@@ -1086,6 +1086,79 @@ div[data-testid="stAlert"][data-baseweb="notification"][kind="error"] {
 [data-testid="stExpander"] summary {
     background-color: #1f1b3d !important;
 }
+/* =========================================================
+   RESTAURAR EFEITO ESPECIAL DOS TÍTULOS DENTRO DOS EXPANDERS
+========================================================= */
+
+/* títulos dentro do conteúdo aberto dos expanders */
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] h1,
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] h2,
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] h3 {
+    background: linear-gradient(
+        135deg,
+        #667eea 0%,
+        #b388ff 35%,
+        #f093fb 65%,
+        #4facfe 100%
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+
+    color: transparent !important;
+    font-weight: 850 !important;
+    letter-spacing: -0.025em !important;
+
+    text-shadow: 0 0 18px rgba(179, 136, 255, 0.22) !important;
+}
+
+/* subtítulos mais pequenos dentro dos expanders */
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] h4,
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] h5,
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] h6 {
+    background: linear-gradient(
+        135deg,
+        #c4b5fd 0%,
+        #f0abfc 55%,
+        #93c5fd 100%
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+
+    color: transparent !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.015em !important;
+
+    text-shadow: 0 0 14px rgba(196, 181, 253, 0.18) !important;
+}
+
+/* espaçamento bonito dentro dos expanders */
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] h1 {
+    font-size: 2.7rem !important;
+    margin-top: 1.4rem !important;
+    margin-bottom: 1rem !important;
+}
+
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] h2 {
+    font-size: 2.25rem !important;
+    margin-top: 1.3rem !important;
+    margin-bottom: 0.9rem !important;
+}
+
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] h3 {
+    font-size: 1.8rem !important;
+    margin-top: 1.15rem !important;
+    margin-bottom: 0.75rem !important;
+}
+
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] h4 {
+    font-size: 1.35rem !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0.65rem !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
