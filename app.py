@@ -1534,28 +1534,48 @@ elif page == "🟢 Lógica do Number Match":
                 if not (a == b or a + b == 10):
                     return False
 
-                r1, c1 = divmod(i, cols)
-                r2, c2 = divmod(j, cols)
+                rows = len(grid) // cols
 
-                # adjacentes
-                if abs(r1 - r2) + abs(c1 - c2) == 1:
-                    return True
+                # função para verificar caminho (BFS)
+                from collections import deque
 
-                # mesma linha → permite passar por espaços vazios
-                if r1 == r2:
-                    for c in range(min(c1, c2) + 1, max(c1, c2)):
-                        if grid[r1 * cols + c] not in [None]:
-                            return False
-                    return True
+                visited = set()
+                queue = deque([i])
 
-                # mesma coluna → permite passar por espaços vazios
-                if c1 == c2:
-                    for r in range(min(r1, r2) + 1, max(r1, r2)):
-                        if grid[r * cols + c1] not in [None]:
-                            return False
-                    return True
+                while queue:
+                    current = queue.popleft()
+
+                    if current == j:
+                        return True
+
+                    r, c = divmod(current, cols)
+
+                    neighbors = []
+
+                    # cima
+                    if r > 0:
+                        neighbors.append((r-1)*cols + c)
+                    # baixo
+                    if r < rows - 1:
+                        neighbors.append((r+1)*cols + c)
+                    # esquerda
+                    if c > 0:
+                        neighbors.append(r*cols + (c-1))
+                    # direita
+                    if c < cols - 1:
+                        neighbors.append(r*cols + (c+1))
+
+                    for n in neighbors:
+                        if n in visited:
+                            continue
+
+                        # só pode andar por espaços vazios ou chegar ao destino
+                        if grid[n] is None or n == j:
+                            visited.add(n)
+                            queue.append(n)
 
                 return False
+
 
             # -------- lógica --------
             def select_number(idx):
@@ -1580,23 +1600,33 @@ elif page == "🟢 Lógica do Number Match":
 
             # -------- estilo --------
             st.markdown("""
-            <style>
-            div.stButton > button {
-                width: 55px;
-                height: 55px;
-                font-size: 20px;
-                border-radius: 10px;
-                background: linear-gradient(135deg, #667eea, #764ba2);
-                color: white;
-                border: none;
-                font-weight: bold;
-            }
+                <style>
 
-            div.stButton > button:hover {
-                outline: 3px solid #00f2fe;
-            }
-            </style>
-            """, unsafe_allow_html=True)
+                /* ✅ aplica só aos botões da grelha */
+                button[key^="grid_"] {
+                    width: 55px;
+                    height: 55px;
+                    font-size: 20px;
+                    border-radius: 12px;
+                    background: linear-gradient(135deg, #667eea, #764ba2);
+                    color: white;
+                    border: none;
+                    font-weight: bold;
+                }
+
+                /* hover só na grelha */
+                button[key^="grid_"]:hover {
+                    outline: 3px solid #00f2fe;
+                }
+
+                /* ✅ botão reiniciar fica normal */
+                button[kind="secondary"] {
+                    width: auto !important;
+                    height: auto !important;
+                }
+
+                </style>
+                """, unsafe_allow_html=True)
 
             # -------- grelha --------
             rows = SIZE // COLS
@@ -1615,7 +1645,7 @@ elif page == "🟢 Lógica do Number Match":
                         if val is None:
                             st.markdown("<div style='height:55px'></div>", unsafe_allow_html=True)
                         else:
-                            if st.button(str(val), key=f"btn_{idx}"):
+                            if st.button(str(val), key=f"grid_{idx}"):
                                 select_number(idx)
 
             # -------- mensagem --------
