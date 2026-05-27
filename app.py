@@ -18,7 +18,7 @@ st.set_page_config(page_title="MathXplore - ISCTE Sintra", layout="wide", page_i
 st.markdown("""
 <style>
 
-/* ===== RESET E BASE ===== */
+/* ===== IMPORTS E VARIÁVEIS ORIGINAIS ===== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
@@ -26,17 +26,19 @@ st.markdown("""
     --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     --dark-gradient: linear-gradient(135deg, #0c0c1e 0%, #1a1a3e 100%);
-    --glass-bg: rgba(255, 255, 255, 0.06);
-    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --shadow-color: rgba(102, 126, 234, 0.25);
     --text-primary: #ffffff;
     --text-secondary: rgba(255, 255, 255, 0.7);
+    --card-bg: rgba(255, 255, 255, 0.05);
 }
 
 html, body, [class*="css"] {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
-/* ===== FUNDO ANIMADO COM GRADIENTE ===== */
+/* ===== FUNDO ANIMADO COM GRADIENTE (RESTAURADO) ===== */
 .stApp {
     background: linear-gradient(-45deg, #0f0f23, #1a1a3e, #2d1b4e, #1e3a5f, #0f2027);
     background-size: 400% 400%;
@@ -50,15 +52,53 @@ html, body, [class*="css"] {
     100% { background-position: 0% 50%; }
 }
 
+/* ===== PARTÍCULAS FLUTUANTES (RESTAURADO) ===== */
+.stApp::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.2), transparent),
+        radial-gradient(3px 3px at 50px 160px, rgba(255,255,255,0.3), transparent),
+        radial-gradient(2px 2px at 90px 40px, rgba(255,255,255,0.2), transparent),
+        radial-gradient(3px 3px at 130px 80px, rgba(255,255,255,0.25), transparent),
+        radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.15), transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: floatParticles 20s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes floatParticles {
+    0% { transform: translateY(0) translateX(0); }
+    100% { transform: translateY(-200px) translateX(50px); }
+}
+
+/* ===== ANIMAÇÕES DE ENTRADA (RESTAURADO) ===== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
 .block-container {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     padding-top: 2rem !important;
     position: relative;
     z-index: 1;
     background: transparent !important;
 }
 
-/* ===== DESIGN ORIGINAL ESCURO PARA INPUTS (TEXTO E NÚMERO) ===== */
-/* Aqui corrigimos a legibilidade mantendo o fundo escuro e a letra branca */
+/* ===== CORREÇÃO DAS CAIXAS DE INPUT E COMPARAÇÃO GRÁFICA ===== */
+/* Aplica-se tanto a inputs de texto como a inputs numéricos (caixa escura, texto branco legível) */
 .stTextInput input, .stNumberInput input {
     background-color: rgba(255, 255, 255, 0.07) !important;
     color: #ffffff !important;
@@ -69,32 +109,24 @@ html, body, [class*="css"] {
     font-size: 1.2rem !important;
 }
 
-/* Quando o utilizador clica na caixa de texto */
 .stTextInput input:focus, .stNumberInput input:focus {
     border-color: #8b5cf6 !important;
     box-shadow: 0 0 12px rgba(139, 92, 246, 0.35) !important;
     background-color: rgba(139, 92, 246, 0.1) !important;
 }
 
-.stTextInput label, .stNumberInput label, .stSelectbox label {
-    color: var(--text-primary) !important;
-    font-weight: 600 !important;
-}
-
-/* Botões de + e - do seletor numérico */
 button[data-testid="stNumberInputStepUp"], 
 button[data-testid="stNumberInputStepDown"] {
     background-color: rgba(255, 255, 255, 0.08) !important;
     color: white !important;
     border: none !important;
 }
-
 button[data-testid="stNumberInputStepUp"]:hover, 
 button[data-testid="stNumberInputStepDown"]:hover {
     background-color: #8b5cf6 !important;
 }
 
-/* ===== DESIGN ESCURO PARA SELECTBOX ===== */
+/* ===== CORREÇÃO DO SELECTBOX (ELIMINA O BLOCO BRANCO DO DROPDOWN) ===== */
 div[data-baseweb="select"] > div {
     background-color: rgba(255, 255, 255, 0.07) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
@@ -103,22 +135,23 @@ div[data-baseweb="select"] > div {
 
 div[data-baseweb="select"] span {
     color: #ffffff !important;
-    font-weight: 500 !important;
 }
 
-/* Menu que abre no selectbox */
-ul[role="listbox"] {
-    background-color: #1b1b35 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+/* Alvo certeiro na caixa de opções flutuante para remover o fundo branco indesejado */
+div[role="listbox"], ul[role="listbox"] {
+    background-color: #111126 !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    background: #111126 !important;
 }
 li[role="option"] {
     color: white !important;
+    background-color: transparent !important;
 }
 li[role="option"]:hover {
-    background: rgba(139, 92, 246, 0.3) !important;
+    background-color: rgba(139, 92, 246, 0.3) !important;
 }
 
-/* ===== EXPANDERS DO STREAMLIT (CORRIGIDOS PARA ESCURO SEM FUNDO BRANCO) ===== */
+/* ===== CORREÇÃO COMPLETA DOS EXPANDERS (ELIMINA A BARRA BRANCA DO TOPO) ===== */
 div[data-testid="stExpander"] {
     background: rgba(255, 255, 255, 0.04) !important;
     backdrop-filter: blur(15px) !important;
@@ -126,25 +159,27 @@ div[data-testid="stExpander"] {
     border-radius: 16px !important;
     margin-bottom: 12px !important;
     overflow: hidden !important;
-    transition: all 0.4s ease !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 div[data-testid="stExpander"]:hover {
     border-color: rgba(102, 126, 234, 0.4) !important;
     background: rgba(102, 126, 234, 0.08) !important;
+    transform: translateX(5px) !important;
 }
 
+/* Isto remove a barra branca nativa que o Streamlit injeta no cabeçalho dos expanders */
 div[data-testid="stExpander"] summary {
+    background-color: transparent !important;
     color: #ffffff !important;
     font-weight: 600 !important;
     padding: 1rem 1.25rem !important;
 }
 
-/* Garante que o texto de dentro do expander NUNCA herda fundos claros */
+/* Força todo o conteúdo do expander a ignorar estilos claros herdados */
 div[data-testid="stExpander"] div {
     background-color: transparent !important;
 }
-
 div[data-testid="stExpander"] p, 
 div[data-testid="stExpander"] span, 
 div[data-testid="stExpander"] li {
@@ -158,13 +193,14 @@ h1, h2, h3 {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-weight: 700 !important;
+    letter-spacing: -0.02em;
 }
 
 h1 { font-size: 3rem !important; }
-p, span, li, .stMarkdown { color: var(--text-secondary); }
+p, span, li, .stMarkdown { color: var(--text-secondary) !important; }
 strong, b { color: var(--text-primary) !important; }
 
-/* ===== TABS FUTURISTAS ===== */
+/* ===== TABS ===== */
 .stTabs [data-baseweb="tab-list"] {
     background: rgba(255, 255, 255, 0.05) !important;
     border-radius: 16px !important;
@@ -172,14 +208,12 @@ strong, b { color: var(--text-primary) !important; }
     gap: 8px !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
-
 .stTabs [data-baseweb="tab"] {
     background: transparent !important;
     color: var(--text-secondary) !important;
     border-radius: 12px !important;
     padding: 12px 24px !important;
 }
-
 .stTabs [aria-selected="true"] {
     background: var(--primary-gradient) !important;
     color: white !important;
@@ -194,22 +228,21 @@ section[data-testid="stSidebar"] {
     backdrop-filter: blur(20px);
     border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 section[data-testid="stSidebar"] .stRadio > div > label {
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 12px !important;
     padding: 12px 16px !important;
     margin: 4px 0 !important;
-    transition: all 0.3s ease !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
-
 section[data-testid="stSidebar"] .stRadio > div > label:hover {
     background: rgba(102, 126, 234, 0.2) !important;
     border-color: rgba(102, 126, 234, 0.5) !important;
+    transform: translateX(5px) !important;
 }
 
-/* ===== COMPONENTES ADICIONAIS ===== */
+/* ===== CARDS, HEADER E MÉTRICAS ===== */
 .glass-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
@@ -218,7 +251,6 @@ section[data-testid="stSidebar"] .stRadio > div > label:hover {
     padding: 2rem;
     margin: 1.5rem 0;
 }
-
 .modulo-header {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
     backdrop-filter: blur(20px);
@@ -227,29 +259,26 @@ section[data-testid="stSidebar"] .stRadio > div > label:hover {
     padding: 1.5rem 2rem;
     margin-bottom: 2rem;
 }
-
 .stButton > button {
     background: var(--primary-gradient) !important;
     color: white !important;
+    border: none !important;
     border-radius: 14px !important;
     padding: 14px 32px !important;
     font-weight: 600 !important;
 }
-
 div[data-testid="stMetric"] {
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 16px !important;
     padding: 1.5rem !important;
 }
-
 .custom-divider {
     height: 2px;
     background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.5), transparent);
     margin: 2rem 0;
     border: none;
 }
-
 .katex { color: var(--text-primary) !important; }
 </style>
 """, unsafe_allow_html=True)
