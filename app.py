@@ -743,11 +743,11 @@ with st.sidebar:
         "📍 Navegação",
         [
             "🏠 Página Inicial",
-            "🔵 Grupos de Simetria",
-            "🟤 17 Grupos Cristalográficos",
-            "🟢 Lógica do Number Match",
-            "🟣 Padrões dos Primos",
-            "🟡 Padrões Numéricos"
+            "Grupos de Simetria",
+            "17 Grupos Cristalográficos",
+            "Lógica do Number Match",
+            "Padrões dos Primos",
+            "Padrões Numéricos"
         ],
         label_visibility="collapsed"
     )
@@ -772,7 +772,7 @@ if page == "🏠 Página Inicial":
     # Hero Section
     st.markdown("""
     <div class="hero-section">
-        <h1 class="hero-title">🚀 MathXplore</h1>
+        <h1 class="hero-title"> MathXplore</h1>
         <p class="hero-subtitle">
             Plataforma interativa com conhecimentos nas mais vastas areas da matemática.
             Explore conceitos através de visualizações dinâmicas, simuladores e quizzes.
@@ -822,36 +822,15 @@ if page == "🏠 Página Inicial":
     render_divider()
     
     # About Section
-    render_glass_card("""
+    set.markdow (render_glass_card("""
         <h3 style="margin-top: 0;">💡 Sobre a Plataforma</h3>
         <p>Esta plataforma digital foi desenvolvida para integrar a totalidade dos conteúdos teóricos
         presentes nos cinco projetos académicos desenvolvidos nos relatórios originais.</p>
         <p>A nossa abordagem converte a teoria exaustiva dos relatórios em componentes de aprendizagem dinâmicos, 
         estruturados rigorosamente sob a metodologia de <strong>Explicação Teórica</strong>, 
         <strong>Aplicação Prática</strong> e <strong>Questionários Gerais com Pontuação</strong> automática.</p>
-    """)
+    """), unsafe_allow_html=True)
     
-    # Quick Access
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("### 🎯 Acesso Rápido aos Módulos")
-    
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown("""
-        <div class="glass-card" style="padding: 1.5rem;">
-            <p><strong>🔵 Módulo 1:</strong> Grupos de Simetria</p>
-            <p><strong>🟤 Módulo 2:</strong> 17 Grupos Cristalográficos</p>
-            <p><strong>🟢 Módulo 3:</strong> Lógica do Number Match</p>
-        </div>
-        """, unsafe_allow_html=True)
-    with col2:
-        st.markdown("""
-        <div class="glass-card" style="padding: 1.5rem;">
-            <p><strong>🟣 Módulo 4:</strong> Padrões dos Primos</p>
-            <p><strong>🟡 Módulo 5:</strong> Padrões Numéricos</p>
-            <p style="opacity: 0.5;">Seleciona um módulo no menu lateral →</p>
-        </div>
-        """, unsafe_allow_html=True)
 
 # ==============================================================================
 # MÓDULO 1: GRUPOS DE SIMETRIA
@@ -1493,16 +1472,14 @@ elif page == "🟢 Lógica do Number Match":
         with st.expander("🎮 Number Match (Jogo Interativo)", expanded=False):
 
             st.markdown("""
-            ### 🎯 Regras do Jogo
+            ### Regras do Jogo
 
             Seleciona dois números que:
 
             - sejam **iguais** ou cuja **soma seja 10**
-            - estejam ligados por um **caminho livre**
-            - podes passar por **espaços vazios**
-            - o caminho pode ter curvas (não precisa ser linha reta)
-
-            💡 Por isso, jogadas que parecem diagonais podem funcionar!
+            - estejam ligados por um **caminho livre** seja em linha, coluna ou diagonal
+        
+            Por isso, jogadas que parecem diagonais podem funcionar!
             """)
 
             COLS = 9
