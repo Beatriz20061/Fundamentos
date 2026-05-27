@@ -17,6 +17,17 @@ st.set_page_config(page_title="MathXplore - ISCTE Sintra", layout="wide", page_i
 # ============================================================================
 st.markdown("""
 <style>
+/* 🔧 FIX BARRA BRANCA GLOBAL */
+div[data-testid="stVerticalBlock"] > div {
+    background: transparent !important;
+}
+
+div[data-testid="stVerticalBlock"] h1,
+div[data-testid="stVerticalBlock"] h2,
+div[data-testid="stVerticalBlock"] h3,
+div[data-testid="stVerticalBlock"] p {
+    color: white !important;
+}
 /* ===== IMPORTS E VARIÁVEIS ===== */
 @import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap)');
 
