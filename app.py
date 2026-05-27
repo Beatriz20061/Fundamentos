@@ -1485,7 +1485,7 @@ elif page == "🟢 Lógica do Number Match":
                 **4. Tratar o 5 com cuidado**  
                 Manter a quantidade de 5s sempre par.
                 """)
-        import streamlit as st
+    
         import streamlit as st
         import random
 
@@ -1497,9 +1497,13 @@ elif page == "🟢 Lógica do Number Match":
             Seleciona dois números iguais **ou cuja soma seja 10**.
             """)
 
+            # -------- dimensões fixas --------
+            COLS = 5
+            SIZE = 20  # total células
+
             # -------- estado --------
             if "grid" not in st.session_state:
-                st.session_state.grid = [random.randint(1, 9) for _ in range(20)]
+                st.session_state.grid = [random.randint(1, 9) for _ in range(SIZE)]
                 st.session_state.selected = []
 
             grid = st.session_state.grid
@@ -1522,26 +1526,33 @@ elif page == "🟢 Lógica do Number Match":
 
                     st.session_state.selected = []
 
-                    # ✅ FORÇA atualização imediata
                     st.rerun()
 
-            # -------- grelha --------
-            cols = st.columns(5)
+            # -------- DESENHAR GRELHA FIXA --------
+            rows = SIZE // COLS
 
-            for i in range(len(grid)):
-                val = grid[i]
+            for r in range(rows):
+                cols = st.columns(COLS)
 
-                if val is None:
-                    cols[i % 5].write(" ")
-                else:
-                    if cols[i % 5].button(str(val), key=f"btn_{i}"):
-                        select_number(i)
+                for c in range(COLS):
+                    idx = r * COLS + c
+                    val = grid[idx]
+
+                    with cols[c]:
+                        if val is None:
+                            st.write(" ")  # mantém espaço!
+                        else:
+                            if st.button(str(val), key=f"btn_{idx}"):
+                                select_number(idx)
 
             # -------- reset --------
+            st.markdown("")
+
             if st.button("🔄 Reiniciar jogo"):
-                st.session_state.grid = [random.randint(1, 9) for _ in range(20)]
+                st.session_state.grid = [random.randint(1, 9) for _ in range(SIZE)]
                 st.session_state.selected = []
                 st.rerun()
+
 
     with tab2:
         st.markdown("### 🧠 Questionário de Avaliação — Módulo 3")
