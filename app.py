@@ -1501,8 +1501,13 @@ elif page == "🟢 Lógica do Number Match":
             # -------- estado --------
             if "grid" not in st.session_state:
                 st.session_state.grid = [random.randint(1, 9) for _ in range(SIZE)]
+
+            if "selected" not in st.session_state:
                 st.session_state.selected = []
+
+            if "msg" not in st.session_state:
                 st.session_state.msg = ""
+    
 
             grid = st.session_state.grid
 
