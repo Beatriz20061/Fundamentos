@@ -1627,7 +1627,7 @@ elif page == "🟣 Padrões dos Primos":
             return True
 
         # -------- Espiral fixa --------
-        MAX_GLOBAL = 500
+        MAX_GLOBAL = 1000
 
         def ulam_spiral_full(n):
             size = int(np.ceil(np.sqrt(n)))
@@ -1654,50 +1654,47 @@ elif page == "🟣 Padrões dos Primos":
 
             return grid
 
-        # -------- construir espiral fixa --------
+        # -------- gerar espiral fixa --------
         grid = ulam_spiral_full(MAX_GLOBAL)
         size = grid.shape[0]
 
         # -------- UI --------
-        st.markdown("### 🌀 Espiral de Ulam com Números Primos")
+        st.markdown("### 🌀 Espiral de Ulam")
 
-        n_max = st.slider("Até quantos números mostrar:", 10, MAX_GLOBAL, 150)
+        n_max = st.slider("Quantidade de números:", 10, MAX_GLOBAL, 200)
 
-        # -------- plot --------
+        # -------- fundo (igual ao teu) --------
+        Y, X = np.ogrid[:size, :size]
+        center = size // 2
+        dist = np.sqrt((X - center)**2 + (Y - center)**2)
+
         fig, ax = plt.subplots(figsize=(7, 7))
         fig.patch.set_facecolor('#0f0f23')
         ax.set_facecolor('#0f0f23')
 
-        # fundo suave para definir a espiral
-        ax.imshow(grid != 0, cmap='gray', alpha=0.08)
+        # fundo colorido bonito
+        ax.imshow(dist, cmap='magma', alpha=0.6)
 
-        # escrever primos
+        # -------- agora números em vez de bolinhas --------
         for i in range(size):
             for j in range(size):
                 num = grid[i, j]
-                if num != 0 and num <= n_max:
-                    if is_prime(num):
-                        ax.text(
-                            j, i, str(num),
-                            color='#ff4b4b',   # vermelho forte
-                            fontsize=7,
-                            ha='center', va='center',
-                            fontweight='bold'
-                        )
-                    elif n_max <= 100:  
-                        # opcional: mostrar não-primos só quando poucos números
-                        ax.text(
-                            j, i, str(num),
-                            color='gray',
-                            fontsize=5,
-                            ha='center', va='center'
-                        )
 
-        ax.set_title("Espiral de Ulam", color='white')
+                if num <= n_max and is_prime(num):
+                    ax.text(
+                        j, i, str(num),
+                        color='#ffffff',   # texto branco forte (melhor contraste)
+                        fontsize=6,
+                        ha='center',
+                        va='center',
+                        fontweight='bold'
+                    )
+
+        # título
+        ax.set_title("Espiral de Ulam (números primos)", color='white')
         ax.axis('off')
 
         st.pyplot(fig)
-
 
 
 
