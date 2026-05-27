@@ -56,6 +56,68 @@ div[data-testid="stExpander"] > div {
     border: 1px solid #667eea !important;
     box-shadow: 0 0 10px rgba(102,126,234,0.5) !important;
 }
+<style>
+/* =========================
+   INPUT TEXT (caixas brancas tipo 432)
+========================= */
+.stTextInput input {
+    background: rgba(0, 0, 0, 0.6) !important;
+    color: white !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+}
+
+/* quando clicas */
+.stTextInput input:focus {
+    border: 1px solid #667eea !important;
+    box-shadow: 0 0 10px rgba(102,126,234,0.5) !important;
+}
+
+
+/* =========================
+   SELECTBOX (dropdown branco)
+========================= */
+.stSelectbox > div > div {
+    background: rgba(0, 0, 0, 0.6) !important;
+    color: white !important;
+    border-radius: 10px !important;
+}
+
+
+/* texto dentro do dropdown */
+.stSelectbox div {
+    color: white !important;
+}
+
+
+/* =========================
+   DATAFRAME (tabela branca)
+========================= */
+.stDataFrame {
+    background: rgba(0,0,0,0.4) !important;
+}
+
+.stDataFrame table {
+    color: white !important;
+}
+
+.stDataFrame th {
+    background: rgba(102,126,234,0.3) !important;
+    color: white !important;
+}
+
+.stDataFrame td {
+    background: rgba(255,255,255,0.05) !important;
+}
+
+
+/* =========================
+   FORÇA GLOBAL (garantia final)
+========================= */
+input, textarea, select {
+    background: rgba(0,0,0,0.6) !important;
+    color: white !important;
+}
 /* ===== IMPORTS E VARIÁVEIS ===== */
 @import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap)');
 
