@@ -863,6 +863,7 @@ if page == "🏠 Página Inicial":
 # MÓDULO 1: GRUPOS DE SIMETRIA
 # ==============================================================================
 elif page == "Grupos de Simetria":
+    render_divider()
     render_module_header( "MÓDULO 1: GRUPOS DE SIMETRIA")
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa", "🧠 Quiz Geral do Módulo"])
