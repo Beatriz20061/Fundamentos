@@ -685,11 +685,11 @@ div[data-testid="stAlert"][data-baseweb="notification"][kind="error"] {
 # COMPONENTES CUSTOMIZADOS
 # ============================================================================
 
-def render_module_header(icon, title, color_class="primary"):
+def render_module_header(title, color_class="primary"):
     """Renderiza um header de módulo premium"""
     st.markdown(f"""
     <div class="modulo-header">
-        <h2>{icon} {title}</h2>
+        <h2>{title}</h2>
     </div>
     """, unsafe_allow_html=True)
 
