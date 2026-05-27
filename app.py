@@ -837,8 +837,8 @@ if page == "🏠 Página Inicial":
 # ==============================================================================
 # MÓDULO 1: GRUPOS DE SIMETRIA
 # ==============================================================================
-elif page == "🔵 Grupos de Simetria":
-    render_module_header("🔵", "MÓDULO 1: GRUPOS DE SIMETRIA")
+elif page == "Grupos de Simetria":
+    render_module_header( "MÓDULO 1: GRUPOS DE SIMETRIA")
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa", "🧠 Quiz Geral do Módulo"])
     
@@ -1045,8 +1045,8 @@ elif page == "🔵 Grupos de Simetria":
 # ==============================================================================
 # MÓDULO 2: 17 GRUPOS CRISTALOGRÁFICOS
 # ==============================================================================
-elif page == "🟤 17 Grupos Cristalográficos":
-    render_module_header("🟤", "MÓDULO 2: 17 GRUPOS CRISTALOGRÁFICOS")
+elif page == "17 Grupos Cristalográficos":
+    render_module_header( "MÓDULO 2: 17 GRUPOS CRISTALOGRÁFICOS")
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa", "🧠 Quiz Geral do Módulo"])
     
@@ -1290,10 +1290,10 @@ elif page == "🟤 17 Grupos Cristalográficos":
 # ==============================================================================
 # MÓDULO 3: LÓGICA DO NUMBER MATCH
 # ==============================================================================
-elif page == "🟢 Lógica do Number Match":
-    render_module_header("🟢", "MÓDULO 3: LÓGICA DO NUMBER MATCH")
+elif page == "Lógica do Number Match":
+    render_module_header( "MÓDULO 3: LÓGICA DO NUMBER MATCH")
     
-    tab1, tab2 = st.tabs(["💡 Lição do Sistema & Simulador", "🧠 Quiz Geral do Módulo"])
+    tab1, tab2 = st.tabs(["💡 Teoria completa & Simulador", "🧠 Quiz Geral do Módulo"])
     
     with tab1:
         with st.expander("📖 Introdução ao Number Match", expanded=True):
@@ -1685,8 +1685,8 @@ elif page == "🟢 Lógica do Number Match":
 # ==============================================================================
 # MÓDULO 4: PADRÕES DOS PRIMOS
 # ==============================================================================
-elif page == "🟣 Padrões dos Primos":
-    render_module_header("🟣", "MÓDULO 4: PADRÕES DOS PRIMOS: DA ESPIRAL Á TOTIENTE")
+elif page == "Padrões dos Primos":
+    render_module_header("MÓDULO 4: PADRÕES DOS PRIMOS: DA ESPIRAL Á TOTIENTE")
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa", "🧠 Quiz Geral do Módulo"])
     
@@ -2108,8 +2108,8 @@ elif page == "🟣 Padrões dos Primos":
 # ==============================================================================
 # MÓDULO 5: PADRÕES NUMÉRICOS
 # ==============================================================================
-elif page == "🟡 Padrões Numéricos":
-    render_module_header("🟡", "MÓDULO 5: PADRÕES NUMÉRICOS E ESTRUTURAS ARITMÉTICAS: DOS TRIÂNGULARES A FERMAT")
+elif page == "Padrões Numéricos":
+    render_module_header( "MÓDULO 5: PADRÕES NUMÉRICOS E ESTRUTURAS ARITMÉTICAS: DOS TRIÂNGULARES A FERMAT")
     
     tab1, tab2 = st.tabs(["📖 Matéria Completa & Gráficos", "🧠 Quiz Geral do Módulo"])
     
