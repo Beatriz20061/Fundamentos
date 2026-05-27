@@ -1654,7 +1654,7 @@ elif page == "🟣 Padrões dos Primos":
         # Interface
         st.markdown("### 🌀 Espiral de Ulam com números primos")
 
-        n_max = st.slider("Quantidade de números:", 50, 400, 200)
+        n_max = st.slider("Quantidade de números:", 1,50, 400, 200)
 
         grid = ulam_matrix(n_max)
 
