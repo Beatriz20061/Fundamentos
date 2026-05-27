@@ -1509,44 +1509,142 @@ elif page == "🟢 Lógica do Number Match":
             SIZE = 45
 
             # -------- ESTADO --------
-            if "tabuleiro" not in st.session_state:
-                st.session_state.tabuleiro = list(np.random.randint(1,10,12))
-                st.session_state.sel = []
-                st.session_state.score = 0
+            if "grid" not in st.session_state:
+                st.session_state.grid = [random.randint(1, 9) for _ in range(SIZE)]
 
-            tab = st.session_state.tabuleiro
-            cols = st.columns(6)
+            if "selected" not in st.session_state:
+                st.session_state.selected = []
 
-            for i,v in enumerate(tab):
-                if v is not None:
-                    if cols[i%6].button(str(v), key=f"b{i}"):
+            if "msg" not in st.session_state:
+                st.session_state.msg = ""
 
-                        st.session_state.sel.append(i)
+            grid = st.session_state.grid
 
-                        if len(st.session_state.sel)==2:
-                            i1,i2 = st.session_state.sel
-                            a,b = tab[i1],tab[i2]
+            # -------- FUNÇÃO CAMINHO (BFS COMPLETO) --------
+            def valid_move(i, j, grid, cols):
 
-                            if a==b or a+b==10:
-                                tab[i1]=None
-                                tab[i2]=None
-                                st.session_state.score+=1
-                                st.success(f"✅ {a},{b}")
-                            else:
-                                st.error(f"❌ {a},{b}")
+                if i == j:
+                    return False
 
-                            st.session_state.sel=[]
+                a, b = grid[i], grid[j]
 
-            st.metric("Score", st.session_state.score)
+                if a is None or b is None:
+                    return False
 
-            if st.button("Novo Jogo"):
-                st.session_state.tabuleiro=list(np.random.randint(1,10,12))
-                st.session_state.sel=[]
-                st.session_state.score=0
+                if not (a == b or a + b == 10):
+                    return False
 
-            if all(v is None for v in tab):
-                st.success("🎉 Terminaste!")
+                rows = len(grid) // cols
 
+                visited = {i}
+                queue = deque([i])
+
+                while queue:
+                    current = queue.popleft()
+
+                    if current == j:
+                        return True
+
+                    r, c = divmod(current, cols)
+
+                    neighbors = []
+
+                    if r > 0:
+                        neighbors.append((r-1)*cols + c)
+                    if r < rows - 1:
+                        neighbors.append((r+1)*cols + c)
+                    if c > 0:
+                        neighbors.append(r*cols + (c-1))
+                    if c < cols - 1:
+                        neighbors.append(r*cols + (c+1))
+
+                    for n in neighbors:
+                        if n in visited:
+                            continue
+
+                        if grid[n] is None or n == j:
+                            visited.add(n)
+                            queue.append(n)
+
+                return False
+
+            # -------- LÓGICA --------
+            def select_number(idx):
+
+                if idx in st.session_state.selected:
+                    return
+
+                st.session_state.selected.append(idx)
+
+                if len(st.session_state.selected) == 2:
+                    i, j = st.session_state.selected
+
+                    if valid_move(i, j, grid, COLS):
+                        grid[i] = None
+                        grid[j] = None
+                        st.session_state.msg = "✅ Jogada válida!"
+                    else:
+                        st.session_state.msg = "❌ Estes números não podem ser combinados."
+
+                    st.session_state.selected = []
+                    st.rerun()
+
+            # -------- ESTILO (SÓ GRELHA) --------
+            st.markdown("""
+            <style>
+            .grid-button button {
+                width: 55px !important;
+                height: 55px !important;
+                font-size: 20px !important;
+                border-radius: 12px !important;
+                background: linear-gradient(135deg, #667eea, #764ba2) !important;
+                color: white !important;
+                border: none !important;
+                font-weight: bold !important;
+            }
+
+            .grid-button button:hover {
+                outline: 3px solid #00f2fe !important;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+
+            # -------- GRELHA --------
+            rows = SIZE // COLS
+
+            for r in range(rows):
+                cols = st.columns(COLS)
+
+                for c in range(COLS):
+                    idx = r * COLS + c
+
+                    if idx >= len(grid):
+                        continue
+
+                    val = grid[idx]
+
+                    with cols [c]:
+                        if val is None:
+                            st.markdown("<div style='height:55px'></div>", unsafe_allow_html=True)
+                        else:
+                            st.markdown('<div class="grid-button">', unsafe_allow_html=True)
+                            if st.button(str(val), key=f"grid_{idx}"):
+                                select_number(idx)
+                            st.markdown("</div>", unsafe_allow_html=True)
+
+            # -------- MENSAGEM --------
+            if st.session_state.msg:
+                if "❌" in st.session_state.msg:
+                    st.warning(st.session_state.msg)
+                else:
+                    st.success(st.session_state.msg)
+
+            # -------- BOTÃO REINICIAR --------
+            if st.button("🔄 Reiniciar"):
+                st.session_state.grid = [random.randint(1, 9) for _ in range(SIZE)]
+                st.session_state.selected = []
+                st.session_state.msg = ""
+                st.rerun()
 
 
 
