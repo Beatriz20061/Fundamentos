@@ -17,16 +17,30 @@ st.set_page_config(page_title="MathXplore - ISCTE Sintra", layout="wide", page_i
 # ============================================================================
 st.markdown("""
 <style>
-/* 🔧 FIX BARRA BRANCA GLOBAL */
-div[data-testid="stVerticalBlock"] > div {
+/* 🔥 remover fundo branco de TODOS os blocos */
+section.main > div {
+    background-color: transparent !important;
+}
+
+/* 🔥 corrigir expanders (muito importante) */
+div[data-testid="stExpander"] {
+    background: rgba(255,255,255,0.05) !important;
+}
+
+/* 🔥 header do expander (é esse o branco da tua imagem) */
+div[data-testid="stExpander"] summary {
+    background: transparent !important;
+    color: white !important;
+}
+
+/* 🔥 container interno do expander */
+div[data-testid="stExpander"] > div {
     background: transparent !important;
 }
 
-div[data-testid="stVerticalBlock"] h1,
-div[data-testid="stVerticalBlock"] h2,
-div[data-testid="stVerticalBlock"] h3,
-div[data-testid="stVerticalBlock"] p {
-    color: white !important;
+/* 🔥 força texto visível */
+* {
+    color: inherit !important;
 }
 /* ===== IMPORTS E VARIÁVEIS ===== */
 @import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap)');
