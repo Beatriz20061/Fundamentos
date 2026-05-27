@@ -1170,27 +1170,7 @@ div[data-testid="stAlert"][data-baseweb="notification"][kind="error"] {
     margin-top: 1rem !important;
     margin-bottom: 0.65rem !important;
 }
-/* =========================================================
-   PROTEGER APENAS A BARRA/CABEÇALHO DO EXPANDER
-========================================================= */
 
-[data-testid="stExpander"] summary,
-[data-testid="stExpander"] summary *,
-[data-testid="stExpander"] summary p,
-[data-testid="stExpander"] summary span,
-[data-testid="stExpander"] summary div,
-[data-testid="stExpander"] summary [data-testid="stMarkdownContainer"],
-[data-testid="stExpander"] summary [data-testid="stMarkdownContainer"] * {
-    background: none !important;
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
-    opacity: 1 !important;
-    text-shadow: none !important;
-}
-
-[data-testid="stExpander"] summary {
-    background-color: #1f1b3d !important;
-}
 </style>
 """, unsafe_allow_html=True)
 
