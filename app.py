@@ -1907,96 +1907,89 @@ elif page == "🟡 Padrões Numéricos":
             """)
 
         with st.expander("📐 1. Números Triangulares e Contagem Geométrica", expanded=False):
+
             st.markdown("""
             ### Explicação Teórica
 
-            Os **números triangulares** pertencem ao grupo dos chamados **números figurados**, que se caracterizam por serem números representáveis através de arranjos geométricos de pontos regulares.
+            Os **números triangulares** pertencem ao grupo dos chamados **números figurados**, que se caracterizam por serem números que podem ser representados através de arranjos geométricos de pontos regulares.
 
-            Esta abordagem visual é extremamente importante na aprendizagem matemática, pois transforma problemas abstratos de contagem numa perceção **geométrica intuitiva**.
+            Esta abordagem visual é extremamente importante, pois transforma problemas abstratos de contagem numa perceção geométrica intuitiva.
 
             No caso dos números triangulares, eles representam a quantidade de pontos necessária para construir um **triângulo equilátero** com um determinado número de linhas.
-
-            Como cada nova linha adiciona sempre mais um ponto do que a anterior, obtém-se:
             """)
 
             st.latex(r"T_n = 1 + 2 + 3 + \dots + n = \frac{n(n+1)}{2}")
 
             st.markdown("""
-            Isto mostra que um número triangular corresponde à soma dos primeiros números naturais.
-
             ---
-
-            ### 🧠 Demonstração (Raciocínio de Gauss)
-
-            A fórmula pode ser explicada através de um raciocínio elegante atribuído a **Gauss**:
-
-            - Escreve-se a soma na ordem direta  
-            - Escreve-se novamente na ordem inversa  
-            - Soma-se termo a termo  
-
-            Cada par resulta em:
-
-            **n + 1**
-
-            Como existem **n termos**, obtemos:
+            ### Demonstração (Gauss)
+            
+            A fórmula pode ser obtida somando a sequência na ordem direta e inversa, formando pares com valor **n + 1**:
             """)
 
             st.latex(r"2T_n = n(n+1)")
-
-            st.markdown("Dividindo por 2:")
 
             st.latex(r"T_n = \frac{n(n+1)}{2}")
 
             st.markdown("---")
 
             st.markdown("""
+            ### Representação Geométrica
+            """)
+
+            st.image("Números_triangulares.png", use_container_width=True)
+            st.caption("Figura 1: Representação geométrica dos primeiros 6 números triangulares")
+
+            st.markdown("""
+            Nesta representação observam-se os primeiros valores da sequência:
+
+            - T₁ = 1  
+            - T₂ = 3  
+            - T₃ = 6  
+            - T₄ = 10  
+            - T₅ = 15  
+            - T₆ = 21  
+
+            Cada novo nível adiciona mais pontos, formando um triângulo crescente.
+            """)
+
+            st.markdown("---")
+
+            st.markdown("""
             ### Exemplo Prático
-                        
+
             Para calcular o quarto número triangular:
             """)
 
             st.latex(r"T_4 = \frac{4(4+1)}{2} = \frac{20}{2} = 10")
 
             st.markdown("""
-            ✔ Isto coincide com a soma:
-
+            ✔ Isto coincide com:
+            
             **1 + 2 + 3 + 4 = 10**
-
-            Os primeiros números triangulares são:
-
-            1, 3, 6, 10, 15, 21
-
-            Estes valores confirmam o crescimento regular e a disposição triangular dos pontos.
             """)
 
             st.markdown("---")
 
             st.markdown("""
-            ### Aplicações Reais
+            ### Aplicações
 
-            Os números triangulares aparecem em problemas de **contagem e redes**.
+            Um exemplo clássico é o problema dos **apertos de mão**.
 
-            #### Exemplo: apertos de mão
-
-            Se tivermos 6 pessoas e cada uma cumprimentar todas as outras uma única vez:
-
-            O número total de interações é:
+            Se 6 pessoas se cumprimentarem todas uma vez:
             """)
 
-            st.latex(r"T_5 = \frac{5 \times 6}{2} = 15")
+            st.latex(r"T_5 = \frac{5 \cdot 6}{2} = 15")
 
             st.markdown("""
-            O mesmo raciocínio aplica-se a:
-
-            - Ligações entre computadores numa rede  
-            - Número de conexões únicas  
-            - Problemas de combinação simples  
+            Aplica-se a redes, ligações e contagens de pares únicos.
 
             ---
-
-            Ideia-chave:  
-            Os números triangulares são uma ponte entre **geometria e aritmética**, permitindo visualizar padrões numéricos de forma clara e intuitiva.
+            **Ideia-chave:**  
+            Os números triangulares mostram como a matemática pode ser simultaneamente 
+            **visual e algébrica**, revelando padrões de crescimento simples mas profundos.
             """)
+
 
             if GRAFICOS_ATIVOS:
                 st.markdown("#### Representação Geométrica (Exemplo ilustrativo)")
@@ -2280,7 +2273,8 @@ elif page == "🟡 Padrões Numéricos":
             ### Introdução e Enquadramento
 
             O **Último Teorema de Fermat** constitui um dos resultados mais emblemáticos da Teoria dos Números, 
-            pois ilustra como **pequenas alterações numa expressão matemática podem fazer desaparecer um padrão inteiro de soluções**.
+            pois ilustra como pequenas alterações numa expressão matemática podem fazer desaparecer um padrão 
+            inteiro de soluções.
 
             ---
 
@@ -2292,21 +2286,32 @@ elif page == "🟡 Padrões Numéricos":
             st.latex(r"a^2 + b^2 = c^2")
 
             st.markdown("""
-            Esta equação admite **infinitas soluções inteiras positivas**, conhecidas como **triplas pitagóricas**.
+            Esta equação admite **infinitas soluções inteiras positivas**, conhecidas como 
+            **triplas pitagóricas**.
 
-            #### Exemplo mais conhecido:
+            #### Exemplo clássico:
             """)
 
             st.latex(r"3^2 + 4^2 = 9 + 16 = 25 = 5^2")
 
             st.markdown("""
+            ### Representação Geométrica
+            """)
+
+            st.image("triangulo.png", use_container_width=True)
+            st.caption("Figura 2: Representação geométrica do caso clássico n = 2")
+
+            st.markdown("""
+            Este triângulo retângulo ilustra visualmente a relação entre os três lados, mostrando como 
+            a soma dos quadrados dos catetos corresponde ao quadrado da hipotenusa.
+
             Estas soluções podem ser geradas pelas **fórmulas de Euclides**:
             """)
 
             st.latex(r"a = m^2 - n^2,\quad b = 2mn,\quad c = m^2 + n^2")
 
             st.markdown("""
-            Este caso representa um sistema rico, regular e com estrutura infinita de soluções.
+            Este caso representa um sistema com estrutura regular e infinitas soluções.
 
             ---
 
@@ -2318,59 +2323,53 @@ elif page == "🟡 Padrões Numéricos":
             st.latex(r"a^n + b^n = c^n")
 
             st.markdown("""
-            **não admite soluções inteiras não triviais para nenhum valor de $$n > 2$$.**
+            **não admite soluções inteiras não triviais para qualquer valor de $$n > 2$$.**
 
             Ou seja:
             - Para $$n = 2$$ → infinitas soluções  
             - Para $$n > 2$$ → nenhuma solução  
 
-            Esta mudança revela um contraste profundo na estrutura dos números.
-            """)
+            Esta mudança mostra um contraste profundo na estrutura dos números.
 
-            st.markdown("---")
+            ---
 
-            st.markdown("""
             ### História e Demonstração
 
-            No século XVII, **Pierre de Fermat** escreveu na margem de um livro que tinha uma 
-            "demonstração verdadeiramente maravilhosa", mas que não cabia ali.
+            No século XVII, **Pierre de Fermat** escreveu que tinha uma demonstração 
+            "verdadeiramente maravilhosa", mas nunca a registou.
 
-            Durante mais de **350 anos**, este problema intrigou matemáticos:
+            Durante mais de **350 anos**, o problema permaneceu em aberto:
 
             - **Euler** → resolveu o caso $$n = 3$$  
-            - **Sophie Germain** → contribuiu para classes de expoentes  
-            - **Kummer** → desenvolveu teoria para vários casos  
+            - **Sophie Germain** → contribuições importantes  
+            - **Kummer** → avanços significativos  
 
-            A prova geral foi finalmente alcançada por **Andrew Wiles**, em **1994/1995**, utilizando:
+            A prova final foi alcançada por **Andrew Wiles (1994/1995)**, usando:
 
             - Curvas elípticas  
             - Formas modulares  
 
-            Uma das demonstrações mais profundas da matemática moderna.
-            """)
+            ---
 
-            st.markdown("---")
-
-            st.markdown("""
             ### Interpretação Matemática
 
-            O teorema mostra que:
+            Este teorema mostra que:
 
-            - Pequenas alterações algébricas podem provocar mudanças drásticas  
-            - Padrões aparentemente estáveis podem ter **limites rígidos**  
-            - A Teoria dos Números mistura simplicidade (equação) com enorme profundidade  
+            - Pequenas alterações podem mudar completamente o comportamento  
+            - Padrões matemáticos têm limites inesperados  
+            - O simples pode esconder enorme profundidade  
 
-            Passamos de um sistema com infinitas soluções para um sistema completamente vazio.
+            Passamos de infinitas soluções para nenhuma apenas alterando o expoente.
             """)
 
             if GRAFICOS_ATIVOS:
-                st.markdown("#### Visualização: Comparação entre n = 2 e n > 2")
+                st.markdown("#### Comparação Gráfica")
 
                 import numpy as np
                 import matplotlib.pyplot as plt
 
                 n_input_txt = st.text_input(
-                    "Expoente n (> 2) para comparar com n=2:",
+                    "Expoente n (> 2):",
                     value="3.0",
                     key="fermat_n"
                 )
@@ -2378,54 +2377,38 @@ elif page == "🟡 Padrões Numéricos":
                 try:
                     n_fermat = float(n_input_txt)
                     if n_fermat <= 2:
-                        st.warning("Introduz um valor > 2 para ver a diferença.")
+                        st.warning("Introduz n > 2.")
                         n_fermat = 3.0
                 except ValueError:
-                    st.error("Introduz um valor numérico válido.")
+                    st.error("Valor inválido.")
                     n_fermat = 3.0
 
-                a_grid = np.linspace(0.01, 5, 400)
-                b_grid = np.linspace(0.01, 5, 400)
-                A, B = np.meshgrid(a_grid, b_grid)
+                a = np.linspace(0.01, 5, 400)
+                b = np.linspace(0.01, 5, 400)
+                A, B = np.meshgrid(a, b)
 
-                fig_fer, ax_fer = plt.subplots(figsize=(6, 6))
-                fig_fer.patch.set_facecolor('#0f0f23')
-                ax_fer.set_facecolor('#0f0f23')
+                fig, ax = plt.subplots(figsize=(6, 6))
+                fig.patch.set_facecolor('#0f0f23')
+                ax.set_facecolor('#0f0f23')
 
-                C2 = A**2 + B**2
-                ax_fer.contour(A, B, C2, levels=[25], colors=['#4facfe'], linewidths=2.5)
+                ax.contour(A, B, A**2 + B**2, levels=[25], colors=['#4facfe'], linewidths=2.5)
+                ax.contour(A, B, A**n_fermat + B**n_fermat, levels=[25], colors=['#f093fb'], linestyles='--')
 
-                Cn = A**n_fermat + B**n_fermat
-                ax_fer.contour(A, B, Cn, levels=[25], colors=['#f093fb'], linestyles='--', linewidths=2.5)
+                ax.scatter([3], [4], color='#00f2fe', s=100)
+                ax.annotate("(3,4)", (3, 4), color='white')
 
-                ax_fer.scatter([3], [4], color='#00f2fe', s=100, zorder=5, edgecolors='white', linewidth=2)
-                ax_fer.annotate('(3, 4)', (3, 4), xytext=(3.3, 4.3), color='white', fontsize=10)
+                ax.set_xlabel("a", color='white')
+                ax.set_ylabel("b", color='white')
+                ax.tick_params(colors='white')
+                ax.grid(alpha=0.2)
 
-                ax_fer.set_xlabel("a", fontsize=12, color='white')
-                ax_fer.set_ylabel("b", fontsize=12, color='white')
-                ax_fer.tick_params(colors='white')
-                ax_fer.grid(alpha=0.2, color='white')
-
-                for spine in ax_fer.spines.values():
-                    spine.set_color('white')
-                    spine.set_alpha(0.3)
-
-                from matplotlib.lines import Line2D
-                handles = [
-                    Line2D([0], [0], color='#4facfe', lw=2.5),
-                    Line2D([0], [0], color='#f093fb', lw=2.5, linestyle='--')
-                ]
-                labels = ["n = 2", f"n = {n_fermat:.1f}"]
-                ax_fer.legend(handles, labels, loc="upper right",
-                            facecolor='#1a1a3e', edgecolor='white', labelcolor='white')
-
-                st.pyplot(fig_fer)
+                st.pyplot(fig)
 
             st.markdown("""
             ---
             **Ideia-chave:**  
-            O Último Teorema de Fermat mostra que os padrões matemáticos não são sempre contínuos:  
-            às vezes, uma pequena mudança revela limites profundos e inesperados na estrutura dos números.
+            O Último Teorema de Fermat revela que nem todos os padrões matemáticos são contínuos: 
+            alguns têm limites absolutos que só se tornam visíveis quando se altera ligeiramente a estrutura.
             """)
 
 
