@@ -17,192 +17,44 @@ st.set_page_config(page_title="MathXplore - ISCTE Sintra", layout="wide", page_i
 # ============================================================================
 st.markdown("""
 <style>
-/* 🔥 remover fundo branco de TODOS os blocos */
-section.main > div {
-    background-color: transparent !important;
+
+/* ✅ manter fundo da app */
+.stApp {
+    background-color: #0f0f23;
 }
 
-/* 🔥 corrigir expanders (muito importante) */
-div[data-testid="stExpander"] {
-    background: rgba(255,255,255,0.05) !important;
+/* ✅ textos normais */
+p, span, label {
+    color: rgba(255,255,255,0.8);
 }
 
-/* 🔥 header do expander (é esse o branco da tua imagem) */
-div[data-testid="stExpander"] summary {
-    background: transparent !important;
-    color: white !important;
+/* ✅ títulos */
+h1, h2, h3 {
+    color: white;
 }
 
-/* 🔥 container interno do expander */
-div[data-testid="stExpander"] > div {
-    background: transparent !important;
-}
-
-/* 🔥 força texto visível */
-* {
-   
-}
-
-/* 🔧 corrigir input do slider */
-.stSlider input {
-    background: rgba(0, 0, 0, 0.6) !important;
-    color: white !important;
-    border-radius: 8px !important;
-    border: 1px solid rgba(255,255,255,0.3) !important;
-}
-
-/* quando clicas */
-.stSlider input:focus {
-    border: 1px solid #667eea !important;
-    box-shadow: 0 0 10px rgba(102,126,234,0.5) !important;
-}
-
-/* =========================
-   INPUT TEXT (caixas brancas tipo 432)
-========================= */
+/* ✅ TEXT INPUT */
 .stTextInput input {
-    background: rgba(0, 0, 0, 0.6) !important;
-    color: white !important;
-    border-radius: 10px !important;
-    border: 1px solid rgba(255,255,255,0.3) !important;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border-radius: 8px;
 }
 
-/* quando clicas */
-.stTextInput input:focus {
-    border: 1px solid #667eea !important;
-    box-shadow: 0 0 10px rgba(102,126,234,0.5) !important;
+/* ✅ SLIDER INPUT */
+.stSlider input {
+    background: rgba(0,0,0,0.6);
+    color: white;
 }
 
-
-/* =========================
-   SELECTBOX (dropdown branco)
-========================= */
+/* ✅ SELECTBOX (caixa) */
 .stSelectbox > div > div {
-    background: rgba(0, 0, 0, 0.6) !important;
-    color: white !important;
-    border-radius: 10px !important;
+    background: rgba(0,0,0,0.6);
+    color: white;
 }
 
-
-/* texto dentro do dropdown */
-.stSelectbox div {
-    color: white !important;
-}
-
-
-/* =========================
-   DATAFRAME (tabela branca)
-========================= */
-.stDataFrame {
-    background: rgba(0,0,0,0.4) !important;
-}
-
-.stDataFrame table {
-    color: white !important;
-}
-
-.stDataFrame th {
-    background: rgba(102,126,234,0.3) !important;
-    color: white !important;
-}
-
-.stDataFrame td {
-    background: rgba(255,255,255,0.05) !important;
-}
-
-
-/* =========================
-   FORÇA GLOBAL (garantia final)
-========================= */
-input, textarea, select {
-    background: rgba(0,0,0,0.6) !important;
-    color: white !important;
-}
-/* 🔥 TEXTO GLOBAL (CORREÇÃO FINAL) */
-
-body, p, span, label, div {
-    color: rgba(255, 255, 255, 0.85) !important;
-}
-
-/* títulos */
-h1, h2, h3, h4, h5 {
-    color: white !important;
-}
-/* ===============================
-   CORRIGIR FUNDO DO SELECTBOX TOTAL
-=============================== */
-
-/* container principal do select */
-.stSelectbox [data-baseweb="select"] {
-    background: transparent !important;
-}
-
-/* caixa do select */
-.stSelectbox [data-baseweb="select"] > div {
-    background: rgba(0,0,0,0.7) !important;
-    color: white !important;
-}
-
-/* dropdown (fundo grande branco) */
-div[data-baseweb="popover"] {
-    background: transparent !important;
-}
-
-/* lista dentro do popover */
-div[data-baseweb="menu"] {
-    background: rgba(15,15,40,0.95) !important;
-    color: white !important;
-    border-radius: 10px !important;
-}
-
-/* opções */
-div[role="option"] {
-    background: transparent !important;
-    color: white !important;
-}
-
-/* hover */
-div[role="option"]:hover {
-    background: rgba(102,126,234,0.3) !important;
-}
-/* ===============================
-   CORRIGIR FUNDO DO SELECTBOX TOTAL
-=============================== */
-
-/* container principal do select */
-.stSelectbox [data-baseweb="select"] {
-    background: transparent !important;
-}
-
-/* caixa do select */
-.stSelectbox [data-baseweb="select"] > div {
-    background: rgba(0,0,0,0.7) !important;
-    color: white !important;
-}
-
-/* dropdown (fundo grande branco) */
-div[data-baseweb="popover"] {
-    background: transparent !important;
-}
-
-/* lista dentro do popover */
-div[data-baseweb="menu"] {
-    background: rgba(15,15,40,0.95) !important;
-    color: white !important;
-    border-radius: 10px !important;
-}
-
-/* opções */
-div[role="option"] {
-    background: transparent !important;
-    color: white !important;
-}
-
-/* hover */
-div[role="option"]:hover {
-    background: rgba(102,126,234,0.3) !important;
-}
 </style>
+
+
 /* ===== IMPORTS E VARIÁVEIS ===== */
 @import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap)');
 
