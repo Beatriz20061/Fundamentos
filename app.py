@@ -1488,6 +1488,7 @@ elif page == "🟢 Lógica do Number Match":
     
         import streamlit as st
         import random
+        from collections import deque
 
         with st.expander("🎮 Number Match (Jogo Interativo)", expanded=False):
 
@@ -1497,170 +1498,55 @@ elif page == "🟢 Lógica do Number Match":
             Seleciona dois números que:
 
             - sejam **iguais** ou cuja **soma seja 10**
-            - estejam na **mesma linha ou coluna**
-            - **ou adjacentes**
-            - e **não exista nenhum número entre eles**
+            - estejam ligados por um **caminho livre**
+            - podes passar por **espaços vazios**
+            - o caminho pode ter curvas (não precisa ser linha reta)
 
-            💡 Podes combinar números através de espaços vazios.
+            💡 Por isso, jogadas que parecem diagonais podem funcionar!
             """)
 
             COLS = 9
             SIZE = 45
 
-            # -------- estado --------
-            if "grid" not in st.session_state:
-                st.session_state.grid = [random.randint(1, 9) for _ in range(SIZE)]
+            # -------- ESTADO --------
+            if "tabuleiro" not in st.session_state:
+                st.session_state.tabuleiro = list(np.random.randint(1,10,12))
+                st.session_state.sel = []
+                st.session_state.score = 0
 
-            if "selected" not in st.session_state:
-                st.session_state.selected = []
+            tab = st.session_state.tabuleiro
+            cols = st.columns(6)
 
-            if "msg" not in st.session_state:
-                st.session_state.msg = ""
+            for i,v in enumerate(tab):
+                if v is not None:
+                    if cols[i%6].button(str(v), key=f"b{i}"):
 
-            grid = st.session_state.grid
+                        st.session_state.sel.append(i)
 
-            # -------- regras --------
-            def valid_move(i, j, grid, cols):
+                        if len(st.session_state.sel)==2:
+                            i1,i2 = st.session_state.sel
+                            a,b = tab[i1],tab[i2]
 
-                if i == j:
-                    return False
+                            if a==b or a+b==10:
+                                tab[i1]=None
+                                tab[i2]=None
+                                st.session_state.score+=1
+                                st.success(f"✅ {a},{b}")
+                            else:
+                                st.error(f"❌ {a},{b}")
 
-                a, b = grid[i], grid[j]
+                            st.session_state.sel=[]
 
-                if a is None or b is None:
-                    return False
+            st.metric("Score", st.session_state.score)
 
-                # regra base
-                if not (a == b or a + b == 10):
-                    return False
+            if st.button("Novo Jogo"):
+                st.session_state.tabuleiro=list(np.random.randint(1,10,12))
+                st.session_state.sel=[]
+                st.session_state.score=0
 
-                rows = len(grid) // cols
+            if all(v is None for v in tab):
+                st.success("🎉 Terminaste!")
 
-                # função para verificar caminho (BFS)
-                from collections import deque
-
-                visited = set()
-                queue = deque([i])
-
-                while queue:
-                    current = queue.popleft()
-
-                    if current == j:
-                        return True
-
-                    r, c = divmod(current, cols)
-
-                    neighbors = []
-
-                    # cima
-                    if r > 0:
-                        neighbors.append((r-1)*cols + c)
-                    # baixo
-                    if r < rows - 1:
-                        neighbors.append((r+1)*cols + c)
-                    # esquerda
-                    if c > 0:
-                        neighbors.append(r*cols + (c-1))
-                    # direita
-                    if c < cols - 1:
-                        neighbors.append(r*cols + (c+1))
-
-                    for n in neighbors:
-                        if n in visited:
-                            continue
-
-                        # só pode andar por espaços vazios ou chegar ao destino
-                        if grid[n] is None or n == j:
-                            visited.add(n)
-                            queue.append(n)
-
-                return False
-
-
-            # -------- lógica --------
-            def select_number(idx):
-
-                if idx in st.session_state.selected:
-                    return
-
-                st.session_state.selected.append(idx)
-
-                if len(st.session_state.selected) == 2:
-                    i, j = st.session_state.selected
-
-                    if valid_move(i, j, grid, COLS):
-                        grid[i] = None
-                        grid[j] = None
-                        st.session_state.msg = "✅ Jogada válida!"
-                    else:
-                        st.session_state.msg = "❌ Estes números não podem ser combinados."
-
-                    st.session_state.selected = []
-                    st.rerun()
-
-            # -------- estilo --------
-            st.markdown("""
-            <style>
-
-            /* ✅ aplica só aos botões da grelha */
-            button[key^="grid_"] {
-                width: 55px;
-                height: 55px;
-                font-size: 20px;
-                border-radius: 12px;
-                background: linear-gradient(135deg, #667eea, #764ba2);
-                color: white;
-                border: none;
-                font-weight: bold;
-            }
-
-            /* hover só na grelha */
-            button[key^="grid_"]:hover {
-                outline: 3px solid #00f2fe;
-            }
-
-            /* ✅ botão reiniciar fica normal */
-            button[kind="secondary"] {
-                width: auto !important;
-                height: auto !important;
-            }
-
-            </style>
-            """, unsafe_allow_html=True)
-
-            # -------- grelha --------
-            rows = SIZE // COLS
-
-            for r in range(rows):
-                cols = st.columns(COLS)
-
-                for c in range(COLS):
-                    idx = r * COLS + c
-
-                    if idx >= len(grid):
-                        continue
-
-                    val = grid[idx]
-                    with cols[c]:
-                        if val is None:
-                            st.markdown("<div style='height:55px'></div>", unsafe_allow_html=True)
-                        else:
-                            if st.button(str(val), key=f"grid_{idx}"):
-                                select_number(idx)
-
-            # -------- mensagem --------
-            if st.session_state.msg:
-                if "❌" in st.session_state.msg:
-                    st.warning(st.session_state.msg)
-                else:
-                    st.success(st.session_state.msg)
-
-            # -------- botão --------
-            if st.button("🔄 Reiniciar"):
-                st.session_state.grid = [random.randint(1, 9) for _ in range(SIZE)]
-                st.session_state.selected = []
-                st.session_state.msg = ""
-                st.rerun()
 
 
 
