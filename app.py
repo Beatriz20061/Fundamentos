@@ -1496,14 +1496,13 @@ elif page == "🟢 Lógica do Number Match":
             Seleciona dois números iguais **ou cuja soma seja 10**.
             """)
 
-            # -------- inicializar estado --------
+            # -------- estado --------
             if "grid" not in st.session_state:
                 st.session_state.grid = [random.randint(1, 9) for _ in range(20)]
                 st.session_state.selected = []
 
             grid = st.session_state.grid
 
-            # -------- função de seleção --------
             def select_number(idx):
                 if idx in st.session_state.selected:
                     return
@@ -1512,28 +1511,40 @@ elif page == "🟢 Lógica do Number Match":
 
                 if len(st.session_state.selected) == 2:
                     i, j = st.session_state.selected
-                    a, b = st.session_state.grid[i], st.session_state.grid[j]
+                    a, b = grid[i], grid[j]
 
                     if (a == b) or (a + b == 10):
-                        # remover
-                        st.session_state.grid[i] = None
-                        st.session_state.grid[j] = None
+                        grid[i] = None
+                        grid[j] = None
 
                     st.session_state.selected = []
 
-            # -------- mostrar grelha --------
-            cols = st.columns(5)
+            # -------- GRELHA VISUAL --------
+            cols = 5
+            rows = (len(grid) + cols - 1) // cols
 
-            for i in range(len(grid)):
-                val = grid[i]
+            for r in range(rows):
+                cols_container = st.columns(cols)
 
-                if val is None:
-                    cols[i % 5].write(" ")
-                else:
-                    if cols[i % 5].button(str(val), key=f"btn_{i}"):
-                        select_number(i)
+                for c in range(cols):
+                    idx = r * cols + c
 
-            # -------- botão reset --------
+                    if idx < len(grid):
+                        val = grid[idx]
+
+                        with cols_container[c]:
+                            # caixa com borda
+                            st.markdown('<div style="border: 2px solid white; padding: 10px; text-align: center;">', unsafe_allow_html=True)
+
+                            if val is None:
+                                st.markdown("&nbsp;", unsafe_allow_html=True)
+                            else:
+                                if st.button(str(val), key=f"btn_{idx}"):
+                                    select_number(idx)
+
+                            st.markdown("</div>", unsafe_allow_html=True)
+
+            # -------- reset --------
             if st.button("🔄 Reiniciar jogo"):
                 st.session_state.grid = [random.randint(1, 9) for _ in range(20)]
                 st.session_state.selected = []
