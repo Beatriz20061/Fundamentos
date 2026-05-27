@@ -42,7 +42,7 @@ div[data-testid="stExpander"] > div {
 * {
     color: inherit !important;
 }
-<style>
+
 /* 🔧 corrigir input do slider */
 .stSlider input {
     background: rgba(0, 0, 0, 0.6) !important;
@@ -56,7 +56,7 @@ div[data-testid="stExpander"] > div {
     border: 1px solid #667eea !important;
     box-shadow: 0 0 10px rgba(102,126,234,0.5) !important;
 }
-<style>
+
 /* =========================
    INPUT TEXT (caixas brancas tipo 432)
 ========================= */
