@@ -195,6 +195,65 @@ button[aria-selected="true"] {
 
 
 
+/* =========================================
+   CONTAINERS / BLOCOS INTERNOS
+========================================= */
+
+/* blocos principais */
+[data-testid="stVerticalBlock"] {
+    background: transparent !important;
+}
+
+/* containers */
+[data-testid="stContainer"] {
+    background: rgba(255,255,255,0.04) !important;
+    border-radius: 18px !important;
+    color: white !important;
+}
+
+/* expanders internos */
+details {
+    background: rgba(255,255,255,0.05) !important;
+}
+
+/* conteúdo do expander */
+details > div {
+    background: transparent !important;
+    color: white !important;
+}
+
+/* markdown dentro */
+[data-testid="stMarkdownContainer"] {
+    color: white !important;
+}
+
+/* remover fundos brancos escondidos */
+div.block-container {
+    background: transparent !important;
+}
+
+/* alguns elementos streamlit */
+div[data-testid="element-container"] {
+    background: transparent !important;
+    color: white !important;
+}
+
+/* corrigir headers */
+summary, summary * {
+    color: white !important;
+}
+
+/* FORÇA todos os textos dentro dos expanders */
+details *,
+details span,
+details p,
+details label,
+details div {
+    color: rgba(255,255,255,0.92) !important;
+}
+
+
+
 /* ===== IMPORTS E VARIÁVEIS ===== */
 @import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap)');
 
