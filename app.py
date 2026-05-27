@@ -822,14 +822,16 @@ if page == "🏠 Página Inicial":
     render_divider()
     
     # About Section
-    set.markdown (render_glass_card("""
-        <h3 style="margin-top: 0;">💡 Sobre a Plataforma</h3>
-        <p>Esta plataforma digital foi desenvolvida para integrar a totalidade dos conteúdos teóricos
-        presentes nos cinco projetos académicos desenvolvidos nos relatórios originais.</p>
-        <p>A nossa abordagem converte a teoria exaustiva dos relatórios em componentes de aprendizagem dinâmicos, 
-        estruturados rigorosamente sob a metodologia de <strong>Explicação Teórica</strong>, 
-        <strong>Aplicação Prática</strong> e <strong>Questionários Gerais com Pontuação</strong> automática.</p>
-    """), unsafe_allow_html=True)
+    
+    render_glass_card("""
+            <h3 style="margin-top: 0;">💡 Sobre a Plataforma</h3>
+            <p>Esta plataforma digital foi desenvolvida para integrar a totalidade dos conteúdos teóricos
+            presentes nos cinco projetos académicos desenvolvidos nos relatórios originais.</p>
+            <p>A nossa abordagem converte a teoria exaustiva dos relatórios em componentes de aprendizagem dinâmicos, 
+            estruturados rigorosamente sob a metodologia de <strong>Explicação Teórica</strong>, 
+            <strong>Aplicação Prática</strong> e <strong>Questionários Gerais com Pontuação</strong> automática.</p>
+        """)
+
     
 
 # ==============================================================================
