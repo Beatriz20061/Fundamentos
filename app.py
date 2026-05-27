@@ -1613,10 +1613,11 @@ elif page == "🟣 Padrões dos Primos":
         Move o slider para ver como os **números primos se organizam em padrões diagonais**.
         """)
         # Função primo
+        import streamlit as st
         import matplotlib.pyplot as plt
         import numpy as np
 
-        # Função primalidade
+        # -------- Função primo --------
         def is_prime(n):
             if n < 2:
                 return False
@@ -1625,15 +1626,15 @@ elif page == "🟣 Padrões dos Primos":
                     return False
             return True
 
-        # Gerar matriz da espiral
-        def ulam_matrix(n):
+        # -------- Criar espiral --------
+        def ulam_spiral_grid(n):
             size = int(np.ceil(np.sqrt(n)))
             if size % 2 == 0:
-                size += 1  # garantir centro
+                size += 1
 
             grid = np.zeros((size, size), dtype=int)
 
-            x, y = size // 2, size // 2
+            x = y = size // 2
             dx, dy = 1, 0
             steps = 1
             num = 1
@@ -1651,34 +1652,35 @@ elif page == "🟣 Padrões dos Primos":
 
             return grid
 
-        # Interface
-        st.markdown("### 🌀 Espiral de Ulam com números primos")
+        # -------- Interface --------
+        st.markdown("### 🌀 Espiral de Ulam Interativa")
 
-        n_max = st.slider("Quantidade de números:", 1,50, 400, 200)
+        n_max = st.slider("Escolhe até quantos números:", 10, 500, 200)
 
-        grid = ulam_matrix(n_max)
-
+        grid = ulam_spiral_grid(n_max)
         size = grid.shape[0]
 
-        fig, ax = plt.subplots(figsize=(6, 6))
-        fig.patch.set_facecolor('black')
-        ax.set_facecolor('black')
+        fig, ax = plt.subplots(figsize=(7, 7))
+        fig.patch.set_facecolor('#0f0f23')
+        ax.set_facecolor('#0f0f23')
 
-        # desenhar grelha
-        ax.imshow(grid, cmap='gray_r')
+        # fundo tipo quadrícula suave
+        ax.imshow(grid != 0, cmap='gray', alpha=0.3)
 
-        # escrever primos
+        # escrever os primos
         for i in range(size):
             for j in range(size):
                 num = grid[i, j]
                 if num != 0 and is_prime(num):
-                    ax.text(j, i, str(num),
-                            color='red',
-                            fontsize=5,
-                            ha='center', va='center')
+                    ax.text(
+                        j, i, str(num),
+                        color='#ff4b4b',
+                        fontsize=6,
+                        ha='center',
+                        va='center'
+                    )
 
-        ax.set_title("Espiral de Ulam (números primos)", color='white')
-
+        ax.set_title("Espiral de Ulam (primos)", color='white')
         ax.axis('off')
 
         st.pyplot(fig)
