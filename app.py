@@ -165,6 +165,43 @@ div[role="option"] {
 div[role="option"]:hover {
     background: rgba(102,126,234,0.3) !important;
 }
+/* ===============================
+   CORRIGIR FUNDO DO SELECTBOX TOTAL
+=============================== */
+
+/* container principal do select */
+.stSelectbox [data-baseweb="select"] {
+    background: transparent !important;
+}
+
+/* caixa do select */
+.stSelectbox [data-baseweb="select"] > div {
+    background: rgba(0,0,0,0.7) !important;
+    color: white !important;
+}
+
+/* dropdown (fundo grande branco) */
+div[data-baseweb="popover"] {
+    background: transparent !important;
+}
+
+/* lista dentro do popover */
+div[data-baseweb="menu"] {
+    background: rgba(15,15,40,0.95) !important;
+    color: white !important;
+    border-radius: 10px !important;
+}
+
+/* opções */
+div[role="option"] {
+    background: transparent !important;
+    color: white !important;
+}
+
+/* hover */
+div[role="option"]:hover {
+    background: rgba(102,126,234,0.3) !important;
+}
 <style>
 /* ===== IMPORTS E VARIÁVEIS ===== */
 @import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap)');
