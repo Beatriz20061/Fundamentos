@@ -1991,30 +1991,6 @@ elif page == "🟡 Padrões Numéricos":
             """)
 
 
-            if GRAFICOS_ATIVOS:
-                st.markdown("#### Representação Geométrica (Exemplo ilustrativo)")
-
-                import matplotlib.pyplot as plt
-
-                
-                fig_tri, ax_tri = plt.subplots(figsize=(4, 4))
-                fig_tri.patch.set_facecolor('#0f0f23')
-                ax_tri.set_facecolor('#0f0f23')
-
-                x_tri = [0, 4, 0, 0]
-                y_tri = [0, 0, 3, 0]
-
-                ax_tri.plot(x_tri, y_tri, color='#667eea', linewidth=2.5)
-                ax_tri.fill([0, 4, 0], [0, 0, 3], color='#667eea', alpha=0.3)
-
-                ax_tri.axis('equal')
-                ax_tri.axis('off')
-
-                    # ✅ ESTA LINHA É O QUE FALTA
-                st.pyplot(fig_tri)
-
-
-
         with st.expander("✨ 2. Números Perfeitos e Harmonia de Divisores", expanded=False):
 
             st.markdown("""
