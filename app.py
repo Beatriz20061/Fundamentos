@@ -827,7 +827,7 @@ if page == "🏠 Página Inicial":
     ### Sobre a Plataforma
 
     Esta plataforma digital foi desenvolvida para integrar a totalidade dos conteúdos teóricos  
-    presentes nos cinco projetos académicos desenvolvidos nos relatórios originais.
+    presentes nos cinco projetos académicos desenvolvidos nos relatórios.
 
     A nossa abordagem converte a teoria exaustiva dos relatórios em componentes de aprendizagem dinâmicos,  
     estruturados rigorosamente sob a metodologia de **Explicação Teórica**,  
