@@ -128,30 +128,42 @@ body, p, span, label, div {
 h1, h2, h3, h4, h5 {
     color: white !important;
 }
-/* =========================
-   DROPDOWN (LISTA DO SELECTBOX)
-========================= */
+/* ===============================
+   CORRIGIR FUNDO DO SELECTBOX TOTAL
+=============================== */
 
-/* fundo da lista */
-div[role="listbox"] {
-    background: rgba(15, 15, 40, 0.95) !important;
+/* container principal do select */
+.stSelectbox [data-baseweb="select"] {
+    background: transparent !important;
+}
+
+/* caixa do select */
+.stSelectbox [data-baseweb="select"] > div {
+    background: rgba(0,0,0,0.7) !important;
     color: white !important;
 }
 
-/* cada opção */
+/* dropdown (fundo grande branco) */
+div[data-baseweb="popover"] {
+    background: transparent !important;
+}
+
+/* lista dentro do popover */
+div[data-baseweb="menu"] {
+    background: rgba(15,15,40,0.95) !important;
+    color: white !important;
+    border-radius: 10px !important;
+}
+
+/* opções */
 div[role="option"] {
     background: transparent !important;
     color: white !important;
 }
 
-/* hover nas opções */
+/* hover */
 div[role="option"]:hover {
     background: rgba(102,126,234,0.3) !important;
-}
-
-/* opção selecionada */
-div[aria-selected="true"] {
-    background: rgba(102,126,234,0.5) !important;
 }
 <style>
 /* ===== IMPORTS E VARIÁVEIS ===== */
