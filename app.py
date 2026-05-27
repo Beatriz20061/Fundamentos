@@ -774,8 +774,7 @@ if page == "🏠 Página Inicial":
     <div class="hero-section">
         <h1 class="hero-title"> MathXplore</h1>
         <p class="hero-subtitle">
-            Plataforma interativa com conhecimentos nas mais vastas areas da matemática.
-            Explore conceitos através de visualizações dinâmicas, simuladores e quizzes.
+            Plataforma interativa com conhecimentos nas mais vastas areas da matemática. Explore conceitos através de visualizações dinâmicas, simuladores e quizzes.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -826,11 +825,9 @@ if page == "🏠 Página Inicial":
     st.markdown("""
     ### Sobre a Plataforma
 
-    Esta plataforma digital foi desenvolvida para integrar a totalidade dos conteúdos teóricos  
-    presentes nos cinco projetos académicos desenvolvidos nos relatórios.
+    Esta plataforma digital foi desenvolvida para integrar a totalidade dos conteúdos teóricos presentes nos cinco projetos académicos desenvolvidos nos relatórios.
 
-    A nossa abordagem converte a teoria exaustiva dos relatórios em componentes de aprendizagem dinâmicos,  
-    estruturados rigorosamente sob a metodologia de **Explicação Teórica**,  
+    A nossa abordagem converte a teoria exaustiva dos relatórios em componentes de aprendizagem dinâmicos, estruturados rigorosamente sob a metodologia de **Explicação Teórica**,  
     **Aplicação Prática** e **Questionários Gerais com Pontuação** automática.
     """)
 
