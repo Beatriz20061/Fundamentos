@@ -1170,8 +1170,30 @@ div[data-testid="stAlert"][data-baseweb="notification"][kind="error"] {
     margin-top: 1rem !important;
     margin-bottom: 0.65rem !important;
 }
+/* FORÇAR GRADIENTE NOS TÍTULOS DENTRO DOS EXPANDERS (OVERRIDE FINAL) */
 
+[data-testid="stExpander"] h1,
+[data-testid="stExpander"] h2,
+[data-testid="stExpander"] h3,
+[data-testid="stExpander"] h4 {
+    background: linear-gradient(
+        135deg,
+        #667eea 0%,
+        #b388ff 35%,
+        #f093fb 65%,
+        #4facfe 100%
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+
+    text-shadow: 0 0 18px rgba(179, 136, 255, 0.25) !important;
+    font-weight: 850 !important;
+}
 </style>
+            
 """, unsafe_allow_html=True)
 
 # ============================================================================
