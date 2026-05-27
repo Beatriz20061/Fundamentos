@@ -1485,6 +1485,58 @@ elif page == "🟢 Lógica do Number Match":
                 **4. Tratar o 5 com cuidado**  
                 Manter a quantidade de 5s sempre par.
                 """)
+        import streamlit as st
+        import random
+
+        with st.expander("🎮 Number Match (Jogo Interativo)", expanded=False):
+
+            st.markdown("""
+            ### Jogar Number Match
+
+            Seleciona dois números iguais **ou cuja soma seja 10**.
+            """)
+
+            # -------- inicializar estado --------
+            if "grid" not in st.session_state:
+                st.session_state.grid = [random.randint(1, 9) for _ in range(20)]
+                st.session_state.selected = []
+
+            grid = st.session_state.grid
+
+            # -------- função de seleção --------
+            def select_number(idx):
+                if idx in st.session_state.selected:
+                    return
+
+                st.session_state.selected.append(idx)
+
+                if len(st.session_state.selected) == 2:
+                    i, j = st.session_state.selected
+                    a, b = st.session_state.grid[i], st.session_state.grid[j]
+
+                    if (a == b) or (a + b == 10):
+                        # remover
+                        st.session_state.grid[i] = None
+                        st.session_state.grid[j] = None
+
+                    st.session_state.selected = []
+
+            # -------- mostrar grelha --------
+            cols = st.columns(5)
+
+            for i in range(len(grid)):
+                val = grid[i]
+
+                if val is None:
+                    cols[i % 5].write(" ")
+                else:
+                    if cols[i % 5].button(str(val), key=f"btn_{i}"):
+                        select_number(i)
+
+            # -------- botão reset --------
+            if st.button("🔄 Reiniciar jogo"):
+                st.session_state.grid = [random.randint(1, 9) for _ in range(20)]
+                st.session_state.selected = []
     with tab2:
         st.markdown("### 🧠 Questionário de Avaliação — Módulo 3")
         
