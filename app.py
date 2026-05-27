@@ -1486,6 +1486,7 @@ elif page == "🟢 Lógica do Number Match":
                 Manter a quantidade de 5s sempre par.
                 """)
         import streamlit as st
+        import streamlit as st
         import random
 
         with st.expander("🎮 Number Match (Jogo Interativo)", expanded=False):
@@ -1521,44 +1522,27 @@ elif page == "🟢 Lógica do Number Match":
 
                     st.session_state.selected = []
 
-            # -------- TABULEIRO COM BORDA --------
-            st.markdown("""
-            <div style="
-                border: 3px solid #667eea;
-                border-radius: 12px;
-                padding: 15px;
-                background-color: #0f0f23;
-            ">
-            """, unsafe_allow_html=True)
+                    # ✅ FORÇA atualização imediata
+                    st.rerun()
 
-            cols = 5
-            rows = (len(grid) + cols - 1) // cols
+            # -------- grelha --------
+            cols = st.columns(5)
 
-            for r in range(rows):
-                cols_container = st.columns(cols)
+            for i in range(len(grid)):
+                val = grid[i]
 
-                for c in range(cols):
-                    idx = r * cols + c
-
-                    if idx < len(grid):
-                        val = grid[idx]
-
-                        with cols_container[c]:
-                            if val is None:
-                                st.write(" ")
-                            else:
-                                if st.button(str(val), key=f"btn_{idx}"):
-                                    select_number(idx)
-
-            # fechar a caixa
-            st.markdown("</div>", unsafe_allow_html=True)
+                if val is None:
+                    cols[i % 5].write(" ")
+                else:
+                    if cols[i % 5].button(str(val), key=f"btn_{i}"):
+                        select_number(i)
 
             # -------- reset --------
-            st.markdown("")
-
             if st.button("🔄 Reiniciar jogo"):
                 st.session_state.grid = [random.randint(1, 9) for _ in range(20)]
                 st.session_state.selected = []
+                st.rerun()
+
     with tab2:
         st.markdown("### 🧠 Questionário de Avaliação — Módulo 3")
         
