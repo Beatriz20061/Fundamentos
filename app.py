@@ -124,9 +124,6 @@ button[aria-selected="true"] {
     background-color: rgba(255,255,255,0.08) !important;
 }
 
-</style>
-
-
 
 /* ===== IMPORTS E VARIÁVEIS ===== */
 @import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap)');
