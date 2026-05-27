@@ -1003,69 +1003,9 @@ div[data-testid="stAlert"][data-baseweb="notification"][kind="error"] {
     -webkit-text-fill-color: rgba(255, 255, 255, 0.92) !important;
 }
 
-/* títulos dentro do conteúdo */
-[data-testid="stExpander"] [data-testid="stExpanderDetails"] h1,
-[data-testid="stExpander"] [data-testid="stExpanderDetails"] h2,
-[data-testid="stExpander"] [data-testid="stExpanderDetails"] h3,
-[data-testid="stExpander"] [data-testid="stExpanderDetails"] h4 {
-    color: #b388ff !important;
-    -webkit-text-fill-color: unset !important;
-}
-/* =========================================================
-   RESTAURAR ESTILO ESPECIAL DOS TÍTULOS
-========================================================= */
 
-/* títulos principais em markdown */
-[data-testid="stMarkdownContainer"] h1,
-[data-testid="stMarkdownContainer"] h2,
-[data-testid="stMarkdownContainer"] h3 {
-    background: linear-gradient(
-        135deg,
-        #667eea 0%,
-        #b388ff 35%,
-        #f093fb 65%,
-        #4facfe 100%
-    ) !important;
-
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-
-    font-weight: 800 !important;
-    letter-spacing: -0.02em !important;
 }
 
-/* h4 também, mas um pouco mais discreto */
-[data-testid="stMarkdownContainer"] h4 {
-    color: #c4b5fd !important;
-    -webkit-text-fill-color: #c4b5fd !important;
-    font-weight: 750 !important;
-}
-
-/* tamanho e espaçamento dos títulos */
-[data-testid="stMarkdownContainer"] h1 {
-    font-size: 3rem !important;
-    margin-top: 1.2rem !important;
-    margin-bottom: 1rem !important;
-}
-
-[data-testid="stMarkdownContainer"] h2 {
-    font-size: 2.35rem !important;
-    margin-top: 2rem !important;
-    margin-bottom: 1rem !important;
-}
-
-[data-testid="stMarkdownContainer"] h3 {
-    font-size: 1.85rem !important;
-    margin-top: 1.6rem !important;
-    margin-bottom: 0.8rem !important;
-}
-
-[data-testid="stMarkdownContainer"] h4 {
-    font-size: 1.35rem !important;
-    margin-top: 1.3rem !important;
-    margin-bottom: 0.7rem !important;
-}
 /* =========================================================
    PROTEGER CABEÇALHOS DOS EXPANDERS
    Para não ficarem transparentes/invisíveis
@@ -1158,6 +1098,98 @@ div[data-testid="stAlert"][data-baseweb="notification"][kind="error"] {
     font-size: 1.35rem !important;
     margin-top: 1rem !important;
     margin-bottom: 0.65rem !important;
+}
+/* =========================================================
+   TÍTULOS ESPECIAIS DENTRO DO CONTEÚDO DOS EXPANDERS
+   Não afeta a barra/cabeçalho do expander
+========================================================= */
+
+[data-testid="stExpander"] details > div [data-testid="stMarkdownContainer"] h1,
+[data-testid="stExpander"] details > div [data-testid="stMarkdownContainer"] h2,
+[data-testid="stExpander"] details > div [data-testid="stMarkdownContainer"] h3 {
+    background: linear-gradient(
+        135deg,
+        #667eea 0%,
+        #b388ff 35%,
+        #f093fb 65%,
+        #4facfe 100%
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+
+    font-weight: 850 !important;
+    letter-spacing: -0.025em !important;
+    text-shadow: 0 0 18px rgba(179, 136, 255, 0.22) !important;
+}
+
+/* subtítulos #### dentro dos expanders */
+[data-testid="stExpander"] details > div [data-testid="stMarkdownContainer"] h4,
+[data-testid="stExpander"] details > div [data-testid="stMarkdownContainer"] h5,
+[data-testid="stExpander"] details > div [data-testid="stMarkdownContainer"] h6 {
+    background: linear-gradient(
+        135deg,
+        #c4b5fd 0%,
+        #f0abfc 55%,
+        #93c5fd 100%
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+
+    font-weight: 800 !important;
+    letter-spacing: -0.015em !important;
+    text-shadow: 0 0 14px rgba(196, 181, 253, 0.18) !important;
+}
+
+/* tamanhos dentro dos expanders */
+[data-testid="stExpander"] details > div [data-testid="stMarkdownContainer"] h1 {
+    font-size: 2.7rem !important;
+    margin-top: 1.4rem !important;
+    margin-bottom: 1rem !important;
+}
+
+[data-testid="stExpander"] details > div [data-testid="stMarkdownContainer"] h2 {
+    font-size: 2.25rem !important;
+    margin-top: 1.3rem !important;
+    margin-bottom: 0.9rem !important;
+}
+
+[data-testid="stExpander"] details > div [data-testid="stMarkdownContainer"] h3 {
+    font-size: 1.8rem !important;
+    margin-top: 1.15rem !important;
+    margin-bottom: 0.75rem !important;
+}
+
+[data-testid="stExpander"] details > div [data-testid="stMarkdownContainer"] h4 {
+    font-size: 1.35rem !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0.65rem !important;
+}
+/* =========================================================
+   PROTEGER APENAS A BARRA/CABEÇALHO DO EXPANDER
+========================================================= */
+
+[data-testid="stExpander"] summary,
+[data-testid="stExpander"] summary *,
+[data-testid="stExpander"] summary p,
+[data-testid="stExpander"] summary span,
+[data-testid="stExpander"] summary div,
+[data-testid="stExpander"] summary [data-testid="stMarkdownContainer"],
+[data-testid="stExpander"] summary [data-testid="stMarkdownContainer"] * {
+    background: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+}
+
+[data-testid="stExpander"] summary {
+    background-color: #1f1b3d !important;
 }
 </style>
 """, unsafe_allow_html=True)
