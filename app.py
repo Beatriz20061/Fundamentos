@@ -1642,7 +1642,7 @@ elif page == "🟣 Padrões dos Primos":
 
         st.markdown("---")
 
-        st.markdown("### 🎛️ Laboratório Interativo: Gerador de Primos de Euler")
+        st.markdown("### Laboratório Interativo: Gerador de Primos de Euler")
 
         n_slider = st.slider(
             "Altere o valor de n para testar o polinómio:",
@@ -1909,175 +1909,472 @@ elif page == "🟡 Padrões Numéricos":
         with st.expander("📐 1. Números Triangulares e Contagem Geométrica", expanded=False):
             st.markdown("""
             ### Explicação Teórica
-            
-            Os números triangulares pertencem ao grupo dos **números figurados**, que se caracterizam 
-            por serem números que podem ser representados através de arranjos geométricos de pontos regulares.
-            
-            Eles representam a quantidade de pontos necessária para construir um **triângulo equilátero** 
-            com um determinado número de linhas. Como cada nova linha adiciona sempre mais um ponto do 
-            que a linha anterior, um número triangular corresponde diretamente à **soma dos primeiros 
-            números naturais**:
+
+            Os **números triangulares** pertencem ao grupo dos chamados **números figurados**, que se caracterizam por serem números representáveis através de arranjos geométricos de pontos regulares.
+
+            Esta abordagem visual é extremamente importante na aprendizagem matemática, pois transforma problemas abstratos de contagem numa perceção **geométrica intuitiva**.
+
+            No caso dos números triangulares, eles representam a quantidade de pontos necessária para construir um **triângulo equilátero** com um determinado número de linhas.
+
+            Como cada nova linha adiciona sempre mais um ponto do que a anterior, obtém-se:
             """)
-            
+
             st.latex(r"T_n = 1 + 2 + 3 + \dots + n = \frac{n(n+1)}{2}")
-            
+
             st.markdown("""
-            Esta fórmula pode ser explicada através de um raciocínio geométrico atribuído a **Gauss**: 
-            se escrevermos a sequência da soma na sua ordem direta e inversa, cada par de termos 
-            resulta em $$n+1$$. Como existem $$n$$ termos, a soma total das duas linhas é $$2T_n = n(n+1)$$.
-            
+            Isto mostra que um número triangular corresponde à soma dos primeiros números naturais.
+
             ---
-            
-            ### Aplicação Prática
-            
-            Os números triangulares modelam problemas de contagem em redes. Se tivermos **6 pessoas** 
-            e quisermos saber quantos **apertos de mão únicos** ocorrem se todas se cumprimentarem:
+
+            ### 🧠 Demonstração (Raciocínio de Gauss)
+
+            A fórmula pode ser explicada através de um raciocínio elegante atribuído a **Gauss**:
+
+            - Escreve-se a soma na ordem direta  
+            - Escreve-se novamente na ordem inversa  
+            - Soma-se termo a termo  
+
+            Cada par resulta em:
+
+            **n + 1**
+
+            Como existem **n termos**, obtemos:
             """)
-            
-            st.latex(r"T_5 = \frac{5 \times 6}{2} = 15 \text{ apertos de mão}")
-            
+
+            st.latex(r"2T_n = n(n+1)")
+
+            st.markdown("Dividindo por 2:")
+
+            st.latex(r"T_n = \frac{n(n+1)}{2}")
+
+            st.markdown("---")
+
+            st.markdown("""
+            ### Exemplo Prático
+                        
+            Para calcular o quarto número triangular:
+            """)
+
+            st.latex(r"T_4 = \frac{4(4+1)}{2} = \frac{20}{2} = 10")
+
+            st.markdown("""
+            ✔ Isto coincide com a soma:
+
+            **1 + 2 + 3 + 4 = 10**
+
+            Os primeiros números triangulares são:
+
+            1, 3, 6, 10, 15, 21
+
+            Estes valores confirmam o crescimento regular e a disposição triangular dos pontos.
+            """)
+
+            st.markdown("---")
+
+            st.markdown("""
+            ### Aplicações Reais
+
+            Os números triangulares aparecem em problemas de **contagem e redes**.
+
+            #### Exemplo: apertos de mão
+
+            Se tivermos 6 pessoas e cada uma cumprimentar todas as outras uma única vez:
+
+            O número total de interações é:
+            """)
+
+            st.latex(r"T_5 = \frac{5 \times 6}{2} = 15")
+
+            st.markdown("""
+            O mesmo raciocínio aplica-se a:
+
+            - Ligações entre computadores numa rede  
+            - Número de conexões únicas  
+            - Problemas de combinação simples  
+
+            ---
+
+            Ideia-chave:  
+            Os números triangulares são uma ponte entre **geometria e aritmética**, permitindo visualizar padrões numéricos de forma clara e intuitiva.
+            """)
+
             if GRAFICOS_ATIVOS:
-                st.markdown("#### 📐 Triângulo Pitagórico (3, 4, 5)")
-                
+                st.markdown("#### Representação Geométrica (Exemplo ilustrativo)")
+
+                import matplotlib.pyplot as plt
+
                 fig_tri, ax_tri = plt.subplots(figsize=(4, 4))
                 fig_tri.patch.set_facecolor('#0f0f23')
                 ax_tri.set_facecolor('#0f0f23')
-                
+
                 x_tri = [0, 4, 0, 0]
                 y_tri = [0, 0, 3, 0]
-                ax_tri.plot(x_tri, y_tri, color='#667eea', linewidth=2.5)
-                ax_tri.fill([0, 4, 0], [0, 0, 3], color='#667eea', alpha=0.2)
-                
-                ax_tri.text(2, -0.4, "4", fontsize=12, ha='center', color='white', fontweight='bold')
-                ax_tri.text(-0.4, 1.5, "3", fontsize=12, va='center', color='white', fontweight='bold')
-                ax_tri.text(2.2, 1.8, "5", fontsize=12, ha='center', color='white', fontweight='bold')
-                
-                ax_tri.plot([0, 0.3, 0.3, 0], [0, 0, 0.3, 0], color='#f093fb', linewidth=1.5)
-                
-                ax_tri.axis('equal')
-                ax_tri.axis('off')
-                st.pyplot(fig_tri)
-            
+
+
         with st.expander("✨ 2. Números Perfeitos e Harmonia de Divisores", expanded=False):
+
             st.markdown("""
-            ### Explicação Teórica Exaustiva
-            
-            Um **número perfeito** define-se como um número inteiro positivo que é exatamente igual 
-            à soma de todos os seus **divisores próprios** (divisores menores que o próprio número).
-            
-            Esta definição remonta aos *Elementos de Euclides*, refletindo o interesse por propriedades 
-            estéticas de equilíbrio e harmonia aritmética.
-            
-            ---
-            
+            ### Definição e Significado
+
+            Um **número perfeito** é um número inteiro positivo que é exatamente igual à soma dos seus 
+            **divisores próprios**, ou seja, todos os divisores menores do que ele.
+
+            Esta definição remonta aos *Elementos de Euclides*, refletindo o interesse dos matemáticos 
+            da Antiguidade por números que exibem **equilíbrio e harmonia aritmética**.
+            """)
+
+            st.markdown("---")
+
+            st.markdown("""
             ### Exemplos Clássicos
-            
+
             | Número | Divisores Próprios | Soma |
             |--------|-------------------|------|
-            | **6** | 1, 2, 3 | 1 + 2 + 3 = **6** ✓ |
-            | **28** | 1, 2, 4, 7, 14 | 1 + 2 + 4 + 7 + 14 = **28** ✓ |
-            
-            ---
-            
-            ### Relação com os Primos de Mersenne
-            
-            Os números perfeitos pares têm uma ligação direta com os **Primos de Mersenne** ($$2^p - 1$$). 
-            Euclides demonstrou que quando $$2^p - 1$$ é primo, gera-se um número perfeito par:
+            | **6**  | 1, 2, 3           | 1 + 2 + 3 = **6** ✓ |
+            | **28** | 1, 2, 4, 7, 14    | 1 + 2 + 4 + 7 + 14 = **28** ✓ |
+
+            Em ambos os casos, a soma dos divisores próprios é exatamente igual ao número original.
             """)
-            
+
+            st.markdown("---")
+
+            st.markdown("""
+            ### Relação com Primos de Mersenne
+
+            Os números perfeitos pares estão diretamente ligados aos chamados **Primos de Mersenne**, 
+            que têm a forma:
+            """)
+
+            st.latex(r"2^p - 1")
+
+            st.markdown("""
+            Euclides demonstrou que, sempre que $$2^p - 1$$ é primo, então podemos gerar um número perfeito 
+            através da fórmula:
+            """)
+
             st.latex(r"n = 2^{p-1}(2^p - 1)")
+
+            st.markdown("""
+            #### Exemplos
+
+            - Para **p = 3**:
+            """)
+
+            st.latex(r"n = 2^{2}(2^3 - 1) = 4 \times 7 = 28")
+
+            st.markdown("""
+            - Para **p = 5**:
+            """)
+
+            st.latex(r"n = 2^{4}(2^5 - 1) = 16 \times 31 = 496")
+
+            st.markdown("""
+            Esta construção gera **todos os números perfeitos pares conhecidos**.
+            """)
+
+            st.markdown("---")
+
+            st.markdown("""
+            ### Formulação com a Função σ(n)
+
+            A definição também pode ser expressa recorrendo à função soma dos divisores:
+
+            """)
+
+            st.latex(r"\sigma(n) = \text{soma de todos os divisores de } n")
+
+            st.markdown("Um número é perfeito se:")
+
+            st.latex(r"\sigma(n) = 2n")
+
+            st.markdown("""
+            #### Exemplo:
+
+            Para n = 6:
+
+            - Divisores: 1, 2, 3, 6  
+            - Soma:
+            """)
+
+            st.latex(r"\sigma(6) = 12 = 2 \times 6")
+
+            st.markdown("---")
+
+            st.markdown("""
+            ### Ligação aos Números Triangulares
+
+            Um facto surpreendente é que **todos os números perfeitos pares conhecidos são também números triangulares**.
+
+            #### Exemplo:
+            """)
+
+            st.latex(r"T_7 = \frac{7 \times 8}{2} = 28")
+
+            st.markdown("""
+            Isto mostra uma ligação profunda entre diferentes áreas da Teoria dos Números.
+            """)
+
+            st.markdown("---")
+
+            st.markdown("""
+            ### Problema em Aberto
+
+            Permanece uma grande questão na matemática:
+
+            **Existem números perfeitos ímpares?**
+
+            Até hoje:
+            - Nenhum foi encontrado  
+            - Nenhuma prova mostra que não existe  
+
+            Estudos indicam que, a existir, um número perfeito ímpar teria de:
+            - Ser extremamente grande  
+            - Ter uma estrutura muito complexa de divisores  
+
+            Este continua a ser um dos problemas clássicos ainda em aberto.
+            """)
+
+            st.markdown("""
+            ---
+            **Ideia-chave:**  
+            Os números perfeitos representam um raro exemplo de **equilíbrio absoluto na aritmética**, 
+            ligando divisores, primos e até estruturas geométricas como os números triangulares.
+            """)
+
             
         with st.expander("9️⃣ 3. Exploração do Número 9 na Base Decimal", expanded=False):
+
             st.markdown("""
-            ### Explicação Teórica Exaustiva
+            ### Explicação Teórica
+
+            O número **9** ocupa um lugar de destaque na aritmética devido à estrutura do sistema de numeração **decimal (base 10)**.
+
+            Como $$9 = 10 - 1$$, surgem padrões matemáticos extremamente regulares, incluindo:
             
-            O número **9** ocupa um lugar de destaque na aritmética elementar devido à organização do 
-            nosso sistema de numeração em **base 10**. Pelo facto de $$9 = 10 - 1$$, cria-se um conjunto 
-            único de simetrias e regras de divisibilidade.
-            
+            - Simetrias numéricas  
+            - Regras simples de divisibilidade  
+            - Padrões visuais previsíveis  
+
+            ---
+
             ### Propriedade Modular
-            
-            Qualquer número inteiro positivo é sempre **congruente com a soma dos seus dígitos** em módulo 9:
+
+            Qualquer número inteiro positivo é sempre **congruente com a soma dos seus dígitos módulo 9**:
             """)
-            
+
             st.latex(r"n \equiv \text{soma dos dígitos de } n \pmod{9}")
-            
+
             st.markdown("""
-            Esta propriedade justifica o **critério de divisibilidade por 9**.
-            
-            ### Simetria na Tabuada do 9
-            
-            Os resultados da tabuada formam um **espelho numérico**:
-            - $$9 \\times 2 = 18$$ ↔ $$9 \\times 9 = 81$$
-            - $$9 \\times 3 = 27$$ ↔ $$9 \\times 8 = 72$$
-            - $$9 \\times 4 = 36$$ ↔ $$9 \\times 7 = 63$$
-            
-            Em todos os produtos, a **soma dos dígitos é sempre 9**.
+            Esta propriedade está na base do **critério de divisibilidade por 9**.
+
+            #### Exemplos
+
+            - Para **432**:
             """)
-            
+
+            st.latex(r"4 + 3 + 2 = 9")
+
+            st.markdown("""
+            Como 9 é múltiplo de 9, então 432 também é.
+
+            - Para **981**:
+            """)
+
+            st.latex(r"9 + 8 + 1 = 18 \rightarrow 1 + 8 = 9")
+
+            st.markdown("""
+            Qualquer múltiplo de 9 acaba por “colapsar” no valor 9 através da soma repetida dos dígitos.
+            """)
+
             st.markdown("---")
-            
-            st.markdown("#### 🔄 Laboratório de Redução Digital (Módulo 9)")
-            
-            num_9_input = st.text_input("Introduz um número inteiro:", value="432", key="num_9_input")
-            
+
+            st.markdown("""
+            ### Simetria na Tabuada do 9
+
+            A tabuada do 9 apresenta uma estrutura de **espelho numérico**:
+
+            - $$9 \\times 2 = 18$$ ↔ $$9 \\times 9 = 81$$  
+            - $$9 \\times 3 = 27$$ ↔ $$9 \\times 8 = 72$$  
+            - $$9 \\times 4 = 36$$ ↔ $$9 \\times 7 = 63$$  
+
+            Em todos os casos, a **soma dos dígitos é sempre 9**.
+
+            Isto reflete a complementaridade entre dezenas e unidades no sistema decimal.
+            """)
+
+            st.markdown("---")
+
+            st.markdown("""
+            ### Potências de 9 e Estrutura Algébrica
+
+            O comportamento do número 9 também se explica pela identidade:
+
+            """)
+
+            st.latex(r"9^n = (10 - 1)^n")
+
+            st.markdown("""
+            Ao expandir esta expressão (Binómio de Newton), observa-se que quase todos os termos são múltiplos de 10.
+
+            Isso explica os padrões nas potências de 9.
+
+            #### Exemplos:
+
+            - $$9^1 = 9$$  
+            - $$9^2 = 81$$ → soma = 9  
+            - $$9^3 = 729$$ → soma = 7+2+9 = 18 → 9  
+            - $$9^4 = 6561$$ → soma = 18 → 9  
+
+            As potências de 9 exibem um comportamento cíclico na soma dos dígitos.
+            """)
+
+            st.markdown("---")
+
+            st.markdown("### Laboratório de Redução Digital")
+
+            num_9_input = st.text_input(
+                "Introduz um número inteiro:",
+                value="432",
+                key="num_9_input"
+            )
+
             if num_9_input.isdigit() and int(num_9_input) > 0:
                 n_atual = int(num_9_input)
                 passos = [str(n_atual)]
-                
+
                 while n_atual > 9:
                     soma_digitos = sum(int(d) for d in str(n_atual))
                     passos.append(str(soma_digitos))
                     n_atual = soma_digitos
-                
+
                 caminho_setas = " → ".join(passos)
-                
+
                 st.info(f"**Cadeia de Colapso:** {caminho_setas}")
-                
+
                 col1, col2 = st.columns(2)
+
                 with col1:
                     st.metric("Raiz Digital", n_atual)
+
                 with col2:
                     resto_mod = int(num_9_input) % 9
                     st.metric("Resto (mod 9)", resto_mod if resto_mod != 0 else 9)
-                
+
                 if n_atual == 9:
                     st.success(f"🟩 O número {num_9_input} é múltiplo de 9!")
                 else:
                     st.warning(f"🟨 O número não é múltiplo de 9. Resto: {resto_mod if resto_mod != 0 else 9}")
             else:
                 st.error("Introduz apenas números inteiros positivos.")
+
+            st.markdown("""
+            ---
+            **Ideia-chave:**  
+            O número 9 revela como a estrutura da base 10 cria padrões previsíveis, transformando 
+            operações aritméticas em comportamentos visuais e regulares.
+            """)
             
         with st.expander("∞ 4. O Último Teorema de Fermat", expanded=False):
+
             st.markdown("""
-            ### Explicação Teórica
-            
-            O **Último Teorema de Fermat** ilustra como pequenas alterações numa expressão matemática 
-            podem fazer com que um padrão de soluções infinitas **desapareça por completo**.
-            
-            Para $$n = 2$$, a equação de Pitágoras admite infinitas soluções inteiras (triplas pitagóricas):
+            ### Introdução e Enquadramento
+
+            O **Último Teorema de Fermat** constitui um dos resultados mais emblemáticos da Teoria dos Números, 
+            pois ilustra como **pequenas alterações numa expressão matemática podem fazer desaparecer um padrão inteiro de soluções**.
+
+            ---
+
+            ### Caso Clássico: n = 2
+
+            Para $$n = 2$$, obtemos a equação de Pitágoras:
             """)
-            
-            st.latex(r"a^2 + b^2 = c^2 \quad \text{(ex: } 3^2 + 4^2 = 5^2 \text{)}")
-            
+
+            st.latex(r"a^2 + b^2 = c^2")
+
             st.markdown("""
-            Contudo, Fermat afirmou que a equação geral:
+            Esta equação admite **infinitas soluções inteiras positivas**, conhecidas como **triplas pitagóricas**.
+
+            #### Exemplo mais conhecido:
             """)
-            
+
+            st.latex(r"3^2 + 4^2 = 9 + 16 = 25 = 5^2")
+
+            st.markdown("""
+            Estas soluções podem ser geradas pelas **fórmulas de Euclides**:
+            """)
+
+            st.latex(r"a = m^2 - n^2,\quad b = 2mn,\quad c = m^2 + n^2")
+
+            st.markdown("""
+            Este caso representa um sistema rico, regular e com estrutura infinita de soluções.
+
+            ---
+
+            ### Mudança Radical: n > 2
+
+            Fermat afirmou que a equação geral:
+            """)
+
             st.latex(r"a^n + b^n = c^n")
-            
+
             st.markdown("""
-            **não admite qualquer solução inteira não trivial** para $$n > 2$$.
-            
-            A prova definitiva foi alcançada por **Andrew Wiles** em 1995, utilizando conceitos 
-            sofisticados como **curvas elípticas** e **formas modulares**.
+            **não admite soluções inteiras não triviais para nenhum valor de $$n > 2$$.**
+
+            Ou seja:
+            - Para $$n = 2$$ → infinitas soluções  
+            - Para $$n > 2$$ → nenhuma solução  
+
+            Esta mudança revela um contraste profundo na estrutura dos números.
             """)
-            
+
+            st.markdown("---")
+
+            st.markdown("""
+            ### História e Demonstração
+
+            No século XVII, **Pierre de Fermat** escreveu na margem de um livro que tinha uma 
+            "demonstração verdadeiramente maravilhosa", mas que não cabia ali.
+
+            Durante mais de **350 anos**, este problema intrigou matemáticos:
+
+            - **Euler** → resolveu o caso $$n = 3$$  
+            - **Sophie Germain** → contribuiu para classes de expoentes  
+            - **Kummer** → desenvolveu teoria para vários casos  
+
+            A prova geral foi finalmente alcançada por **Andrew Wiles**, em **1994/1995**, utilizando:
+
+            - Curvas elípticas  
+            - Formas modulares  
+
+            Uma das demonstrações mais profundas da matemática moderna.
+            """)
+
+            st.markdown("---")
+
+            st.markdown("""
+            ### Interpretação Matemática
+
+            O teorema mostra que:
+
+            - Pequenas alterações algébricas podem provocar mudanças drásticas  
+            - Padrões aparentemente estáveis podem ter **limites rígidos**  
+            - A Teoria dos Números mistura simplicidade (equação) com enorme profundidade  
+
+            Passamos de um sistema com infinitas soluções para um sistema completamente vazio.
+            """)
+
             if GRAFICOS_ATIVOS:
-                st.markdown("#### Comparação das Curvas de Fermat")
-                
-                n_input_txt = st.text_input("Expoente n (> 2) para comparar com n=2:", value="3.0", key="fermat_n")
-                
+                st.markdown("#### Visualização: Comparação entre n = 2 e n > 2")
+
+                import numpy as np
+                import matplotlib.pyplot as plt
+
+                n_input_txt = st.text_input(
+                    "Expoente n (> 2) para comparar com n=2:",
+                    value="3.0",
+                    key="fermat_n"
+                )
+
                 try:
                     n_fermat = float(n_input_txt)
                     if n_fermat <= 2:
@@ -2086,43 +2383,51 @@ elif page == "🟡 Padrões Numéricos":
                 except ValueError:
                     st.error("Introduz um valor numérico válido.")
                     n_fermat = 3.0
-                
+
                 a_grid = np.linspace(0.01, 5, 400)
                 b_grid = np.linspace(0.01, 5, 400)
                 A, B = np.meshgrid(a_grid, b_grid)
-                
+
                 fig_fer, ax_fer = plt.subplots(figsize=(6, 6))
                 fig_fer.patch.set_facecolor('#0f0f23')
                 ax_fer.set_facecolor('#0f0f23')
-                
+
                 C2 = A**2 + B**2
                 ax_fer.contour(A, B, C2, levels=[25], colors=['#4facfe'], linewidths=2.5)
-                
+
                 Cn = A**n_fermat + B**n_fermat
                 ax_fer.contour(A, B, Cn, levels=[25], colors=['#f093fb'], linestyles='--', linewidths=2.5)
-                
+
                 ax_fer.scatter([3], [4], color='#00f2fe', s=100, zorder=5, edgecolors='white', linewidth=2)
                 ax_fer.annotate('(3, 4)', (3, 4), xytext=(3.3, 4.3), color='white', fontsize=10)
-                
+
                 ax_fer.set_xlabel("a", fontsize=12, color='white')
                 ax_fer.set_ylabel("b", fontsize=12, color='white')
                 ax_fer.tick_params(colors='white')
                 ax_fer.grid(alpha=0.2, color='white')
-                
+
                 for spine in ax_fer.spines.values():
                     spine.set_color('white')
                     spine.set_alpha(0.3)
-                
+
                 from matplotlib.lines import Line2D
                 handles = [
-                    Line2D([0], [0], color='#4facfe', lw=2.5, linestyle='-'),
+                    Line2D([0], [0], color='#4facfe', lw=2.5),
                     Line2D([0], [0], color='#f093fb', lw=2.5, linestyle='--')
                 ]
                 labels = ["n = 2", f"n = {n_fermat:.1f}"]
-                ax_fer.legend(handles, labels, loc="upper right", fontsize=10, 
-                             facecolor='#1a1a3e', edgecolor='white', labelcolor='white')
-                
+                ax_fer.legend(handles, labels, loc="upper right",
+                            facecolor='#1a1a3e', edgecolor='white', labelcolor='white')
+
                 st.pyplot(fig_fer)
+
+            st.markdown("""
+            ---
+            **Ideia-chave:**  
+            O Último Teorema de Fermat mostra que os padrões matemáticos não são sempre contínuos:  
+            às vezes, uma pequena mudança revela limites profundos e inesperados na estrutura dos números.
+            """)
+
 
     with tab2:
         st.markdown("### 🧠 Questionário de Avaliação — Módulo 5")
