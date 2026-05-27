@@ -1605,6 +1605,65 @@ elif page == "🟣 Padrões dos Primos":
 
         Os números primos alinham-se em **diagonais longas e bem definidas**.
         """)
+        st.markdown("---")
+
+        st.markdown("### 🎛️ Visualização Interativa: Espiral de Ulam")
+
+        st.markdown("""
+        Move o slider para ver como os **números primos se organizam em padrões diagonais**.
+        """)
+        # Função primo
+        def is_prime(n):
+            if n < 2:
+                return False
+            for i in range(2, int(n**0.5) + 1):
+                if n % i == 0:
+                    return False
+            return True
+
+        # Espiral
+        def ulam_spiral(n):
+            x, y = 0, 0
+            dx, dy = 1, 0
+            positions = []
+
+            for i in range(1, n + 1):
+                positions.append((x, y, i))
+
+                if (x == y) or (x < 0 and x == -y) or (x > 0 and x == 1 - y):
+                    dx, dy = -dy, dx
+
+                x += dx
+                y += dy
+
+            return positions
+
+        # slider
+        n_max = st.slider("Quantidade de números:", 10, 2000, 500, key="ulam_slider")
+
+        coords = ulam_spiral(n_max)
+
+        x_vals = []
+        y_vals = []
+
+        for (x, y, num) in coords:
+            if is_prime(num):
+                x_vals.append(x)
+                y_vals.append(y)
+
+        # gráfico
+        import matplotlib.pyplot as plt
+
+        fig, ax = plt.subplots(figsize=(6, 6))
+        fig.patch.set_facecolor('#0f0f23')
+        ax.set_facecolor('#0f0f23')
+
+        ax.scatter(x_vals, y_vals, s=5, color='#00f2fe')
+
+        ax.set_title("Espiral de Ulam (números primos)", color='white')
+        ax.axis('off')
+
+        st.pyplot(fig)
 
         st.markdown("---")
 
