@@ -1600,33 +1600,33 @@ elif page == "🟢 Lógica do Number Match":
 
             # -------- estilo --------
             st.markdown("""
-                <style>
+            <style>
 
-                /* ✅ aplica só aos botões da grelha */
-                button[key^="grid_"] {
-                    width: 55px;
-                    height: 55px;
-                    font-size: 20px;
-                    border-radius: 12px;
-                    background: linear-gradient(135deg, #667eea, #764ba2);
-                    color: white;
-                    border: none;
-                    font-weight: bold;
-                }
+            /* ✅ aplica só aos botões da grelha */
+            button[key^="grid_"] {
+                width: 55px;
+                height: 55px;
+                font-size: 20px;
+                border-radius: 12px;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+                border: none;
+                font-weight: bold;
+            }
 
-                /* hover só na grelha */
-                button[key^="grid_"]:hover {
-                    outline: 3px solid #00f2fe;
-                }
+            /* hover só na grelha */
+            button[key^="grid_"]:hover {
+                outline: 3px solid #00f2fe;
+            }
 
-                /* ✅ botão reiniciar fica normal */
-                button[kind="secondary"] {
-                    width: auto !important;
-                    height: auto !important;
-                }
+            /* ✅ botão reiniciar fica normal */
+            button[kind="secondary"] {
+                width: auto !important;
+                height: auto !important;
+            }
 
-                </style>
-                """, unsafe_allow_html=True)
+            </style>
+            """, unsafe_allow_html=True)
 
             # -------- grelha --------
             rows = SIZE // COLS
