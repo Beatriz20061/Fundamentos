@@ -1492,25 +1492,21 @@ elif page == "🟢 Lógica do Number Match":
         with st.expander("🎮 Number Match (Jogo Interativo)", expanded=False):
 
             st.markdown("""
-            ### Jogar Number Match
-
-            Seleciona dois números iguais **ou cuja soma seja 10**, desde que:
-            - estejam na mesma linha ou coluna
-            - ou sejam adjacentes
-            - e não haja números entre eles
+            ### Seleciona dois números iguais ou cuja soma seja 10.
             """)
 
-            COLS = 5
-            SIZE = 20
+            COLS = 9
+            SIZE = 45
 
             # -------- estado --------
             if "grid" not in st.session_state:
                 st.session_state.grid = [random.randint(1, 9) for _ in range(SIZE)]
                 st.session_state.selected = []
+                st.session_state.msg = ""
 
             grid = st.session_state.grid
 
-            # -------- REGRAS DO JOGO --------
+            # -------- REGRAS --------
             def valid_move(i, j, grid, cols):
 
                 if i == j:
@@ -1521,36 +1517,27 @@ elif page == "🟢 Lógica do Number Match":
                 if a is None or b is None:
                     return False
 
-                # regra base
                 if not (a == b or a + b == 10):
                     return False
 
                 r1, c1 = divmod(i, cols)
                 r2, c2 = divmod(j, cols)
 
-                # adjacentes (lado a lado)
+                # adjacentes
                 if abs(r1 - r2) + abs(c1 - c2) == 1:
                     return True
 
                 # mesma linha
                 if r1 == r2:
-                    start = min(c1, c2) + 1
-                    end = max(c1, c2)
-
-                    for c in range(start, end):
-                        idx = r1 * cols + c
-                        if grid[idx] is not None:
+                    for c in range(min(c1, c2) + 1, max(c1, c2)):
+                        if grid[r1 * cols + c] is not None:
                             return False
                     return True
 
                 # mesma coluna
                 if c1 == c2:
-                    start = min(r1, r2) + 1
-                    end = max(r1, r2)
-
-                    for r in range(start, end):
-                        idx = r * cols + c1
-                        if grid[idx] is not None:
+                    for r in range(min(r1, r2) + 1, max(r1, r2)):
+                        if grid[r * cols + c1] is not None:
                             return False
                     return True
 
@@ -1570,21 +1557,33 @@ elif page == "🟢 Lógica do Number Match":
                     if valid_move(i, j, grid, COLS):
                         grid[i] = None
                         grid[j] = None
+                        st.session_state.msg = "✅ Jogada válida!"
+                    else:
+                        st.session_state.msg = "❌ Jogada inválida!"
 
                     st.session_state.selected = []
-
                     st.rerun()
 
-            # -------- TABULEIRO COM BORDA --------
+            # -------- CSS (visual tipo app) --------
             st.markdown("""
-            <div style="
-                border: 3px solid #667eea;
-                border-radius: 12px;
-                padding: 15px;
-                background-color: #0f0f23;
-            ">
+            <style>
+            div.stButton > button {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                font-weight: bold;
+                background-color: #f5f5f5;
+                color: black;
+                border: 1px solid #ccc;
+            }
+
+            div.stButton > button:hover {
+                border: 2px solid #0074D9;
+            }
+            </style>
             """, unsafe_allow_html=True)
 
+            # -------- VISUAL COM GRELHA REAL --------
             rows = SIZE // COLS
 
             for r in range(rows):
@@ -1596,20 +1595,26 @@ elif page == "🟢 Lógica do Number Match":
 
                     with cols[c]:
                         if val is None:
-                            st.write(" ")
+                            st.markdown("<div style='height:50px'></div>", unsafe_allow_html=True)
                         else:
                             if st.button(str(val), key=f"btn_{idx}"):
                                 select_number(idx)
 
-            st.markdown("</div>", unsafe_allow_html=True)
+            # -------- mensagem --------
+            if st.session_state.msg:
+                if "❌" in st.session_state.msg:
+                    st.warning(st.session_state.msg)
+                else:
+                    st.success(st.session_state.msg)
 
             # -------- reset --------
-            st.markdown("")
-
-            if st.button("🔄 Reiniciar jogo"):
+            if st.button("🔄 Reiniciar"):
                 st.session_state.grid = [random.randint(1, 9) for _ in range(SIZE)]
                 st.session_state.selected = []
+                st.session_state.msg = ""
                 st.rerun()
+
+
 
 
     with tab2:
