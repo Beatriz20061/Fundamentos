@@ -42,6 +42,20 @@ div[data-testid="stExpander"] > div {
 * {
     color: inherit !important;
 }
+<style>
+/* 🔧 corrigir input do slider */
+.stSlider input {
+    background: rgba(0, 0, 0, 0.6) !important;
+    color: white !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+}
+
+/* quando clicas */
+.stSlider input:focus {
+    border: 1px solid #667eea !important;
+    box-shadow: 0 0 10px rgba(102,126,234,0.5) !important;
+}
 /* ===== IMPORTS E VARIÁVEIS ===== */
 @import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap)');
 
@@ -1177,7 +1191,7 @@ elif page == "17 Grupos Cristalográficos":
             
         with st.expander("🔍 3. Análise Detalhada dos 3 Grupos Cristalográficos", expanded=False):
             st.markdown("""
-            ### 4. Análise Detalhada dos 3 Grupos Cristalográficos
+            ### Análise Detalhada dos 3 Grupos Cristalográficos
 
             Nesta secção analisamos em detalhe três grupos cristalográficos representativos: **p4**, **p6** e **pm**. 
             Estes grupos foram selecionados por apresentarem diferentes combinações de simetrias (rotações, reflexões e translações), 
