@@ -1494,12 +1494,14 @@ elif page == "🟢 Lógica do Number Match":
             st.markdown("""
             ### Jogar Number Match
 
-            Seleciona dois números iguais **ou cuja soma seja 10**.
+            Seleciona dois números iguais **ou cuja soma seja 10**, desde que:
+            - estejam na mesma linha ou coluna
+            - ou sejam adjacentes
+            - e não haja números entre eles
             """)
 
-            # -------- dimensões fixas --------
             COLS = 5
-            SIZE = 20  # total células
+            SIZE = 20
 
             # -------- estado --------
             if "grid" not in st.session_state:
@@ -1508,8 +1510,55 @@ elif page == "🟢 Lógica do Number Match":
 
             grid = st.session_state.grid
 
+            # -------- REGRAS DO JOGO --------
+            def valid_move(i, j, grid, cols):
+
+                if i == j:
+                    return False
+
+                a, b = grid[i], grid[j]
+
+                if a is None or b is None:
+                    return False
+
+                # regra base
+                if not (a == b or a + b == 10):
+                    return False
+
+                r1, c1 = divmod(i, cols)
+                r2, c2 = divmod(j, cols)
+
+                # adjacentes (lado a lado)
+                if abs(r1 - r2) + abs(c1 - c2) == 1:
+                    return True
+
+                # mesma linha
+                if r1 == r2:
+                    start = min(c1, c2) + 1
+                    end = max(c1, c2)
+
+                    for c in range(start, end):
+                        idx = r1 * cols + c
+                        if grid[idx] is not None:
+                            return False
+                    return True
+
+                # mesma coluna
+                if c1 == c2:
+                    start = min(r1, r2) + 1
+                    end = max(r1, r2)
+
+                    for r in range(start, end):
+                        idx = r * cols + c1
+                        if grid[idx] is not None:
+                            return False
+                    return True
+
+                return False
+
             # -------- lógica --------
             def select_number(idx):
+
                 if idx in st.session_state.selected:
                     return
 
@@ -1517,18 +1566,25 @@ elif page == "🟢 Lógica do Number Match":
 
                 if len(st.session_state.selected) == 2:
                     i, j = st.session_state.selected
-                    a, b = grid[i], grid[j]
 
-                    if a is not None and b is not None:
-                        if (a == b) or (a + b == 10):
-                            grid[i] = None
-                            grid[j] = None
+                    if valid_move(i, j, grid, COLS):
+                        grid[i] = None
+                        grid[j] = None
 
                     st.session_state.selected = []
 
                     st.rerun()
 
-            # -------- DESENHAR GRELHA FIXA --------
+            # -------- TABULEIRO COM BORDA --------
+            st.markdown("""
+            <div style="
+                border: 3px solid #667eea;
+                border-radius: 12px;
+                padding: 15px;
+                background-color: #0f0f23;
+            ">
+            """, unsafe_allow_html=True)
+
             rows = SIZE // COLS
 
             for r in range(rows):
@@ -1540,10 +1596,12 @@ elif page == "🟢 Lógica do Number Match":
 
                     with cols[c]:
                         if val is None:
-                            st.write(" ")  # mantém espaço!
+                            st.write(" ")
                         else:
                             if st.button(str(val), key=f"btn_{idx}"):
                                 select_number(idx)
+
+            st.markdown("</div>", unsafe_allow_html=True)
 
             # -------- reset --------
             st.markdown("")
