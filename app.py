@@ -18,40 +18,113 @@ st.set_page_config(page_title="MathXplore - ISCTE Sintra", layout="wide", page_i
 st.markdown("""
 <style>
 
-/* ✅ manter fundo da app */
+/* =========================
+   APP BACKGROUND
+========================= */
+
 .stApp {
     background-color: #0f0f23;
 }
 
-/* ✅ textos normais */
-p, span, label {
-    color: rgba(255,255,255,0.8);
+/* =========================
+   TEXTO GERAL
+========================= */
+
+p, li, div {
+    color: rgba(255,255,255,0.88);
 }
 
-/* ✅ títulos */
+/* NÃO forçar spans e labels globalmente */
+/* Isso quebra widgets internos do Streamlit */
+
+/* =========================
+   TÍTULOS
+========================= */
+
 h1, h2, h3 {
     color: white;
 }
 
-/* ✅ TEXT INPUT */
+/* =========================
+   TEXT INPUT
+========================= */
+
 .stTextInput input {
-    background: rgba(0,0,0,0.6);
-    color: white;
+    background-color: rgba(0,0,0,0.6) !important;
+    color: white !important;
     border-radius: 8px;
 }
 
-/* ✅ SLIDER INPUT */
-.stSlider input {
-    background: rgba(0,0,0,0.6);
+/* =========================
+   NUMBER INPUT
+========================= */
+
+div[data-baseweb="input"] input {
+    background-color: rgba(0,0,0,0.6) !important;
+    color: white !important;
+}
+
+/* =========================
+   SELECTBOX
+========================= */
+
+div[data-baseweb="select"] > div {
+    background-color: rgba(0,0,0,0.6) !important;
+    color: white !important;
+}
+
+/* texto dentro do selectbox */
+div[data-baseweb="select"] span {
+    color: white !important;
+}
+
+/* =========================
+   SLIDER
+========================= */
+
+.stSlider {
     color: white;
 }
 
-/* ✅ SELECTBOX (caixa) */
-.stSelectbox > div > div {
-    background: rgba(0,0,0,0.6);
-    color: white;
+/* =========================
+   EXPANDERS
+========================= */
+
+/* Header */
+.streamlit-expanderHeader {
+    background-color: rgba(255,255,255,0.06) !important;
+    color: white !important;
+    border-radius: 8px;
 }
 
+/* Conteúdo */
+.streamlit-expanderContent {
+    background-color: rgba(255,255,255,0.02) !important;
+    color: white !important;
+}
+
+/* Texto dentro do expander */
+.streamlit-expanderContent p,
+.streamlit-expanderContent span,
+.streamlit-expanderContent label,
+.streamlit-expanderContent div {
+    color: rgba(255,255,255,0.9) !important;
+}
+
+/* =========================
+   TABS
+========================= */
+
+button[data-baseweb="tab"] {
+    color: white !important;
+}
+
+/* tab ativa */
+button[aria-selected="true"] {
+    background-color: rgba(255,255,255,0.08) !important;
+}
+
+</style>
 
 
 
