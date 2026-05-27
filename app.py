@@ -771,9 +771,13 @@ with st.sidebar:
 if page == "🏠 Página Inicial":
     # Hero Section
     st.markdown("""
-    # MathXplore  
-    Plataforma interativa com conhecimentos nas mais vastas áreas da matemática. Explore conceitos através de visualizações dinâmicas, simuladores e quizzes.
-    """)
+    <div class="hero-section">
+        <h1 class="hero-title">MathXplore</h1>
+        <div class="hero-subtitle">
+            Plataforma interativa com conhecimentos nas mais vastas áreas da matemática. Explore conceitos através de visualizações dinâmicas, simuladores e quizzes.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     
     render_divider()
