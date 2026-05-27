@@ -40,7 +40,7 @@ div[data-testid="stExpander"] > div {
 
 /* 🔥 força texto visível */
 * {
-    color: inherit !important;
+   
 }
 
 /* 🔧 corrigir input do slider */
@@ -202,7 +202,7 @@ div[role="option"] {
 div[role="option"]:hover {
     background: rgba(102,126,234,0.3) !important;
 }
-<style>
+</style>
 /* ===== IMPORTS E VARIÁVEIS ===== */
 @import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap)');
 
