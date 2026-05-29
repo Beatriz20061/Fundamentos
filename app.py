@@ -1518,9 +1518,6 @@ elif page == "Grupos de Simetria":
     with tab2:
         st.markdown("### 🧠 Questionário de Avaliação — Módulo 1")
         
-        render_glass_card("""
-            <p style="opacity: 0.7;">Responde às seguintes questões para testar os teus conhecimentos sobre Grupos de Simetria.</p>
-        """)
         
         score1 = 0
         
