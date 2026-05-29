@@ -1460,60 +1460,60 @@ elif page == "Grupos de Simetria":
 
     Assim como nas obras de **M. C. Escher**, onde padrões complexos e hipnóticos emergem de transformações simples, a natureza utiliza rotações e translações para construir sistemas moleculares altamente eficientes e estáveis.
     """)
-    with st.expander("🎨 5. Simetria na Arte de M. C. Escher", expanded=False):
-        st.markdown("""
-        ### Simetria na Arte de M. C. Escher
+        with st.expander("🎨 5. Simetria na Arte de M. C. Escher", expanded=False):
+            st.markdown("""
+            ### Simetria na Arte de M. C. Escher
 
-        M. C. Escher é um dos artistas que melhor explorou as simetrias do plano, apesar de não possuir formação matemática formal. A sua obra é um fascinante exemplo da ligação profunda entre **arte e matemática**.
+            M. C. Escher é um dos artistas que melhor explorou as simetrias do plano, apesar de não possuir formação matemática formal. A sua obra é um fascinante exemplo da ligação profunda entre **arte e matemática**.
 
-        Escher construiu tesselações complexas utilizando as quatro isometrias fundamentais:
+            Escher construiu tesselações complexas utilizando as quatro isometrias fundamentais:
 
-        - **Rotações**
-        - **Reflexões**
-        - **Translações**
-        - **Reflexões Deslizantes (glide reflections)**
+            - **Rotações**
+            - **Reflexões**
+            - **Translações**
+            - **Reflexões Deslizantes (glide reflections)**
+            """)
+
+            st.markdown("""
+            #### Exemplo: Regular Division of the Plane nº 31
+
+            Nesta obra icónica, observam-se claramente rotações de 180°, eixos de reflexão e translações regulares que repetem a figura base do peixe.
+            """)
+
+            # Imagem depois do texto
+            try:
+                st.image("Regular-division-31.jpg", 
+                        caption="M. C. Escher - Regular Division of the Plane nº 31 (1950)",
+                        use_container_width=True)
+            except:
+                st.error("Não foi possível carregar a imagem. Verifique o caminho do ficheiro.")
+
+        with st.expander("🔭 6. O Caleidoscópio e a Força Unificadora da Simetria", expanded=False):
+            st.markdown("""
+        ### O Caleidoscópio: Simetria em Ação
+
+        O **caleidoscópio** é uma das demonstrações mais belas e intuitivas de como simetrias simples podem gerar padrões complexos e hipnóticos.
+
+        O efeito visual resulta de **múltiplas reflexões** entre espelhos dispostos em triângulo, produzindo:
+
+        - **Simetrias Rotacionais** de ângulo 360°/n
+        - **Simetrias de Reflexão** múltiplas
+        - **Padrões Regulares** infinitamente repetidos
+
+        Cada reflexão corresponde a uma transformação geométrica precisa, criando repetições cíclicas infinitas que encantam o observador.
+
+        ---
+
+        ### A Força Unificadora da Simetria
+
+        O estudo das simetrias revela a extraordinária capacidade da Matemática em **unificar fenómenos** aparentemente distintos:
+
+        - Padrões presentes na **natureza** (estruturas virais e proteínas)
+        - Manifestações **artísticas** (tesselações de Escher)
+        - Construções **humanas** (azulejos, arquitetura e design)
+
+        Através das **isometrias** e da **Teoria de Grupos**, conseguimos compreender e apreciar a profunda ordem matemática subjacente ao mundo que nos rodeia — desde o microscópico até ao artístico.
         """)
-
-        st.markdown("""
-        #### Exemplo: Regular Division of the Plane nº 31
-
-        Nesta obra icónica, observam-se claramente rotações de 180°, eixos de reflexão e translações regulares que repetem a figura base do peixe.
-        """)
-
-        # Imagem depois do texto
-        try:
-            st.image("Regular-division-31.jpg", 
-                    caption="M. C. Escher - Regular Division of the Plane nº 31 (1950)",
-                    use_container_width=True)
-        except:
-            st.error("Não foi possível carregar a imagem. Verifique o caminho do ficheiro.")
-
-    with st.expander("🔭 6. O Caleidoscópio e a Força Unificadora da Simetria", expanded=False):
-        st.markdown("""
-    ### O Caleidoscópio: Simetria em Ação
-
-    O **caleidoscópio** é uma das demonstrações mais belas e intuitivas de como simetrias simples podem gerar padrões complexos e hipnóticos.
-
-    O efeito visual resulta de **múltiplas reflexões** entre espelhos dispostos em triângulo, produzindo:
-
-    - **Simetrias Rotacionais** de ângulo 360°/n
-    - **Simetrias de Reflexão** múltiplas
-    - **Padrões Regulares** infinitamente repetidos
-
-    Cada reflexão corresponde a uma transformação geométrica precisa, criando repetições cíclicas infinitas que encantam o observador.
-
-    ---
-
-    ### A Força Unificadora da Simetria
-
-    O estudo das simetrias revela a extraordinária capacidade da Matemática em **unificar fenómenos** aparentemente distintos:
-
-    - Padrões presentes na **natureza** (estruturas virais e proteínas)
-    - Manifestações **artísticas** (tesselações de Escher)
-    - Construções **humanas** (azulejos, arquitetura e design)
-
-    Através das **isometrias** e da **Teoria de Grupos**, conseguimos compreender e apreciar a profunda ordem matemática subjacente ao mundo que nos rodeia — desde o microscópico até ao artístico.
-    """)
 
     with tab2:
         st.markdown("### 🧠 Questionário de Avaliação — Módulo 1")
